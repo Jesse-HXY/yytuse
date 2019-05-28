@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.hospital_back.mapper.RegistrationLevelMapper">
+  <select id="getRegistrationLevel" resultType="com.neuedu.hospital_back.po.RegistrationLevel">
+    select  rLId, rLName, rLLimitation, rLFee from registrationlevel
+    <where>
+      <if test="rLId != null">
+        and rLId=#{rLId}
+      </if>
+    <if test="rLFee != null">
+      and rLFee=#{rLFee}
+    </if>
+      <if test="rLName != null and rLName != ''">
+        and rLName=like '%' #{rLName}  '%'
+      </if>
+    </where>
+
+  </select>
+
+  <select id="getAllRegistrationLevel" resultType="com.neuedu.hospital_back.po.RegistrationLevel">
+     select  rLId, rLName, rLLimitation, rLFee from registrationlevel
+  </select>
+
+  <delete id="deleteByPrimaryKey">
+    delete from registrationlevel
+    where rLId = #{rLId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="rLId" keyProperty="rLId"  useGeneratedKeys="true">
+    insert into registrationlevel (rLName, rLLimitation, rLFee
+      )
+    values (#{rLName,jdbcType=VARCHAR}, #{rLLimitation,jdbcType=INTEGER}, #{rLFee,jdbcType=DOUBLE}
+      )
+  </insert>
+
+  <update id="updateByPrimaryKeySelective">
+    update registrationlevel
+    <set>
+      <if test="rLName != null and rLName != ''">
+        rLName = #{rLName,jdbcType=VARCHAR},
+      </if>
+      <if test="rLLimitation != null">
+        rLLimitation = #{rLLimitation,jdbcType=INTEGER},
+      </if>
+      <if test="rLFee != null">
+        rLFee = #{rLFee,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where rLId = #{rLId,jdbcType=INTEGER}
+  </update>
+
+</mapper>
