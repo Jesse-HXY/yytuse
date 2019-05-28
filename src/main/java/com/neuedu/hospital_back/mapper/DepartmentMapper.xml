@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.hospital_back.mapper.DepartmentMapper">
+
+    <select id="getDepartments" resultType="com.neuedu.hospital_back.po.Department">
+        select dId, dName, dType, dCategory from department
+        <where>
+            <if test="dId != null">
+                and dId = #{dId}
+            </if>
+            <if test="dName != null and dName !=''">
+                and dName like '%' #{dName} '%'
+            </if>
+            <if test="dType != null and dType !=''">
+                and dType like '%' #{dType} '%'
+            </if>
+            <if test="dCategory != null and dCategory !=''">
+                and dCategory like '%' #{dCategory} '%'
+            </if>
+        </where>
+
+    </select>
+
+    <select id="getAllDepartments" resultType="com.neuedu.hospital_back.po.Department">
+        select dId, dName, dType, dCategory from department
+    </select>
+
+
+    <delete id="deleteDepartment">
+        delete from department where dId = #{dId}
+    </delete>
+
+    <insert id="insertDepartment">
+        insert into department values(#{dId}, #{dName}, #{dType}, #{dCategory})
+    </insert>
+
+    <update id="updateDepartment">
+        update department
+        <set>
+            <if test="dName != null and dName !=''">dName=#{dName},</if>
+            <if test="dType != null and dType !=''">dType=#{dType},</if>
+            <if test="dCategory != null and dCategory !=''">dCategory=#{dCategory},</if>
+        </set>
+        where dId = #{dId}
+    </update>
+
+
+</mapper>
