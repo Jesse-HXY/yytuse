@@ -43,7 +43,7 @@
         values (#{uNickName,jdbcType=VARCHAR}, #{uPassword,jdbcType=VARCHAR}, #{uName,jdbcType=VARCHAR},
           #{isDoctor,jdbcType=BOOLEAN}, #{uCategory,jdbcType=VARCHAR})
   </insert>
-    <update id="updateByPrimaryKeySelective">
+    <update id="updateUser">
         update user
         <set>
             <if test="uNickName != null">

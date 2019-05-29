@@ -11,7 +11,7 @@ public interface UserMapper {
 
     int insert(User record);
 
-    int updateByPrimaryKeySelective(User record);
+    int updateUser(User record);
 
     List<User> getAllUser();
 

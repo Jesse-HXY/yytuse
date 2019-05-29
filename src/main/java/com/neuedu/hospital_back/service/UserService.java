@@ -55,9 +55,7 @@ public class UserService {
         result += departmentUserMapper.deleteByuId(uId);
         result += doctorMapper.deleteDoctor(uId);
         result += userMapper.deleteByuId(uId);
-        if(result<=3){
-            return false;
-        }else return true;
+        return result == 3;
     }
 
     public boolean insert(JSONObject jsonObject) {
@@ -90,9 +88,39 @@ public class UserService {
         return result == 1;
     }
 
-    public boolean updateByPrimaryKeySelective(User record) {
-        userMapper.updateByPrimaryKeySelective(record);
-        return true;
+    public boolean updateUser(JSONObject object) {
+        //得到主键
+        int uId = object.getInt("uId");
+        User user = new User();
+        user.setuId(uId);
+        user.setuNickName(object.getString("uNickName"));
+        user.setuPassword(object.getString("uPassword"));
+        user.setuName(object.getString("uName"));
+        user.setIsDoctor(object.getBoolean("isDoctor"));
+        user.setuCategory(object.getString("uCategory"));
+        int result;
+        userMapper.updateUser(user);
+        //得到科室ID列表
+        List<String> dIds = object.getJSONArray("dIdList");
+        DepartmentUser departmentUser = new DepartmentUser();
+        //删除记录
+        result = departmentUserMapper.deleteByuId(uId);
+        //插入联合表中
+        for (String dId : dIds) {
+            departmentUser.setdId(dId);
+            departmentUser.setuId(uId);
+            result = departmentUserMapper.insert(departmentUser);
+        }
+        //是Doctor就把剩下的信息更新
+        if (object.getBoolean("isDoctor")) {
+            Doctor doctor = new Doctor();
+            doctor.setuId(uId);
+            doctor.setdVacation(object.getString("dVacation"));
+            doctor.setIsDue(object.getBoolean("isDue"));
+            result = doctorMapper.updateDoctor(doctor);
+        }
+        return result == 1;
+
     }
 
     public List<User> selectByCondition(User user) {

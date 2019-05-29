@@ -44,8 +44,8 @@ public class UserController {
     }
 
     @RequestMapping("/updateUser")
-    public boolean updateUser(@RequestBody User User) {
-        return userService.updateByPrimaryKeySelective(User);
+    public boolean updateUser(@RequestBody JSONObject object) {
+        return userService.updateUser(object);
     }
 
     @RequestMapping("/getUserCount")
