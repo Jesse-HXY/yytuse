@@ -10,4 +10,7 @@
     select dId from department_user where uId = #{uId}
   </select>
 
+    <delete id="deleteByuId">
+        delete from department_user where uId = #{uId}
+    </delete>
 </mapper>

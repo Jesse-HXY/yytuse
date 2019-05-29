@@ -9,4 +9,6 @@ public interface DepartmentUserMapper {
     int insert(DepartmentUser departmentUser);
 
     List<String> selectByuId(int uId);
+
+    int deleteByuId(int uId);
 }

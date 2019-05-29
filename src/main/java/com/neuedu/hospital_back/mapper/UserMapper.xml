@@ -32,7 +32,7 @@
         select `uId`, uNickName, uPassword, uName, isDoctor, uCategory from user  limit #{begin}, #{pageSize}
     </select>
 
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <delete id="deleteByuId" parameterType="java.lang.Integer">
     delete from user
     where `uId` = #{uId,jdbcType=INTEGER}
   </delete>

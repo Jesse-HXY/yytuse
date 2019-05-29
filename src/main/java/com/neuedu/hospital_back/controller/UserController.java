@@ -35,7 +35,7 @@ public class UserController {
 
     @RequestMapping("/deleteUser")
     public boolean deleteUser(@RequestBody JSONObject object) {
-        return userService.deleteByPrimaryKey(object);
+        return userService.deleteByuId(object);
     }
 
     @PostMapping("/insertUser")

@@ -18,7 +18,6 @@ import java.util.List;
 
 @Service
 public class UserService {
-
     @Resource
     private DepartmentMapper departmentMapper;
     @Resource
@@ -37,12 +36,12 @@ public class UserService {
         //拿到一页的user
         List<User> users = userMapper.getUserByPage(object.getInt("pageNum"), object.getInt("pageSize"));
         //遍历每个user插入其所在的departments
-        for (User user : users){
+        for (User user : users) {
             int uId = user.getuId();
             //找到表中user对应的department的ids
             List<String> dIds = departmentUserMapper.selectByuId(uId);
             //通过拿到的ids找到department并插入
-            for(String dId: dIds){
+            for (String dId : dIds) {
                 Department department = departmentMapper.getDepartmentBydId(dId);
                 user.getDepartments().add(department);
             }
@@ -50,8 +49,15 @@ public class UserService {
         return users;
     }
 
-    public boolean deleteByPrimaryKey(JSONObject object) {
-        return userMapper.deleteByPrimaryKey(object.getInt("uId")) == 1;
+    public boolean deleteByuId(JSONObject object) {
+        int uId = object.getInt("uId");
+        int result = 0;
+        result += departmentUserMapper.deleteByuId(uId);
+        result += doctorMapper.deleteDoctor(uId);
+        result += userMapper.deleteByuId(uId);
+        if(result<=3){
+            return false;
+        }else return true;
     }
 
     public boolean insert(JSONObject jsonObject) {
