@@ -1,7 +1,9 @@
 package com.neuedu.hospital_back.service;
 
+import com.neuedu.hospital_back.mapper.DepartmentMapper;
 import com.neuedu.hospital_back.mapper.DepartmentUserMapper;
 import com.neuedu.hospital_back.mapper.DoctorMapper;
+import com.neuedu.hospital_back.po.Department;
 import com.neuedu.hospital_back.po.DepartmentUser;
 import com.neuedu.hospital_back.po.Doctor;
 import net.sf.json.JSONObject;
@@ -18,16 +20,38 @@ import java.util.List;
 public class UserService {
 
     @Resource
+    private DepartmentMapper departmentMapper;
+    @Resource
     private UserMapper userMapper;
-
     @Resource
     private DoctorMapper doctorMapper;
-
     @Resource
     private DepartmentUserMapper departmentUserMapper;
 
-    public boolean deleteByPrimaryKey(Integer uId) {
-        return userMapper.deleteByPrimaryKey(uId) == 1;
+
+    public int getUserCount() {
+        return userMapper.getUserCount();
+    }
+
+    public List<User> getUserByPage(JSONObject object) {
+        //拿到一页的user
+        List<User> users = userMapper.getUserByPage(object.getInt("pageNum"), object.getInt("pageSize"));
+        //遍历每个user插入其所在的departments
+        for (User user : users){
+            int uId = user.getuId();
+            //找到表中user对应的department的ids
+            List<String> dIds = departmentUserMapper.selectByuId(uId);
+            //通过拿到的ids找到department并插入
+            for(String dId: dIds){
+                Department department = departmentMapper.getDepartmentBydId(dId);
+                user.getDepartments().add(department);
+            }
+        }
+        return users;
+    }
+
+    public boolean deleteByPrimaryKey(JSONObject object) {
+        return userMapper.deleteByPrimaryKey(object.getInt("uId")) == 1;
     }
 
     public boolean insert(JSONObject jsonObject) {
@@ -44,7 +68,7 @@ public class UserService {
         List<String> dIds = jsonObject.getJSONArray("dIdList");
         //插入联合表中
         DepartmentUser departmentUser = new DepartmentUser();
-        for (String dId: dIds){
+        for (String dId : dIds) {
             departmentUser.setdId(dId);
             departmentUser.setuId(uId);
             result = departmentUserMapper.insert(departmentUser);

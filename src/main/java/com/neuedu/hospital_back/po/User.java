@@ -1,5 +1,7 @@
 package com.neuedu.hospital_back.po;
 
+import java.util.List;
+
 public class User {
     private Integer uId;
 
@@ -12,6 +14,24 @@ public class User {
     private Boolean isDoctor;
 
     private String uCategory;
+
+    private List<Department> departments;
+
+    public Boolean getDoctor() {
+        return isDoctor;
+    }
+
+    public void setDoctor(Boolean doctor) {
+        isDoctor = doctor;
+    }
+
+    public List<Department> getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(List<Department> departments) {
+        this.departments = departments;
+    }
 
     public Integer getuId() {
         return uId;

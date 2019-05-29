@@ -9,6 +9,8 @@ public interface DepartmentMapper {
 
     List<Department> getAllDepartments();
 
+    Department getDepartmentBydId(String dId);
+
     List<Department> getDepartments(Department department);
 
     List<Department> getDepartmentByPage(@Param("begin")int begin, @Param("pageSize")int pageSize);
