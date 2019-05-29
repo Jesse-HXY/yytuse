@@ -24,21 +24,18 @@ public class DepartmentService {
     }
 
     public boolean deleteDepartment(String dId) {
-        departmentMapper.deleteDepartment(dId);
-        return true;
+        return (departmentMapper.deleteDepartment(dId) == 1);
     }
 
     public boolean insertDepartment(Department department) {
-        departmentMapper.insertDepartment(department);
-        return true;
+        return (departmentMapper.insertDepartment(department) == 1);
     }
 
     public boolean updateDepartment(Department department) {
-        departmentMapper.updateDepartment(department);
-        return true;
+        return (departmentMapper.updateDepartment(department) == 1);
     }
 
     public int getPageCount() {
-        return departmentMapper.getDepartmentCount() ;
+        return departmentMapper.getDepartmentCount();
     }
 }

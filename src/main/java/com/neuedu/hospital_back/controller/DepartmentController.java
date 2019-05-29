@@ -26,34 +26,18 @@ public class DepartmentController {
     }
 
     @RequestMapping("/deleteDepartment")
-    public String deleteDepartment(@RequestBody JSONObject dId) {
-        Boolean result = departmentService.deleteDepartment(dId.getString("dId"));
-        if (result) {
-            return "{\"result\":true}";
-        } else {
-            return "{\"result\":false}";
-        }
-
+    public boolean deleteDepartment(@RequestBody JSONObject dId) {
+        return departmentService.deleteDepartment(dId.getString("dId"));
     }
 
     @RequestMapping("/insertDepartment")
-    public String insertDepartment(@RequestBody Department department) {
-        Boolean result = departmentService.insertDepartment(department);
-        if (result) {
-            return "{\"result\":true}";
-        } else {
-            return "{\"result\":false}";
-        }
+    public boolean insertDepartment(@RequestBody Department department) {
+        return departmentService.insertDepartment(department);
     }
 
     @RequestMapping("/updateDepartment")
-    public String updateDepartment(@RequestBody Department department){
-        Boolean result = departmentService.updateDepartment(department);
-        if (result) {
-            return "{\"result\":true}";
-        } else {
-            return "{\"result\":false}";
-        }
+    public boolean updateDepartment(@RequestBody Department department){
+        return departmentService.updateDepartment(department);
     }
 
     @RequestMapping("/getPageCount")

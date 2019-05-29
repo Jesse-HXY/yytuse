@@ -2,12 +2,14 @@ package com.neuedu.hospital_back.mapper;
 
 import com.neuedu.hospital_back.po.Doctor;
 
+import java.util.List;
+
 public interface DoctorMapper {
-    int deleteByPrimaryKey(Integer uId);
+    void updateDoctor(Doctor doctor);
 
-    int insert(Doctor record);
+    void deleteDoctor(int uId);
 
-    int updateByPrimaryKeySelective(Doctor record);
+    void insertDoctor(Doctor doctor);
 
-
+    List<Doctor> getDoctors(Doctor doctor);
 }

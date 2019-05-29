@@ -38,16 +38,7 @@ public class UserTest {
         assertEquals(true, userService.deleteByPrimaryKey(3));
     }
 
-    @Test
-    public void insertUser() {
-        User user = new User();
-        user.setuId(1);
-        user.setuName("查号");
-        user.setuNickName("40");
-        user.setuPassword("llll");
-        user.setIsDoctor(true);
-        assertEquals(true, userService.insert(user));
-    }
+
 
     @Test
     public void updateUser() {

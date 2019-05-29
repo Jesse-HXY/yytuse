@@ -13,47 +13,32 @@ import java.util.List;
 @RestController
 @RequestMapping("/User")
 public class UserController {
-    
+
     @Resource
     private UserService userService;
-@RequestMapping("/getUser")
-    public List<User> selectByCondition(@RequestBody User user){
+
+    @RequestMapping("/getUser")
+    public List<User> selectByCondition(@RequestBody User user) {
         return userService.selectByCondition(user);
     }
-@PostMapping("/getAllUser")
-    public List<User> selectAllUser(){
+
+    @PostMapping("/getAllUser")
+    public List<User> selectAllUser() {
         return userService.selectAllUser();
     }
 
     @RequestMapping("/deleteUser")
-    public String deleteUser(@RequestBody JSONObject uId) {
-        Boolean result = userService.deleteByPrimaryKey(uId.getInt("uId"));
-        if (result) {
-            return "{\"result\":true}";
-        } else {
-            return "{\"result\":false}";
-        }
-
+    public boolean deleteUser(@RequestBody JSONObject uId) {
+        return userService.deleteByPrimaryKey(uId.getInt("uId"));
     }
 
     @RequestMapping("/insertUser")
-    public String insertUser(@RequestBody User User) {
-
-        Boolean result = userService.insert(User);
-        if (result) {
-            return "{\"result\":true}";
-        } else {
-            return "{\"result\":false}";
-        }
+    public boolean insertUser(@RequestBody JSONObject object) {
+        return userService.insert(object);
     }
 
     @RequestMapping("/updateUser")
-    public String updateUser(@RequestBody User User){
-        Boolean result = userService.updateByPrimaryKeySelective(User);
-        if (result) {
-            return "{\"result\":true}";
-        } else {
-            return "{\"result\":false}";
-        }
+    public boolean updateUser(@RequestBody User User) {
+        return userService.updateByPrimaryKeySelective(User);
     }
 }
