@@ -3,11 +3,11 @@
 <mapper namespace="com.neuedu.hospital_back.mapper.DoctorMapper">
 
     <insert id="insertDoctor">
-        insert into doctor values(#{uId}, #{dVacation}, #{isDue})
+        insert into doctor values(#{uId}, #{dVacation}, #{isDue}, #{rLName})
     </insert>
 
     <select id="getDoctors" resultType="com.neuedu.hospital_back.po.Doctor">
-        select `uId`, dVacation, isDue from doctor
+        select `uId`, dVacation, isDue, rLName from doctor
         <where>
             <if test="uId != null and uId !=''">
                 and `uId` = #{uId}
@@ -17,6 +17,9 @@
             </if>
             <if test="isDue != null and isDue !=''">
                 and isDue= #{isDue}
+            </if>
+            <if test="rLName != null and rLName !=''">
+                and rLName= #{rLName}
             </if>
         </where>
     </select>
@@ -34,6 +37,9 @@
             </if>
             <if test="isDue != null">
                 isDue = #{isDue,jdbcType=BOOLEAN},
+            </if>
+            <if test="rLName != null">
+                rLName = #{rLName,jdbcType=VARCHAR},
             </if>
         </set>
         where `uId` = #{uId,jdbcType=INTEGER}

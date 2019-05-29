@@ -10,5 +10,7 @@ public interface DepartmentUserMapper {
 
     List<String> selectByuId(int uId);
 
+    List<Integer> selectBydId(String dId);
+
     int deleteByuId(int uId);
 }
