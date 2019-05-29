@@ -50,19 +50,4 @@ public class Disease {
     public void setDisType(String disType) {
         this.disType = disType;
     }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", disId=").append(disId);
-        sb.append(", disIcd=").append(disIcd);
-        sb.append(", disName=").append(disName);
-        sb.append(", disCode=").append(disCode);
-        sb.append(", disType=").append(disType);
-        sb.append("]");
-        return sb.toString();
-    }
 }

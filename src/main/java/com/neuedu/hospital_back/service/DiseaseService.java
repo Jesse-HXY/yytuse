@@ -14,17 +14,40 @@ public class DiseaseService {
     private DiseaseMapper diseaseMapper;
 
     public List<String> getDiseaseType() {
-        return diseaseMapper.getDiseaseType();
+        List<String> diseases = diseaseMapper.getDiseaseType();
+        return diseases;
     }
 
+    public List<Disease> getDiseaseByType(String disType){
+        List<Disease> diseases =diseaseMapper.getDiseaseByType(disType);
+    return diseases;
+    }
+
+    public List<Disease> getDiseaseByPage(String disType,int begin, int pageSize){
+        List<Disease> diseases=diseaseMapper.getDiseaseByPage(disType,begin,pageSize);
+        return diseases;
+    }
     public List<Disease> getDiseases(Disease disease) {
         List<Disease> diseases = diseaseMapper.getDiseases(disease);
         return diseases;
     }
 
-    public int insert(Disease record) {
-        return diseaseMapper.insert(record);
+    public boolean insert(Disease record) {
+       return diseaseMapper.insert(record)==1;
+
     }
+
+    public boolean updateDisease(Disease disease){
+      return   diseaseMapper.updateByPrimaryKeySelective(disease)==1;
+
+    }
+
+    public boolean deleteDisease(int disId){
+       return diseaseMapper.deleteByPrimaryKey(disId)==1;
+
+    }
+
+    public int getDiseaseCount(){return diseaseMapper.getDiseaseCount();}
 }
 
 
