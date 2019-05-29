@@ -29,12 +29,12 @@ public class ExamnationItemController {
 
     @PostMapping("/getExamnationItemByPage")
     public List<ExamnationItem> getExamnationItemByPage(@RequestBody JSONObject object) {
-        return  examnationitemService.selectExamnationItemByPage(object.getInt("pageNum"), object.getInt("pageSize"));
+        return  examnationitemService.selectExamnationItemByPage(object);
     }
 
     @RequestMapping("/deleteExamnationItem")
     public boolean deleteExamnationItem(@RequestBody JSONObject eIId) {
-        return examnationitemService.deleteByPrimaryKey(eIId.getInt("eIId"));
+        return examnationitemService.deleteByPrimaryKey(eIId);
     }
 
     @RequestMapping("/insertExamnationItem")

@@ -29,7 +29,7 @@ public class RegistrationLevelController {
 
         @RequestMapping("/deleteRegistrationLevel")
         public boolean deleteRegistrationLevel(@RequestBody JSONObject rLId) {
-            return registrationlevelService.deleteByPrimaryKey(rLId.getInt("rLId"));
+            return registrationlevelService.deleteByPrimaryKey(rLId);
         }
 
         @RequestMapping("/insertRegistrationLevel")

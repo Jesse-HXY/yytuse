@@ -1,6 +1,7 @@
 package com.neuedu.hospital_back.service;
 
 import com.neuedu.hospital_back.mapper.RegistrationLevelMapper;
+import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,8 +17,8 @@ public class RegistrationlevelService {
     private RegistrationLevelMapper registrationlevelMapper;
 
 
-    public boolean deleteByPrimaryKey(Integer rLId) {
-        registrationlevelMapper.deleteByPrimaryKey(rLId);
+    public boolean deleteByPrimaryKey(JSONObject rLId) {
+        registrationlevelMapper.deleteByPrimaryKey(rLId.getInt("rLId"));
         return true;
     }
 

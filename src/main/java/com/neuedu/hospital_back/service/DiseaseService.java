@@ -2,6 +2,7 @@ package com.neuedu.hospital_back.service;
 
 import com.neuedu.hospital_back.mapper.DiseaseMapper;
 import com.neuedu.hospital_back.po.Disease;
+import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -23,8 +24,8 @@ public class DiseaseService {
     return diseases;
     }
 
-    public List<Disease> getDiseaseByPage(String disType,int begin, int pageSize){
-        List<Disease> diseases=diseaseMapper.getDiseaseByPage(disType,begin,pageSize);
+    public List<Disease> getDiseaseByPage(JSONObject object){
+        List<Disease> diseases=diseaseMapper.getDiseaseByPage(object.getString("disType"),object.getInt("pageNum"), object.getInt("pageSize"));
         return diseases;
     }
     public List<Disease> getDiseases(Disease disease) {
@@ -42,8 +43,8 @@ public class DiseaseService {
 
     }
 
-    public boolean deleteDisease(int disId){
-       return diseaseMapper.deleteByPrimaryKey(disId)==1;
+    public boolean deleteDisease(JSONObject disId){
+       return diseaseMapper.deleteByPrimaryKey(disId.getInt("disId"))==1;
 
     }
 

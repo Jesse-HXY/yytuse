@@ -53,8 +53,8 @@ public class ExamnationItemTest {
         assertEquals(true, examnationitemService.updateByPrimaryKeySelective(examnationItem));
     }
 
-    @Test
+  /*  @Test
     public void delete(){
         assertEquals(true, examnationitemService.deleteByPrimaryKey(10000));
     }
-}
+*/}

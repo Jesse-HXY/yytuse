@@ -28,12 +28,12 @@ public class DiseaseController {
 
     @PostMapping("/getDiseaseByPage")
     public List<Disease> getAllDiseases(@RequestBody JSONObject object) {
-        return  diseaseService.getDiseaseByPage(object.getString("disType"),object.getInt("pageNum"), object.getInt("pageSize"));
+        return  diseaseService.getDiseaseByPage(object);
     }
 
     @RequestMapping("/deleteDisease")
     public boolean deleteDisease(@RequestBody JSONObject disId) {
-        return diseaseService.deleteDisease(disId.getInt("disId"));
+        return diseaseService.deleteDisease(disId);
     }
 
     @RequestMapping("/insertDisease")
