@@ -27,8 +27,6 @@ public class DepartmentTest {
         System.out.println(departments);
     }
 
-
-
     @Test
     public void deleteDepartment() {
         assertEquals(true, departmentService.deleteDepartment("a"));
@@ -47,10 +45,10 @@ public class DepartmentTest {
     @Test
     public void updateDepartment(){
         Department department = new Department();
-        department.setdId("AZBK");
-        department.setdName("h3h");
-        department.setdType("外科");
-        department.setdCategory("临床科室");
+        department.setdId("BLK");
+        department.setdName("病理科");
+        department.setdType("东北");
+        department.setdCategory("你好");
         assertEquals(true, departmentService.updateDepartment(department));
     }
 }

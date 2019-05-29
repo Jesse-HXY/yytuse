@@ -38,7 +38,7 @@ public class DepartmentService {
         return true;
     }
 
-    public int getPageCount(int pageSize) {
-        return (departmentMapper.getDepartmentCount() / pageSize) + 1;
+    public int getPageCount() {
+        return departmentMapper.getDepartmentCount() ;
     }
 }

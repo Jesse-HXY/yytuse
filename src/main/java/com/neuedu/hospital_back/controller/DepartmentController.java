@@ -38,7 +38,6 @@ public class DepartmentController {
 
     @RequestMapping("/insertDepartment")
     public String insertDepartment(@RequestBody Department department) {
-
         Boolean result = departmentService.insertDepartment(department);
         if (result) {
             return "{\"result\":true}";
@@ -58,7 +57,7 @@ public class DepartmentController {
     }
 
     @RequestMapping("/getPageCount")
-    public int getPageCount(@RequestBody JSONObject object){
-        return departmentService.getPageCount(object.getInt("pageSize"));
+    public int getPageCount(){
+        return departmentService.getPageCount();
     }
 }
