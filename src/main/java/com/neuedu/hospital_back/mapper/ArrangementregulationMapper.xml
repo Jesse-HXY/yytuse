@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.hospital_back.mapper.ArrangementregulationMapper">
+
+  <sql id="Base_Column_List">
+    arId, dId, arName, arPlan
+  </sql>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from arrangementregulation
+    where arId = #{arId,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="com.neuedu.hospital_back.po.Arrangementregulation">
+    insert into arrangementregulation (arId, dId, arName, 
+      arPlan)
+    values (#{arId,jdbcType=VARCHAR}, #{dId,jdbcType=VARCHAR}, #{arName,jdbcType=INTEGER}, 
+      #{arPlan,jdbcType=INTEGER})
+  </insert>
+
+  <select id="selectByDId" resultType="com.neuedu.hospital_back.po.Arrangementregulation">
+    select arId, dId, arName, arPlan from arrangementregulation
+    where dId=#{dId}
+  </select>
+</mapper>
