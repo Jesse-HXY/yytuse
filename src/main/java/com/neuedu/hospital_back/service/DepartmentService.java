@@ -2,6 +2,7 @@ package com.neuedu.hospital_back.service;
 
 import com.neuedu.hospital_back.mapper.DepartmentMapper;
 import com.neuedu.hospital_back.po.Department;
+import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,15 +20,14 @@ public class DepartmentService {
 
     public List<Department> getDepartments(Department department) {
         return departmentMapper.getDepartments(department);
-
     }
 
-    public List<Department> getDepartmentByPage(int begin, int pageSize) {
-        return departmentMapper.getDepartmentByPage(begin, pageSize);
+    public List<Department> getDepartmentByPage(JSONObject jsonObject) {
+        return departmentMapper.getDepartmentByPage(jsonObject.getInt("pageNum"), jsonObject.getInt("pageSize"));
     }
 
-    public boolean deleteDepartment(String dId) {
-        return departmentMapper.deleteDepartment(dId) == 1;
+    public boolean deleteDepartment(JSONObject object) {
+        return departmentMapper.deleteDepartment(object.getString("dId")) == 1;
     }
 
     public boolean insertDepartment(Department department) {
@@ -38,7 +38,7 @@ public class DepartmentService {
         return departmentMapper.updateDepartment(department) == 1;
     }
 
-    public int getPageCount() {
+    public int getDepartmentCount() {
         return departmentMapper.getDepartmentCount();
     }
 }

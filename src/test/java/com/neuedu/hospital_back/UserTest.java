@@ -33,10 +33,6 @@ public class UserTest {
         userService.selectAllUser();
     }
 
-    @Test
-    public void deleteUser() {
-        assertEquals(true, userService.deleteByPrimaryKey(3));
-    }
 
 
 

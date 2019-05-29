@@ -32,11 +32,11 @@ public class DiseaseTest {
         System.out.println(disease);
     }
 
-    @Test
+   /* @Test
     public void deleteDisease(){
         assertEquals(true, diseaseService.deleteDisease(2067));
     }
-
+*/
     @Test
     public void insertDisease(){
         Disease disease=new Disease();

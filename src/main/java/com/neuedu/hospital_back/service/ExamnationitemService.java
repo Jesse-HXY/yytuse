@@ -15,8 +15,8 @@ public class ExamnationitemService{
     private ExamnationitemMapper examnationitemMapper;
 
     
-    public boolean deleteByPrimaryKey(Integer eIId) {
-        return examnationitemMapper.deleteByPrimaryKey(eIId)==1;
+    public boolean deleteByPrimaryKey(JSONObject eIId) {
+        return examnationitemMapper.deleteByPrimaryKey(eIId.getInt("eIId"))==1;
     }
 
     
@@ -39,8 +39,8 @@ public class ExamnationitemService{
         return examnationItems;
     }
 
-    public List<ExamnationItem> selectExamnationItemByPage(int begin, int pageSize){
-        List<ExamnationItem> examnationItems =examnationitemMapper.selectExamnationItemByPage(begin,pageSize);
+    public List<ExamnationItem> selectExamnationItemByPage(JSONObject object){
+        List<ExamnationItem> examnationItems =examnationitemMapper.selectExamnationItemByPage(object.getInt("pageNum"), object.getInt("pageSize"));
         return examnationItems;
     }
 

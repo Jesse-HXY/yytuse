@@ -33,11 +33,11 @@ public class RegistrationLevelTest {
         registrationlevelService.selectAll();
     }
 
-    @Test
+    /*@Test
     public void deleteRegistrationLevel() {
         assertEquals(true, registrationlevelService.deleteByPrimaryKey(4));
     }
-
+*/
     @Test
     public void insertRegistrationLevel() {
         RegistrationLevel registrationLevel = new RegistrationLevel();

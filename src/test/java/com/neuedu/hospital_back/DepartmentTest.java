@@ -1,6 +1,7 @@
 package com.neuedu.hospital_back;
 
 import com.neuedu.hospital_back.po.Department;
+import com.neuedu.hospital_back.po.User;
 import com.neuedu.hospital_back.service.DepartmentService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,10 +28,6 @@ public class DepartmentTest {
         System.out.println(departments);
     }
 
-    @Test
-    public void deleteDepartment() {
-        assertEquals(true, departmentService.deleteDepartment("a"));
-    }
 
     @Test
     public void insertDepartment() {
@@ -51,4 +48,5 @@ public class DepartmentTest {
         department.setdCategory("你好");
         assertEquals(true, departmentService.updateDepartment(department));
     }
+
 }

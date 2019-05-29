@@ -1,5 +1,6 @@
 package com.neuedu.hospital_back.controller;
 
+import com.neuedu.hospital_back.po.Department;
 import com.neuedu.hospital_back.po.User;
 import com.neuedu.hospital_back.po.User;
 import com.neuedu.hospital_back.service.UserService;
@@ -27,9 +28,14 @@ public class UserController {
         return userService.selectAllUser();
     }
 
+    @PostMapping("/getUserByPage")
+    public List<User> getUserByPage(@RequestBody JSONObject object) {
+        return userService.getUserByPage(object);
+    }
+
     @RequestMapping("/deleteUser")
-    public boolean deleteUser(@RequestBody JSONObject uId) {
-        return userService.deleteByPrimaryKey(uId.getInt("uId"));
+    public boolean deleteUser(@RequestBody JSONObject object) {
+        return userService.deleteByuId(object);
     }
 
     @PostMapping("/insertUser")
@@ -38,7 +44,12 @@ public class UserController {
     }
 
     @RequestMapping("/updateUser")
-    public boolean updateUser(@RequestBody User User) {
-        return userService.updateByPrimaryKeySelective(User);
+    public boolean updateUser(@RequestBody JSONObject object) {
+        return userService.updateUser(object);
+    }
+
+    @RequestMapping("/getUserCount")
+    public int getUserCount(){
+        return userService.getUserCount();
     }
 }

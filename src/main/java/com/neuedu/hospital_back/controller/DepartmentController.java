@@ -27,12 +27,12 @@ public class DepartmentController {
 
     @PostMapping("/getDepartmentByPage")
     public List<Department> getAllDepartments(@RequestBody JSONObject object) {
-        return  departmentService.getDepartmentByPage(object.getInt("pageNum"), object.getInt("pageSize"));
+        return  departmentService.getDepartmentByPage(object);
     }
 
     @RequestMapping("/deleteDepartment")
-    public boolean deleteDepartment(@RequestBody JSONObject dId) {
-        return departmentService.deleteDepartment(dId.getString("dId"));
+    public boolean deleteDepartment(@RequestBody JSONObject object) {
+        return departmentService.deleteDepartment(object);
     }
 
     @RequestMapping("/insertDepartment")
@@ -45,8 +45,8 @@ public class DepartmentController {
         return departmentService.updateDepartment(department);
     }
 
-    @RequestMapping("/getPageCount")
-    public int getPageCount(){
-        return departmentService.getPageCount();
+    @RequestMapping("/getDepartmentCount")
+    public int getDepartmentCount(){
+        return departmentService.getDepartmentCount();
     }
 }
