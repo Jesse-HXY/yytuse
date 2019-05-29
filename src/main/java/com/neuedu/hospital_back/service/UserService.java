@@ -1,6 +1,8 @@
 package com.neuedu.hospital_back.service;
 
+import com.neuedu.hospital_back.mapper.DepartmentUserMapper;
 import com.neuedu.hospital_back.mapper.DoctorMapper;
+import com.neuedu.hospital_back.po.DepartmentUser;
 import com.neuedu.hospital_back.po.Doctor;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,9 @@ public class UserService {
     @Resource
     private DoctorMapper doctorMapper;
 
+    @Resource
+    private DepartmentUserMapper departmentUserMapper;
+
     public boolean deleteByPrimaryKey(Integer uId) {
         return userMapper.deleteByPrimaryKey(uId) == 1;
     }
@@ -35,10 +40,17 @@ public class UserService {
         int result = userMapper.insert(user);
         //得到自动添加的主键
         int uId = user.getuId();
-        System.out.println("----------------------"+uId);
+        //得到科室ID列表
+        List<String> dIds = jsonObject.getJSONArray("dIdList");
+        //插入联合表中
+        DepartmentUser departmentUser = new DepartmentUser();
+        for (String dId: dIds){
+            departmentUser.setdId(dId);
+            departmentUser.setuId(uId);
+            result = departmentUserMapper.insert(departmentUser);
+        }
         //是Doctor就把剩下的信息写入
         if (jsonObject.getBoolean("isDoctor")) {
-            System.out.println("----------------------jinfjlkasdjfldsa");
             Doctor doctor = new Doctor();
             doctor.setuId(uId);
             doctor.setdVacation(jsonObject.getString("dVacation"));
