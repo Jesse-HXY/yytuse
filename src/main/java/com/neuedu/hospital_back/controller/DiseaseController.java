@@ -21,6 +21,11 @@ public class DiseaseController {
         return diseaseService.getDiseases(disease);
     }
 
+    @RequestMapping("/getDiseaseType")
+    public List<String> getDiseaseType(){
+        return diseaseService.getDiseaseType();
+    }
+
     @PostMapping("/getDiseaseByPage")
     public List<Disease> getAllDiseases(@RequestBody JSONObject object) {
         return  diseaseService.getDiseaseByPage(object.getString("disType"),object.getInt("pageNum"), object.getInt("pageSize"));
