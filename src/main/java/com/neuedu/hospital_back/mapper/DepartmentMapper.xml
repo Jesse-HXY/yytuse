@@ -7,8 +7,8 @@
     <select id="getDepartments" resultType="com.neuedu.hospital_back.po.Department">
         select dId, dName, dType, dCategory from department
         <where>
-            <if test="dId != null">
-                and dId = #{dId}
+            <if test="dId != null and dId !=''">
+                and dId like '%' #{dId} '%'
             </if>
             <if test="dName != null and dName !=''">
                 and dName like '%' #{dName} '%'
