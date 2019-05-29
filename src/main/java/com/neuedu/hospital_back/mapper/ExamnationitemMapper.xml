@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.hospital_back.mapper.ExamnationitemMapper">
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from examnationItem
+    where eIId = #{eIId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="eIId" keyProperty="eIId" parameterType="com.neuedu.hospital_back.po.ExamnationItem" useGeneratedKeys="true">
+    insert into examnationItem (dId, eIName, elSpecification,
+      eIFee, elFeeType, elCode
+      )
+    values (#{dId,jdbcType=VARCHAR}, #{eIName,jdbcType=VARCHAR}, #{elSpecification,jdbcType=VARCHAR}, 
+      #{eIFee,jdbcType=DOUBLE}, #{elFeeType,jdbcType=VARCHAR}, #{elCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.ExamnationItem">
+    update examnationItem
+    <set>
+      <if test="dId != null and dId != ''">
+          dId = #{dId,jdbcType=VARCHAR},
+      </if>
+      <if test="eIName != null and eIName != ''">
+          eIName = #{eIName,jdbcType=VARCHAR},
+      </if>
+      <if test="elSpecification != null and elSpecification != ''">
+          elSpecification = #{elSpecification,jdbcType=VARCHAR},
+      </if>
+      <if test="elFeeType != null and elFeeType != ''">
+          eIFee = #{eIFee,jdbcType=DOUBLE},
+      </if>
+      <if test="elFeeType != null and elFeeType != ''">
+          elFeeType = #{elFeeType,jdbcType=VARCHAR},
+      </if>
+      <if test="elCode != null and elCode != ''">
+          elCode = #{elCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where eIId = #{eIId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectExamnationItem" resultType="com.neuedu.hospital_back.po.ExamnationItem">
+    select eIId, dId, eIName, elSpecification, eIFee, elFeeType, elCode from examnationItem
+    <where>
+      <if test="eIId != null">
+        and eIId=#{eIId,jdbcType=INTEGER}
+      </if>
+      <if test="dId != null and dId != ''">
+      and  dId = #{dId,jdbcType=VARCHAR}
+      </if>
+      <if test="eIName != null and eIName != ''">
+       and  eIName = #{eIName,jdbcType=VARCHAR}
+      </if>
+      <if test="elSpecification != null and elSpecification != ''">
+     and  elSpecification = #{elSpecification,jdbcType=VARCHAR}
+      </if>
+      <if test="elFeeType != null and elFeeType != ''">
+      and  eIFee = #{eIFee,jdbcType=DOUBLE}
+      </if>
+      <if test="elFeeType != null and elFeeType != ''">
+       and  elFeeType = #{elFeeType,jdbcType=VARCHAR}
+      </if>
+      <if test="elCode != null and elCode != ''">
+       and  elCode = #{elCode,jdbcType=VARCHAR},
+      </if>
+    </where>
+  </select>
+
+  <select id="selectExamnationItemByPage" resultType="com.neuedu.hospital_back.po.ExamnationItem">
+    select eIId, dId, eIName, elSpecification, eIFee, elFeeType, elCode from examnationItem  limit #{begin}, #{pageSize}
+  </select>
+
+  <select id="getExamnationItemCount" resultType="integer">
+    select count(*) from examnationItem
+  </select>
+
+    <select id="selectAllExamnationItem" resultType="com.neuedu.hospital_back.po.ExamnationItem">
+        select eIId, dId, eIName, elSpecification, eIFee, elFeeType, elCode from examnationItem
+    </select>
+</mapper>
