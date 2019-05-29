@@ -5,11 +5,12 @@ import com.neuedu.hospital_back.po.User;
 import java.util.List;
 
 public interface UserMapper {
-    void deleteByPrimaryKey(Integer uId);
 
-    void insert(User record);
+    int deleteByPrimaryKey(Integer uId);
 
-    void updateByPrimaryKeySelective(User record);
+    int insert(User record);
+
+    int updateByPrimaryKeySelective(User record);
 
     List<User> getAllUser();
 

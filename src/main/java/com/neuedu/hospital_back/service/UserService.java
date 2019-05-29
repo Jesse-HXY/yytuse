@@ -1,5 +1,6 @@
 package com.neuedu.hospital_back.service;
 
+import com.neuedu.hospital_back.mapper.DoctorMapper;
 import com.neuedu.hospital_back.po.Doctor;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -17,9 +18,11 @@ public class UserService {
     @Resource
     private UserMapper userMapper;
 
+    @Resource
+    private DoctorMapper doctorMapper;
+
     public boolean deleteByPrimaryKey(Integer uId) {
-        userMapper.deleteByPrimaryKey(uId);
-        return true;
+        return userMapper.deleteByPrimaryKey(uId) == 1;
     }
 
     public boolean insert(JSONObject jsonObject) {
@@ -29,15 +32,18 @@ public class UserService {
         user.setuName(jsonObject.getString("uName"));
         user.setIsDoctor(jsonObject.getBoolean("isDoctor"));
         user.setuCategory(jsonObject.getString("uCategory"));
-        userMapper.insert(user);
+        int result = userMapper.insert(user);
+        //得到自动添加的主键
         int uId = user.getuId();
+        //是Doctor就把剩下的信息写入
         if (!jsonObject.getBoolean("isDoctor")) {
             Doctor doctor = new Doctor();
             doctor.setuId(uId);
             doctor.setdVacation(jsonObject.getString("dVacation"));
             doctor.setIsDue(jsonObject.getBoolean("isDue"));
+            result = doctorMapper.insertDoctor(doctor);
         }
-        return true;
+        return result == 1;
     }
 
     public boolean updateByPrimaryKeySelective(User record) {

@@ -1,41 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.hospital_back.mapper.ArrangementMapper">
-  <resultMap id="BaseResultMap" type="com.neuedu.hospital_back.po.Arrangement">
-    <!--@mbg.generated-->
-    <id column="aId" jdbcType="INTEGER" property="aId" />
-    <result column="arId" jdbcType="VARCHAR" property="arId" />
-    <result column="aBegin" jdbcType="DATE" property="aBegin" />
-    <result column="aEnd" jdbcType="DATE" property="aEnd" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.neuedu.hospital_back.po.Arrangement">
+        <!--@mbg.generated-->
+        <id column="aId" jdbcType="INTEGER" property="aId"/>
+        <result column="arId" jdbcType="VARCHAR" property="arId"/>
+        <result column="aBegin" jdbcType="DATE" property="aBegin"/>
+        <result column="aEnd" jdbcType="DATE" property="aEnd"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     aId, arId, aBegin, aEnd
   </sql>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from arrangement
     where aId = #{aId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="aId" keyProperty="aId" parameterType="com.neuedu.hospital_back.po.Arrangement" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="aId" keyProperty="aId" parameterType="com.neuedu.hospital_back.po.Arrangement"
+            useGeneratedKeys="true">
     insert into arrangement (arId, aBegin, aEnd)
     values (#{arId,jdbcType=VARCHAR}, #{aBegin,jdbcType=DATE}, #{aEnd,jdbcType=DATE})
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.Arrangement">
-    update arrangement
-    <set>
-      <if test="arId != null">
-        arId = #{arId,jdbcType=VARCHAR},
-      </if>
-      <if test="aBegin != null">
-        aBegin = #{aBegin,jdbcType=DATE},
-      </if>
-      <if test="aEnd != null">
-        aEnd = #{aEnd,jdbcType=DATE},
-      </if>
-    </set>
-    where aId = #{aId,jdbcType=INTEGER}
-  </update>
-  
-  <select id="selectByBeginAndEnd" resultType="com.neuedu.hospital_back.po.Arrangement">
+    <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.Arrangement">
+        update arrangement
+        <set>
+            <if test="arId != null">
+                arId = #{arId,jdbcType=VARCHAR},
+            </if>
+            <if test="aBegin != null">
+                aBegin = #{aBegin,jdbcType=DATE},
+            </if>
+            <if test="aEnd != null">
+                aEnd = #{aEnd,jdbcType=DATE},
+            </if>
+        </set>
+        where aId = #{aId,jdbcType=INTEGER}
+    </update>
+
+    <select id="selectByBeginAndEnd" resultType="com.neuedu.hospital_back.po.Arrangement">
       select  aId, arId, aBegin, aEnd from arrangement
       where aBegin=#{aBegin} and aEnd=#{aEnd}
   </select>
