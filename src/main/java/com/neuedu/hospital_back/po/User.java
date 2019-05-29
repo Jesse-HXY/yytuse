@@ -1,5 +1,6 @@
 package com.neuedu.hospital_back.po;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -15,7 +16,7 @@ public class User {
 
     private String uCategory;
 
-    private List<Department> departments;
+    private List<Department> departments = new ArrayList<>();
 
     public Boolean getDoctor() {
         return isDoctor;
