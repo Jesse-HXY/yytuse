@@ -3,7 +3,7 @@
 <mapper namespace="com.neuedu.hospital_back.mapper.DepartmentUserMapper">
 
     <insert id="insert">
-    insert into department_user (null, #{uId}, #{dId})
+    insert into department_user (uId,dId) values (#{uId}, #{dId})
   </insert>
 
     <select id="selectByuId" resultType="String">

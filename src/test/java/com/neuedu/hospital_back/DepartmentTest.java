@@ -27,10 +27,6 @@ public class DepartmentTest {
         System.out.println(departments);
     }
 
-    @Test
-    public void deleteDepartment() {
-        assertEquals(true, departmentService.deleteDepartment("a"));
-    }
 
     @Test
     public void insertDepartment() {
