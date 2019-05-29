@@ -1,7 +1,6 @@
 package com.neuedu.hospital_back;
 
 
-import com.neuedu.hospital_back.po.Department;
 import com.neuedu.hospital_back.po.RegistrationLevel;
 import com.neuedu.hospital_back.service.RegistrationlevelService;
 import org.junit.Test;

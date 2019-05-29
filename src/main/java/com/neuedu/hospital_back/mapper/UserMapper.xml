@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.hospital_back.mapper.UserMapper">
+
+  <select id="getAllUser" resultType="com.neuedu.hospital_back.po.User">
+    select `uId`, uNickName, uPassword, uName, isDoctor, uCategory from user
+  </select>
+
+  <select id="getUserByCondition" resultType="com.neuedu.hospital_back.po.User">
+      select `uId`, uNickName, uPassword, uName, isDoctor, uCategory from user
+      <where>
+        <if test="uId != null">
+          and uId=#{uId}
+        </if>
+       <if test="uName != null and uName != ''">
+         and uName= like '%'#{uName}'%'
+       </if>
+        <if test="uNickName != null and uNickName != ''">
+          and uNickName = like '%'#{uNickName}'%'
+        </if>
+        <if test="uCategory != null and uCategory != ''">
+          and uCategory =#{uCategory}
+        </if>
+      </where>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where `uId` = #{uId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="uId" keyProperty="uId" useGeneratedKeys="true">
+    insert into user (uNickName, uPassword, uName, 
+      isDoctor, uCategory)
+    values (#{uNickName,jdbcType=VARCHAR}, #{uPassword,jdbcType=VARCHAR}, #{uName,jdbcType=VARCHAR}, 
+      #{isDoctor,jdbcType=BOOLEAN}, #{uCategory,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKeySelective">
+    update user
+    <set>
+      <if test="uNickName != null">
+        uNickName = #{uNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="uPassword != null">
+        uPassword = #{uPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uName != null">
+        uName = #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uCategory != null">
+        uCategory = #{uCategory,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where `uId` = #{uId,jdbcType=INTEGER}
+  </update>
+</mapper>

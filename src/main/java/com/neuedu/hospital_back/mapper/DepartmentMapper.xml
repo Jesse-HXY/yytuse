@@ -23,13 +23,10 @@
 
     </select>
 
-    <select id="getAllDepartments" resultType="com.neuedu.hospital_back.po.Department">
-        select dId, dName, dType, dCategory from department
-    </select>
-
 
     <delete id="deleteDepartment">
         delete from department where dId = #{dId}
+            limit #{start},#{size}
     </delete>
 
     <insert id="insertDepartment">
@@ -46,5 +43,12 @@
         where dId = #{dId}
     </update>
 
+    <select id="getDepartmentCount" resultType="Integer">
+        select count(*) from department;
+    </select>
+
+    <select id="getDepartmentByPage" resultType="com.neuedu.hospital_back.po.Department">
+        select dId, dName, dType, dCategory from department  limit #{begin}, #{pageSize}
+    </select>
 
 </mapper>

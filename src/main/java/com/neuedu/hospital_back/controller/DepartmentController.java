@@ -12,19 +12,17 @@ import java.util.List;
 @RestController
 @RequestMapping("/department")
 public class DepartmentController {
-//
     @Resource
     private DepartmentService departmentService;
 
     @RequestMapping("/getDepartments")
-
     public List<Department> getDepartments(@RequestBody Department department) {
         return departmentService.getDepartments(department);
     }
 
-    @PostMapping("/getAllDepartments")
-    public List<Department> getAllDepartments() {
-        return  departmentService.getAllDepartments();
+    @PostMapping("/getDepartmentByPage")
+    public List<Department> getAllDepartments(@RequestBody JSONObject object) {
+        return  departmentService.getDepartmentByPage(object.getInt("pageNum"), object.getInt("pageSize"));
     }
 
     @RequestMapping("/deleteDepartment")
@@ -57,5 +55,10 @@ public class DepartmentController {
         } else {
             return "{\"result\":false}";
         }
+    }
+
+    @RequestMapping("/getPageCount")
+    public int getPageCount(@RequestBody JSONObject object){
+        return departmentService.getPageCount(object.getInt("pageSize"));
     }
 }

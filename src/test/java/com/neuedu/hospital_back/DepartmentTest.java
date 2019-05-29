@@ -27,10 +27,7 @@ public class DepartmentTest {
         System.out.println(departments);
     }
 
-    @Test
-    public void getAllDepartments() {
-        departmentService.getAllDepartments();
-    }
+
 
     @Test
     public void deleteDepartment() {

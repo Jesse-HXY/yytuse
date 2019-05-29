@@ -18,10 +18,11 @@ public class DepartmentService {
         return departments;
     }
 
-    public List<Department> getAllDepartments() {
-        List<Department> departments = departmentMapper.getAllDepartments();
+    public List<Department> getDepartmentByPage(int begin, int pageSize) {
+        List<Department> departments = departmentMapper.getDepartmentByPage(begin, pageSize);
         return departments;
     }
+
     public boolean deleteDepartment(String dId) {
         departmentMapper.deleteDepartment(dId);
         return true;
@@ -32,8 +33,12 @@ public class DepartmentService {
         return true;
     }
 
-    public boolean updateDepartment(Department department){
+    public boolean updateDepartment(Department department) {
         departmentMapper.updateDepartment(department);
         return true;
+    }
+
+    public int getPageCount(int pageSize) {
+        return (departmentMapper.getDepartmentCount() / pageSize) + 1;
     }
 }
