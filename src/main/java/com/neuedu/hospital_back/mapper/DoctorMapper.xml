@@ -3,7 +3,7 @@
 <mapper namespace="com.neuedu.hospital_back.mapper.DoctorMapper">
 
     <insert id="insertDoctor">
-        insert into doctor values(#{uId}, #{dVacation}, #{isDue}
+        insert into doctor values(#{uId}, #{dVacation}, #{isDue})
     </insert>
 
     <select id="getDoctors" resultType="com.neuedu.hospital_back.po.Doctor">

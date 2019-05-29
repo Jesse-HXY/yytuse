@@ -11,7 +11,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/User")
+@RequestMapping("/user")
 public class UserController {
 
     @Resource
@@ -32,7 +32,7 @@ public class UserController {
         return userService.deleteByPrimaryKey(uId.getInt("uId"));
     }
 
-    @RequestMapping("/insertUser")
+    @PostMapping("/insertUser")
     public boolean insertUser(@RequestBody JSONObject object) {
         return userService.insert(object);
     }

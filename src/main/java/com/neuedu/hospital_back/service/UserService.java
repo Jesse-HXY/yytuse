@@ -35,8 +35,10 @@ public class UserService {
         int result = userMapper.insert(user);
         //得到自动添加的主键
         int uId = user.getuId();
+        System.out.println("----------------------"+uId);
         //是Doctor就把剩下的信息写入
-        if (!jsonObject.getBoolean("isDoctor")) {
+        if (jsonObject.getBoolean("isDoctor")) {
+            System.out.println("----------------------jinfjlkasdjfldsa");
             Doctor doctor = new Doctor();
             doctor.setuId(uId);
             doctor.setdVacation(jsonObject.getString("dVacation"));
