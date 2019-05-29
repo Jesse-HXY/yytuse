@@ -15,6 +15,11 @@ public class DepartmentController {
     @Resource
     private DepartmentService departmentService;
 
+    @RequestMapping("/getAllDepartments")
+    public List<Department> getAllDepartments() {
+        return departmentService.getAllDepartments();
+    }
+
     @RequestMapping("/getDepartments")
     public List<Department> getDepartments(@RequestBody Department department) {
         return departmentService.getDepartments(department);

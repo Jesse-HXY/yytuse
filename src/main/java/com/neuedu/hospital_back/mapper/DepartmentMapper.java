@@ -6,6 +6,9 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface DepartmentMapper {
+
+    List<Department> getAllDepartments();
+
     List<Department> getDepartments(Department department);
 
     List<Department> getDepartmentByPage(@Param("begin")int begin, @Param("pageSize")int pageSize);

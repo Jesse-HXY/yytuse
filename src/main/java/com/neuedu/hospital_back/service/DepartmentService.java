@@ -13,14 +13,17 @@ public class DepartmentService {
     @Resource
     private DepartmentMapper departmentMapper;
 
+    public  List<Department> getAllDepartments() {
+        return departmentMapper.getAllDepartments();
+    }
+
     public List<Department> getDepartments(Department department) {
-        List<Department> departments = departmentMapper.getDepartments(department);
-        return departments;
+        return departmentMapper.getDepartments(department);
+
     }
 
     public List<Department> getDepartmentByPage(int begin, int pageSize) {
-        List<Department> departments = departmentMapper.getDepartmentByPage(begin, pageSize);
-        return departments;
+        return departmentMapper.getDepartmentByPage(begin, pageSize);
     }
 
     public boolean deleteDepartment(String dId) {
