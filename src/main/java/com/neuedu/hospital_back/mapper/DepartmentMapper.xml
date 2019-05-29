@@ -26,7 +26,6 @@
 
     <delete id="deleteDepartment">
         delete from department where dId = #{dId}
-            limit #{start},#{size}
     </delete>
 
     <insert id="insertDepartment">

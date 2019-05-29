@@ -10,11 +10,11 @@ public interface DepartmentMapper {
 
     List<Department> getDepartmentByPage(@Param("begin")int begin, @Param("pageSize")int pageSize);
 
-    void deleteDepartment(String dId);
+    int deleteDepartment(String dId);
 
-    void insertDepartment(Department department);
+    int insertDepartment(Department department);
 
-    void updateDepartment(Department department);
+    int updateDepartment(Department department);
 
     int getDepartmentCount();
 }

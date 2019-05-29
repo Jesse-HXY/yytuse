@@ -2,31 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.hospital_back.mapper.DoctorMapper">
 
-  <sql id="Base_Column_List">
-    <!--@mbg.generated-->
-    `uId`, dVacation, isDue
-  </sql>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    <!--@mbg.generated-->
+    <insert id="insertDoctor">
+        insert into doctor values(#{uId}, #{dVacation}, #{isDue})
+    </insert>
+
+    <select id="getDoctors" resultType="com.neuedu.hospital_back.po.Doctor">
+        select `uId`, dVacation, isDue from doctor
+        <where>
+            <if test="uId != null and uId !=''">
+                and `uId` = #{uId}
+            </if>
+            <if test="dVacation != null and dVacation !=''">
+                and dVacation like '%' #{dVacation} '%'
+            </if>
+            <if test="isDue != null and isDue !=''">
+                and isDue= #{isDue}
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteDoctor" parameterType="java.lang.Integer">
     delete from doctor
     where `uId` = #{uId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="uId" keyProperty="uId" parameterType="com.neuedu.hospital_back.po.Doctor" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into doctor (dVacation, isDue)
-    values (#{dVacation,jdbcType=VARCHAR}, #{isDue,jdbcType=BOOLEAN})
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.Doctor">
-    <!--@mbg.generated-->
-    update doctor
-    <set>
-      <if test="dVacation != null">
-        dVacation = #{dVacation,jdbcType=VARCHAR},
-      </if>
-      <if test="isDue != null">
-        isDue = #{isDue,jdbcType=BOOLEAN},
-      </if>
-    </set>
-    where `uId` = #{uId,jdbcType=INTEGER}
-  </update>
+
+    <update id="updateDoctor" parameterType="com.neuedu.hospital_back.po.Doctor">
+        update doctor
+        <set>
+            <if test="dVacation != null">
+                dVacation = #{dVacation,jdbcType=VARCHAR},
+            </if>
+            <if test="isDue != null">
+                isDue = #{isDue,jdbcType=BOOLEAN},
+            </if>
+        </set>
+        where `uId` = #{uId,jdbcType=INTEGER}
+    </update>
+
 </mapper>

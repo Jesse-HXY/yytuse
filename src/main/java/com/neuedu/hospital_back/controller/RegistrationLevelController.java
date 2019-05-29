@@ -28,35 +28,18 @@ public class RegistrationLevelController {
         }
 
         @RequestMapping("/deleteRegistrationLevel")
-        public String deleteRegistrationLevel(@RequestBody JSONObject rLId) {
-            Boolean result = registrationlevelService.deleteByPrimaryKey(rLId.getInt("rLId"));
-            if (result) {
-                return "{\"result\":true}";
-            } else {
-                return "{\"result\":false}";
-            }
-
+        public boolean deleteRegistrationLevel(@RequestBody JSONObject rLId) {
+            return registrationlevelService.deleteByPrimaryKey(rLId.getInt("rLId"));
         }
 
         @RequestMapping("/insertRegistrationLevel")
-        public String insertRegistrationLevel(@RequestBody RegistrationLevel registrationlevel) {
-
-            Boolean result = registrationlevelService.insert(registrationlevel);
-            if (result) {
-                return "{\"result\":true}";
-            } else {
-                return "{\"result\":false}";
-            }
+        public boolean insertRegistrationLevel(@RequestBody RegistrationLevel registrationlevel) {
+           return registrationlevelService.insert(registrationlevel);
         }
 
         @RequestMapping("/updateRegistrationLevel")
-        public String updateRegistrationLevel(@RequestBody RegistrationLevel registrationlevel){
-            Boolean result = registrationlevelService.updateByPrimaryKeySelective(registrationlevel);
-            if (result) {
-                return "{\"result\":true}";
-            } else {
-                return "{\"result\":false}";
-            }
+        public boolean updateRegistrationLevel(@RequestBody RegistrationLevel registrationlevel){
+            return registrationlevelService.updateByPrimaryKeySelective(registrationlevel);
         }
     
 }
