@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.hospital_back.mapper.PatientMapper">
+
+    <insert id="insert">
+        insert into (pBirth, pAddress, pSex, pName) values (#{pBirth}, #{pAddress}, #{pSex}, #{pName})
+    </insert>
+</mapper>
