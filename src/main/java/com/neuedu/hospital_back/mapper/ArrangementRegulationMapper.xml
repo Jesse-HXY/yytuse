@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.hospital_back.mapper.ArrangementRegulationMapper">
+  <resultMap id="BaseResultMap" type="com.neuedu.hospital_back.po.ArrangementRegulation">
+    <!--@mbg.generated-->
+    <id column="arId" jdbcType="INTEGER" property="arId" />
+    <result column="dId" jdbcType="VARCHAR" property="dId" />
+    <result column="rLName" jdbcType="VARCHAR" property="rLName" />
+    <result column="arName" jdbcType="VARCHAR" property="arName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    arId, dId, rLName, arName
+  </sql>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from arrangementregulation
+    where arId = #{arId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="arId" keyProperty="arId" parameterType="com.neuedu.hospital_back.po.ArrangementRegulation" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into arrangementregulation (dId, rLName, arName
+      )
+    values (#{dId,jdbcType=VARCHAR}, #{rLName,jdbcType=VARCHAR}, #{arName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.ArrangementRegulation">
+    <!--@mbg.generated-->
+    update arrangementregulation
+    <set>
+      <if test="dId != null">
+        dId = #{dId,jdbcType=VARCHAR},
+      </if>
+      <if test="rLName != null">
+        rLName = #{rLName,jdbcType=VARCHAR},
+      </if>
+      <if test="arName != null">
+        arName = #{arName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where arId = #{arId,jdbcType=INTEGER}
+  </update>
+
+</mapper>
