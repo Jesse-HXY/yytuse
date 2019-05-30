@@ -4,7 +4,7 @@
 
     <select id="getArrangementList" resultType="com.neuedu.hospital_back.po.ArrangementList">
     select distinct a.arName, a.rLName,uName, d.arPlan from user u, doctor_arrangementregulation d, arrangementregulation a
-    where a.dId  = #{dId}
+    where a.dId  = #{dId} and u.uId = d.uId and d.arId = a.arId
   </select>
 
 </mapper>
