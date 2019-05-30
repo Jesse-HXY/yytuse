@@ -1,11 +1,13 @@
 package com.neuedu.hospital_back.po;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Arrangement {
     private Integer aId;
 
-    private String arId;
+    private Integer uId;
+
+    private Integer plan;
 
     private Date aBegin;
 
@@ -19,12 +21,20 @@ public class Arrangement {
         this.aId = aId;
     }
 
-    public String getArId() {
-        return arId;
+    public Integer getuId() {
+        return uId;
     }
 
-    public void setArId(String arId) {
-        this.arId = arId;
+    public void setuId(Integer uId) {
+        this.uId = uId;
+    }
+
+    public Integer getPlan() {
+        return plan;
+    }
+
+    public void setPlan(Integer plan) {
+        this.plan = plan;
     }
 
     public Date getaBegin() {

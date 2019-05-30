@@ -28,6 +28,5 @@ public class ArrangementRegulationController {
     @RequestMapping("/getArrangementList")
     public List<ArrangementList> getArrangementList(@RequestBody JSONObject object){
         return arrangementRegulationService.getArrangementList(object);
-
     }
 }
