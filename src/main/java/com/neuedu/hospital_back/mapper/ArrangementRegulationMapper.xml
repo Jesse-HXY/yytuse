@@ -43,7 +43,7 @@
 
 
   <select id="getAllArrangementRegulation" resultType="com.neuedu.hospital_back.po.ArrangementRegulation">
-    select a.arName, a.rLName,uName, d.arPlan from user u, doctor_arrangementregulation d, arrangementregulation a
+    select distinct a.arName, a.rLName,uName, d.arPlan from user u, doctor_arrangementregulation d, arrangementregulation a
     where a.dId  = #{dId}
   </select>
 

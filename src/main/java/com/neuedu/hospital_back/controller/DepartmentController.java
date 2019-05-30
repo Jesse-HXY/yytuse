@@ -26,7 +26,7 @@ public class DepartmentController {
     }
 
     @PostMapping("/getDepartmentByPage")
-    public List<Department> getAllDepartments(@RequestBody JSONObject object) {
+    public List<Department> getDepartmentByPage(@RequestBody JSONObject object) {
         return  departmentService.getDepartmentByPage(object);
     }
 
