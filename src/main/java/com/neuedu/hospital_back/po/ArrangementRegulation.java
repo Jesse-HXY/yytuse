@@ -1,19 +1,19 @@
 package com.neuedu.hospital_back.po;
 
 public class ArrangementRegulation {
-    private String arId;
+    private Integer arId;
 
     private String dId;
 
-    private Integer arName;
+    private String rLName;
 
-    private Integer arPlan;
+    private String arName;
 
-    public String getArId() {
+    public Integer getArId() {
         return arId;
     }
 
-    public void setArId(String arId) {
+    public void setArId(Integer arId) {
         this.arId = arId;
     }
 
@@ -25,19 +25,19 @@ public class ArrangementRegulation {
         this.dId = dId;
     }
 
-    public Integer getArName() {
+    public String getrLName() {
+        return rLName;
+    }
+
+    public void setrLName(String rLName) {
+        this.rLName = rLName;
+    }
+
+    public String getArName() {
         return arName;
     }
 
-    public void setArName(Integer arName) {
+    public void setArName(String arName) {
         this.arName = arName;
-    }
-
-    public Integer getArPlan() {
-        return arPlan;
-    }
-
-    public void setArPlan(Integer arPlan) {
-        this.arPlan = arPlan;
     }
 }
