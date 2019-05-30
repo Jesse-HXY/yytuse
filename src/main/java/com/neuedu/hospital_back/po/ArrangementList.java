@@ -5,6 +5,23 @@ public class ArrangementList {
     private String rLName;
     private String uName;
     private int arPlan;
+    private int[] arPlanList = new int[14];
+
+    public int getArPlan() {
+        return arPlan;
+    }
+
+    public void setArPlan(int arPlan) {
+        this.arPlan = arPlan;
+    }
+
+    public int[] getArPlanList() {
+        return arPlanList;
+    }
+
+    public void setArPlanList(int[] arPlanList) {
+        this.arPlanList = arPlanList;
+    }
 
     public String getArName() {
         return arName;
@@ -30,11 +47,4 @@ public class ArrangementList {
         this.uName = uName;
     }
 
-    public int getArPlan() {
-        return arPlan;
-    }
-
-    public void setArPlan(int arPlan) {
-        this.arPlan = arPlan;
-    }
 }

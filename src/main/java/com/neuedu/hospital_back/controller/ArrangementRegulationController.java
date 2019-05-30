@@ -25,9 +25,9 @@ public class ArrangementRegulationController {
     public boolean insertArrangementRegulation(@RequestBody JSONObject object){
         return arrangementRegulationService.insert(object);
     }
-    @RequestMapping("getAllArrangementRegulation")
-    public List<ArrangementList> getAllArrangementRegulation(@RequestBody JSONObject object){
-        return arrangementRegulationService.getAllArrangementRegulation(object);
+    @RequestMapping("/getArrangementList")
+    public List<ArrangementList> getArrangementList(@RequestBody JSONObject object){
+        return arrangementRegulationService.getArrangementList(object);
 
     }
 }
