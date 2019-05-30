@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.hospital_back.mapper.ArrangementListMapper">
+
+    <select id="getArrangementList" resultType="com.neuedu.hospital_back.po.ArrangementList">
+    select distinct a.arName, a.rLName,uName, d.arPlan from user u, doctor_arrangementregulation d, arrangementregulation a
+    where a.dId  = #{dId}
+  </select>
+
+</mapper>

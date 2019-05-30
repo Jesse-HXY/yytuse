@@ -1,6 +1,7 @@
 package com.neuedu.hospital_back.controller;
 
 
+import com.neuedu.hospital_back.po.ArrangementList;
 import com.neuedu.hospital_back.po.ArrangementRegulation;
 import com.neuedu.hospital_back.service.ArrangementRegulationService;
 import net.sf.json.JSONObject;
@@ -25,7 +26,7 @@ public class ArrangementRegulationController {
         return arrangementRegulationService.insert(object);
     }
     @RequestMapping("getAllArrangementRegulation")
-    public List<ArrangementRegulation> getAllArrangementRegulation(@RequestBody JSONObject object){
+    public List<ArrangementList> getAllArrangementRegulation(@RequestBody JSONObject object){
         return arrangementRegulationService.getAllArrangementRegulation(object);
 
     }

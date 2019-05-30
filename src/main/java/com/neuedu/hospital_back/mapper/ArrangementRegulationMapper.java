@@ -11,5 +11,4 @@ public interface ArrangementRegulationMapper {
 
     int updateByPrimaryKeySelective(ArrangementRegulation record);
 
-    List<ArrangementRegulation>  getAllArrangementRegulation(String dId);
 }

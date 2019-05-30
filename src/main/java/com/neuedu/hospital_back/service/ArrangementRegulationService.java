@@ -1,6 +1,8 @@
 package com.neuedu.hospital_back.service;
 
+import com.neuedu.hospital_back.mapper.ArrangementListMapper;
 import com.neuedu.hospital_back.mapper.DoctorArrangementRegulationMapper;
+import com.neuedu.hospital_back.po.ArrangementList;
 import com.neuedu.hospital_back.po.DoctorArrangementRegulation;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -18,6 +20,8 @@ public class ArrangementRegulationService {
     private ArrangementRegulationMapper arrangementregulationMapper;
     @Resource
     private DoctorArrangementRegulationMapper doctorArrangementRegulationMapper;
+    @Resource
+    private ArrangementListMapper arrangementListMapper;
 
 
     public int deleteByPrimaryKey(String arId) {
@@ -46,8 +50,8 @@ public class ArrangementRegulationService {
 
      return result==1;
     }
-    public List<ArrangementRegulation> getAllArrangementRegulation(JSONObject object){
-        return arrangementregulationMapper.getAllArrangementRegulation(object.getString("dId"));
+    public List<ArrangementList> getAllArrangementRegulation(JSONObject object){
+        return arrangementListMapper.getArrangementList(object.getString("dId"));
     }
 
 
