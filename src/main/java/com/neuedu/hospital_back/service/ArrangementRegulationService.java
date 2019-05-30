@@ -65,12 +65,12 @@ public class ArrangementRegulationService {
 
     public static int[] getPlanList(int n) {
         int[] arPlanList = new int[14];
-        int count = -1;
+        int i = 13;
         while (n != 0) {
             if ((n & 1) == 1) {
-                count++;
-                arPlanList[count] = 1;
+                arPlanList[i] = 1;
             }
+            i--;
             //将n右移一位
             n = n >> 1;
         }

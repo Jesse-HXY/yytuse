@@ -46,6 +46,6 @@ public class DepartmentTest {
         department.setdType("东北");
         department.setdCategory("你好");
         assertEquals(true, departmentService.updateDepartment(department));
-    }
 
+    }
 }
