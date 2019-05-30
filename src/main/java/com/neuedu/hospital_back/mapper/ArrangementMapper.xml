@@ -10,9 +10,9 @@
   </delete>
   <insert id="insert" keyColumn="aId" keyProperty="aId" parameterType="com.neuedu.hospital_back.po.Arrangement" useGeneratedKeys="true">
     insert into arrangement (`uId`, `plan`, aBegin,
-      aEnd)
+      aEnd,dId)
     values (#{uId,jdbcType=INTEGER}, #{plan,jdbcType=INTEGER}, #{aBegin,jdbcType=DATE},
-      #{aEnd,jdbcType=DATE})
+      #{aEnd,jdbcType=DATE},#{dId,jdbcType=VARCHAR} )
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.Arrangement">
     update arrangement
@@ -29,6 +29,9 @@
       <if test="aEnd != null">
         aEnd = #{aEnd,jdbcType=DATE},
       </if>
+        <if test="dId != null and dId != ''">
+            dId=#{dId,jdbcType=VARCHAR} ,
+        </if>
     </set>
     where aId = #{aId,jdbcType=INTEGER}
   </update>

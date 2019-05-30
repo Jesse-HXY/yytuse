@@ -13,6 +13,16 @@ public class Arrangement {
 
     private Date aEnd;
 
+    public String getdId() {
+        return dId;
+    }
+
+    public void setdId(String dId) {
+        this.dId = dId;
+    }
+
+    private String dId;
+
     public Integer getaId() {
         return aId;
     }
