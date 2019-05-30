@@ -16,7 +16,7 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @RequestMapping("/getUser")
+    @PostMapping("/getUser")
     public List<User> selectByCondition(@RequestBody User user) {
         return userService.selectByCondition(user);
     }
@@ -31,7 +31,7 @@ public class UserController {
         return userService.getUserByPage(object);
     }
 
-    @RequestMapping("/deleteUser")
+    @PostMapping("/deleteUser")
     public boolean deleteUser(@RequestBody JSONObject object) {
         return userService.deleteByuId(object);
     }
@@ -41,22 +41,22 @@ public class UserController {
         return userService.insert(object);
     }
 
-    @RequestMapping("/updateUser")
+    @PostMapping("/updateUser")
     public boolean updateUser(@RequestBody JSONObject object) {
         return userService.updateUser(object);
     }
 
-    @RequestMapping("/getUserCount")
+    @PostMapping("/getUserCount")
     public int getUserCount(){
         return userService.getUserCount();
     }
 
-    @RequestMapping("/getUerByDepartment")
+    @PostMapping("/getUerByDepartment")
     public List<User> getUerByDepartment(@RequestBody JSONObject object){
         return userService.getUerByDepartment(object);
     }
 
-    @RequestMapping("/getUerByDIdAndRLName")
+    @PostMapping("/getUerByDIdAndRLName")
     public List<User> getUerByDIdAndRLName(@RequestBody JSONObject object){
         return userService.getUerByDIdAndRLName(object);
     }

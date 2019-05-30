@@ -30,22 +30,22 @@ public class DepartmentController {
         return  departmentService.getDepartmentByPage(object);
     }
 
-    @RequestMapping("/deleteDepartment")
+    @PostMapping("/deleteDepartment")
     public boolean deleteDepartment(@RequestBody JSONObject object) {
         return departmentService.deleteDepartment(object);
     }
 
-    @RequestMapping("/insertDepartment")
+    @PostMapping("/insertDepartment")
     public boolean insertDepartment(@RequestBody Department department) {
         return departmentService.insertDepartment(department);
     }
 
-    @RequestMapping("/updateDepartment")
+    @PostMapping("/updateDepartment")
     public boolean updateDepartment(@RequestBody Department department){
         return departmentService.updateDepartment(department);
     }
 
-    @RequestMapping("/getDepartmentCount")
+    @PostMapping("/getDepartmentCount")
     public int getDepartmentCount(){
         return departmentService.getDepartmentCount();
     }
