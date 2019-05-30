@@ -1,13 +1,16 @@
 package com.neuedu.hospital_back.controller;
 
 
+import com.neuedu.hospital_back.po.ArrangementRegulation;
 import com.neuedu.hospital_back.service.ArrangementRegulationService;
 import net.sf.json.JSONObject;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -18,7 +21,12 @@ public class ArrangementRegulationController {
     private ArrangementRegulationService arrangementRegulationService;
 
     @RequestMapping("/insertArrangementRegulation")
-    public boolean insertArrangementRegulation(JSONObject object){
+    public boolean insertArrangementRegulation(@RequestBody JSONObject object){
         return arrangementRegulationService.insert(object);
+    }
+    @RequestMapping("getAllArrangementRegulation")
+    public List<ArrangementRegulation> getAllArrangementRegulation(@RequestBody JSONObject object){
+        return arrangementRegulationService.getAllArrangementRegulation(object);
+
     }
 }

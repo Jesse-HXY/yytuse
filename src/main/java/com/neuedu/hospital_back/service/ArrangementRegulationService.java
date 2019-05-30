@@ -46,6 +46,9 @@ public class ArrangementRegulationService {
 
      return result==1;
     }
+    public List<ArrangementRegulation> getAllArrangementRegulation(JSONObject object){
+        return arrangementregulationMapper.getAllArrangementRegulation(object.getString("dId"));
+    }
 
 
     public int updateByPrimaryKeySelective(ArrangementRegulation record) {
