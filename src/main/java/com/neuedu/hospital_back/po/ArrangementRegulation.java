@@ -1,6 +1,6 @@
 package com.neuedu.hospital_back.po;
 
-public class Arrangementregulation {
+public class ArrangementRegulation {
     private String arId;
 
     private String dId;

@@ -25,6 +25,7 @@ public class RegistrationlevelService {
 
     public boolean insert(RegistrationLevel record) {
         registrationlevelMapper.insert(record);
+
         return true;
     }
 

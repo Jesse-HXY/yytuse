@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.hospital_back.mapper.ArrangementRegulationMapper">
+    <resultMap id="BaseResultMap" type="com.neuedu.hospital_back.po.ArrangementRegulation">
+        <id column="arId" jdbcType="VARCHAR" property="arId" />
+        <result column="dId" jdbcType="VARCHAR" property="dId" />
+        <result column="arName" jdbcType="INTEGER" property="arName" />
+        <result column="arPlan" jdbcType="INTEGER" property="arPlan" />
+    </resultMap>
+    <sql id="Base_Column_List">
+    arId, dId, arName, arPlan
+  </sql>
+    <select id="getArrangementRegulation" resultType="com.neuedu.hospital_back.po.ArrangementRegulation">
+    select arId, dId, arName, arPlan from arrangementregulation
+    where dId=#{dId,jdbcType=VARCHAR}
+  </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from arrangementregulation
+    where arId = #{arId,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.neuedu.hospital_back.po.ArrangementRegulation">
+    insert into arrangementregulation (arId, dId, arName,
+      arPlan)
+    values (#{arId,jdbcType=VARCHAR}, #{dId,jdbcType=VARCHAR}, #{arName,jdbcType=INTEGER},
+      #{arPlan,jdbcType=INTEGER})
+  </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.ArrangementRegulation">
+        update arrangementregulation
+        <set>
+            <if test="dId != null">
+                dId = #{dId,jdbcType=VARCHAR},
+            </if>
+            <if test="arName != null">
+                arName = #{arName,jdbcType=INTEGER},
+            </if>
+            <if test="arPlan != null">
+                arPlan = #{arPlan,jdbcType=INTEGER},
+            </if>
+        </set>
+        where arId = #{arId,jdbcType=VARCHAR}
+    </update>
+</mapper>
