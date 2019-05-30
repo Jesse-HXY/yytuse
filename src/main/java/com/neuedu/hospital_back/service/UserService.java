@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 import com.neuedu.hospital_back.po.User;
 import com.neuedu.hospital_back.mapper.UserMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -32,9 +33,32 @@ public class UserService {
         return userMapper.getUserCount();
     }
 
+
+    //通过dId和rLName获得User
+    public List<User> getUerByDIdAndRLName(JSONObject object) {
+        //带入userListPutDepartment函数赋值department
+        return userListPutDepartment(userMapper.getUerByDIdAndRLName(object.getString("dId"), object.getString("rLName")));
+    }
+
+    public List<User> getUerByDepartment(JSONObject object) {
+        //拿到user的id
+        List<Integer> uIds = departmentUserMapper.selectBydId(object.getString("dId"));
+        //通过id得到user的list
+        List<User> users = new ArrayList<>();
+        for (int uId : uIds) {
+            users.add(userMapper.getUserById(uId));
+        }
+        //带入userListPutDepartment函数赋值department
+        return userListPutDepartment(users);
+    }
+
     public List<User> getUserByPage(JSONObject object) {
-        //拿到一页的user
-        List<User> users = userMapper.getUserByPage(object.getInt("pageNum"), object.getInt("pageSize"));
+        //拿到一页的user,带入userListPutDepartment函数赋值department
+        return userListPutDepartment(userMapper.getUserByPage(object.getInt("pageNum"), object.getInt("pageSize")));
+    }
+
+    //给User赋值department
+    public List<User> userListPutDepartment(List<User> users) {
         //遍历每个user插入其所在的departments
         for (User user : users) {
             int uId = user.getuId();
@@ -83,6 +107,7 @@ public class UserService {
             doctor.setuId(uId);
             doctor.setdVacation(jsonObject.getString("dVacation"));
             doctor.setIsDue(jsonObject.getBoolean("isDue"));
+            doctor.setrLName(jsonObject.getString("rLName"));
             result = doctorMapper.insertDoctor(doctor);
         }
         return result == 1;
@@ -116,7 +141,7 @@ public class UserService {
             Doctor doctor = new Doctor();
             doctor.setuId(uId);
             doctor.setdVacation(object.getString("dVacation"));
-            doctor.setIsDue(object.getBoolean("isDue"));
+            doctor.setrLName(object.getString("rLName"));
             result = doctorMapper.updateDoctor(doctor);
         }
         return result == 1;

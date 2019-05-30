@@ -1,7 +1,6 @@
 package com.neuedu.hospital_back;
 
 import com.neuedu.hospital_back.po.Department;
-import com.neuedu.hospital_back.po.User;
 import com.neuedu.hospital_back.service.DepartmentService;
 import org.junit.Test;
 import org.junit.runner.RunWith;

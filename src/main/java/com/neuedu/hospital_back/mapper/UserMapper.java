@@ -15,9 +15,13 @@ public interface UserMapper {
 
     List<User> getAllUser();
 
+    List<User> getUerByDIdAndRLName(@Param("dId") String dId, @Param("rLName") String rLName);
+
     List<User> getUserByCondition(User user);
 
-    List<User> getUserByPage(@Param("begin")int begin, @Param("pageSize")int pageSize);
+    User getUserById(int uId);
+
+    List<User> getUserByPage(@Param("begin") int begin, @Param("pageSize") int pageSize);
 
     int getUserCount();
 }

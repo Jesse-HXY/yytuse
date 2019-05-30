@@ -1,7 +1,5 @@
 package com.neuedu.hospital_back.controller;
 
-import com.neuedu.hospital_back.po.Department;
-import com.neuedu.hospital_back.po.User;
 import com.neuedu.hospital_back.po.User;
 import com.neuedu.hospital_back.service.UserService;
 import net.sf.json.JSONObject;
@@ -51,5 +49,15 @@ public class UserController {
     @RequestMapping("/getUserCount")
     public int getUserCount(){
         return userService.getUserCount();
+    }
+
+    @RequestMapping("/getUerByDepartment")
+    public List<User> getUerByDepartment(@RequestBody JSONObject object){
+        return userService.getUerByDepartment(object);
+    }
+
+    @RequestMapping("/getUerByDIdAndRLName")
+    public List<User> getUerByDIdAndRLName(@RequestBody JSONObject object){
+        return userService.getUerByDIdAndRLName(object);
     }
 }

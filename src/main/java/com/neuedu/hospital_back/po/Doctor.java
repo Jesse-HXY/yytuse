@@ -7,6 +7,8 @@ public class Doctor {
 
     private Boolean isDue;
 
+    private String rLName;
+
     public Integer getuId() {
         return uId;
     }
@@ -29,5 +31,13 @@ public class Doctor {
 
     public void setIsDue(Boolean isDue) {
         this.isDue = isDue;
+    }
+
+    public String getrLName() {
+        return rLName;
+    }
+
+    public void setrLName(String rLName) {
+        this.rLName = rLName;
     }
 }

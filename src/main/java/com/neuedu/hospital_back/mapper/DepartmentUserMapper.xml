@@ -10,7 +10,11 @@
     select dId from department_user where uId = #{uId}
   </select>
 
-    <delete id="deleteByuId">
+    <delete id="deleteByuId" >
         delete from department_user where uId = #{uId}
     </delete>
+
+    <select id="selectBydId" resultType="Integer">
+        select uId from department_user where dId = #{dId}
+    </select>
 </mapper>

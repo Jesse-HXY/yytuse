@@ -32,16 +32,4 @@ public class UserTest {
     public void getAllUsers() {
         userService.selectAllUser();
     }
-
-
-
-
-    @Test
-    public void updateUser() {
-        User user = new User();
-        user.setuId(3);
-        user.setuPassword("test");
-        assertEquals(true, userService.updateByPrimaryKeySelective(user));
-    }
-    
 }
