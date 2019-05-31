@@ -6,6 +6,7 @@ import net.sf.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.text.ParseException;
 import java.util.List;
 
 @CrossOrigin
@@ -15,6 +16,11 @@ public class UserController {
 
     @Resource
     private UserService userService;
+
+    @PostMapping("getAvailableDoctor")
+    public List<User> getAvailableDoctor(@RequestBody JSONObject object) throws ParseException {
+        return userService.getAvailableDoctor(object);
+    }
 
     @PostMapping("/getUser")
     public List<User> selectByCondition(@RequestBody User user) {

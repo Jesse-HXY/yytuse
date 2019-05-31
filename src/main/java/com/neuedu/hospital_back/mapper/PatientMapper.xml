@@ -7,4 +7,8 @@
     <insert id="insert">
         insert into (pBirth, pAddress, pSex, pName) values (#{pBirth}, #{pAddress}, #{pSex}, #{pName})
     </insert>
+
+    <select id="getById" resultType="com.neuedu.hospital_back.po.Patient">
+       select pId pBirth, pAddress, pSex, pName where pId = #{pId}
+    </select>
 </mapper>

@@ -5,13 +5,13 @@
     select  rLId, rLName, rLLimitation, rLFee from registrationlevel
     <where>
       <if test="rLId != null">
-        and rLId=#{rLId}
+        and rLId = #{rLId}
       </if>
     <if test="rLFee != null">
-      and rLFee=#{rLFee}
+      and rLFee = #{rLFee}
     </if>
       <if test="rLName != null and rLName != ''">
-        and rLName=like '%' #{rLName}  '%'
+        and rLName like '%' #{rLName}  '%'
       </if>
     </where>
 

@@ -13,8 +13,13 @@ import javax.annotation.Resource;
 
 import com.neuedu.hospital_back.po.User;
 import com.neuedu.hospital_back.mapper.UserMapper;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Service
@@ -31,6 +36,25 @@ public class UserService {
 
     public int getUserCount() {
         return userMapper.getUserCount();
+    }
+
+
+    public List<User> getAvailableDoctor(JSONObject object) throws ParseException {
+        int index = getDayForWeek(object.getString("currentDate"));
+        return userListPutDepartment(userMapper.getAvailableDoctor(object.getString("dId"), object.getString("rLName"), index));
+    }
+
+    public int getDayForWeek(String currentDate) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(format.parse(currentDate));
+        int dayForWeek = 0;
+        if (c.get(Calendar.DAY_OF_WEEK) == 1) {
+            dayForWeek = 0;
+        } else {
+            dayForWeek = 8 - c.get(Calendar.DAY_OF_WEEK);
+        }
+        return dayForWeek;
     }
 
 

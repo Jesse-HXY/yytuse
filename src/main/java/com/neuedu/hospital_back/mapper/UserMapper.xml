@@ -18,6 +18,17 @@
         select `uId`, uNickName, uPassword, uName, isDoctor, uCategory from user  limit #{begin}, #{pageSize}
     </select>
 
+
+    <select id="getAvailableDoctor" resultType="com.neuedu.hospital_back.po.User">
+        select distinct `uId`, uNickName, uPassword, uName, isDoctor, uCategory from user
+        where `uId` in (
+        select `uId` from doctor where rLName = #{rLName} and isDue = true
+        and `uId` in (select `uId` from department_user where dId = #{dId})
+        and `uId` in (select `uId` from  arrangement where dId = #{dId}
+                and (plan / pow(2 * #{index},2)) % pow(2 * #{index},2) > 0)
+        )
+    </select>
+
     <select id="getUerByDIdAndRLName" resultType="com.neuedu.hospital_back.po.User">
         select distinct `uId`, uNickName, uPassword, uName, isDoctor, uCategory from user
         where `uId` in (select `uId` from doctor where rLName = #{rLName} and isDue = true
