@@ -5,6 +5,16 @@ public class ArrangementList {
     private String rLName;
     private String uName;
     private int arPlan;
+    private int uId;
+
+    public int getuId() {
+        return uId;
+    }
+
+    public void setuId(int uId) {
+        this.uId = uId;
+    }
+
     private int[] arPlanList = new int[14];
 
     public int getArPlan() {

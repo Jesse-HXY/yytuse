@@ -19,7 +19,6 @@ public class ArrangementController {
 
     @PostMapping("/insertArrangement")
     public boolean insertArrangement(@RequestBody JSONObject object){
-      return  arrangementService.insert(object);
+        return  arrangementService.insert(object);
     }
-
 }

@@ -17,7 +17,7 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @PostMapping("getAvailableDoctor")
+    @PostMapping("/getAvailableDoctor")
     public List<User> getAvailableDoctor(@RequestBody JSONObject object) throws ParseException {
         return userService.getAvailableDoctor(object);
     }

@@ -5,10 +5,10 @@
 <mapper namespace="com.neuedu.hospital_back.mapper.PatientMapper">
 
     <insert id="insert">
-        insert into (pBirth, pAddress, pSex, pName) values (#{pBirth}, #{pAddress}, #{pSex}, #{pName})
+        insert into patient (pId, pBirth, pAddress, pSex, pName) values (#{pId}, #{pBirth}, #{pAddress}, #{pSex}, #{pName})
     </insert>
 
     <select id="getById" resultType="com.neuedu.hospital_back.po.Patient">
-       select pId pBirth, pAddress, pSex, pName where pId = #{pId}
+       select pBirth, pAddress, pSex, pName from patient where pId = #{pId}
     </select>
 </mapper>

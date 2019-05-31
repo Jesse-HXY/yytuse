@@ -6,5 +6,5 @@ public interface PatientMapper {
 
     int insert(Patient patient);
 
-    Patient getById(int pId);
+    Patient getById(String  pId);
 }

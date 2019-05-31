@@ -3,17 +3,17 @@ package com.neuedu.hospital_back.po;
 import java.sql.Date;
 
 public class Patient {
-    private int pId;
+    private String pId;
     private Date pBirth;
     private String pAddress;
     private boolean pSex;
     private String pName;
 
-    public int getpId() {
+    public String getpId() {
         return pId;
     }
 
-    public void setpId(int pId) {
+    public void setpId(String pId) {
         this.pId = pId;
     }
 
@@ -25,12 +25,12 @@ public class Patient {
         this.pBirth = pBirth;
     }
 
-    public String getpAdress() {
+    public String getpAddress() {
         return pAddress;
     }
 
-    public void setpAdress(String pAdress) {
-        this.pAddress = pAdress;
+    public void setpAddress(String pAddress) {
+        this.pAddress = pAddress;
     }
 
     public boolean ispSex() {
