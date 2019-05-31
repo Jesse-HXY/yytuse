@@ -42,6 +42,8 @@ public class ArrangementService {
             a.setuId(object1.getInt("uId"));
             a.setaBegin(begin);
             a.setaEnd(end);
+            System.out.println(begin);
+            System.out.println(end);
             a.setPlan(object1.getInt("plan"));
             a.setdId(dId);
             //删除所有开始结束都在新时间段中间的排班
@@ -53,13 +55,13 @@ public class ArrangementService {
           arrangementMapper.insert(a);
          if (list.size()==1){
                 //开始时间在覆盖前开始之前，结束时间在覆盖前开始时间之后，在结束时间之前
-                if(begin.compareTo(list.get(0).getaBegin())<0&&end.compareTo(list.get(0).getaBegin())>0&&end.compareTo(list.get(0).getaEnd())<0){
+                if(begin.compareTo(list.get(0).getaBegin())<=0&&end.compareTo(list.get(0).getaBegin())>0&&end.compareTo(list.get(0).getaEnd())<0){
 
                     Arrangement arrangement2=new Arrangement(list.get(0).getaId(),a.getuId(),list.get(0).getPlan(),getDate(end,1),list.get(0).getaEnd(),dId);//旧排班更新
                     result=   arrangementMapper.updateByPrimaryKeySelective(arrangement2);
 
                 }
-                else if(begin.compareTo(list.get(0).getaBegin())>0&&begin.compareTo(list.get(0).getaEnd())<0&&end.compareTo(list.get(0).getaEnd())>0){
+                else if(begin.compareTo(list.get(0).getaBegin())>0&&begin.compareTo(list.get(0).getaEnd())<0&&end.compareTo(list.get(0).getaEnd())>=0){
                     //开始日期在覆盖前开始日期之后，在结束日期之前,结束日期在覆盖前结束日期之后
                     Arrangement arrangement2=new Arrangement(list.get(0).getaId(),a.getuId(),list.get(0).getPlan(),list.get(0).getaBegin(),getDate(begin,-1),dId);
                     result=   arrangementMapper.updateByPrimaryKeySelective(arrangement2);
