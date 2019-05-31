@@ -9,4 +9,9 @@ public interface ArrangementMapper {
 
     int updateByPrimaryKeySelective(Arrangement record);
 
+    int deleteBetweenBeginEnd(Arrangement arrangement);
+
+    List<Arrangement> getArrangementByUIdAndDId(Arrangement arrangement);
+
+
 }

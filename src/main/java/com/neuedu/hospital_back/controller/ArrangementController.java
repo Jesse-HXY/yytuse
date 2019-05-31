@@ -18,7 +18,11 @@ public class ArrangementController {
     private ArrangementService arrangementService;
 
     @PostMapping("/insertArrangement")
-    public boolean insertArrangement(@RequestBody JSONObject object){
-        return  arrangementService.insert(object);
+  /*  public boolean insertArrangement(@RequestBody JSONObject object){
+      return  arrangementService.insert(object);
     }
+
+    @PostMapping("/updateArrangement")*/
+    public boolean updateArrangement(@RequestBody JSONObject object){return arrangementService.updateByPrimaryKeySelective(object);}
+
 }
