@@ -8,6 +8,11 @@
     delete from arrangement
     where aId = #{aId,jdbcType=INTEGER}
   </delete>
+
+  <delete id="deleteBetweenBeginEnd" parameterType="com.neuedu.hospital_back.po.Arrangement">
+    delete from arrangement
+    where uId=#{uId} and dId=#{dId,jdbcType=VARCHAR} and aBegin>=#{aBegin} and aEnd <![CDATA[ <= ]]> #{aEnd}
+  </delete>
   <insert id="insert" keyColumn="aId" keyProperty="aId" parameterType="com.neuedu.hospital_back.po.Arrangement" useGeneratedKeys="true">
     insert into arrangement (`uId`, `plan`, aBegin,
       aEnd,dId)
@@ -35,5 +40,11 @@
     </set>
     where aId = #{aId,jdbcType=INTEGER}
   </update>
+
+  <select id="getArrangementByUIdAndDId" resultType="com.neuedu.hospital_back.po.Arrangement">
+    select aId, `uId`, `plan`, aBegin, aEnd,dId from arrangement
+    where dId=#{dId} and uId=#{uId} and aEnd>=#{aBegin}
+    order by aBegin limit 2
+  </select>
 
 </mapper>

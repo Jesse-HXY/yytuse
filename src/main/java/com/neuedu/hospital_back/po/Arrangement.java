@@ -23,6 +23,26 @@ public class Arrangement {
 
     private String dId;
 
+    public Arrangement() {
+    }
+
+    public Arrangement(Integer uId, Integer plan, Date aBegin, Date aEnd, String dId) {
+        this.uId = uId;
+        this.plan = plan;
+        this.aBegin = aBegin;
+        this.aEnd = aEnd;
+        this.dId = dId;
+    }
+
+    public Arrangement(Integer aId, Integer uId, Integer plan, Date aBegin, Date aEnd, String dId) {
+        this.aId = aId;
+        this.uId = uId;
+        this.plan = plan;
+        this.aBegin = aBegin;
+        this.aEnd = aEnd;
+        this.dId = dId;
+    }
+
     public Integer getaId() {
         return aId;
     }
