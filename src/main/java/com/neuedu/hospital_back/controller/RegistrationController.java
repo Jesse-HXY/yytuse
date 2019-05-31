@@ -1,6 +1,7 @@
 package com.neuedu.hospital_back.controller;
 
 import com.neuedu.hospital_back.po.Patient;
+import com.neuedu.hospital_back.po.Registration;
 import com.neuedu.hospital_back.service.RegistrationService;
 import net.sf.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,11 @@ public class RegistrationController {
     @PostMapping("/getPatientById")
     public Patient getPatientById(@RequestBody JSONObject object) {
         return registrationService.getPatientById(object);
+    }
+
+    @PostMapping("/insertRegistration")
+    public int insertRegistration(@RequestBody Registration registration){
+       return registrationService.insertRegistration(registration);
     }
 
 }

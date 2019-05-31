@@ -33,7 +33,7 @@ public class UserTest {
     }
 
     @Test
-    public void getAllUsers() throws ParseException {
+    public void getAllUsers() {
         userService.selectAllUser();
 
     }

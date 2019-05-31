@@ -21,37 +21,11 @@ public class ArrangementService {
     @Resource
     private ArrangementMapper arrangementMapper;
 
-    @Resource
-    private ArrangementRegulationMapper arrangementRegulationMapper;
-
-    @Resource
-    private DoctorArrangementRegulationMapper doctorArrangementRegulationMapper;
-
 
     public int deleteByPrimaryKey(Integer aId) {
         return arrangementMapper.deleteByPrimaryKey(aId);
     }
 
-
-    public boolean insert(JSONObject object) {
-        JSONArray array = object.getJSONArray("plan");
-        String dId=object.getString("dId");
-        Date begin=Date.valueOf(object.getString("beginDate"));
-        Date end=Date.valueOf(object.getString("endDate"));
-
-        int result=0;
-        for (int i=0;i<array.size();i++){
-            Arrangement a=new Arrangement();
-            JSONObject object1=array.getJSONObject(i);
-            a.setuId(object1.getInt("uId"));
-            a.setaBegin(begin);
-            a.setaEnd(end);
-            a.setPlan(object1.getInt("plan"));
-            a.setdId(dId);
-            result= arrangementMapper.insert(a);
-        }
-        return result==1;
-    }
 
 
     public boolean updateByPrimaryKeySelective(JSONObject object) {

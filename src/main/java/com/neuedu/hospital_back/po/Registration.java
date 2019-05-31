@@ -1,18 +1,30 @@
 package com.neuedu.hospital_back.po;
 
+import java.sql.Date;
+
 public class Registration {
     private int rId;
     private int drId;
     private int eId;
     private String dId;
     private int mRId;
-    private int rLId;
-    private int pId;
+    private String rLName;
+    private String pId;
     private int uId;
     private int rOrder;
     private double rFee;
+    private String rStatus;
     private String payType;
     private boolean hasMedicalHistory;
+    private Date rDate;
+
+    public Date getrDate() {
+        return rDate;
+    }
+
+    public void setrDate(Date rDate) {
+        this.rDate = rDate;
+    }
 
     public String getPayType() {
         return payType;
@@ -62,20 +74,28 @@ public class Registration {
         this.mRId = mRId;
     }
 
-    public int getrLId() {
-        return rLId;
+    public String getrLName() {
+        return rLName;
     }
 
-    public void setrLId(int rLId) {
-        this.rLId = rLId;
+    public void setrLName(String rLName) {
+        this.rLName = rLName;
     }
 
-    public int getpId() {
+    public String getpId() {
         return pId;
     }
 
-    public void setpId(int pId) {
+    public void setpId(String pId) {
         this.pId = pId;
+    }
+
+    public String getrStatus() {
+        return rStatus;
+    }
+
+    public void setrStatus(String rStatus) {
+        this.rStatus = rStatus;
     }
 
     public int getuId() {
@@ -102,7 +122,7 @@ public class Registration {
         this.rFee = rFee;
     }
 
-    public boolean isHasMedicalHistory() {
+    public boolean getHasMedicalHistory() {
         return hasMedicalHistory;
     }
 
