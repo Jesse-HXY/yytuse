@@ -7,13 +7,47 @@ public class ExamnationItem {
 
     private String eIName;
 
-    private String elSpecification;
+    private String eISpecification;
 
     private Double eIFee;
 
-    private String elFeeType;
+    private String eIFeeType;
 
-    private String elCode;
+    private String eICode;
+
+    public String geteISpecification() {
+        return eISpecification;
+    }
+
+    public void seteISpecification(String eISpecification) {
+        this.eISpecification = eISpecification;
+    }
+
+    public Double geteIFee() {
+        return eIFee;
+    }
+
+    public void seteIFee(Double eIFee) {
+        this.eIFee = eIFee;
+    }
+
+    public String geteIFeeType() {
+        return eIFeeType;
+    }
+
+    public void seteIFeeType(String eIFeeType) {
+        this.eIFeeType = eIFeeType;
+    }
+
+    public String geteICode() {
+        return eICode;
+    }
+
+    public void seteICode(String eICode) {
+        this.eICode = eICode;
+    }
+
+
 
     public Integer geteIId() {
         return eIId;
@@ -39,35 +73,5 @@ public class ExamnationItem {
         this.eIName = eIName;
     }
 
-    public String getElSpecification() {
-        return elSpecification;
-    }
 
-    public void setElSpecification(String elSpecification) {
-        this.elSpecification = elSpecification;
-    }
-
-    public Double geteIFee() {
-        return eIFee;
-    }
-
-    public void seteIFee(Double eIFee) {
-        this.eIFee = eIFee;
-    }
-
-    public String getElFeeType() {
-        return elFeeType;
-    }
-
-    public void setElFeeType(String elFeeType) {
-        this.elFeeType = elFeeType;
-    }
-
-    public String getElCode() {
-        return elCode;
-    }
-
-    public void setElCode(String elCode) {
-        this.elCode = elCode;
-    }
 }
