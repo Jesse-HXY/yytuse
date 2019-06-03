@@ -72,7 +72,7 @@ public class RegistrationService {
             registrationInfos.get(i).setrTime(rTime);
             String MorningOrEvening=MorningOrEvening(registrationInfos.get(i).getrDate());
             registrationInfos.get(i).setMorningOrEvening(MorningOrEvening);
-            if(registrationInfos.get(i).getrStatus().equals("未诊断")&&MorningOrEvening(System.currentTimeMillis()).equals(MorningOrEvening)){
+            if(registrationInfos.get(i).getrStatus().equals("未诊断")){
                 registrationInfos.get(i).setOkToWithdraw(true);
             }else {
                 registrationInfos.get(i).setOkToWithdraw(false);
@@ -81,6 +81,18 @@ public class RegistrationService {
         return  registrationInfos;
     }
 
+    public boolean timeCheck(String morningOrEvening ){
+        if(morningOrEvening.equals("上午")){
+            if(MorningOrEvening(System.currentTimeMillis()).equals("上午")){
+                return true;
+            }else {
+                return false;
+            }
+
+        }else {
+            return true;
+        }
+    }
     public String MorningOrEvening(long date){
         SimpleDateFormat sdf=new SimpleDateFormat("HH");
         String time=sdf.format(new Date(date));
