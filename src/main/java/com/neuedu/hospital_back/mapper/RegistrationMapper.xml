@@ -48,5 +48,17 @@
         </where>
     </select>
 
+    <select id="getRegistrationInfoByrId" resultType="com.neuedu.hospital_back.po.RegistrationInfo">
+        select rDate,rStatus,pName,pAddress,registration.pId,department.dName from registration,department,patient
+        where rId=#{rId} and registration.pId=patient.pId and registration.dId=department.dId FROM_UNIXTIME(registration.rDate,'%y-%m-%d')=CURDATE()
+    </select>
+
+    <update id="updateRegistration">
+        update registration
+        <set>
+            <if test="rStatus != null and rStatus != ''">rStatus=#{rStatus} </if>
+        </set>
+        where rId=#{rId}
+    </update>
 
 </mapper>

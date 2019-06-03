@@ -12,8 +12,76 @@ public class RegistrationInfo {
 
     private Date pBirth;
 
+    private String pAddress;
+
     private boolean pSex;
 
+    private String MorningOrEvening;
+
+    private String rStatus;
+
+    private String dName;
+
+    private boolean okToWithdraw;
+
+    private long rDate;
+
+    private String rTime;
+    public long getrDate() {
+        return rDate;
+    }
+
+    public void setrDate(long rDate) {
+        this.rDate = rDate;
+    }
+
+
+    public String getrTime() {
+        return rTime;
+    }
+
+    public void setrTime(String rTime) {
+        this.rTime = rTime;
+    }
+    public String getpAddress() {
+        return pAddress;
+    }
+
+    public void setpAddress(String pAddress) {
+        this.pAddress = pAddress;
+    }
+
+    public String getMorningOrEvening() {
+        return MorningOrEvening;
+    }
+
+    public void setMorningOrEvening(String morningOrEvening) {
+        MorningOrEvening = morningOrEvening;
+    }
+
+    public String getrStatus() {
+        return rStatus;
+    }
+
+    public void setrStatus(String rStatus) {
+        this.rStatus = rStatus;
+    }
+
+    public String getdName() {
+        return dName;
+    }
+
+    public void setdName(String dName) {
+        this.dName = dName;
+    }
+
+    public boolean isOkToWithdraw() {
+        return okToWithdraw;
+    }
+
+    public void setOkToWithdraw(boolean okToWithdraw) {
+        this.okToWithdraw = okToWithdraw;
+    }
 
     public int getrId() {
         return rId;

@@ -18,7 +18,9 @@ public interface RegistrationMapper {
 
     List<RegistrationInfo> getNotDiagnosisByuIdAndDId(@Param("uId") int uId,@Param("pName")String pName,@Param("dId")String dId);
 
+    List<RegistrationInfo> getRegistrationInfoByrId(@Param("rId")int rId);
 
+    int updateRegistration(@Param("rId")int rId,@Param("rStatus")String rStatus);
 
 
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Service
@@ -61,6 +62,39 @@ public class RegistrationService {
         }else{
             return registrationMapper.getNotDiagnosisByuIdAndDId(object.getInt("uId"),object.getString("pName"),object.getString("dId"));
         }
+    }
+
+    public List<RegistrationInfo> getRegistrationInfoByrId(JSONObject object){
+        List<RegistrationInfo> registrationInfos=registrationMapper.getRegistrationInfoByrId(object.getInt("rId"));
+        for(int i=0;i<registrationInfos.size();i++){
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String rTime=sdf.format(new Date(registrationInfos.get(i).getrDate()));
+            registrationInfos.get(i).setrTime(rTime);
+            String MorningOrEvening=MorningOrEvening(registrationInfos.get(i).getrDate());
+            registrationInfos.get(i).setMorningOrEvening(MorningOrEvening);
+            if(registrationInfos.get(i).getrStatus().equals("未诊断")&&MorningOrEvening(System.currentTimeMillis()).equals(MorningOrEvening)){
+                registrationInfos.get(i).setOkToWithdraw(true);
+            }else {
+                registrationInfos.get(i).setOkToWithdraw(false);
+            }
+        }
+        return  registrationInfos;
+    }
+
+    public String MorningOrEvening(long date){
+        SimpleDateFormat sdf=new SimpleDateFormat("HH");
+        String time=sdf.format(new Date(date));
+        int a=Integer.parseInt(time);
+        if(a>=12){
+            return "下午";
+        }else {
+            return "上午";
+        }
+    }
+
+    public boolean updateRStatus(JSONObject object){
+       int result= registrationMapper.updateRegistration(object.getInt("rId"),object.getString("rStatus"));
+        return result==1;
     }
 }
 
