@@ -6,7 +6,6 @@ import com.neuedu.hospital_back.po.Patient;
 import com.neuedu.hospital_back.po.Registration;
 import com.neuedu.hospital_back.po.RegistrationInfo;
 import net.sf.json.JSONObject;
-import org.hibernate.validator.constraints.URL;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
