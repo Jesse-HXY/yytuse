@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.sql.Date;
+import java.util.List;
 
 @Service
 public class RegistrationService {
@@ -31,6 +32,10 @@ public class RegistrationService {
 
     public int insertRegistration(Registration registration) {
         return registrationMapper.insertRegistration(registration);
+    }
+
+    public List<Registration> getRegistration(JSONObject object) {
+        return registrationMapper.getRegistration(object.getString("pId"));
     }
 
     public Patient getPatientById(JSONObject object) {

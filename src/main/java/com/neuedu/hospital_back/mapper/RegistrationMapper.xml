@@ -9,4 +9,8 @@
         values (#{pId}, #{payType}, #{rLName}, #{dId}, #{uId}, #{hasMedicalHistory}, #{rFee}, #{rDate}, '已挂号')
     </insert>
 
+    <select id="getRegistration" resultType="com.neuedu.hospital_back.po.Registration">
+        select * from registration where pId = #{pId}
+    </select>
+
 </mapper>

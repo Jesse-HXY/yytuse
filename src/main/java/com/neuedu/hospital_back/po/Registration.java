@@ -1,7 +1,5 @@
 package com.neuedu.hospital_back.po;
 
-import java.sql.Date;
-
 public class Registration {
     private int rId;
     private int drId;
@@ -16,13 +14,13 @@ public class Registration {
     private String rStatus;
     private String payType;
     private boolean hasMedicalHistory;
-    private Date rDate;
+    private long rDate;
 
-    public Date getrDate() {
+    public long getrDate() {
         return rDate;
     }
 
-    public void setrDate(Date rDate) {
+    public void setrDate(long rDate) {
         this.rDate = rDate;
     }
 
