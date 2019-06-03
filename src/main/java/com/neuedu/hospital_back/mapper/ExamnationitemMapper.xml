@@ -7,11 +7,11 @@
     where eIId = #{eIId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="eIId" keyProperty="eIId" parameterType="com.neuedu.hospital_back.po.ExamnationItem" useGeneratedKeys="true">
-    insert into examnationItem (dId, eIName, elSpecification,
-      eIFee, elFeeType, elCode
+    insert into examnationItem (dId, eIName, eISpecification,
+      eIFee, eIFeeType, eICode
       )
-    values (#{dId,jdbcType=VARCHAR}, #{eIName,jdbcType=VARCHAR}, #{elSpecification,jdbcType=VARCHAR}, 
-      #{eIFee,jdbcType=DOUBLE}, #{elFeeType,jdbcType=VARCHAR}, #{elCode,jdbcType=VARCHAR}
+    values (#{dId,jdbcType=VARCHAR}, #{eIName,jdbcType=VARCHAR}, #{eISpecification,jdbcType=VARCHAR},
+      #{eIFee,jdbcType=DOUBLE}, #{eIFeeType,jdbcType=VARCHAR}, #{eICode,jdbcType=VARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.ExamnationItem">
@@ -23,24 +23,24 @@
       <if test="eIName != null and eIName != ''">
           eIName = #{eIName,jdbcType=VARCHAR},
       </if>
-      <if test="elSpecification != null and elSpecification != ''">
-          elSpecification = #{elSpecification,jdbcType=VARCHAR},
+      <if test="eISpecification != null and eISpecification != ''">
+          eISpecification = #{eISpecification,jdbcType=VARCHAR},
       </if>
-      <if test="elFeeType != null and elFeeType != ''">
+      <if test="eIFee != null and eIFee != ''">
           eIFee = #{eIFee,jdbcType=DOUBLE},
       </if>
-      <if test="elFeeType != null and elFeeType != ''">
-          elFeeType = #{elFeeType,jdbcType=VARCHAR},
+      <if test="eIFeeType != null and eIFeeType != ''">
+          eIFeeType = #{eIFeeType,jdbcType=VARCHAR},
       </if>
-      <if test="elCode != null and elCode != ''">
-          elCode = #{elCode,jdbcType=VARCHAR},
+      <if test="eICode != null and eICode != ''">
+          eICode = #{eICode,jdbcType=VARCHAR},
       </if>
     </set>
     where eIId = #{eIId,jdbcType=INTEGER}
   </update>
 
   <select id="selectExamnationItem" resultType="com.neuedu.hospital_back.po.ExamnationItem">
-    select eIId, dId, eIName, elSpecification, eIFee, elFeeType, elCode from examnationItem
+    select eIId, dId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationItem
     <where>
       <if test="eIId != null">
         and eIId=#{eIId,jdbcType=INTEGER}
@@ -51,23 +51,23 @@
       <if test="eIName != null and eIName != ''">
        and  eIName = #{eIName,jdbcType=VARCHAR}
       </if>
-      <if test="elSpecification != null and elSpecification != ''">
-     and  elSpecification = #{elSpecification,jdbcType=VARCHAR}
+      <if test="eISpecification != null and eISpecification != ''">
+     and  eISpecification = #{eISpecification,jdbcType=VARCHAR}
       </if>
-      <if test="elFeeType != null and elFeeType != ''">
+      <if test="eIFee != null and eIFee != ''">
       and  eIFee = #{eIFee,jdbcType=DOUBLE}
       </if>
-      <if test="elFeeType != null and elFeeType != ''">
-       and  elFeeType = #{elFeeType,jdbcType=VARCHAR}
+      <if test="eIFeeType != null and eIFeeType != ''">
+       and  eIFeeType = #{eIFeeType,jdbcType=VARCHAR}
       </if>
-      <if test="elCode != null and elCode != ''">
-       and  elCode = #{elCode,jdbcType=VARCHAR},
+      <if test="eICode != null and eICode != ''">
+       and  eICode = #{eICode,jdbcType=VARCHAR}
       </if>
     </where>
   </select>
 
   <select id="selectExamnationItemByPage" resultType="com.neuedu.hospital_back.po.ExamnationItem">
-    select eIId, dId, eIName, elSpecification, eIFee, elFeeType, elCode from examnationItem  limit #{begin}, #{pageSize}
+    select eIId, dId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationItem  limit #{begin}, #{pageSize}
   </select>
 
   <select id="getExamnationItemCount" resultType="integer">
@@ -75,6 +75,6 @@
   </select>
 
     <select id="selectAllExamnationItem" resultType="com.neuedu.hospital_back.po.ExamnationItem">
-        select eIId, dId, eIName, elSpecification, eIFee, elFeeType, elCode from examnationItem
+        select eIId, dId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationItem
     </select>
 </mapper>
