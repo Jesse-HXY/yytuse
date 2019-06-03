@@ -11,26 +11,41 @@
 
     <select id="getAlreadyDiagnosisByuId" resultType="com.neuedu.hospital_back.po.RegistrationInfo">
         select registration.rId,registration.pId,pName,pBirth,pSex from patient,registration
-        where uId=#{uId} and registration.pId=patient.pId and pName like '%' #{pName} '%' and rStatus='诊毕'
-        and FROM_UNIXTIME(registration.rDate,'%y-%m-%d')=CURDATE()
+        <where>
+            uId=#{uId} and registration.pId=patient.pId   and rStatus='诊毕'
+            and FROM_UNIXTIME(registration.rDate,'%y-%m-%d')=CURDATE()
+            <if test="pName != null and pName != ''">and pName like "%"#{pName}"%"</if>
+
+        </where>
     </select>
+
 
     <select id="getNotDiagnosisByuId" resultType="com.neuedu.hospital_back.po.RegistrationInfo">
         select registration.rId,registration.pId,pName,pBirth,pSex from patient,registration
-        where uId=#{uId} and registration.pId=patient.pId and pName like '%' #{pName} '%' and rStatus !='诊毕'
-        and FROM_UNIXTIME(registration.rDate,'%y-%m-%d')=CURDATE()
+        <where>
+            uId=#{uId} and registration.pId=patient.pId   and rStatus !='诊毕'
+            and FROM_UNIXTIME(registration.rDate,'%y-%m-%d')=CURDATE()
+            <if test="pName != null and pName != ''">and pName like "%"#{pName}"%"</if>
+        </where>
     </select>
 
     <select id="getAlreadyDiagnosisByuIdAndDId" resultType="com.neuedu.hospital_back.po.RegistrationInfo">
         select registration.rId,registration.pId,pName,pBirth,pSex from patient,registration
-        where uId=#{uId} and dId=#{dId} and registration.pId=patient.pId and pName like '%'#{pName}'%' and rStatus='诊毕'
-        and FROM_UNIXTIME(registration.rDate,'%y-%m-%d')=CURDATE()
+        <where>
+            uId=#{uId} and dId=#{dId} and registration.pId=patient.pId   and rStatus='诊毕'
+            and FROM_UNIXTIME(registration.rDate,'%y-%m-%d')=CURDATE()
+            <if test="pName != null and pName != ''">and pName like "%"#{pName}"%"</if>
+
+        </where>
     </select>
 
     <select id="getNotDiagnosisByuIdAndDId" resultType="com.neuedu.hospital_back.po.RegistrationInfo">
         select registration.rId,registration.pId,pName,pBirth,pSex from patient,registration
-        where uId=#{uId} and dId=#{dId}  and registration.pId=patient.pId and pName like '%'#{pName}'%' and rStatus !='诊毕'
-        and FROM_UNIXTIME(registration.rDate,'%y-%m-%d')=CURDATE()
+        <where>
+            uId=#{uId} and dId=#{dId} and registration.pId=patient.pId   and rStatus !='诊毕'
+            and FROM_UNIXTIME(registration.rDate,'%y-%m-%d')=CURDATE()
+            <if test="pName != null and pName != ''">and pName like "%"#{pName}"%"</if>
+        </where>
     </select>
 
 
