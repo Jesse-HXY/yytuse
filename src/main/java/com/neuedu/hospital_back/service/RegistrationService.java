@@ -38,9 +38,6 @@ public class RegistrationService {
         return registrationMapper.insertRegistration(registration);
     }
 
-    public List<Registration> getRegistration(JSONObject object) {
-        return registrationMapper.getRegistration(object.getString("pId"));
-    }
 
     public Patient getPatientById(JSONObject object) {
         return patientMapper.getById(object.getString("pId"));
@@ -50,7 +47,7 @@ public class RegistrationService {
         String rStatus=object.getString("rStatus");
 
 
-        if (rStatus=="诊毕"){
+        if (rStatus.equals("诊毕")){
          return registrationMapper.getAlreadyDiagnosisByuId(object.getInt("uId"),object.getString("pName"));
         }else{
             return registrationMapper.getNotDiagnosisByuId(object.getInt("uId"),object.getString("pName"));
@@ -60,7 +57,7 @@ public class RegistrationService {
 
     public List<RegistrationInfo> getRegistrationInfoByUIdAndDId(JSONObject object){
         String rStatus=object.getString("rStatus");
-        if (rStatus=="诊毕"){
+        if (rStatus.equals("诊毕")){
             return registrationMapper.getAlreadyDiagnosisByuIdAndDId(object.getInt("uId"),object.getString("pName"),object.getString("dId"));
         }else{
             return registrationMapper.getNotDiagnosisByuIdAndDId(object.getInt("uId"),object.getString("pName"),object.getString("dId"));

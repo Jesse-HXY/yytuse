@@ -6,7 +6,7 @@ public class RegistrationInfo {
 
     private int rId;
 
-    private int pId;
+    private String pId;
 
     private String pName;
 
@@ -23,11 +23,11 @@ public class RegistrationInfo {
         this.rId = rId;
     }
 
-    public int getpId() {
+    public String getpId() {
         return pId;
     }
 
-    public void setpId(int pId) {
+    public void setpId(String pId) {
         this.pId = pId;
     }
 
