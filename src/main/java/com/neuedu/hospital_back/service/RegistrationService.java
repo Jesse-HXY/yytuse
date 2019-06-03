@@ -4,7 +4,9 @@ import com.neuedu.hospital_back.mapper.PatientMapper;
 import com.neuedu.hospital_back.mapper.RegistrationMapper;
 import com.neuedu.hospital_back.po.Patient;
 import com.neuedu.hospital_back.po.Registration;
+import com.neuedu.hospital_back.po.RegistrationInfo;
 import net.sf.json.JSONObject;
+import org.hibernate.validator.constraints.URL;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -31,6 +33,8 @@ public class RegistrationService {
     }
 
     public int insertRegistration(Registration registration) {
+        long rDate=registration.getrDate()/1000;
+        registration.setrDate(rDate);
         return registrationMapper.insertRegistration(registration);
     }
 
@@ -41,4 +45,26 @@ public class RegistrationService {
     public Patient getPatientById(JSONObject object) {
         return patientMapper.getById(object.getString("pId"));
     }
+
+    public List<RegistrationInfo> getRegistrationInfo(JSONObject object){
+        String rStatus=object.getString("rStatus");
+
+
+        if (rStatus=="诊毕"){
+         return registrationMapper.getAlreadyDiagnosisByuId(object.getInt("uId"),object.getString("pName"));
+        }else{
+            return registrationMapper.getNotDiagnosisByuId(object.getInt("uId"),object.getString("pName"));
+        }
+
+    }
+
+    public List<RegistrationInfo> getRegistrationInfoByUIdAndDId(JSONObject object){
+        String rStatus=object.getString("rStatus");
+        if (rStatus=="诊毕"){
+            return registrationMapper.getAlreadyDiagnosisByuIdAndDId(object.getInt("uId"),object.getString("pName"),object.getString("dId"));
+        }else{
+            return registrationMapper.getNotDiagnosisByuIdAndDId(object.getInt("uId"),object.getString("pName"),object.getString("dId"));
+        }
+    }
 }
+

@@ -2,13 +2,12 @@ package com.neuedu.hospital_back.controller;
 
 import com.neuedu.hospital_back.po.Patient;
 import com.neuedu.hospital_back.po.Registration;
+import com.neuedu.hospital_back.po.RegistrationInfo;
 import com.neuedu.hospital_back.service.RegistrationService;
 import net.sf.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.sql.Date;
-import java.text.DateFormat;
 import java.util.List;
 
 @CrossOrigin
@@ -19,9 +18,9 @@ public class RegistrationController {
     @Resource
     private RegistrationService registrationService;
 
-    @PostMapping("/insertPatient")
+   @PostMapping("/insertPatient")
     public int insertPatient(@RequestBody JSONObject object) {
-        return registrationService.insertPatient(object);
+       return registrationService.insertPatient(object);
     }
 
     @PostMapping("/getPatientById")
@@ -30,12 +29,18 @@ public class RegistrationController {
     }
 
     @PostMapping("/insertRegistration")
-    public int insertRegistration(@RequestBody Registration registration) {
-        return registrationService.insertRegistration(registration);
+    public int insertRegistration(@RequestBody Registration registration){
+       return registrationService.insertRegistration(registration);
     }
 
-    @PostMapping("/getRegistration")
-    public List<Registration> getRegistration(@RequestBody JSONObject object) {
-        return registrationService.getRegistration(object);
+    @PostMapping("/getRegistrationInfoByuId")
+    public List<RegistrationInfo> getRegistrationInfo(@RequestBody JSONObject object){
+       return registrationService.getRegistrationInfo(object);
     }
+
+    @PostMapping("/getRegistrationInfoByuIdAndDId")
+    public List<RegistrationInfo> getRegistrationInfoByuIdAndDId(@RequestBody JSONObject object){
+        return registrationService.getRegistrationInfoByUIdAndDId(object);
+    }
+
 }

@@ -9,8 +9,29 @@
         values (#{pId}, #{payType}, #{rLName}, #{dId}, #{uId}, #{hasMedicalHistory}, #{rFee}, #{rDate}, '已挂号')
     </insert>
 
-    <select id="getRegistration" resultType="com.neuedu.hospital_back.po.Registration">
-        select * from registration where pId = #{pId}
+    <select id="getAlreadyDiagnosisByuId" resultType="com.neuedu.hospital_back.po.RegistrationInfo">
+        select registration.rId,registration.pId,pName,pBirth,pSex from patient,registration
+        where uId=#{uId} and registration.pId=patient.pId and pName like '%'#{pName}'%' and rStatus='诊毕'
+        and FROM_UNIXTIME(registration.rDate,'%y-%m-%d')=CURDATE()
     </select>
+
+    <select id="getNotDiagnosisByuId" resultType="com.neuedu.hospital_back.po.RegistrationInfo">
+        select registration.rId,registration.pId,pName,pBirth,pSex from patient,registration
+        where uId=#{uId} and registration.pId=patient.pId and pName like '%'#{pName}'%' and rStatus !='诊毕'
+        and FROM_UNIXTIME(registration.rDate,'%y-%m-%d')=CURDATE()
+    </select>
+
+    <select id="getAlreadyDiagnosisByuIdAndDId" resultType="com.neuedu.hospital_back.po.RegistrationInfo">
+        select registration.rId,registration.pId,pName,pBirth,pSex from patient,registration
+        where uId=#{uId} and dId=#{dId} and registration.pId=patient.pId and pName like '%'#{pName}'%' and rStatus='诊毕'
+        and FROM_UNIXTIME(registration.rDate,'%y-%m-%d')=CURDATE()
+    </select>
+
+    <select id="getNotDiagnosisByuIdAndDId" resultType="com.neuedu.hospital_back.po.RegistrationInfo">
+        select registration.rId,registration.pId,pName,pBirth,pSex from patient,registration
+        where uId=#{uId} and dId=#{dId}  and registration.pId=patient.pId and pName like '%'#{pName}'%' and rStatus !='诊毕'
+        and FROM_UNIXTIME(registration.rDate,'%y-%m-%d')=CURDATE()
+    </select>
+
 
 </mapper>
