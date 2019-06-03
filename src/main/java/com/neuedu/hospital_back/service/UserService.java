@@ -39,6 +39,10 @@ public class UserService {
     }
 
 
+    public User login(JSONObject object) {
+        return userMapper.login(object.getInt("uId"), object.getString("uPassword"));
+    }
+
     public List<User> getAvailableDoctor(JSONObject object) throws ParseException {
         int index = getDayForWeek(object.getString("currentDate"));
         return userListPutDepartment(userMapper.getAvailableDoctor(object.getString("dId"), object.getString("rLName"), index));

@@ -14,6 +14,8 @@ public interface UserMapper {
 
     int updateUser(User record);
 
+    User login(@Param("uId") int uId, @Param("uPassword") String uPassword);
+
     List<User> getAllUser();
 
     List<User>  getAvailableDoctor(@Param("dId") String dId, @Param("rLName") String rLName, @Param("index") int index);

@@ -66,4 +66,9 @@ public class UserController {
     public List<User> getUerByDIdAndRLName(@RequestBody JSONObject object){
         return userService.getUerByDIdAndRLName(object);
     }
+
+    @PostMapping("/login")
+    public User login(@RequestBody JSONObject object){
+        return userService.login(object);
+    }
 }

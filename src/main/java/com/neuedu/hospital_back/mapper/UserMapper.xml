@@ -14,6 +14,11 @@
         select count(*) from user;
     </select>
 
+    <select id="login" resultType="com.neuedu.hospital_back.po.User">
+        select `uId`, uNickName, uPassword, uName, isDoctor, uCategory from user
+        where `uId`= #{uId} and uPassword = #{uPassword}
+    </select>
+
     <select id="getUserByPage" resultType="com.neuedu.hospital_back.po.User">
         select `uId`, uNickName, uPassword, uName, isDoctor, uCategory from user  limit #{begin}, #{pageSize}
     </select>
