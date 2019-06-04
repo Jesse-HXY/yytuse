@@ -77,12 +77,16 @@ public class ExamnationTemplateService{
         String eTName=object.getString("eTName");
         Integer uId=object.getInt("uId");
 
+
         if(eTScope.equals("科室")) {
           String dId=object.getString("dId");
            return examnationTemplateMapper.selectExamnationItemBydId(eTName,recordType,dId);
         }else if(eTScope.equals("个人")){
           return examnationTemplateMapper.selectExamnationItemByuId(eTName,recordType,uId);
-        }else {
+        }else if(eTScope.equals("全院")){
+            return examnationTemplateMapper.selectByCondition(eTName,"全院",recordType);
+        }
+        else {
             ExamnationTemplate e=new ExamnationTemplate();
             List<ExamnationTemplate> el=new ArrayList<>();
             List<String> dIdList=departmentUserMapper.selectByuId(uId);

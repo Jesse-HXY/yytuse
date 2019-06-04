@@ -35,7 +35,7 @@
     <where>
       dId=#{dId} and examinationtemplate_department.eTId=examnationtemplate.eTId
       <if test="eTName != null and eTName != ''">and eTName like "%"#{eTName,jdbcType=VARCHAR}"%"</if>
-      <if test="recordType != null">and recordType =#{recordType}</if>
+      <if test="recordType != null and recordType != ''">and recordType =#{recordType}</if>
     </where>
   </select>
 
@@ -44,7 +44,7 @@
     <where>
       uId=#{uId}  and examinationtemplate_user.eTId=examnationtemplate.eTId
       <if test="eTName != null and eTName != ''">and eTName like "%"#{eTName,jdbcType=VARCHAR}"%"</if>
-      <if test="recordType != null">and recordType =#{recordType}</if>
+      <if test="recordType != null and recordType != ''">and recordType =#{recordType}</if>
     </where>
   </select>
 
