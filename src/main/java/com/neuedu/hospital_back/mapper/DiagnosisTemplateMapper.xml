@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.hospital_back.mapper.DiagnosisTemplateMapper">
+  <sql id="Base_Column_List">
+    datId, diaType, datName, datTime, datScope
+  </sql>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from diagnosistemplate
+    where datId = #{datId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="datId" keyProperty="datId" parameterType="com.neuedu.hospital_back.po.DiagnosisTemplate" useGeneratedKeys="true">
+    insert into diagnosistemplate (diaType, datName, datTime, 
+      datScope)
+    values (#{diaType,jdbcType=VARCHAR}, #{datName,jdbcType=VARCHAR}, #{datTime,jdbcType=BIGINT}, 
+      #{datScope,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.DiagnosisTemplate">
+    update diagnosistemplate
+    <set>
+      <if test="diaType != null">
+        diaType = #{diaType,jdbcType=VARCHAR},
+      </if>
+      <if test="datName != null">
+        datName = #{datName,jdbcType=VARCHAR},
+      </if>
+      <if test="datTime != null">
+        datTime = #{datTime,jdbcType=BIGINT},
+      </if>
+      <if test="datScope != null">
+        datScope = #{datScope,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where datId = #{datId,jdbcType=INTEGER}
+  </update>
+
+    <select id="selectByCondition" resultType="com.neuedu.hospital_back.po.DiagnosisTemplate">
+       select datId, diaType, datName, datTime, datScope from diagnosistemplate
+       <where>
+         <if test="datName != null and datName != ''">and datName like "%"#{datName}"%"</if>
+         <if test="datScope != null and datScope != ''">and datScope=#{datScope} </if>
+         <if test="diaType != null and diaType != ''">and diaType=#{diaType} </if>
+       </where>
+    </select>
+
+  <select id="selectDiagnosisTemplateBydatId" resultType="com.neuedu.hospital_back.po.DiagnosisTemplate">
+     select datId, diaType, datName, datTime, datScope from diagnosistemplate
+     where datId=#{datId}
+  </select>
+
+  <select id="selectMedicineBydatId" resultType="com.neuedu.hospital_back.po.Medicine">
+    select  medicine.mId, mCode, mName, mSpell, mSepcification, mUnit, mProducer, mType, mFee from medicine,diagnosistemplate_medicine
+    where datId=#{datId} and medicine.mId = diagnosistemplate_medicine.mId
+  </select>
+  <select id="selectDiagnosisTemplateBydId" resultType="com.neuedu.hospital_back.po.DiagnosisTemplate">
+    select diagnosistemplate_department.datId, diaType, datName, datTime, datScope from diagnosistemplate,diagnosistemplate_department
+    <where>
+      dId=#{dId} and diagnosistemplate_department.datId=diagnosistemplate.datId
+     <if test="datName != null and datName != ''">and datName like "%"#{datName}"%"</if>
+      <if test="diaType != null and diaType != ''">and diaType=#{diaType}</if>
+    </where>
+
+  </select>
+  <select id="selectDiagnosisTemplateByuId" resultType="com.neuedu.hospital_back.po.DiagnosisTemplate">
+    select diagnosistemplate.datId, diaType, datName, datTime, datScope from diagnosistemplate,diagnosistemplate_user
+    <where>
+      uId=#{uId} and diagnosistemplate_user.datId=diagnosistemplate.datId
+      <if test="datName != null and datName != ''">and datName like "%"#{datName}"%"</if>
+      <if test="diaType != null and diaType != ''">and diaType=#{diaType}</if>
+    </where>
+  </select>
+</mapper>

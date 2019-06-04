@@ -64,7 +64,7 @@
         select eIId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationItem
         <where>
             <if test="eIName != null and eIName != ''">and eIName like "%"#{eIName,jdbcType=VARCHAR}"%"</if>
-            <if test="recordType != null and recordType != ''" >and eIFeeType like "%"#{recordType}"%"</if>
+            <if test="recordType != null and recordType != ''">and eIFeeType like "%"#{recordType}"%"</if>
         </where>
 
     </select>
