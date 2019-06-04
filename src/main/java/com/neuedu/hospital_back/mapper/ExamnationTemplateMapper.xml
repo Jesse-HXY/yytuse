@@ -15,7 +15,7 @@
       #{recordType})
   </insert>
 
-  <select id="selectByCondition" resultType="com.neuedu.hospital_back.po.ExamnationTemplate">
+<!--  <select id="selectByCondition" resultType="com.neuedu.hospital_back.po.ExamnationTemplate">
     select  eTId, eTName, eTDate, eTScope, recordType from examnationtemplate
     <where>
       <if test="eTName != null and eTName != ''">
@@ -28,7 +28,7 @@
         and recordType=#{recordType}
       </if>
     </where>
-  </select>
+  </select>-->
 
   <select id="selectExamnationItemBydId" resultType="com.neuedu.hospital_back.po.ExamnationTemplate">
     select examinationtemplate_department.eTId, eTName, eTDate, eTScope, recordType from examnationtemplate,examinationtemplate_department
