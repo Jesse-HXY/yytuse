@@ -62,8 +62,13 @@
 
     <select id="selectExamnationItemByeIName" resultType="com.neuedu.hospital_back.po.ExamnationItem">
         select eIId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationItem
-        where eIName like "%"#{eIName,jdbcType=VARCHAR}"%" and eIFeeType =#{recordType}
+        <where>
+            <if test="eIName != null and eIName != ''">and eIName like "%"#{eIName,jdbcType=VARCHAR}"%"</if>
+            <if test="recordType != null">and eIFeeType =#{recordType}</if>
+        </where>
+
     </select>
+
 
   <select id="selectExamnationItemByPage" resultType="com.neuedu.hospital_back.po.ExamnationItem">
     select eIId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationItem  limit #{begin}, #{pageSize}

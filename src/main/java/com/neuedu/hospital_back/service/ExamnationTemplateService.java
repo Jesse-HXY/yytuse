@@ -68,13 +68,23 @@ public class ExamnationTemplateService{
     }
 
     public List<ExamnationTemplate> selectByCondition(JSONObject object){
+        String recordType=object.getString("recordType");
+        String eTScope=object.getString("eTScope");
+        String eTName=object.getString("eTName");
 
-        ExamnationTemplate e=new ExamnationTemplate();
-        e.setRecordType(object.getString("recordType"));
-        e.seteTScope(object.getString("eTScope"));
-        e.seteTName(object.getString("eTName"));
-        return examnationTemplateMapper.selectByCondition(e);
-
+        if(eTScope.equals("科室")) {
+          String dId=object.getString("dId");
+           return examnationTemplateMapper.selectExamnationItemBydId(eTName,recordType,dId);
+        }else if(eTScope.equals("个人")){
+           Integer uId=object.getInt("uId");
+          return examnationTemplateMapper.selectExamnationItemByuId(eTName,recordType,uId);
+        }else {
+            ExamnationTemplate e=new ExamnationTemplate();
+            e.seteTScope(eTScope);
+            e.seteTName(eTName);
+            e.setRecordType(recordType);
+            return examnationTemplateMapper.selectByCondition(e);
+        }
     }
 
     
