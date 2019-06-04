@@ -2,6 +2,7 @@ package com.neuedu.hospital_back.controller;
 
 
 import com.neuedu.hospital_back.po.ExamnationItem;
+import com.neuedu.hospital_back.po.ExamnationTemplate;
 import com.neuedu.hospital_back.service.ExamnationTemplateService;
 import com.neuedu.hospital_back.service.ExamnationitemService;
 import net.sf.json.JSONObject;
@@ -65,7 +66,11 @@ public class ExamnationItemController {
     public boolean insertExaminationTemplate(@RequestBody JSONObject object){
         return examnationTemplateService.insert(object);
     }
-    
+
+    @PostMapping("/getExaminationTemplateByCondition")
+    public List<ExamnationTemplate> getExaminationTemplateByCondition(JSONObject object){
+        return examnationTemplateService.selectByCondition(object);
+    }
 
 
 }

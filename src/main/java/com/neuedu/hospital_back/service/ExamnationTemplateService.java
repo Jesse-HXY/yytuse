@@ -67,6 +67,16 @@ public class ExamnationTemplateService{
         return result==1;
     }
 
+    public List<ExamnationTemplate> selectByCondition(JSONObject object){
+
+        ExamnationTemplate e=new ExamnationTemplate();
+        e.setRecordType(object.getString("recordType"));
+        e.seteTScope(object.getString("eTScope"));
+        e.seteTName(object.getString("eTName"));
+        return examnationTemplateMapper.selectByCondition(e);
+
+    }
+
     
     public int updateByPrimaryKeySelective(ExamnationTemplate record) {
         return examnationTemplateMapper.updateByPrimaryKeySelective(record);
