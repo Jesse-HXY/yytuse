@@ -9,6 +9,7 @@ public interface ExaminationTemplateDepartmentMapper {
 
     int insert(ExaminationTemplateDepartment record);
 
+    String getDId(int eTId);
 
    // int updateByPrimaryKeySelective(ExaminationTemplateDepartment record);
 }

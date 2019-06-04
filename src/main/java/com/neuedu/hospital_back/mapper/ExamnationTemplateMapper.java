@@ -17,5 +17,9 @@ public interface ExamnationTemplateMapper {
 
     List<ExamnationTemplate> selectExamnationItemByuId(@Param("eTName") String eTName,@Param("recordType")String recordType,@Param("uId")int uId);
 
+    ExamnationTemplate selectExamnationTemplateByeTId(Integer eTId);
+
+    List<ExamnationItem> selectExamnationItemByeTId(Integer eTId);
+
     int updateByPrimaryKeySelective(ExamnationTemplate record);
 }

@@ -1,6 +1,7 @@
 package com.neuedu.hospital_back.po;
 
 import java.util.Date;
+import java.util.List;
 
 public class ExamnationTemplate {
     private Integer eTId;
@@ -12,6 +13,26 @@ public class ExamnationTemplate {
     private String eTScope;
 
     private String recordType;
+
+    private List<ExamnationItem> examnationItemList;
+
+    private Department department;
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public List<ExamnationItem> getExamnationItemList() {
+        return examnationItemList;
+    }
+
+    public void setExamnationItemList(List<ExamnationItem> examnationItemList) {
+        this.examnationItemList = examnationItemList;
+    }
 
     public Integer geteTId() {
         return eTId;

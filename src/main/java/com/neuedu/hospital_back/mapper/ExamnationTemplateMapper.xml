@@ -48,6 +48,16 @@
     </where>
   </select>
 
+  <select id="selectExamnationTemplateByeTId" resultType="com.neuedu.hospital_back.po.ExamnationTemplate">
+    select eTId, eTName, eTDate, eTScope, recordType from  examnationtemplate
+    where eTId=#{eTId}
+  </select>
+
+  <select id="selectExamnationItemByeTId" resultType="com.neuedu.hospital_back.po.ExamnationItem">
+    select examnationitem.eIId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationitem,examnationtemplate_examnationitem
+    where eTId=#{eTId} and examnationitem.eIId=examnationtemplate_examnationitem.eIId
+  </select>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.ExamnationTemplate">
     update examnationtemplate
     <set>

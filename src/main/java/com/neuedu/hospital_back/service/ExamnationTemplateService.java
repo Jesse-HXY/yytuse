@@ -1,8 +1,6 @@
 package com.neuedu.hospital_back.service;
 
-import com.neuedu.hospital_back.mapper.ExaminationTemplateDepartmentMapper;
-import com.neuedu.hospital_back.mapper.ExaminationTemplateUserMapper;
-import com.neuedu.hospital_back.mapper.ExamnationTemplateExamnationItemMapper;
+import com.neuedu.hospital_back.mapper.*;
 import com.neuedu.hospital_back.po.ExaminationTemplateDepartment;
 import com.neuedu.hospital_back.po.ExaminationTemplateUser;
 import com.neuedu.hospital_back.po.ExamnationTemplateExamnationItem;
@@ -10,7 +8,6 @@ import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import com.neuedu.hospital_back.po.ExamnationTemplate;
-import com.neuedu.hospital_back.mapper.ExamnationTemplateMapper;
 
 import java.util.List;
 
@@ -28,6 +25,9 @@ public class ExamnationTemplateService{
 
     @Resource
     private ExamnationTemplateExamnationItemMapper examnationTemplateExamnationItemMapper;
+
+    @Resource
+    private DepartmentMapper departmentMapper;
 
     
     public int deleteByPrimaryKey(Integer eTId) {
@@ -87,6 +87,15 @@ public class ExamnationTemplateService{
         }
     }
 
+    public ExamnationTemplate checkDetail(JSONObject object){
+        Integer eTId=object.getInt("eTId");
+        ExamnationTemplate e=examnationTemplateMapper.selectExamnationTemplateByeTId(eTId);
+        e.setExamnationItemList(examnationTemplateMapper.selectExamnationItemByeTId(eTId));
+        if(e.geteTScope().equals("科室")){
+            e.setDepartment(departmentMapper.getDepartmentBydId(examinationTemplateDepartmentMapper.getDId(eTId)));
+        }
+        return e;
+    }
     
     public int updateByPrimaryKeySelective(ExamnationTemplate record) {
         return examnationTemplateMapper.updateByPrimaryKeySelective(record);

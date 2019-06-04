@@ -72,5 +72,10 @@ public class ExamnationItemController {
         return examnationTemplateService.selectByCondition(object);
     }
 
+    @PostMapping("/checkDetail")
+    public ExamnationTemplate checkDetail(@RequestBody JSONObject object){
+        return examnationTemplateService.checkDetail(object);
+    }
+
 
 }
