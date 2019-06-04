@@ -3,8 +3,6 @@ package com.neuedu.hospital_back.po;
 public class ExamnationItem {
     private Integer eIId;
 
-    private String dId;
-
     private String eIName;
 
     private String eISpecification;
@@ -55,14 +53,6 @@ public class ExamnationItem {
 
     public void seteIId(Integer eIId) {
         this.eIId = eIId;
-    }
-
-    public String getdId() {
-        return dId;
-    }
-
-    public void setdId(String dId) {
-        this.dId = dId;
     }
 
     public String geteIName() {

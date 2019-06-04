@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.hospital_back.mapper.ExamnationTemplateMapper">
+  <sql id="Base_Column_List">
+    eTId, eTName, eTDate, eTScope, recordType
+  </sql>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from examnationtemplate
+    where eTId = #{eTId}
+  </delete>
+  <insert id="insert" keyColumn="eTId" keyProperty="eTId" parameterType="com.neuedu.hospital_back.po.ExamnationTemplate" useGeneratedKeys="true">
+    insert into examnationtemplate (eTName, eTDate, eTScope, 
+      recordType)
+    values (#{eTName}, #{eTDate}, #{eTScope},
+      #{recordType})
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.ExamnationTemplate">
+    update examnationtemplate
+    <set>
+      <if test="eTName != null">
+        eTName = #{eTName},
+      </if>
+      <if test="eTDate != null">
+        eTDate = #{eTDate},
+      </if>
+      <if test="eTScope != null">
+        eTScope = #{eTScope},
+      </if>
+      <if test="recordType != null">
+        recordType = #{recordType},
+      </if>
+    </set>
+    where eTId = #{eTId}
+  </update>
+</mapper>

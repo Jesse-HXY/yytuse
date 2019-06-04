@@ -7,19 +7,16 @@
     where eIId = #{eIId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="eIId" keyProperty="eIId" parameterType="com.neuedu.hospital_back.po.ExamnationItem" useGeneratedKeys="true">
-    insert into examnationItem (dId, eIName, eISpecification,
+    insert into examnationItem ( eIName, eISpecification,
       eIFee, eIFeeType, eICode
       )
-    values (#{dId,jdbcType=VARCHAR}, #{eIName,jdbcType=VARCHAR}, #{eISpecification,jdbcType=VARCHAR},
+    values (#{eIName,jdbcType=VARCHAR}, #{eISpecification,jdbcType=VARCHAR},
       #{eIFee,jdbcType=DOUBLE}, #{eIFeeType,jdbcType=VARCHAR}, #{eICode,jdbcType=VARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.ExamnationItem">
     update examnationItem
     <set>
-      <if test="dId != null and dId != ''">
-          dId = #{dId,jdbcType=VARCHAR},
-      </if>
       <if test="eIName != null and eIName != ''">
           eIName = #{eIName,jdbcType=VARCHAR},
       </if>
@@ -40,13 +37,10 @@
   </update>
 
   <select id="selectExamnationItem" resultType="com.neuedu.hospital_back.po.ExamnationItem">
-    select eIId, dId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationItem
+    select eIId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationItem
     <where>
       <if test="eIId != null">
         and eIId=#{eIId,jdbcType=INTEGER}
-      </if>
-      <if test="dId != null and dId != ''">
-      and  dId = #{dId,jdbcType=VARCHAR}
       </if>
       <if test="eIName != null and eIName != ''">
        and  eIName = #{eIName,jdbcType=VARCHAR}
@@ -66,8 +60,13 @@
     </where>
   </select>
 
+    <select id="selectExamnationItemByeIName" resultType="com.neuedu.hospital_back.po.ExamnationItem">
+        select eIId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationItem
+        where eIName like "%"#{eIName,jdbcType=VARCHAR}"%"
+    </select>
+
   <select id="selectExamnationItemByPage" resultType="com.neuedu.hospital_back.po.ExamnationItem">
-    select eIId, dId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationItem  limit #{begin}, #{pageSize}
+    select eIId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationItem  limit #{begin}, #{pageSize}
   </select>
 
   <select id="getExamnationItemCount" resultType="integer">
@@ -75,6 +74,6 @@
   </select>
 
     <select id="selectAllExamnationItem" resultType="com.neuedu.hospital_back.po.ExamnationItem">
-        select eIId, dId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationItem
+        select eIId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationItem
     </select>
 </mapper>

@@ -2,6 +2,7 @@ package com.neuedu.hospital_back.controller;
 
 
 import com.neuedu.hospital_back.po.ExamnationItem;
+import com.neuedu.hospital_back.service.ExamnationTemplateService;
 import com.neuedu.hospital_back.service.ExamnationitemService;
 import net.sf.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,8 @@ public class ExamnationItemController {
     @Resource
     private ExamnationitemService examnationitemService;
 
+    @Resource
+    private ExamnationTemplateService examnationTemplateService;
 
     @RequestMapping("/getExamnationItems")
     public List<ExamnationItem> getExamnationItems(@RequestBody ExamnationItem examnationItem) {
@@ -31,6 +34,12 @@ public class ExamnationItemController {
     public List<ExamnationItem> getExamnationItemByPage(@RequestBody JSONObject object) {
         return  examnationitemService.selectExamnationItemByPage(object);
     }
+
+    @PostMapping("/getExamnationItemByEIName")
+    public List<ExamnationItem> getExamnationItemByEIName(@RequestBody JSONObject object) {
+        return  examnationitemService.selectExamnationItemByEIName(object);
+    }
+
 
     @RequestMapping("/deleteExamnationItem")
     public boolean deleteExamnationItem(@RequestBody JSONObject eIId) {
@@ -50,6 +59,11 @@ public class ExamnationItemController {
     @RequestMapping("/getPageCount")
     public int getPageCount(){
         return examnationitemService.getPageCount();
+    }
+
+    @RequestMapping("/insertExaminationTemplate")
+    public boolean insertExaminationTemplate(@RequestBody JSONObject object){
+        return examnationTemplateService.insert(object);
     }
     
 

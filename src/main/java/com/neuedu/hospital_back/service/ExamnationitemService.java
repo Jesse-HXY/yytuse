@@ -34,6 +34,11 @@ public class ExamnationitemService{
         return examnationItems;
     }
 
+    public List<ExamnationItem> selectExamnationItemByEIName(JSONObject object){
+        List<ExamnationItem> examnationItems =examnationitemMapper.selectExamnationItemByeIName(object.getString("eIName"));
+        return examnationItems;
+    }
+
     public List<ExamnationItem> selectAllExamnationItem(){
         List<ExamnationItem> examnationItems =examnationitemMapper.selectAllExamnationItem();
         return examnationItems;

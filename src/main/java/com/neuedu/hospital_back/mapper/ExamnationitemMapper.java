@@ -11,6 +11,8 @@ public interface ExamnationitemMapper {
 
     int getExamnationItemCount();
 
+    List<ExamnationItem> selectExamnationItemByeIName(String eIName);
+
     List<ExamnationItem> selectExamnationItem(ExamnationItem examnationItem);
 
     List<ExamnationItem> selectAllExamnationItem();
