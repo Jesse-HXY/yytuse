@@ -68,7 +68,7 @@ public class ExamnationItemController {
     }
 
     @PostMapping("/getExaminationTemplateByCondition")
-    public List<ExamnationTemplate> getExaminationTemplateByCondition(JSONObject object){
+    public List<ExamnationTemplate> getExaminationTemplateByCondition(@RequestBody JSONObject object){
         return examnationTemplateService.selectByCondition(object);
     }
 
