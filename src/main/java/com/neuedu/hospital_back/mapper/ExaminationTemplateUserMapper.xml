@@ -16,6 +16,9 @@
     values (#{eTId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER})
   </insert>
 
+  <delete id="deleteByETId" parameterType="integer">
+    delete from examinationtemplate_user where eTId=#{eTId}
+  </delete>
  <!-- <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.ExaminationTemplateUser">
    
     update examinationtemplate_user

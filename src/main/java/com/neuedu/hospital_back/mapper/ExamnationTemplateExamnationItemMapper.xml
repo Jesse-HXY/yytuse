@@ -8,6 +8,11 @@
     delete from examnationtemplate_examnationitem
     where eT_EI_Id = #{eT_EI_Id,jdbcType=INTEGER}
   </delete>-->
+
+  <delete id="deleteByETId" parameterType="integer">
+    delete from examnationtemplate_examnationitem
+    where eTId=#{eTId}
+  </delete>
   <insert id="insert" keyColumn="eT_EI_Id" keyProperty="eT_EI_Id" parameterType="com.neuedu.hospital_back.po.ExamnationTemplateExamnationItem" useGeneratedKeys="true">
     insert into examnationtemplate_examnationitem (eTId, eIId)
     values (#{eTId,jdbcType=INTEGER}, #{eIId,jdbcType=INTEGER})

@@ -10,6 +10,7 @@ public interface ExaminationTemplateUserMapper {
 
     int insert(ExaminationTemplateUser record);
 
+    int deleteByETId(Integer eTId);
 
     //int updateByPrimaryKeySelective(ExaminationTemplateUser record);
 }

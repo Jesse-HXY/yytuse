@@ -19,6 +19,10 @@
   <select id="getDId" resultType="string">
     select dId from examinationtemplate_department where eTId=#{eTId}
   </select>
+
+  <delete id="deleteByETId" parameterType="integer">
+    delete from examinationtemplate_department where eTId=#{eTId}
+  </delete>
  <!-- <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.ExaminationTemplateDepartment">
     
     update examinationtemplate_department

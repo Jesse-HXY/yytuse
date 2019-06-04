@@ -34,8 +34,24 @@ public class ExamnationTemplateService{
     private DepartmentUserMapper departmentUserMapper;
 
     
-    public int deleteByPrimaryKey(Integer eTId) {
-        return examnationTemplateMapper.deleteByPrimaryKey(eTId);
+    public boolean deleteByPrimaryKey(JSONObject object)
+    {
+        String dId=object.getString("dId");
+        Integer uId=object.getInt("uId");
+        Integer eTId=object.getInt("eTId");
+        String scope=object.getString("scope");
+        //删除与item连接中间表
+       int result= examnationTemplateExamnationItemMapper.deleteByETId(eTId);
+        if(scope.equals("科室")){
+            //删除与科室相连中间表
+            result= examinationTemplateDepartmentMapper.deleteByETId(eTId);
+        }else if(scope.equals("个人")){
+            //删除与个人相连中间表
+         result=   examinationTemplateUserMapper.deleteByETId(eTId);
+        }
+        //删除模板表中数据
+         result=examnationTemplateMapper.deleteByPrimaryKey(eTId);
+        return result==1;
     }
 
     

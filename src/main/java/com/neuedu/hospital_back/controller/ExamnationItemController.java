@@ -77,5 +77,10 @@ public class ExamnationItemController {
         return examnationTemplateService.checkDetail(object);
     }
 
+    @PostMapping("/deleteExamnationTemplateByPrimaryKey")
+    public Boolean ExamnationTemplate(@RequestBody JSONObject object){
+        return examnationTemplateService.deleteByPrimaryKey(object);
+    }
+
 
 }

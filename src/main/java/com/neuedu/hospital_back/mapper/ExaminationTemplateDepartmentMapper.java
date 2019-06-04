@@ -7,6 +7,7 @@ import java.util.List;
 public interface ExaminationTemplateDepartmentMapper {
    // int deleteByPrimaryKey(Integer eT_dId);
 
+    int deleteByETId(Integer eTId);
     int insert(ExaminationTemplateDepartment record);
 
     String getDId(int eTId);
