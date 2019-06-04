@@ -55,8 +55,8 @@ public class RegistrationInfo {
         return MorningOrEvening;
     }
 
-    public void setMorningOrEvening(String morningOrEvening) {
-        MorningOrEvening = morningOrEvening;
+    public void setMorningOrEvening(String MorningOrEvening) {
+        this.MorningOrEvening = MorningOrEvening;
     }
 
     public String getrStatus() {

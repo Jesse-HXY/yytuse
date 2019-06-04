@@ -14,7 +14,7 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/registration")
-public class RegistrationController {
+public class  RegistrationController {
 
     @Resource
     private RegistrationService registrationService;

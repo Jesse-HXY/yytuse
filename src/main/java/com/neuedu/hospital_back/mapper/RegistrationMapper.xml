@@ -6,7 +6,7 @@
 
     <insert id="insertRegistration">
         insert into registration (pId, payType, rLName, dId, uId, hasMedicalHistory, rFee, rDate, rStatus)
-        values (#{pId}, #{payType}, #{rLName}, #{dId}, #{uId}, #{hasMedicalHistory}, #{rFee}, #{rDate}, '已挂号')
+        values (#{pId}, #{payType}, #{rLName}, #{dId}, #{uId}, #{hasMedicalHistory}, #{rFee}, #{rDate}, '未看诊')
     </insert>
 
     <select id="getAlreadyDiagnosisByuId" resultType="com.neuedu.hospital_back.po.RegistrationInfo">
@@ -49,7 +49,7 @@
     </select>
 
     <select id="getRegistrationInfoByrId" resultType="com.neuedu.hospital_back.po.RegistrationInfo">
-        select rDate,rStatus,pName,pAddress,registration.pId,department.dName from registration,department,patient
+        select rId,rDate,rStatus,pName,pAddress,registration.pId,department.dName from registration,department,patient
         where rId=#{rId} and registration.pId=patient.pId and registration.dId=department.dId and FROM_UNIXTIME(registration.rDate,'%y-%m-%d')=CURDATE()
     </select>
 
