@@ -30,6 +30,7 @@ public class DiagnosisService {
         List<DiagnosisType> diagnosisTypes = (List)JSONArray.toCollection(jsonArray, DiagnosisType.class);
         int result = 0;
         for (DiagnosisType diagnosisType : diagnosisTypes) {
+            diagnosisType.setDiaTime(diagnosisType.getDiaTime()/1000);
             result += diagnosisTypeMapper.insert(diagnosisType);
         }
         return result == diagnosisTypes.size();

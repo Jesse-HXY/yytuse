@@ -12,7 +12,7 @@ public interface UserMapper {
 
     int insert(User record);
 
-    int updateUser(User record);
+    void updateUser(User record);
 
     User login(@Param("uId") int uId, @Param("uPassword") String uPassword);
 

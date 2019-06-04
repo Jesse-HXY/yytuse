@@ -22,11 +22,6 @@ public class UserController {
         return userService.getAvailableDoctor(object);
     }
 
-    @PostMapping("/selectByuId")
-    public List<String> selectByuId(@RequestBody JSONObject object) {
-        return userService.selectByuId(object);
-    }
-
     @PostMapping("/getUser")
     public List<User> selectByCondition(@RequestBody User user) {
         return userService.selectByCondition(user);

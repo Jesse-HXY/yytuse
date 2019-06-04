@@ -15,6 +15,11 @@ public class DepartmentController {
     @Resource
     private DepartmentService departmentService;
 
+    @PostMapping("/selectByuId")
+    public List<Department> selectByuId(@RequestBody JSONObject object) {
+        return departmentService.selectByuId(object);
+    }
+
     @RequestMapping("/getAllDepartments")
     public List<Department> getAllDepartments() {
         return departmentService.getAllDepartments();
