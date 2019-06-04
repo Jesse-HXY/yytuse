@@ -39,7 +39,7 @@ public class ExamnationTemplateService{
 
         ExamnationTemplate examnationTemplate=new ExamnationTemplate();
         examnationTemplate.seteTName(object.getString("eTName"));
-        long rDate=object.getInt("eTDate")/1000;
+        long rDate=object.getLong("eTDate")/1000;
         examnationTemplate.seteTDate(rDate);
         String eTScope=object.getString("eTScope");
         examnationTemplate.seteTScope(eTScope);

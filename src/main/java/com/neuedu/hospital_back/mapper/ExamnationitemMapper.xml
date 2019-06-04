@@ -62,7 +62,7 @@
 
     <select id="selectExamnationItemByeIName" resultType="com.neuedu.hospital_back.po.ExamnationItem">
         select eIId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationItem
-        where eIName like "%"#{eIName,jdbcType=VARCHAR}"%"
+        where eIName like "%"#{eIName,jdbcType=VARCHAR}"%" and eIFeeType =#{recordType}
     </select>
 
   <select id="selectExamnationItemByPage" resultType="com.neuedu.hospital_back.po.ExamnationItem">

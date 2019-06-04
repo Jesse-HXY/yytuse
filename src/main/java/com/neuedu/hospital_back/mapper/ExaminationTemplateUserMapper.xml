@@ -15,6 +15,7 @@
     insert into examinationtemplate_user (eTId, `uId`)
     values (#{eTId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER})
   </insert>
+
  <!-- <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.ExaminationTemplateUser">
    
     update examinationtemplate_user

@@ -14,6 +14,21 @@
     values (#{eTName}, #{eTDate}, #{eTScope},
       #{recordType})
   </insert>
+
+  <select id="selectByCondition" resultType="com.neuedu.hospital_back.po.ExamnationTemplate">
+    select  eTId, eTName, eTDate, eTScope, recordType from examnationtemplate
+    <where>
+      <if test="eTName != null and eTName != ''">
+        and eTName like "%"#{eTName}"%"
+      </if>
+      <if test="eTScope != null and eTScope != ''">
+        and eTScope =#{eTScope}
+      </if>
+      <if test="recordType != null and recordType != ''">
+        and recordType=#{recordType}
+      </if>
+    </where>
+  </select>
   <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.ExamnationTemplate">
     update examnationtemplate
     <set>
