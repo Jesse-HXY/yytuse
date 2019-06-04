@@ -90,6 +90,7 @@ public class ExamnationTemplateService{
                 el.addAll(examnationTemplateMapper.selectExamnationItemBydId(eTName,recordType,dIdList.get(i)));
             }
             el.addAll(examnationTemplateMapper.selectExamnationItemByuId(eTName,recordType,uId));
+            el.addAll(examnationTemplateMapper.selectByCondition(eTName,"全院",recordType));
             return el;
         }
     }

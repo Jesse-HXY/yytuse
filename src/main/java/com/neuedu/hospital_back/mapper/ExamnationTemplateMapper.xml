@@ -15,7 +15,7 @@
       #{recordType})
   </insert>
 
-<!--  <select id="selectByCondition" resultType="com.neuedu.hospital_back.po.ExamnationTemplate">
+  <select id="selectByCondition" resultType="com.neuedu.hospital_back.po.ExamnationTemplate">
     select  eTId, eTName, eTDate, eTScope, recordType from examnationtemplate
     <where>
       <if test="eTName != null and eTName != ''">
@@ -28,12 +28,12 @@
         and recordType=#{recordType}
       </if>
     </where>
-  </select>-->
+  </select>
 
   <select id="selectExamnationItemBydId" resultType="com.neuedu.hospital_back.po.ExamnationTemplate">
     select examinationtemplate_department.eTId, eTName, eTDate, eTScope, recordType from examnationtemplate,examinationtemplate_department
     <where>
-      dId=#{dId} and examinationtemplate_department.eIId=examnationtemplate.eTId
+      dId=#{dId} and examinationtemplate_department.eTId=examnationtemplate.eTId
       <if test="eTName != null and eTName != ''">and eTName like "%"#{eTName,jdbcType=VARCHAR}"%"</if>
       <if test="recordType != null">and recordType =#{recordType}</if>
     </where>

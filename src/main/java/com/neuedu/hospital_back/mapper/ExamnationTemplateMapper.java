@@ -11,7 +11,7 @@ public interface ExamnationTemplateMapper {
 
     int insert(ExamnationTemplate record);
 
-    //List<ExamnationTemplate> selectByCondition(ExamnationTemplate examnationTemplate);
+    List<ExamnationTemplate> selectByCondition(@Param("eTName") String eTName,@Param("eTScope")String eTScope, @Param("recordType")String recordType);
 
     List<ExamnationTemplate> selectExamnationItemBydId(@Param("eTName") String eTName, @Param("recordType")String recordType, @Param("dId")String dId);
 
