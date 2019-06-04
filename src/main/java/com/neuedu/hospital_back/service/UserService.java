@@ -34,6 +34,10 @@ public class UserService {
     private DepartmentUserMapper departmentUserMapper;
 
 
+    public List<String> selectByuId(JSONObject object) {
+        return departmentUserMapper.selectByuId(object.getInt("uId"));
+    }
+
     public int getUserCount() {
         return userMapper.getUserCount();
     }

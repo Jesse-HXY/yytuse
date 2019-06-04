@@ -11,7 +11,7 @@ public interface ExamnationitemMapper {
 
     int getExamnationItemCount();
 
-    List<ExamnationItem> selectExamnationItemByeIName(@Param("eIName") String eIName,@Param("recordType")String recordType);
+    List<ExamnationItem> selectExamnationItemByeIName(@Param("eIName") String eIName,@Param("recordType") String recordType);
 
     List<ExamnationItem> selectExamnationItem(ExamnationItem examnationItem);
 
