@@ -5,17 +5,17 @@
     
     eT_dId, eTId, dId
   </sql>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <!--<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     
     delete from examinationtemplate_department
     where eT_dId = #{eT_dId,jdbcType=INTEGER}
-  </delete>
+  </delete>-->
   <insert id="insert" keyColumn="eT_dId" keyProperty="eT_dId" parameterType="com.neuedu.hospital_back.po.ExaminationTemplateDepartment" useGeneratedKeys="true">
     
     insert into examinationtemplate_department (eTId, dId)
     values (#{eTId,jdbcType=INTEGER}, #{dId,jdbcType=VARCHAR})
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.ExaminationTemplateDepartment">
+ <!-- <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.ExaminationTemplateDepartment">
     
     update examinationtemplate_department
     <set>
@@ -27,5 +27,5 @@
       </if>
     </set>
     where eT_dId = #{eT_dId,jdbcType=INTEGER}
-  </update>
+  </update>-->
 </mapper>
