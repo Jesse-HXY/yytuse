@@ -28,7 +28,6 @@ public class ExamnationItemTest {
    @Test
     public void getExamnationItems(){
        ExamnationItem examnationItem=new ExamnationItem();
-       examnationItem.setdId("KFK");
        List<ExamnationItem> examnationItems=examnationitemService.selectExamnationItem( examnationItem);
        System.out.println(examnationItems);
    }
@@ -37,7 +36,6 @@ public class ExamnationItemTest {
    @Test
     public void insert(){
        ExamnationItem examnationItem=new ExamnationItem();
-       examnationItem.setdId("KFK");
        examnationItem.seteIName("lll");
        examnationItem.seteIFee(1000.1);
        assertEquals(true, examnationitemService.insert(examnationItem));
@@ -46,7 +44,6 @@ public class ExamnationItemTest {
     @Test
     public void update(){
         ExamnationItem examnationItem=new ExamnationItem();
-        examnationItem.setdId("KFK");
         examnationItem.seteIName("ll");
         examnationItem.seteIFee(1000.1);
         examnationItem.seteIId(10000);

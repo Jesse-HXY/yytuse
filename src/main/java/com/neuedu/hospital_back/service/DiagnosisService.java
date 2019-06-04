@@ -4,6 +4,7 @@ import com.neuedu.hospital_back.mapper.DiagnosisTypeMapper;
 import com.neuedu.hospital_back.mapper.MedicalRecordMapper;
 import com.neuedu.hospital_back.po.DiagnosisType;
 import com.neuedu.hospital_back.po.MedicalRecord;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,9 @@ public class DiagnosisService {
     }
 
     public boolean insertDiagnosisTypes(JSONObject object) {
-        List<DiagnosisType> diagnosisTypes = object.getJSONArray("diagnosisTypes");
+        JSONArray jsonArray = object.getJSONArray("diagnosisTypes");
+//        List<DiagnosisType> diagnosisTypes = (List<DiagnosisType>) JSONArray.toArray(jsonArray, DiagnosisType.class);
+        List<DiagnosisType> diagnosisTypes = (List)JSONArray.toCollection(jsonArray, DiagnosisType.class);
         int result = 0;
         for (DiagnosisType diagnosisType : diagnosisTypes) {
             result += diagnosisTypeMapper.insert(diagnosisType);

@@ -6,9 +6,9 @@
 
     <insert id="insertMedicalRecord">
         insert into medicalrecord (pId, rId, mChiefComplaint, mHistoryOfPresentIllness,
-        mSituation, mHistoryOfPastIllness, mAllergy, mPhysicalExamination, mSuggestion, mMention)
+        mSituation, mHistoryOfPastIllness, mAllergy, mPhysicalExamination, mSuggestion, mAttention)
         values (#{pId}, #{rId}, #{mChiefComplaint}, #{mHistoryOfPresentIllness},
-        #{mSituation}, #{mHistoryOfPastIllness}, #{mAllergy}, #{mPhysicalExamination}, #{mSuggestion}, #{mMention})
+        #{mSituation}, #{mHistoryOfPastIllness}, #{mAllergy}, #{mPhysicalExamination}, #{mSuggestion}, #{mAttention})
     </insert>
 
 </mapper>
