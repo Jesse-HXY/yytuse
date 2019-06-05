@@ -8,6 +8,15 @@ public class ExaminationApplication {
     private String dId;
     private String eAStatus;
     private int rId;
+    private String eAResult;
+
+    public String geteAResult() {
+        return eAResult;
+    }
+
+    public void seteAResult(String eAResult) {
+        this.eAResult = eAResult;
+    }
 
     public int getrId() {
         return rId;

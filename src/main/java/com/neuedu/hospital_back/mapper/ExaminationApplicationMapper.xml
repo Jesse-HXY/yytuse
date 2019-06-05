@@ -13,6 +13,10 @@
         select eAId, eAName, eIId, dId, eAStatus, rId from examinationapplication where eAId = #{eAId}
     </select>
 
+    <select id="selectByrId" resultType="com.neuedu.hospital_back.po.ExaminationApplication">
+        select eAId, eAName, eIId, dId, eAStatus, rId, rAResult from examinationapplication where rId = #{rId}
+    </select>
+
     <delete id="delete">
         delete from examinationapplication where eAId = #{eAId}
     </delete>

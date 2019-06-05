@@ -37,4 +37,8 @@ public class ExaminationApplicationService {
         }
         return result == eAIds.size();
     }
+
+    public List<ExaminationApplication> selectByrId(JSONObject object){
+        return examinationApplicationMapper.selectByrId(object.getInt("rId"));
+    }
 }

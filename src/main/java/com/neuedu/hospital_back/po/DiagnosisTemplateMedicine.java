@@ -1,6 +1,7 @@
 package com.neuedu.hospital_back.po;
 
 public class DiagnosisTemplateMedicine {
+
     private Integer diaT_M;
 
     private Integer mId;
