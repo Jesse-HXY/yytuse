@@ -2,6 +2,7 @@ package com.neuedu.hospital_back.service;
 
 import com.neuedu.hospital_back.mapper.*;
 import com.neuedu.hospital_back.po.*;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
@@ -64,7 +65,9 @@ public class DiagnosisTemplateService{
        diagnosisTemplate.setDiaType(object.getString("diaType"));
         int result= diagnosisTemplateMapper.insert(diagnosisTemplate);
         Integer datId=diagnosisTemplate.getDatId();
-        List<JSONObject> list=object.getJSONArray("diagnosisTemplateMedicines");
+        JSONArray jsonArray = object.getJSONArray("diagnosisTemplateMedicines");
+        List<DiagnosisTemplateMedicine> list1 = (List)JSONArray.toCollection(jsonArray, DiagnosisTemplateMedicine.class);
+        //List<JSONObject> list=object.getJSONArray("diagnosisTemplateMedicines");
         if(datScope.equals("个人")){
             DiagnosisTemplateUser diagnosisTemplateUser=new DiagnosisTemplateUser();
             diagnosisTemplateUser.setDatId(datId);
@@ -76,12 +79,7 @@ public class DiagnosisTemplateService{
             diagnosisTemplateDepartment.setdId(object.getString("dId"));
             result= diagnosisTemplateDepartmentMapper.insert(diagnosisTemplateDepartment);
         }
-        for(int i=0;i<list.size();i++){
-            DiagnosisTemplateMedicine d=new DiagnosisTemplateMedicine();
-            d.setmId(list.get(i).getInt("mId"));
-            d.setDosage(list.get(i).getString("dosage"));
-            d.setUsage(list.get(i).getString("usage"));
-            d.setTimes(list.get(i).getString("times"));
+        for(DiagnosisTemplateMedicine d:list1){
             d.setDatId(datId);
             diagnosisTemplateMedicineMapper.insert(d);
         }
