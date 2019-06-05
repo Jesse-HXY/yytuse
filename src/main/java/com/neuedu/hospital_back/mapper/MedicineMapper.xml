@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.hospital_back.mapper.MedicineMapper">
+  <sql id="Base_Column_List">
+    
+    mId, mCode, mName, mSpell, mSepcification, mUnit, mProducer, mType, mFee
+  </sql>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    
+    delete from medicine
+    where mId = #{mId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="mId" keyProperty="mId" parameterType="com.neuedu.hospital_back.po.Medicine" useGeneratedKeys="true">
+    
+    insert into medicine (mCode, mName, mSpell, 
+      mSepcification, mUnit, mProducer, 
+      mType, mFee)
+    values (#{mCode,jdbcType=VARCHAR}, #{mName,jdbcType=VARCHAR}, #{mSpell,jdbcType=VARCHAR}, 
+      #{mSepcification,jdbcType=VARCHAR}, #{mUnit,jdbcType=VARCHAR}, #{mProducer,jdbcType=VARCHAR}, 
+      #{mType,jdbcType=VARCHAR}, #{mFee,jdbcType=DOUBLE})
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.Medicine">
+    
+    update medicine
+    <set>
+      <if test="mCode != null">
+        mCode = #{mCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mName != null">
+        mName = #{mName,jdbcType=VARCHAR},
+      </if>
+      <if test="mSpell != null">
+        mSpell = #{mSpell,jdbcType=VARCHAR},
+      </if>
+      <if test="mSepcification != null">
+        mSepcification = #{mSepcification,jdbcType=VARCHAR},
+      </if>
+      <if test="mUnit != null">
+        mUnit = #{mUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="mProducer != null">
+        mProducer = #{mProducer,jdbcType=VARCHAR},
+      </if>
+      <if test="mType != null">
+        mType = #{mType,jdbcType=VARCHAR},
+      </if>
+      <if test="mFee != null">
+        mFee = #{mFee,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where mId = #{mId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectMedicineByMName" resultType="com.neuedu.hospital_back.po.Medicine">
+    select mId, mCode, mName, mSpell, mSepcification, mUnit, mProducer, mType, mFee from medicine
+    <where>
+      <if test="mName != null and mName != ''">mName like "%"#{mName}"%"</if>
+      <if test="mType != null and mType != ''">and mType like "%"#{mType}"%" </if>
+    </where>
+  </select>
+</mapper>

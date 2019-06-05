@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.hospital_back.mapper.DiagnosisTemplateUserMapper">
+
+
+  <insert id="insert" keyColumn="dat_uId" keyProperty="dat_uId" parameterType="com.neuedu.hospital_back.po.DiagnosisTemplateUser" useGeneratedKeys="true">
+    insert into diagnosistemplate_user (datId, `uId`)
+    values (#{datId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER})
+  </insert>
+    <delete id="deleteBydatId">
+      delete from diagnosistemplate_user
+      where datId=#{datId}
+    </delete>
+</mapper>
