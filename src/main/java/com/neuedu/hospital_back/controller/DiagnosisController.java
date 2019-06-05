@@ -32,7 +32,7 @@ public class DiagnosisController {
     }
 
     @PostMapping("/insertAndGet")
-    public ExaminationApplication insertAndGet(ExaminationApplication examinationApplication) {
+    public ExaminationApplication insertAndGet(@RequestBody ExaminationApplication examinationApplication) {
         return examinationApplicationService.insertAndGet(examinationApplication);
     }
 }
