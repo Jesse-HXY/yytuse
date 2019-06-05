@@ -14,7 +14,7 @@
     </select>
 
     <select id="selectByrId" resultType="com.neuedu.hospital_back.po.ExaminationApplication">
-        select eAId, eAName, eIId, dId, eAStatus, rId, rAResult from examinationapplication where rId = #{rId}
+        select eAId, eAName, eIId, dId, eAStatus, rId, eAResult from examinationapplication where rId = #{rId}
     </select>
 
     <delete id="delete">

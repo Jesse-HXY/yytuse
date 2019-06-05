@@ -1,6 +1,7 @@
 package com.neuedu.hospital_back.service;
 
 import com.neuedu.hospital_back.mapper.ExaminationApplicationMapper;
+import com.neuedu.hospital_back.mapper.ExamnationitemMapper;
 import com.neuedu.hospital_back.po.ExaminationApplication;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,9 @@ public class ExaminationApplicationService {
 
     @Resource
     private ExaminationApplicationMapper examinationApplicationMapper;
+
+    @Resource
+    private ExamnationitemMapper examnationitemMapper;
 
     public ExaminationApplication insertAndGet(ExaminationApplication examinationApplication) {
         examinationApplicationMapper.insert(examinationApplication);
@@ -39,6 +43,10 @@ public class ExaminationApplicationService {
     }
 
     public List<ExaminationApplication> selectByrId(JSONObject object){
-        return examinationApplicationMapper.selectByrId(object.getInt("rId"));
+        List<ExaminationApplication> examinationApplications = examinationApplicationMapper.selectByrId(object.getInt("rId"));
+        for (ExaminationApplication examinationApplication: examinationApplications){
+            examinationApplication.setExamnationItem(examnationitemMapper.selectById(examinationApplication.geteIId()));
+        }
+        return examinationApplications;
     }
 }

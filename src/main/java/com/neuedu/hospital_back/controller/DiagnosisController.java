@@ -32,7 +32,7 @@ public class DiagnosisController {
         return diagnosisService.insertDiagnosisTypes(object);
     }
 
-    @PostMapping("/DeleteExaminationApplication")
+    @PostMapping("/deleteExaminationApplication")
     public boolean DeleteExaminationApplication(@RequestBody JSONObject object) {
         return examinationApplicationService.DeleteExaminationApplication(object);
     }

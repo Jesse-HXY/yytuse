@@ -9,6 +9,15 @@ public class ExaminationApplication {
     private String eAStatus;
     private int rId;
     private String eAResult;
+    private ExamnationItem examnationItem;
+
+    public ExamnationItem getExamnationItem() {
+        return examnationItem;
+    }
+
+    public void setExamnationItem(ExamnationItem examnationItem) {
+        this.examnationItem = examnationItem;
+    }
 
     public String geteAResult() {
         return eAResult;

@@ -1,9 +1,13 @@
 package com.neuedu.hospital_back.mapper;
 
-import com.neuedu.hospital_back.po.ExamnationItem;import org.apache.ibatis.annotations.Param;import java.util.List;
+import com.neuedu.hospital_back.po.ExamnationItem;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface ExamnationitemMapper {
-    int deleteByPrimaryKey(Integer eIId);
+
+    int deleteByPrimaryKey(int eIId);
 
     int insert(ExamnationItem record);
 
@@ -11,9 +15,11 @@ public interface ExamnationitemMapper {
 
     int getExamnationItemCount();
 
-    List<ExamnationItem> selectExamnationItemByeIName(@Param("eIName") String eIName,@Param("recordType") String recordType);
+    List<ExamnationItem> selectExamnationItemByeIName(@Param("eIName") String eIName, @Param("recordType") String recordType);
 
     List<ExamnationItem> selectExamnationItem(ExamnationItem examnationItem);
+
+    ExamnationItem selectById(int eIId);
 
     List<ExamnationItem> selectAllExamnationItem();
 
