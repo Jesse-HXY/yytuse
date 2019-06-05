@@ -12,6 +12,11 @@ public interface MedicineMapper {
 
     int updateByPrimaryKeySelective(Medicine record);
 
+    int getMedicineCount();
+
+    List<Medicine> getMedicineByPage(@Param("begin")int begin, @Param("pageSize")int pageSize);
+
+
     List<Medicine> selectMedicineByMName(@Param("mName")String mName,@Param("mType")String mType);
 
     List<Medicine> selectMedicineByCondition(Medicine medicine);

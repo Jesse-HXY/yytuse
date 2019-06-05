@@ -64,6 +64,29 @@
      <where>
        <if test="mName != null and mName != ''">mName like "%"#{mName}"%"</if>
        <if test="mType != null and mType != ''">and mType like "%"#{mType}"%" </if>
+       <if test="mCode != null and mCode != ''">
+        and mCode = #{mCode,jdbcType=VARCHAR}
+       </if>
+       <if test="mSpell != null and mSpell != ''">
+       and  mSpell = #{mSpell,jdbcType=VARCHAR}
+       </if>
+       <if test="mSpecification != null and mSpecification != ''">
+       and  mSpecification = #{mSpecification,jdbcType=VARCHAR}
+       </if>
+       <if test="mUnit != null and mUnit != ''">
+        and mUnit = #{mUnit,jdbcType=VARCHAR}
+       </if>
+       <if test="mProducer != null and mProducer != ''">
+       and  mProducer = #{mProducer,jdbcType=VARCHAR}
+       </if>
+       <if test="mFee != null">
+        and mFee = #{mFee,jdbcType=DOUBLE}
+       </if>
      </where>
   </select>
+  <select id="getMedicineCount" resultType="int"> select count(*) from medicine</select>
+  <select id="getMedicineByPage" resultType="com.neuedu.hospital_back.po.Medicine">
+select  mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer, mType, mFee
+from medicine limit #{begin}, #{pageSize}
+</select>
 </mapper>
