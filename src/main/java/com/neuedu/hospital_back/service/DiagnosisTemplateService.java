@@ -64,7 +64,7 @@ public class DiagnosisTemplateService{
        diagnosisTemplate.setDiaType(object.getString("diaType"));
         int result= diagnosisTemplateMapper.insert(diagnosisTemplate);
         Integer datId=diagnosisTemplate.getDatId();
-        List<Integer> list=object.getJSONArray("mIds");
+        List<JSONObject> list=object.getJSONArray("diagnosisTemplateMedicines");
         if(datScope.equals("个人")){
             DiagnosisTemplateUser diagnosisTemplateUser=new DiagnosisTemplateUser();
             diagnosisTemplateUser.setDatId(datId);
@@ -78,7 +78,10 @@ public class DiagnosisTemplateService{
         }
         for(int i=0;i<list.size();i++){
             DiagnosisTemplateMedicine d=new DiagnosisTemplateMedicine();
-            d.setmId(list.get(i));
+            d.setmId(list.get(i).getInt("mId"));
+            d.setDosage(list.get(i).getString("dosage"));
+            d.setUsage(list.get(i).getString("usage"));
+            d.setTimes(list.get(i).getString("times"));
             d.setDatId(datId);
             diagnosisTemplateMedicineMapper.insert(d);
         }

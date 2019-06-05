@@ -9,7 +9,7 @@ public class Medicine {
 
     private String mSpell;
 
-    private String mSepcification;
+    private String mSpecification;
 
     private String mUnit;
 
@@ -18,6 +18,36 @@ public class Medicine {
     private String mType;
 
     private Double mFee;
+
+    private String usage;
+
+    private String dosage;
+
+    private String times;
+
+    public String getUsage() {
+        return usage;
+    }
+
+    public void setUsage(String usage) {
+        this.usage = usage;
+    }
+
+    public String getDosage() {
+        return dosage;
+    }
+
+    public void setDosage(String dosage) {
+        this.dosage = dosage;
+    }
+
+    public String getTimes() {
+        return times;
+    }
+
+    public void setTimes(String times) {
+        this.times = times;
+    }
 
     public Integer getmId() {
         return mId;
@@ -51,12 +81,12 @@ public class Medicine {
         this.mSpell = mSpell;
     }
 
-    public String getmSepcification() {
-        return mSepcification;
+    public String getmSpecification() {
+        return mSpecification;
     }
 
-    public void setmSepcification(String mSepcification) {
-        this.mSepcification = mSepcification;
+    public void setmSpecification(String mSpecification) {
+        this.mSpecification = mSpecification;
     }
 
     public String getmUnit() {

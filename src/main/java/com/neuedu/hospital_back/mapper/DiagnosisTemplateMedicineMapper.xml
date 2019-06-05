@@ -4,8 +4,8 @@
 
   <insert id="insert" keyColumn="diaT_M" keyProperty="diaT_M" parameterType="com.neuedu.hospital_back.po.DiagnosisTemplateMedicine" useGeneratedKeys="true">
 
-    insert into diagnosistemplate_medicine (mId, datId)
-    values (#{mId,jdbcType=INTEGER}, #{datId,jdbcType=INTEGER})
+    insert into diagnosistemplate_medicine (mId, datId,usage,dosage,times)
+    values (#{mId,jdbcType=INTEGER}, #{datId,jdbcType=INTEGER},#{usage},#{dosage},#{times})
   </insert>
     <delete id="deleteBydatId">
       delete from diagnosistemplate_medicine where datId=#{datId}
