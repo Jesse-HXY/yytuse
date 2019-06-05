@@ -48,7 +48,7 @@
   </select>
 
   <select id="selectMedicineBydatId" resultType="com.neuedu.hospital_back.po.Medicine">
-    select  medicine.mId, mCode, mName, mSpell, mSepcification, mUnit, mProducer, mType, mFee from medicine,diagnosistemplate_medicine
+    select  medicine.mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer, mType, mFee,usage,times,dosage from medicine,diagnosistemplate_medicine
     where datId=#{datId} and medicine.mId = diagnosistemplate_medicine.mId
   </select>
   <select id="selectDiagnosisTemplateBydId" resultType="com.neuedu.hospital_back.po.DiagnosisTemplate">
