@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.hospital_back.mapper.ExaminationApplicationMapper">
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="eAId" keyProperty="eAId" >
+        insert into examinationapplication (eIName, eISpecification, eIFee, eIFeeType, eICode, rId)
+        values (#{eIName}, #{eISpecification}, #{eIFee}, #{eIFeeType}, #{eICode}, #{rId})
+    </insert>
+
+    <select id="selectById" resultType="com.neuedu.hospital_back.po.ExaminationApplication">
+        select eAId, eIName, eISpecification, eIFee, eIFeeType, eICode ,rId from examinationapplication where eAId = #{eAId}
+    </select>
+</mapper>

@@ -7,9 +7,7 @@
     where eIId = #{eIId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="eIId" keyProperty="eIId" parameterType="com.neuedu.hospital_back.po.ExamnationItem" useGeneratedKeys="true">
-    insert into examnationItem ( eIName, eISpecification,
-      eIFee, eIFeeType, eICode
-      )
+    insert into examnationItem ( eIName, eISpecification, eIFee, eIFeeType, eICode)
     values (#{eIName,jdbcType=VARCHAR}, #{eISpecification,jdbcType=VARCHAR},
       #{eIFee,jdbcType=DOUBLE}, #{eIFeeType,jdbcType=VARCHAR}, #{eICode,jdbcType=VARCHAR}
       )

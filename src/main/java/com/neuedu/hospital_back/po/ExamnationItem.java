@@ -13,6 +13,18 @@ public class ExamnationItem {
 
     private String eICode;
 
+    @Override
+    public String toString() {
+        return "ExamnationItem{" +
+                "eIId=" + eIId +
+                ", eIName='" + eIName + '\'' +
+                ", eISpecification='" + eISpecification + '\'' +
+                ", eIFee=" + eIFee +
+                ", eIFeeType='" + eIFeeType + '\'' +
+                ", eICode='" + eICode + '\'' +
+                '}';
+    }
+
     public String geteISpecification() {
         return eISpecification;
     }
