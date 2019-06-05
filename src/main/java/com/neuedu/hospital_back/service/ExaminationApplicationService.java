@@ -37,14 +37,26 @@ public class ExaminationApplicationService {
         String eAStatus = object.getString("eAStatus");
         int result = 0;
         for (int eAId : eAIds) {
-            result += examinationApplicationMapper.updateStatus(eAId, eAStatus);
+            if (eAStatus.equals("开立")) {
+                result += examinationApplicationMapper.updateStatusAndTime(eAId, eAStatus, System.currentTimeMillis() / 1000);
+            } else {
+                result += examinationApplicationMapper.updateStatus(eAId, eAStatus);
+            }
         }
         return result == eAIds.size();
     }
 
-    public List<ExaminationApplication> selectByrId(JSONObject object){
+    public List<ExaminationApplication> selectByrId(JSONObject object) {
         List<ExaminationApplication> examinationApplications = examinationApplicationMapper.selectByrId(object.getInt("rId"));
-        for (ExaminationApplication examinationApplication: examinationApplications){
+        for (ExaminationApplication examinationApplication : examinationApplications) {
+            examinationApplication.setExamnationItem(examnationitemMapper.selectById(examinationApplication.geteIId()));
+        }
+        return examinationApplications;
+    }
+
+    public List<ExaminationApplication> selectByrIdAndStatus(JSONObject object) {
+        List<ExaminationApplication> examinationApplications = examinationApplicationMapper.selectByrIdAndStatus(object.getInt("rId"), object.getString("eAStatus"));
+        for (ExaminationApplication examinationApplication : examinationApplications) {
             examinationApplication.setExamnationItem(examnationitemMapper.selectById(examinationApplication.geteIId()));
         }
         return examinationApplications;

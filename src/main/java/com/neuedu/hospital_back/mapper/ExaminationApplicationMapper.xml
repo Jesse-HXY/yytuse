@@ -17,11 +17,20 @@
         select eAId, eAName, eIId, dId, eAStatus, rId, eAResult from examinationapplication where rId = #{rId}
     </select>
 
+    <select id="selectByrIdAndStatus" resultType="com.neuedu.hospital_back.po.ExaminationApplication">
+        select eAId, eAName, eIId, dId, eAStatus, rId, eAResult from examinationapplication where rId = #{rId} and eAStatus = #{eAStatus}
+    </select>
+
+
     <delete id="delete">
         delete from examinationapplication where eAId = #{eAId}
     </delete>
 
     <update id="updateStatus">
         update examinationapplication set eAStatus = #{eAStatus} where eAId = #{eAId}
+    </update>
+
+    <update id="updateStatusAndTime">
+        update examinationapplication set eAStatus = #{eAStatus}, beginTime = #{beginTime} where eAId = #{eAId}
     </update>
 </mapper>

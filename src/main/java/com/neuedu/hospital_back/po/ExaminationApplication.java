@@ -10,6 +10,15 @@ public class ExaminationApplication {
     private int rId;
     private String eAResult;
     private ExamnationItem examnationItem;
+    private long beginTime;
+
+    public long getBeginTime() {
+        return beginTime;
+    }
+
+    public void setBeginTime(long beginTime) {
+        this.beginTime = beginTime;
+    }
 
     public ExamnationItem getExamnationItem() {
         return examnationItem;

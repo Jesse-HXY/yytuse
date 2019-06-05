@@ -48,7 +48,12 @@ public class DiagnosisController {
     }
 
     @PostMapping("/selectByrId")
-    public List<ExaminationApplication> selectByrId(@RequestBody JSONObject object){
+    public List<ExaminationApplication> selectByrId(@RequestBody JSONObject object) {
         return examinationApplicationService.selectByrId(object);
+    }
+
+    @PostMapping("/selectByrIdAndStatus")
+    public List<ExaminationApplication> selectByrIdAndStatus(@RequestBody JSONObject object) {
+        return examinationApplicationService.selectByrIdAndStatus(object);
     }
 }
