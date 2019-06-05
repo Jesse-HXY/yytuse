@@ -13,35 +13,35 @@
   <insert id="insert" keyColumn="mId" keyProperty="mId" parameterType="com.neuedu.hospital_back.po.Medicine" useGeneratedKeys="true">
     
     insert into medicine (mCode, mName, mSpell, 
-      mSpecification, mUnit, mProducer,
+      mSpecification, mUnit, mProducer, 
       mType, mFee)
     values (#{mCode,jdbcType=VARCHAR}, #{mName,jdbcType=VARCHAR}, #{mSpell,jdbcType=VARCHAR}, 
-      #{mSpecification,jdbcType=VARCHAR}, #{mUnit,jdbcType=VARCHAR}, #{mProducer,jdbcType=VARCHAR},
+      #{mSpecification,jdbcType=VARCHAR}, #{mUnit,jdbcType=VARCHAR}, #{mProducer,jdbcType=VARCHAR}, 
       #{mType,jdbcType=VARCHAR}, #{mFee,jdbcType=DOUBLE})
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.Medicine">
     
     update medicine
     <set>
-      <if test="mCode != null">
+      <if test="mCode != null and mCode != ''">
         mCode = #{mCode,jdbcType=VARCHAR},
       </if>
-      <if test="mName != null">
+      <if test="mName != null and mName != ''">
         mName = #{mName,jdbcType=VARCHAR},
       </if>
-      <if test="mSpell != null">
+      <if test="mSpell != null and mSpell != ''">
         mSpell = #{mSpell,jdbcType=VARCHAR},
       </if>
-      <if test="mSpecification != null">
+      <if test="mSpecification != null and mSpecification != ''">
         mSpecification = #{mSpecification,jdbcType=VARCHAR},
       </if>
-      <if test="mUnit != null">
+      <if test="mUnit != null and mUnit != ''">
         mUnit = #{mUnit,jdbcType=VARCHAR},
       </if>
-      <if test="mProducer != null">
+      <if test="mProducer != null and mProducer != ''">
         mProducer = #{mProducer,jdbcType=VARCHAR},
       </if>
-      <if test="mType != null">
+      <if test="mType != null and mType != ''">
         mType = #{mType,jdbcType=VARCHAR},
       </if>
       <if test="mFee != null">
@@ -57,5 +57,13 @@
       <if test="mName != null and mName != ''">mName like "%"#{mName}"%"</if>
       <if test="mType != null and mType != ''">and mType like "%"#{mType}"%" </if>
     </where>
+  </select>
+
+  <select id="selectMedicineByCondition" resultType="com.neuedu.hospital_back.po.Medicine">
+     select mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer, mType, mFee from medicine
+     <where>
+       <if test="mName != null and mName != ''">mName like "%"#{mName}"%"</if>
+       <if test="mType != null and mType != ''">and mType like "%"#{mType}"%" </if>
+     </where>
   </select>
 </mapper>

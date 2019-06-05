@@ -27,7 +27,11 @@ public class MedicineService{
     public List<Medicine> selectMedicineByMName(JSONObject object){
         return medicineMapper.selectMedicineByMName(object.getString("mName"),object.getString("mType"));
     }
-    
+
+    public List<Medicine> selectMedicineByCondition(Medicine medicine){
+        return medicineMapper.selectMedicineByCondition(medicine);
+    }
+
     public int updateByPrimaryKeySelective(Medicine record) {
         return medicineMapper.updateByPrimaryKeySelective(record);
     }
