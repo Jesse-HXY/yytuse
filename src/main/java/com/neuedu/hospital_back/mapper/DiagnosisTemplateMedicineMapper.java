@@ -6,4 +6,6 @@ public interface DiagnosisTemplateMedicineMapper {
     int insert(DiagnosisTemplateMedicine record);
 
     int deleteBydatId(Integer datId);
+
+    int updateBydatIdAndmId(DiagnosisTemplateMedicine record);
 }

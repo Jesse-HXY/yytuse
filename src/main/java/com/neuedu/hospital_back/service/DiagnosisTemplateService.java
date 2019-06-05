@@ -162,4 +162,12 @@ public class DiagnosisTemplateService{
         return diagnosisTemplateMapper.updateByPrimaryKeySelective(record);
     }
 
+    public int updateDiagnosisTemplateMedicine(DiagnosisTemplateMedicine m){
+        return diagnosisTemplateMedicineMapper.updateBydatIdAndmId(m);
+        /*DiagnosisTemplateMedicine d=new DiagnosisTemplateMedicine();
+        d.setDatId(object.getInt("datId"));
+        d.setmId(object.getInt("mId"));
+        d.setDosage(object.getString("dosage"));*/
+
+    }
 }

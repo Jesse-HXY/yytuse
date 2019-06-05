@@ -1,6 +1,7 @@
 package com.neuedu.hospital_back.controller;
 
 import com.neuedu.hospital_back.po.DiagnosisTemplate;
+import com.neuedu.hospital_back.po.DiagnosisTemplateMedicine;
 import com.neuedu.hospital_back.po.Medicine;
 import com.neuedu.hospital_back.service.DiagnosisTemplateService;
 import com.neuedu.hospital_back.service.MedicineService;
@@ -70,4 +71,8 @@ public class MedicineController {
         return diagnosisTemplateService.deleteByPrimaryKey(object);
     }
 
+    @PostMapping("/updateDiagnosisTemplateMedicine")
+    public int updateDiagnosisTemplateMedicine(@RequestBody DiagnosisTemplateMedicine d){
+        return diagnosisTemplateService.updateDiagnosisTemplateMedicine(d);
+    }
 }
