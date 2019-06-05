@@ -5,11 +5,19 @@
 <mapper namespace="com.neuedu.hospital_back.mapper.ExaminationApplicationMapper">
 
     <insert id="insert" useGeneratedKeys="true" keyColumn="eAId" keyProperty="eAId" >
-        insert into examinationapplication (eIName, eISpecification, eIFee, eIFeeType, eICode, rId)
-        values (#{eIName}, #{eISpecification}, #{eIFee}, #{eIFeeType}, #{eICode}, #{rId})
+        insert into examinationapplication (eAName, eIId, dId, eAStatus, rId)
+        values (#{eAName}, #{eIId}, #{dId}, #{eAStatus}, #{rId})
     </insert>
 
     <select id="selectById" resultType="com.neuedu.hospital_back.po.ExaminationApplication">
-        select eAId, eIName, eISpecification, eIFee, eIFeeType, eICode ,rId from examinationapplication where eAId = #{eAId}
+        select eAId, eAName, eIId, dId, eAStatus, rId from examinationapplication where eAId = #{eAId}
     </select>
+
+    <delete id="delete">
+        delete from examinationapplication where eAId = #{eAId}
+    </delete>
+
+    <update id="updateStatus">
+        update examinationapplication set eAStatus = #{eAStatus} where eAId = #{eAId}
+    </update>
 </mapper>

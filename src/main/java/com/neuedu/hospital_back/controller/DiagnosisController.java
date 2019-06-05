@@ -31,8 +31,18 @@ public class DiagnosisController {
         return diagnosisService.insertDiagnosisTypes(object);
     }
 
+    @PostMapping("/DeleteExaminationApplication")
+    public boolean DeleteExaminationApplication(@RequestBody JSONObject object) {
+        return examinationApplicationService.DeleteExaminationApplication(object);
+    }
+
     @PostMapping("/insertAndGet")
     public ExaminationApplication insertAndGet(@RequestBody ExaminationApplication examinationApplication) {
         return examinationApplicationService.insertAndGet(examinationApplication);
+    }
+
+    @PostMapping("/updateStatus")
+    public boolean updateStatus(@RequestBody JSONObject object) {
+        return examinationApplicationService.updateStatus(object);
     }
 }
