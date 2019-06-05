@@ -19,18 +19,18 @@ public class Medicine {
 
     private Double mFee;
 
-    private String usage;
+    private String instruction;
 
     private String dosage;
 
     private String times;
 
-    public String getUsage() {
-        return usage;
+    public String getinstruction() {
+        return instruction;
     }
 
-    public void setUsage(String usage) {
-        this.usage = usage;
+    public void setinstruction(String instruction) {
+        this.instruction = instruction;
     }
 
     public String getDosage() {

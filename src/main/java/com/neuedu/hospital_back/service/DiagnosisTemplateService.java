@@ -52,17 +52,15 @@ public class DiagnosisTemplateService{
         return result==1;
 
     }
-
-    
     public boolean insert(JSONObject object) {
 
         DiagnosisTemplate diagnosisTemplate =new DiagnosisTemplate();
         diagnosisTemplate.setDatName(object.getString("datName"));
-       long datTime=object.getInt("datTime")/1000;
-       diagnosisTemplate.setDatTime(datTime);
-       String datScope=object.getString("datScope");
-       diagnosisTemplate.setDatScope(datScope);
-       diagnosisTemplate.setDiaType(object.getString("diaType"));
+        long datTime=object.getInt("datTime")/1000;
+        diagnosisTemplate.setDatTime(datTime);
+        String datScope=object.getString("datScope");
+        diagnosisTemplate.setDatScope(datScope);
+        diagnosisTemplate.setDiaType(object.getString("diaType"));
         int result= diagnosisTemplateMapper.insert(diagnosisTemplate);
         Integer datId=diagnosisTemplate.getDatId();
         JSONArray jsonArray = object.getJSONArray("diagnosisTemplateMedicines");
@@ -85,6 +83,41 @@ public class DiagnosisTemplateService{
         }
         return result==1;
     }
+    
+//    public boolean insert(JSONObject object) {
+//
+//        DiagnosisTemplate diagnosisTemplate =new DiagnosisTemplate();
+//        diagnosisTemplate.setDatName(object.getString("datName"));
+//       long datTime=object.getInt("datTime")/1000;
+//       diagnosisTemplate.setDatTime(datTime);
+//       String datScope=object.getString("datScope");
+//       diagnosisTemplate.setDatScope(datScope);
+//       diagnosisTemplate.setDiaType(object.getString("diaType"));
+//        int result= diagnosisTemplateMapper.insert(diagnosisTemplate);
+//        Integer datId=diagnosisTemplate.getDatId();
+//        List<JSONObject> list=object.getJSONArray("diagnosisTemplateMedicines");
+//        if(datScope.equals("个人")){
+//            DiagnosisTemplateUser diagnosisTemplateUser=new DiagnosisTemplateUser();
+//            diagnosisTemplateUser.setDatId(datId);
+//            diagnosisTemplateUser.setuId(object.getInt("uId"));
+//            result= diagnosisTemplateUserMapper.insert(diagnosisTemplateUser);
+//        }else if(datScope.equals("科室")){
+//            DiagnosisTemplateDepartment diagnosisTemplateDepartment=new DiagnosisTemplateDepartment();
+//            diagnosisTemplateDepartment.setDatId(datId);
+//            diagnosisTemplateDepartment.setdId(object.getString("dId"));
+//            result= diagnosisTemplateDepartmentMapper.insert(diagnosisTemplateDepartment);
+//        }
+//        for(int i=0;i<list.size();i++){
+//            DiagnosisTemplateMedicine d=new DiagnosisTemplateMedicine();
+//            d.setmId(list.get(i).getInt("mId"));
+//            d.setDosage(list.get(i).getString("dosage"));
+//            d.setinstruction(list.get(i).getString("instruction"));
+//            d.setTimes(list.get(i).getString("times"));
+//            d.setDatId(datId);
+//            diagnosisTemplateMedicineMapper.insert(d);
+//        }
+//        return result==1;
+//    }
 
     public List<DiagnosisTemplate> selectByCondition(JSONObject object){
         String diaType=object.getString("diaType");

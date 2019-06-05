@@ -8,19 +8,12 @@ public class DiagnosisTemplateMedicine {
 
     private Integer datId;
 
-    private String usage;
+    private String instruction;
 
     private String dosage;
 
     private String times;
 
-    public String getUsage() {
-        return usage;
-    }
-
-    public void setUsage(String usage) {
-        this.usage = usage;
-    }
 
     public String getDosage() {
         return dosage;
@@ -38,6 +31,13 @@ public class DiagnosisTemplateMedicine {
         this.times = times;
     }
 
+    public String getinstruction() {
+        return instruction;
+    }
+
+    public void setinstruction(String instruction) {
+        this.instruction = instruction;
+    }
     public Integer getDiaT_M() {
         return diaT_M;
     }
