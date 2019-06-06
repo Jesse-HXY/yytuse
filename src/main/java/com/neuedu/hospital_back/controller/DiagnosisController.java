@@ -60,22 +60,32 @@ public class DiagnosisController {
     }
 
     @PostMapping("/insertDiagnosis")
-    public Diagnosis insertDiagnosis(JSONObject object){
+    public Diagnosis insertDiagnosis(@RequestBody JSONObject object){
         return diagnosisService.insertDiagnosis(object);
     }
 
     @PostMapping("/insertDiagnosisMedicine")
-    public boolean insertDiagnosisMedicine(JSONObject object){
+    public boolean insertDiagnosisMedicine(@RequestBody JSONObject object){
         return diagnosisService.insertDiagnosisMedicine(object);
     }
 
     @PostMapping("/updateDiagnosisState")
-    public boolean updateDiagnosis(JSONObject object){
+    public boolean updateDiagnosis(@RequestBody JSONObject object){
         return diagnosisService.updateState(object);
     }
 
     @PostMapping("/deleteDiagnosis")
-    public boolean deleteDiagnosis(JSONObject object){
+    public boolean deleteDiagnosis(@RequestBody JSONObject object){
         return diagnosisService.deleteByPrimaryKey(object);
+    }
+
+    @RequestMapping("/selectByCondition")
+    public List<Diagnosis> selectByCondition(Diagnosis object){
+        return diagnosisService.selectByCondition(object);
+    }
+
+    @PostMapping("/selectMedicineDetail")
+    public Diagnosis selectMedicineDetail(JSONObject object){
+        return diagnosisService.getDetail(object);
     }
 }

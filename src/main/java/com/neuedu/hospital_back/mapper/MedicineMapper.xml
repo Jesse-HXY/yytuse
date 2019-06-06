@@ -65,10 +65,10 @@
        <if test="mName != null and mName != ''">mName like "%"#{mName}"%"</if>
        <if test="mType != null and mType != ''">and mType like "%"#{mType}"%" </if>
        <if test="mCode != null and mCode != ''">
-        and mCode = #{mCode,jdbcType=VARCHAR}
+        and mCode like "%"#{mCode,jdbcType=VARCHAR}"%"
        </if>
        <if test="mSpell != null and mSpell != ''">
-       and  mSpell = #{mSpell,jdbcType=VARCHAR}
+       and  mSpell  like "%"#{mSpell,jdbcType=VARCHAR}"%"
        </if>
        <if test="mSpecification != null and mSpecification != ''">
        and  mSpecification = #{mSpecification,jdbcType=VARCHAR}

@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.hospital_back.mapper.DiagnosisMedicineMapper">
-  <resultMap id="BaseResultMap" type="com.neuedu.hospital_back.po.DiagnosisMedicine">
-    <!--@mbg.generated-->
-    <id column="dia_M_Id" jdbcType="INTEGER" property="dia_M_Id" />
-    <result column="mId" jdbcType="INTEGER" property="mId" />
-    <result column="diaId" jdbcType="INTEGER" property="diaId" />
-    <result column="instruction" jdbcType="VARCHAR" property="instruction" />
-    <result column="dosage" jdbcType="VARCHAR" property="dosage" />
-    <result column="times" jdbcType="VARCHAR" property="times" />
-  </resultMap>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from diagnosis_medicine
     where diaId=#{diaId}
   </delete>
   <insert id="insert" keyColumn="dia_M_Id" keyProperty="dia_M_Id" parameterType="com.neuedu.hospital_back.po.DiagnosisMedicine" useGeneratedKeys="true">
     insert into diagnosis_medicine (mId, diaId, instruction, 
-      dosage, times)
+      dosage, times,mAmount)
     values (#{mId,jdbcType=INTEGER}, #{diaId,jdbcType=INTEGER}, #{instruction,jdbcType=VARCHAR}, 
-      #{dosage,jdbcType=VARCHAR}, #{times,jdbcType=VARCHAR})
+      #{dosage,jdbcType=VARCHAR}, #{times,jdbcType=VARCHAR},#{mAmount})
   </insert>
-  <select id="getBydiaId" resultMap="BaseResultMap">
-    select  dia_M_Id, mId, diaId, instruction, dosage, times from diagnosis_medicine
+  <select id="getBydiaId" resultType="com.neuedu.hospital_back.po.DiagnosisMedicine">
+    select  dia_M_Id, mId, diaId, instruction, dosage, times,mAmount from diagnosis_medicine
     where diaId=#{diaId}
   </select>
 </mapper>

@@ -15,7 +15,9 @@
       #{createDate,jdbcType=BIGINT}, #{useDate,jdbcType=BIGINT}, #{diaState,jdbcType=VARCHAR}
       )
   </insert>
-    <select id="getUnnameCount" resultType="int">select (count *)from diagnosis </select>
+
+    <select id="getUnnameCount" resultType="int">select count(*) from diagnosis </select>
+
   <update id="update">
     update diagnosis
     <set>

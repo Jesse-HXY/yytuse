@@ -13,6 +13,16 @@ public class DiagnosisMedicine {
 
     private String times;
 
+    public Integer getmAmount() {
+        return mAmount;
+    }
+
+    public void setmAmount(Integer mAmount) {
+        this.mAmount = mAmount;
+    }
+
+    private Integer mAmount;
+
     public Integer getDia_M_Id() {
         return dia_M_Id;
     }

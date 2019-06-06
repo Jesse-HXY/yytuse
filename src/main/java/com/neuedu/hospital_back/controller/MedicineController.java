@@ -1,5 +1,6 @@
 package com.neuedu.hospital_back.controller;
 
+import com.neuedu.hospital_back.po.Diagnosis;
 import com.neuedu.hospital_back.po.DiagnosisTemplate;
 import com.neuedu.hospital_back.po.DiagnosisTemplateMedicine;
 import com.neuedu.hospital_back.po.Medicine;
@@ -75,4 +76,6 @@ public class MedicineController {
     public int updateDiagnosisTemplateMedicine(@RequestBody DiagnosisTemplateMedicine d){
         return diagnosisTemplateService.updateDiagnosisTemplateMedicine(d);
     }
+
+
 }
