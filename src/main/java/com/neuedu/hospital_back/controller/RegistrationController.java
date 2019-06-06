@@ -34,6 +34,12 @@ public class  RegistrationController {
        return registrationService.insertRegistration(registration);
     }
 
+    @PostMapping("/getRegistrationInfoByrIdOrPName")
+    public List<RegistrationInfo> getRegistrationInfoByrIdOrPName(@RequestBody JSONObject object){
+        return registrationService.getRegistrationInfoByrIdOrPName(object);
+    }
+
+
     @PostMapping("/getRegistrationInfoByuId")
     public List<RegistrationInfo> getRegistrationInfo(@RequestBody JSONObject object){
        return registrationService.getRegistrationInfo(object);

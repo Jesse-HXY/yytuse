@@ -33,7 +33,7 @@ public class RegistrationService {
     }
 
     public int insertRegistration(Registration registration) {
-        long rDate=registration.getrDate()/1000;
+        long rDate = registration.getrDate() / 1000;
         registration.setrDate(rDate);
         return registrationMapper.insertRegistration(registration);
     }
@@ -43,29 +43,29 @@ public class RegistrationService {
         return patientMapper.getById(object.getString("pId"));
     }
 
-    public List<RegistrationInfo> getRegistrationInfo(JSONObject object){
-        String rStatus=object.getString("rStatus");
+    public List<RegistrationInfo> getRegistrationInfo(JSONObject object) {
+        String rStatus = object.getString("rStatus");
 
 
-        if (rStatus.equals("诊毕")){
-         return registrationMapper.getAlreadyDiagnosisByuId(object.getInt("uId"),object.getString("pName"));
-        }else{
-            return registrationMapper.getNotDiagnosisByuId(object.getInt("uId"),object.getString("pName"));
+        if (rStatus.equals("诊毕")) {
+            return registrationMapper.getAlreadyDiagnosisByuId(object.getInt("uId"), object.getString("pName"));
+        } else {
+            return registrationMapper.getNotDiagnosisByuId(object.getInt("uId"), object.getString("pName"));
         }
 
     }
 
-    public List<RegistrationInfo> getRegistrationInfoByUIdAndDId(JSONObject object){
-        String rStatus=object.getString("rStatus");
-        if (rStatus.equals("诊毕")){
-            return registrationMapper.getAlreadyDiagnosisByuIdAndDId(object.getInt("uId"),object.getString("pName"),object.getString("dId"));
-        }else{
-            return registrationMapper.getNotDiagnosisByuIdAndDId(object.getInt("uId"),object.getString("pName"),object.getString("dId"));
+    public List<RegistrationInfo> getRegistrationInfoByUIdAndDId(JSONObject object) {
+        String rStatus = object.getString("rStatus");
+        if (rStatus.equals("诊毕")) {
+            return registrationMapper.getAlreadyDiagnosisByuIdAndDId(object.getInt("uId"), object.getString("pName"), object.getString("dId"));
+        } else {
+            return registrationMapper.getNotDiagnosisByuIdAndDId(object.getInt("uId"), object.getString("pName"), object.getString("dId"));
         }
     }
 
-    public List<RegistrationInfo> getRegistrationInfoByrId(JSONObject object){
-        List<RegistrationInfo> registrationInfos=registrationMapper.getRegistrationInfoByrId(object.getInt("rId"));
+    public List<RegistrationInfo> getRegistrationInfoByrId(JSONObject object) {
+        List<RegistrationInfo> registrationInfos = registrationMapper.getRegistrationInfoByrId(object.getInt("rId"));
         for (RegistrationInfo registrationInfo : registrationInfos) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String rTime = sdf.format(new Date(registrationInfo.getrDate()));
@@ -78,35 +78,26 @@ public class RegistrationService {
                 registrationInfo.setOkToWithdraw(false);
             }
         }
-        return  registrationInfos;
+        return registrationInfos;
     }
 
-    public boolean timeCheck(String MorningOrEvening ){
-        if(MorningOrEvening.equals("上午")){
-            if(MorningOrEvening(System.currentTimeMillis()).equals("上午")){
-                return true;
-            }else {
-                return false;
-            }
-
-        }else {
-            return true;
-        }
+    public List<RegistrationInfo> getRegistrationInfoByrIdOrPName(JSONObject object) {
+        return registrationMapper.getRegistrationInfoByrIdOrPName(object.getInt("rId"), object.getString("pName"));
     }
-    public String MorningOrEvening(long date){
-        SimpleDateFormat sdf=new SimpleDateFormat("HH");
-        String time=sdf.format(new Date(date));
-        int a=Integer.parseInt(time);
-        if(a>=12){
+
+    public String MorningOrEvening(long date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH");
+        String time = sdf.format(new Date(date));
+        int a = Integer.parseInt(time);
+        if (a >= 12) {
             return "下午";
-        }else {
+        } else {
             return "上午";
         }
     }
 
-    public boolean updateRStatus(JSONObject object){
-       int result= registrationMapper.updateRegistration(object.getInt("rId"),object.getString("rStatus"));
-        return result==1;
+    public boolean updateRStatus(JSONObject object) {
+        return registrationMapper.updateRegistration(object.getInt("rId"), object.getString("rStatus")) == 1;
     }
 }
 

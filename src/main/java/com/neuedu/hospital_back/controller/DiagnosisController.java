@@ -5,7 +5,6 @@ import com.neuedu.hospital_back.po.ExaminationApplication;
 import com.neuedu.hospital_back.po.MedicalRecord;
 import com.neuedu.hospital_back.service.DiagnosisService;
 import com.neuedu.hospital_back.service.ExaminationApplicationService;
-import jdk.nashorn.internal.scripts.JS;
 import net.sf.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
