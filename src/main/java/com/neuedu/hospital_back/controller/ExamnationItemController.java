@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/examnationItem")
 public class ExamnationItemController {
+
     @Resource
     private ExamnationitemService examnationitemService;
 

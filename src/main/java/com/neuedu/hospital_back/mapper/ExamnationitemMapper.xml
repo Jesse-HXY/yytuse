@@ -2,63 +2,64 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.hospital_back.mapper.ExamnationitemMapper">
 
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from examnationItem
     where eIId = #{eIId,jdbcType=INTEGER}
   </delete>
 
-  <insert id="insert" keyColumn="eIId" keyProperty="eIId" parameterType="com.neuedu.hospital_back.po.ExamnationItem" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="eIId" keyProperty="eIId" parameterType="com.neuedu.hospital_back.po.ExamnationItem"
+            useGeneratedKeys="true">
     insert into examnationItem ( eIName, eISpecification, eIFee, eIFeeType, eICode)
     values (#{eIName,jdbcType=VARCHAR}, #{eISpecification,jdbcType=VARCHAR},
       #{eIFee,jdbcType=DOUBLE}, #{eIFeeType,jdbcType=VARCHAR}, #{eICode,jdbcType=VARCHAR}
       )
   </insert>
 
-  <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.ExamnationItem">
-    update examnationItem
-    <set>
-      <if test="eIName != null and eIName != ''">
-          eIName = #{eIName,jdbcType=VARCHAR},
-      </if>
-      <if test="eISpecification != null and eISpecification != ''">
-          eISpecification = #{eISpecification,jdbcType=VARCHAR},
-      </if>
-      <if test="eIFee != null and eIFee != ''">
-          eIFee = #{eIFee,jdbcType=DOUBLE},
-      </if>
-      <if test="eIFeeType != null and eIFeeType != ''">
-          eIFeeType = #{eIFeeType,jdbcType=VARCHAR},
-      </if>
-      <if test="eICode != null and eICode != ''">
-          eICode = #{eICode,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where eIId = #{eIId,jdbcType=INTEGER}
-  </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.ExamnationItem">
+        update examnationItem
+        <set>
+            <if test="eIName != null and eIName != ''">
+                eIName = #{eIName,jdbcType=VARCHAR},
+            </if>
+            <if test="eISpecification != null and eISpecification != ''">
+                eISpecification = #{eISpecification,jdbcType=VARCHAR},
+            </if>
+            <if test="eIFee != null and eIFee != ''">
+                eIFee = #{eIFee,jdbcType=DOUBLE},
+            </if>
+            <if test="eIFeeType != null and eIFeeType != ''">
+                eIFeeType = #{eIFeeType,jdbcType=VARCHAR},
+            </if>
+            <if test="eICode != null and eICode != ''">
+                eICode = #{eICode,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where eIId = #{eIId,jdbcType=INTEGER}
+    </update>
 
-  <select id="selectExamnationItem" resultType="com.neuedu.hospital_back.po.ExamnationItem">
-    select eIId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationItem
-    <where>
-      <if test="eIId != null">
-        and eIId=#{eIId,jdbcType=INTEGER}
-      </if>
-      <if test="eIName != null and eIName != ''">
-       and  eIName = #{eIName,jdbcType=VARCHAR}
-      </if>
-      <if test="eISpecification != null and eISpecification != ''">
-     and  eISpecification = #{eISpecification,jdbcType=VARCHAR}
-      </if>
-      <if test="eIFee != null and eIFee != ''">
-      and  eIFee = #{eIFee,jdbcType=DOUBLE}
-      </if>
-      <if test="eIFeeType != null and eIFeeType != ''">
-       and  eIFeeType = #{eIFeeType,jdbcType=VARCHAR}
-      </if>
-      <if test="eICode != null and eICode != ''">
-       and  eICode = #{eICode,jdbcType=VARCHAR}
-      </if>
-    </where>
-  </select>
+    <select id="selectExamnationItem" resultType="com.neuedu.hospital_back.po.ExamnationItem">
+        select eIId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationItem
+        <where>
+            <if test="eIId != null">
+                and eIId=#{eIId,jdbcType=INTEGER}
+            </if>
+            <if test="eIName != null and eIName != ''">
+                and eIName = #{eIName,jdbcType=VARCHAR}
+            </if>
+            <if test="eISpecification != null and eISpecification != ''">
+                and eISpecification = #{eISpecification,jdbcType=VARCHAR}
+            </if>
+            <if test="eIFee != null and eIFee != ''">
+                and eIFee = #{eIFee,jdbcType=DOUBLE}
+            </if>
+            <if test="eIFeeType != null and eIFeeType != ''">
+                and eIFeeType = #{eIFeeType,jdbcType=VARCHAR}
+            </if>
+            <if test="eICode != null and eICode != ''">
+                and eICode = #{eICode,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
 
     <select id="selectExamnationItemByeIName" resultType="com.neuedu.hospital_back.po.ExamnationItem">
         select eIId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationItem
@@ -73,11 +74,11 @@
         select eIId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationItem where eIId = #{eIId}
     </select>
 
-  <select id="selectExamnationItemByPage" resultType="com.neuedu.hospital_back.po.ExamnationItem">
+    <select id="selectExamnationItemByPage" resultType="com.neuedu.hospital_back.po.ExamnationItem">
     select eIId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationItem  limit #{begin}, #{pageSize}
   </select>
 
-  <select id="getExamnationItemCount" resultType="integer">
+    <select id="getExamnationItemCount" resultType="integer">
     select count(*) from examnationItem
   </select>
 

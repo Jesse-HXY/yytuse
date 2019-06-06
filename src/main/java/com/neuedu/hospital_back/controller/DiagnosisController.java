@@ -23,7 +23,6 @@ public class DiagnosisController {
     private ExaminationApplicationService examinationApplicationService;
 
 
-
     @PostMapping("/insertMedicalRecord")
     public boolean insertMedicalRecord(@RequestBody MedicalRecord medicalRecord) {
         return diagnosisService.insertMedicalRecord(medicalRecord);
@@ -32,6 +31,11 @@ public class DiagnosisController {
     @PostMapping("/insertDiagnosisTypes")
     public boolean insertDiagnosisTypes(@RequestBody JSONObject object) {
         return diagnosisService.insertDiagnosisTypes(object);
+    }
+
+    @PostMapping("/getByrIdAndEIFeeType")
+    public List<ExaminationApplication> getByrIdAndEIFeeType(@RequestBody JSONObject object) {
+        return examinationApplicationService.getByrIdAndEIFeeType(object);
     }
 
     @PostMapping("/deleteExaminationApplication")

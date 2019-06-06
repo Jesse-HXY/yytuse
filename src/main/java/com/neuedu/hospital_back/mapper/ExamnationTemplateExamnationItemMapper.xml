@@ -4,30 +4,14 @@
   <sql id="Base_Column_List">
     eT_EI_Id, eTId, eIId
   </sql>
-<!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from examnationtemplate_examnationitem
-    where eT_EI_Id = #{eT_EI_Id,jdbcType=INTEGER}
-  </delete>-->
 
   <delete id="deleteByETId" parameterType="integer">
     delete from examnationtemplate_examnationitem
     where eTId=#{eTId}
   </delete>
+
   <insert id="insert" keyColumn="eT_EI_Id" keyProperty="eT_EI_Id" parameterType="com.neuedu.hospital_back.po.ExamnationTemplateExamnationItem" useGeneratedKeys="true">
     insert into examnationtemplate_examnationitem (eTId, eIId)
     values (#{eTId,jdbcType=INTEGER}, #{eIId,jdbcType=INTEGER})
   </insert>
-  <!--<update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.ExamnationTemplateExamnationItem">
-   
-    update examnationtemplate_examnationitem
-    <set>
-      <if test="eTId != null">
-        eTId = #{eTId,jdbcType=INTEGER},
-      </if>
-      <if test="eIId != null">
-        eIId = #{eIId,jdbcType=INTEGER},
-      </if>
-    </set>
-    where eT_EI_Id = #{eT_EI_Id,jdbcType=INTEGER}
-  </update>-->
 </mapper>

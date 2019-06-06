@@ -13,6 +13,8 @@ public interface ExaminationApplicationMapper {
 
     List<ExaminationApplication> selectByrId(int rId);
 
+    List<ExaminationApplication> selectByrIdAndDId(@Param("rId") int rId, @Param("dId") String dId);
+
     List<ExaminationApplication> selectByrIdAndStatus(@Param("rId") int rId, @Param("eAStatus") String eAStatus);
 
     int delete(int eAId);

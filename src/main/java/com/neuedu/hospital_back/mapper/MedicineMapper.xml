@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.hospital_back.mapper.MedicineMapper">
-  <sql id="Base_Column_List">
+    <sql id="Base_Column_List">
     
     mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer, mType, mFee
   </sql>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     
     delete from medicine
     where mId = #{mId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="mId" keyProperty="mId" parameterType="com.neuedu.hospital_back.po.Medicine" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="mId" keyProperty="mId" parameterType="com.neuedu.hospital_back.po.Medicine"
+            useGeneratedKeys="true">
     
     insert into medicine (mCode, mName, mSpell, 
       mSpecification, mUnit, mProducer, 
@@ -19,73 +20,73 @@
       #{mSpecification,jdbcType=VARCHAR}, #{mUnit,jdbcType=VARCHAR}, #{mProducer,jdbcType=VARCHAR}, 
       #{mType,jdbcType=VARCHAR}, #{mFee,jdbcType=DOUBLE})
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.Medicine">
-    
-    update medicine
-    <set>
-      <if test="mCode != null and mCode != ''">
-        mCode = #{mCode,jdbcType=VARCHAR},
-      </if>
-      <if test="mName != null and mName != ''">
-        mName = #{mName,jdbcType=VARCHAR},
-      </if>
-      <if test="mSpell != null and mSpell != ''">
-        mSpell = #{mSpell,jdbcType=VARCHAR},
-      </if>
-      <if test="mSpecification != null and mSpecification != ''">
-        mSpecification = #{mSpecification,jdbcType=VARCHAR},
-      </if>
-      <if test="mUnit != null and mUnit != ''">
-        mUnit = #{mUnit,jdbcType=VARCHAR},
-      </if>
-      <if test="mProducer != null and mProducer != ''">
-        mProducer = #{mProducer,jdbcType=VARCHAR},
-      </if>
-      <if test="mType != null and mType != ''">
-        mType = #{mType,jdbcType=VARCHAR},
-      </if>
-      <if test="mFee != null">
-        mFee = #{mFee,jdbcType=DOUBLE},
-      </if>
-    </set>
-    where mId = #{mId,jdbcType=INTEGER}
-  </update>
-  
-  <select id="selectMedicineByMName" resultType="com.neuedu.hospital_back.po.Medicine">
-    select mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer, mType, mFee from medicine
-    <where>
-      <if test="mName != null and mName != ''">mName like "%"#{mName}"%"</if>
-      <if test="mType != null and mType != ''">and mType like "%"#{mType}"%" </if>
-    </where>
-  </select>
+    <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.Medicine">
 
-  <select id="selectMedicineByCondition" resultType="com.neuedu.hospital_back.po.Medicine">
-     select mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer, mType, mFee from medicine
-     <where>
-       <if test="mName != null and mName != ''">mName like "%"#{mName}"%"</if>
-       <if test="mType != null and mType != ''">and mType like "%"#{mType}"%" </if>
-       <if test="mCode != null and mCode != ''">
-        and mCode like "%"#{mCode,jdbcType=VARCHAR}"%"
-       </if>
-       <if test="mSpell != null and mSpell != ''">
-       and  mSpell  like "%"#{mSpell,jdbcType=VARCHAR}"%"
-       </if>
-       <if test="mSpecification != null and mSpecification != ''">
-       and  mSpecification = #{mSpecification,jdbcType=VARCHAR}
-       </if>
-       <if test="mUnit != null and mUnit != ''">
-        and mUnit = #{mUnit,jdbcType=VARCHAR}
-       </if>
-       <if test="mProducer != null and mProducer != ''">
-       and  mProducer = #{mProducer,jdbcType=VARCHAR}
-       </if>
-       <if test="mFee != null">
-        and mFee = #{mFee,jdbcType=DOUBLE}
-       </if>
-     </where>
-  </select>
-  <select id="getMedicineCount" resultType="int"> select count(*) from medicine</select>
-  <select id="getMedicineByPage" resultType="com.neuedu.hospital_back.po.Medicine">
+        update medicine
+        <set>
+            <if test="mCode != null and mCode != ''">
+                mCode = #{mCode,jdbcType=VARCHAR},
+            </if>
+            <if test="mName != null and mName != ''">
+                mName = #{mName,jdbcType=VARCHAR},
+            </if>
+            <if test="mSpell != null and mSpell != ''">
+                mSpell = #{mSpell,jdbcType=VARCHAR},
+            </if>
+            <if test="mSpecification != null and mSpecification != ''">
+                mSpecification = #{mSpecification,jdbcType=VARCHAR},
+            </if>
+            <if test="mUnit != null and mUnit != ''">
+                mUnit = #{mUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="mProducer != null and mProducer != ''">
+                mProducer = #{mProducer,jdbcType=VARCHAR},
+            </if>
+            <if test="mType != null and mType != ''">
+                mType = #{mType,jdbcType=VARCHAR},
+            </if>
+            <if test="mFee != null">
+                mFee = #{mFee,jdbcType=DOUBLE},
+            </if>
+        </set>
+        where mId = #{mId,jdbcType=INTEGER}
+    </update>
+
+    <select id="selectMedicineByMName" resultType="com.neuedu.hospital_back.po.Medicine">
+        select mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer, mType, mFee from medicine
+        <where>
+            <if test="mName != null and mName != ''">mName like "%"#{mName}"%"</if>
+            <if test="mType != null and mType != ''">and mType like "%"#{mType}"%"</if>
+        </where>
+    </select>
+
+    <select id="selectMedicineByCondition" resultType="com.neuedu.hospital_back.po.Medicine">
+        select mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer, mType, mFee from medicine
+        <where>
+            <if test="mName != null and mName != ''">mName like "%"#{mName}"%"</if>
+            <if test="mType != null and mType != ''">and mType like "%"#{mType}"%"</if>
+            <if test="mCode != null and mCode != ''">
+                and mCode like "%"#{mCode,jdbcType=VARCHAR}"%"
+            </if>
+            <if test="mSpell != null and mSpell != ''">
+                and mSpell like "%"#{mSpell,jdbcType=VARCHAR}"%"
+            </if>
+            <if test="mSpecification != null and mSpecification != ''">
+                and mSpecification = #{mSpecification,jdbcType=VARCHAR}
+            </if>
+            <if test="mUnit != null and mUnit != ''">
+                and mUnit = #{mUnit,jdbcType=VARCHAR}
+            </if>
+            <if test="mProducer != null and mProducer != ''">
+                and mProducer = #{mProducer,jdbcType=VARCHAR}
+            </if>
+            <if test="mFee != null">
+                and mFee = #{mFee,jdbcType=DOUBLE}
+            </if>
+        </where>
+    </select>
+    <select id="getMedicineCount" resultType="int"> select count(*) from medicine</select>
+    <select id="getMedicineByPage" resultType="com.neuedu.hospital_back.po.Medicine">
 select  mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer, mType, mFee
 from medicine limit #{begin}, #{pageSize}
 </select>
