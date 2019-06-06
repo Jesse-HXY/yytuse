@@ -45,83 +45,82 @@ public class DiagnosisService {
     public boolean deleteByPrimaryKey(JSONObject object) {
         int result = 0;
 
-        List<Integer> diaIds=object.getJSONArray("diaIdList");
-        for(Integer diaId:diaIds) {
+        List<Integer> diaIds = object.getJSONArray("diaIdList");
+        for (Integer diaId : diaIds) {
             result += diagnosisMapper.deleteByPrimaryKey(diaId);
             diagnosisMedicineMapper.deleteByPrimaryKey(diaId);
         }
-        return result==diaIds.size();
+        return result == diaIds.size();
     }
 
     public Diagnosis insertDiagnosis(JSONObject object) {
 
-        String diaName=object.getString("diaName");
-        if(diaName.equals("")||diaName.equals(null)){
-            diaName="新增"+String.valueOf(diagnosisMapper.getUnnameCount()+1);
+        String diaName = object.getString("diaName");
+        if (diaName.equals("") || diaName.equals(null)) {
+            diaName = "新增" + String.valueOf(diagnosisMapper.getUnnameCount() + 1);
         }
-        String diaType=object.getString("diaType");
+        String diaType = object.getString("diaType");
         Integer rId = object.getInt("rId");
-        Long createDate=System.currentTimeMillis()/1000;
-        String diaState="暂存";
-        Diagnosis d=new Diagnosis(diaType,rId,diaName,createDate,diaState);
+        Long createDate = System.currentTimeMillis() / 1000;
+        String diaState = "暂存";
+        Diagnosis d = new Diagnosis(diaType, rId, diaName, createDate, diaState);
         diagnosisMapper.insert(d);
         d.setDiaId(d.getDiaId());
         return d;
     }
 
-    public boolean insertDiagnosisMedicine(JSONObject object){
-        Integer diaId=object.getInt("diaId");
+    public boolean insertDiagnosisMedicine(JSONObject object) {
+        Integer diaId = object.getInt("diaId");
         JSONArray jsonArray = object.getJSONArray("diagnosisMedicine");
 //        List<DiagnosisType> diagnosisTypes = (List<DiagnosisType>) JSONArray.toArray(jsonArray, DiagnosisType.class);
         List<DiagnosisMedicine> diagnosisMedicines = (List) JSONArray.toCollection(jsonArray, DiagnosisMedicine.class);
         int result = 0;
         System.out.println(diagnosisMedicines.toString());
-        for(DiagnosisMedicine d:diagnosisMedicines){
+        for (DiagnosisMedicine d : diagnosisMedicines) {
             d.setDiaId(diaId);
-            result+=diagnosisMedicineMapper.insert(d);
+            result += diagnosisMedicineMapper.insert(d);
         }
-        return result==diagnosisMedicines.size();
+        return result == diagnosisMedicines.size();
     }
 
-    public boolean updateState(JSONObject object){
-        String diaState=object.getString("diaState");
-        Long useDate=System.currentTimeMillis()/1000;
-        Integer result=0;
-        List<Integer> diaIds=object.getJSONArray("diaIdList");
-        for(Integer diaId:diaIds){
-        Diagnosis d=new Diagnosis();
-        d.setDiaId(diaId);
-        d.setDiaState(diaState);
-        if(diaState.equals("开立")){
-           d.setUseDate(useDate);
-        }
+    public boolean updateState(JSONObject object) {
+        String diaState = object.getString("diaState");
+        Long useDate = System.currentTimeMillis() / 1000;
+        Integer result = 0;
+        List<Integer> diaIds = object.getJSONArray("diaIdList");
+        for (Integer diaId : diaIds) {
+            Diagnosis d = new Diagnosis();
+            d.setDiaId(diaId);
+            d.setDiaState(diaState);
+            if (diaState.equals("开立")) {
+                d.setUseDate(useDate);
+            }
 
-        result+=diagnosisMapper.update(d);
+            result += diagnosisMapper.update(d);
         }
-        return result==diaIds.size();
+        return result == diaIds.size();
     }
 
-    public List<Diagnosis> selectByCondition(Diagnosis diagnosis){
-        List<Diagnosis> list=diagnosisMapper.selectByCondition(diagnosis);
+    public List<Diagnosis> selectByCondition(Diagnosis diagnosis) {
+        List<Diagnosis> list = diagnosisMapper.selectByCondition(diagnosis);
         return list;
     }
 
-    public Diagnosis getDetail(JSONObject object){
-        Integer diaId=object.getInt("diaId");
-        Diagnosis d=diagnosisMapper.getById(diaId);
+    public Diagnosis getDetail(JSONObject object) {
+        int diaId = object.getInt("diaId");
+        Diagnosis d = diagnosisMapper.getById(diaId);
         d.setMedicines(diagnosisMedicineMapper.getBydiaId(diaId));
         return d;
     }
 
-    public boolean deleteMedicineFromDiagnosis(JSONObject object){
-        Integer diaId=object.getInt("diaId");
-        int result=0;
-        List<Integer>mIds =object.getJSONArray("mIds");
-        for(Integer mId:mIds){
-            result+=diagnosisMedicineMapper.deleteByPrimaryKeyAndMId(diaId,mId);
-        }
-        return result==mIds.size();
-    }
+//    public boolean deleteMedicineFromDiagnosis(JSONObject object){
+//        Integer diaId=object.getInt("diaId");
+//
+//        List<Integer>mIds =object.getJSONArray("mIds");
+//        for(Integer mId:mIds){
+//            diagnosisMedicineMapper.deleteByPrimaryKeyAndMId(diaId,mId);
+//        }
+//    }
 
 
 }

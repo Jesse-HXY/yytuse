@@ -1,5 +1,6 @@
 package com.neuedu.hospital_back.po;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Diagnosis {
@@ -17,7 +18,7 @@ public class Diagnosis {
 
     private String diaState;
 
-    private List<Medicine> medicines;
+    private List<Medicine> medicines = new ArrayList<>();
 
     public Diagnosis() {
     }

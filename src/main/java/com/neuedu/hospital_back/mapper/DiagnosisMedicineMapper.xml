@@ -12,8 +12,9 @@
     values (#{mId,jdbcType=INTEGER}, #{diaId,jdbcType=INTEGER}, #{instruction,jdbcType=VARCHAR}, 
       #{dosage,jdbcType=VARCHAR}, #{times,jdbcType=VARCHAR},#{mAmount})
   </insert>
-  <select id="getBydiaId" resultType="com.neuedu.hospital_back.po.DiagnosisMedicine">
-    select  dia_M_Id, medicine.mId, diaId, instruction, dosage, times,mAmount from diagnosis_medicine,medicine
+  <select id="getBydiaId" resultType="com.neuedu.hospital_back.po.Medicine">
+    select  medicine.mName,medicine.mSpecification,medicine.mFee, dia_M_Id, medicine.mId, diaId, instruction, dosage, times,mAmount
+     from diagnosis_medicine,medicine
     where diaId=#{diaId} and medicine.mId=diagnosis_medicine.mId
   </select>
   <delete id="deleteByPrimaryKeyAndMId">
