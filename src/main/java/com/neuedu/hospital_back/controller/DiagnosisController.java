@@ -84,17 +84,17 @@ public class DiagnosisController {
     }
 
     @RequestMapping("/selectByCondition")
-    public List<Diagnosis> selectByCondition(Diagnosis object){
+    public List<Diagnosis> selectByCondition(@RequestBody Diagnosis object){
         return diagnosisService.selectByCondition(object);
     }
 
     @PostMapping("/selectMedicineDetail")
-    public Diagnosis selectMedicineDetail(JSONObject object){
+    public Diagnosis selectMedicineDetail(@RequestBody JSONObject object){
         return diagnosisService.getDetail(object);
     }
 
     @PostMapping("/deleteMedicineFromDiagnosis")
-    public boolean deleteMedicineFromDiagnosis(JSONObject object){
+    public boolean deleteMedicineFromDiagnosis(@RequestBody JSONObject object){
         return diagnosisService.deleteMedicineFromDiagnosis(object);
     }
 }
