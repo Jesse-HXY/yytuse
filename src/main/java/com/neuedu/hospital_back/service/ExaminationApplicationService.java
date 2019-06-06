@@ -3,6 +3,7 @@ package com.neuedu.hospital_back.service;
 import com.neuedu.hospital_back.mapper.ExaminationApplicationMapper;
 import com.neuedu.hospital_back.mapper.ExamnationitemMapper;
 import com.neuedu.hospital_back.po.ExaminationApplication;
+import com.neuedu.hospital_back.po.ExamnationItem;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,22 @@ public class ExaminationApplicationService {
     public ExaminationApplication insertAndGet(ExaminationApplication examinationApplication) {
         examinationApplicationMapper.insert(examinationApplication);
         return examinationApplicationMapper.selectById(examinationApplication.geteAId());
+    }
+
+    public List<ExaminationApplication> getByrIdAndEIFeeType(JSONObject object) {
+        List<ExaminationApplication> examinationApplications = examinationApplicationMapper.selectByrIdAndDId(object.getInt("rId"), object.getString("dId"));
+        for (ExaminationApplication examinationApplication : examinationApplications) {
+            //通过eIId属性拿到对象
+            ExamnationItem examnationItem = examnationitemMapper.selectById(examinationApplication.geteIId());
+            //如果eIFeeType符合条件就加入其属性
+            if(examnationItem.geteIFeeType().contains(object.getString("eIFeeType"))){
+                examinationApplication.setExamnationItem(examnationItem);
+                //否则remove这个对象
+            }else {
+                examinationApplications.remove(examinationApplication);
+            }
+        }
+        return examinationApplications;
     }
 
     public boolean DeleteExaminationApplication(JSONObject object) {

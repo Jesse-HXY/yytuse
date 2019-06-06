@@ -37,8 +37,6 @@ public class ExamnationTemplateService {
 
 
     public boolean deleteByPrimaryKey(JSONObject object) {
-        String dId = object.getString("dId");
-        Integer uId = object.getInt("uId");
         Integer eTId = object.getInt("eTId");
         String scope = object.getString("scope");
         //删除与item连接中间表

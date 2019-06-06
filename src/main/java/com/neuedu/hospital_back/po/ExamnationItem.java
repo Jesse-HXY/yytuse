@@ -1,6 +1,7 @@
 package com.neuedu.hospital_back.po;
 
 public class ExamnationItem {
+
     private Integer eIId;
 
     private String eIName;
