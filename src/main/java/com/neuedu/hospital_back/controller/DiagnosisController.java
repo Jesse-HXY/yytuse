@@ -1,9 +1,11 @@
 package com.neuedu.hospital_back.controller;
 
+import com.neuedu.hospital_back.po.Diagnosis;
 import com.neuedu.hospital_back.po.ExaminationApplication;
 import com.neuedu.hospital_back.po.MedicalRecord;
 import com.neuedu.hospital_back.service.DiagnosisService;
 import com.neuedu.hospital_back.service.ExaminationApplicationService;
+import jdk.nashorn.internal.scripts.JS;
 import net.sf.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +22,7 @@ public class DiagnosisController {
 
     @Resource
     private ExaminationApplicationService examinationApplicationService;
+
 
 
     @PostMapping("/insertMedicalRecord")
@@ -55,5 +58,25 @@ public class DiagnosisController {
     @PostMapping("/selectByrIdAndStatus")
     public List<ExaminationApplication> selectByrIdAndStatus(@RequestBody JSONObject object) {
         return examinationApplicationService.selectByrIdAndStatus(object);
+    }
+
+    @PostMapping("/insertDiagnosis")
+    public Diagnosis insertDiagnosis(JSONObject object){
+        return diagnosisService.insertDiagnosis(object);
+    }
+
+    @PostMapping("/insertDiagnosisMedicine")
+    public boolean insertDiagnosisMedicine(JSONObject object){
+        return diagnosisService.insertDiagnosisMedicine(object);
+    }
+
+    @PostMapping("/updateDiagnosisState")
+    public boolean updateDiagnosis(JSONObject object){
+        return diagnosisService.updateState(object);
+    }
+
+    @PostMapping("/deleteDiagnosis")
+    public boolean deleteDiagnosis(JSONObject object){
+        return diagnosisService.deleteByPrimaryKey(object);
     }
 }

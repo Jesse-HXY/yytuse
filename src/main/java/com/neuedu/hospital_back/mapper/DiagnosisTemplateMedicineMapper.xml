@@ -13,9 +13,9 @@
     <update id="updateBydatIdAndmId">
       update diagnosistemplate_medicine
       <set>
-        <if test="dosage != null and dosage != ''">dosage=#{dosage} </if>
-       <if test="instruction != null and instruction != ''">instruction=#{instruction} </if>
-        <if test="times != null and times != ''">times=#{times} </if>
+        <if test="dosage != null and dosage != ''">dosage=#{dosage}, </if>
+       <if test="instruction != null and instruction != ''">instruction=#{instruction} ,</if>
+        <if test="times != null and times != ''">times=#{times} ,</if>
       </set>
       where datId=#{datId} and mId=#{mId}
     </update>
