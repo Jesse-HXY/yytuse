@@ -113,14 +113,15 @@ public class DiagnosisService {
         return d;
     }
 
-//    public boolean deleteMedicineFromDiagnosis(JSONObject object){
-//        Integer diaId=object.getInt("diaId");
-//
-//        List<Integer>mIds =object.getJSONArray("mIds");
-//        for(Integer mId:mIds){
-//            diagnosisMedicineMapper.deleteByPrimaryKeyAndMId(diaId,mId);
-//        }
-//    }
+    public boolean deleteMedicineFromDiagnosis(JSONObject object){
+      Integer diaId=object.getInt("diaId");
+      int r=0;
+       List<Integer>mIds =object.getJSONArray("mIds");
+        for(Integer mId:mIds){
+          r+=  diagnosisMedicineMapper.deleteByPrimaryKeyAndMId(diaId,mId);
+        }
+        return r==mIds.size();
+   }
 
 
 }
