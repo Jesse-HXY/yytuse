@@ -1,8 +1,5 @@
 package com.neuedu.hospital_back.service;
 
-import com.neuedu.hospital_back.mapper.ArrangementRegulationMapper;
-import com.neuedu.hospital_back.mapper.DoctorArrangementRegulationMapper;
-import com.neuedu.hospital_back.po.DoctorArrangementRegulation;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -13,7 +10,6 @@ import com.neuedu.hospital_back.mapper.ArrangementMapper;
 import com.neuedu.hospital_back.po.Arrangement;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -81,7 +77,6 @@ public class ArrangementService {
 
             }
 
-            //result= arrangementMapper.updateByBeginDateAndEndDate(a);
         }
         return result == 1;
 
@@ -89,7 +84,7 @@ public class ArrangementService {
 
     public static Date getDate(Date date, int days) {
 
-        java.util.Date date1 = new java.util.Date();
+        java.util.Date date1;
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.add(Calendar.DAY_OF_MONTH, days);

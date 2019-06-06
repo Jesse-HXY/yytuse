@@ -51,7 +51,7 @@ public class UserService {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Calendar c = Calendar.getInstance();
         c.setTime(format.parse(currentDate));
-        int dayForWeek = 0;
+        int dayForWeek;
         if (c.get(Calendar.DAY_OF_WEEK) == 1) {
             dayForWeek = 0;
         } else {

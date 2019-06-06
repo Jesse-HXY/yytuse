@@ -66,16 +66,16 @@ public class RegistrationService {
 
     public List<RegistrationInfo> getRegistrationInfoByrId(JSONObject object){
         List<RegistrationInfo> registrationInfos=registrationMapper.getRegistrationInfoByrId(object.getInt("rId"));
-        for(int i=0;i<registrationInfos.size();i++){
-            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String rTime=sdf.format(new Date(registrationInfos.get(i).getrDate()));
-            registrationInfos.get(i).setrTime(rTime);
-            String MorningOrEvening=MorningOrEvening(registrationInfos.get(i).getrDate());
-            registrationInfos.get(i).setMorningOrEvening(MorningOrEvening);
-            if(registrationInfos.get(i).getrStatus().equals("未看诊")){
-                registrationInfos.get(i).setOkToWithdraw(true);
-            }else {
-                registrationInfos.get(i).setOkToWithdraw(false);
+        for (RegistrationInfo registrationInfo : registrationInfos) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String rTime = sdf.format(new Date(registrationInfo.getrDate()));
+            registrationInfo.setrTime(rTime);
+            String MorningOrEvening = MorningOrEvening(registrationInfo.getrDate());
+            registrationInfo.setMorningOrEvening(MorningOrEvening);
+            if (registrationInfo.getrStatus().equals("未看诊")) {
+                registrationInfo.setOkToWithdraw(true);
+            } else {
+                registrationInfo.setOkToWithdraw(false);
             }
         }
         return  registrationInfos;

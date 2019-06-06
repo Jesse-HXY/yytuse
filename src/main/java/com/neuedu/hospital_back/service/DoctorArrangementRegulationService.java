@@ -16,11 +16,9 @@ public class DoctorArrangementRegulationService {
         return doctorArrangementRegulationMapper.deleteByPrimaryKey(do_Ar_Id);
     }
 
-
     public int insert(DoctorArrangementRegulation record) {
         return doctorArrangementRegulationMapper.insert(record);
     }
-
 
     public int updateByPrimaryKeySelective(DoctorArrangementRegulation record) {
         return doctorArrangementRegulationMapper.updateByPrimaryKeySelective(record);

@@ -15,40 +15,40 @@ public class DiseaseService {
     private DiseaseMapper diseaseMapper;
 
     public List<String> getDiseaseType() {
-        List<String> diseases = diseaseMapper.getDiseaseType();
-        return diseases;
+        return diseaseMapper.getDiseaseType();
+
     }
 
-    public List<Disease> getDiseaseByType(String disType){
-        List<Disease> diseases =diseaseMapper.getDiseaseByType(disType);
-    return diseases;
+    public List<Disease> getDiseaseByType(String disType) {
+        return diseaseMapper.getDiseaseByType(disType);
     }
 
-    public List<Disease> getDiseaseByPage(JSONObject object){
-        List<Disease> diseases=diseaseMapper.getDiseaseByPage(object.getString("disType"),object.getInt("pageNum"), object.getInt("pageSize"));
-        return diseases;
+    public List<Disease> getDiseaseByPage(JSONObject object) {
+        return diseaseMapper.getDiseaseByPage(object.getString("disType"), object.getInt("pageNum"), object.getInt("pageSize"));
     }
+
     public List<Disease> getDiseases(Disease disease) {
-        List<Disease> diseases = diseaseMapper.getDiseases(disease);
-        return diseases;
+        return diseaseMapper.getDiseases(disease);
     }
 
     public boolean insert(Disease record) {
-       return diseaseMapper.insert(record)==1;
+        return diseaseMapper.insert(record) == 1;
 
     }
 
-    public boolean updateDisease(Disease disease){
-      return   diseaseMapper.updateByPrimaryKeySelective(disease)==1;
+    public boolean updateDisease(Disease disease) {
+        return diseaseMapper.updateByPrimaryKeySelective(disease) == 1;
 
     }
 
-    public boolean deleteDisease(JSONObject disId){
-       return diseaseMapper.deleteByPrimaryKey(disId.getInt("disId"))==1;
+    public boolean deleteDisease(JSONObject disId) {
+        return diseaseMapper.deleteByPrimaryKey(disId.getInt("disId")) == 1;
 
     }
 
-    public int getDiseaseCount(){return diseaseMapper.getDiseaseCount();}
+    public int getDiseaseCount() {
+        return diseaseMapper.getDiseaseCount();
+    }
 }
 
 

@@ -61,23 +61,19 @@ public class ExamnationitemService {
     }
 
     public List<ExamnationItem> selectExamnationItem(ExamnationItem examnationItem) {
-        List<ExamnationItem> examnationItems = examnationitemMapper.selectExamnationItem(examnationItem);
-        return examnationItems;
+        return examnationitemMapper.selectExamnationItem(examnationItem);
     }
 
     public List<ExamnationItem> selectExamnationItemByEIName(JSONObject object) {
-        List<ExamnationItem> examnationItems = examnationitemMapper.selectExamnationItemByeIName(object.getString("eIName"), object.getString("recordType"));
-        return examnationItems;
+        return examnationitemMapper.selectExamnationItemByeIName(object.getString("eIName"), object.getString("recordType"));
     }
 
     public List<ExamnationItem> selectAllExamnationItem() {
-        List<ExamnationItem> examnationItems = examnationitemMapper.selectAllExamnationItem();
-        return examnationItems;
+        return examnationitemMapper.selectAllExamnationItem();
     }
 
     public List<ExamnationItem> selectExamnationItemByPage(JSONObject object) {
-        List<ExamnationItem> examnationItems = examnationitemMapper.selectExamnationItemByPage(object.getInt("pageNum"), object.getInt("pageSize"));
-        return examnationItems;
+        return examnationitemMapper.selectExamnationItemByPage(object.getInt("pageNum"), object.getInt("pageSize"));
     }
 
     public int getPageCount() {

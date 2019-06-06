@@ -3,6 +3,7 @@ package com.neuedu.hospital_back.controller;
 import com.neuedu.hospital_back.mapper.AccountMapper;
 import com.neuedu.hospital_back.po.Account;
 import com.neuedu.hospital_back.service.AccountService;
+import net.sf.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -15,8 +16,8 @@ public class AccountController {
     @Resource
     private AccountService accountService;
 
-    @PostMapping
-    public boolean insertAccount(@RequestBody Account account){
-        return accountService.insertAccount(account);
+    @PostMapping("/insertAccount")
+    public boolean insertAccount(@RequestBody JSONObject object){
+        return accountService.insertAccount(object);
     }
 }
