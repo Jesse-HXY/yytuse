@@ -1,6 +1,5 @@
 package com.neuedu.hospital_back.controller;
 
-import com.neuedu.hospital_back.po.Diagnosis;
 import com.neuedu.hospital_back.po.DiagnosisTemplate;
 import com.neuedu.hospital_back.po.DiagnosisTemplateMedicine;
 import com.neuedu.hospital_back.po.Medicine;
