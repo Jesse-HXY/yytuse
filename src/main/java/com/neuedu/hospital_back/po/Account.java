@@ -11,6 +11,15 @@ public class Account {
     private String payType;
     private int rId;
     private int cId;//收费员Id
+    private int eAId;
+
+    public int geteAId() {
+        return eAId;
+    }
+
+    public void seteAId(int eAId) {
+        this.eAId = eAId;
+    }
 
     public int getcId() {
         return cId;

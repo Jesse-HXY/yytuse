@@ -25,7 +25,7 @@ public class AccountService {
         int result = 0;
         for (Account account : accounts) {
             result += accountMapper.insert(account);
-            accountExaminationApplicationMapper.insert(account.getAccId(), object.getInt("eAId"));
+            accountExaminationApplicationMapper.insert(account.getAccId(), account.geteAId());
         }
         return result == accounts.size();
     }
