@@ -13,7 +13,11 @@
       #{dosage,jdbcType=VARCHAR}, #{times,jdbcType=VARCHAR},#{mAmount})
   </insert>
   <select id="getBydiaId" resultType="com.neuedu.hospital_back.po.DiagnosisMedicine">
-    select  dia_M_Id, mId, diaId, instruction, dosage, times,mAmount from diagnosis_medicine
-    where diaId=#{diaId}
+    select  dia_M_Id, medicine.mId, diaId, instruction, dosage, times,mAmount from diagnosis_medicine,medicine
+    where diaId=#{diaId} and medicine.mId=diagnosis_medicine.mId
   </select>
+  <delete id="deleteByPrimaryKeyAndMId">
+     delete from diagnosis_medicine
+    where diaId=#{diaId} and mId=#{mId}
+  </delete>
 </mapper>

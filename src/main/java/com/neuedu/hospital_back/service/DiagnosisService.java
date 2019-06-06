@@ -4,10 +4,7 @@ import com.neuedu.hospital_back.mapper.DiagnosisMapper;
 import com.neuedu.hospital_back.mapper.DiagnosisMedicineMapper;
 import com.neuedu.hospital_back.mapper.DiagnosisTypeMapper;
 import com.neuedu.hospital_back.mapper.MedicalRecordMapper;
-import com.neuedu.hospital_back.po.Diagnosis;
-import com.neuedu.hospital_back.po.DiagnosisMedicine;
-import com.neuedu.hospital_back.po.DiagnosisType;
-import com.neuedu.hospital_back.po.MedicalRecord;
+import com.neuedu.hospital_back.po.*;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -112,9 +109,20 @@ public class DiagnosisService {
     public Diagnosis getDetail(JSONObject object){
         Integer diaId=object.getInt("diaId");
         Diagnosis d=diagnosisMapper.getById(diaId);
-        d.setDiagnosisMedicines(diagnosisMedicineMapper.getBydiaId(diaId));
+        d.setMedicines(diagnosisMedicineMapper.getBydiaId(diaId));
         return d;
     }
+
+    public boolean deleteMedicineFromDiagnosis(JSONObject object){
+        Integer diaId=object.getInt("diaId");
+
+        List<Integer>mIds =object.getJSONArray("mIds");
+        for(Integer mId:mIds){
+            diagnosisMedicineMapper.deleteByPrimaryKeyAndMId(diaId,mId);
+        }
+    }
+
+
 }
 
 

@@ -17,7 +17,7 @@ public class Diagnosis {
 
     private String diaState;
 
-    private List<DiagnosisMedicine> diagnosisMedicines;
+    private List<Medicine> medicines;
 
     public Diagnosis() {
     }
@@ -30,13 +30,7 @@ public class Diagnosis {
         this.diaState = diaState;
     }
 
-    public List<DiagnosisMedicine> getDiagnosisMedicines() {
-        return diagnosisMedicines;
-    }
 
-    public void setDiagnosisMedicines(List<DiagnosisMedicine> diagnosisMedicines) {
-        this.diagnosisMedicines = diagnosisMedicines;
-    }
 
     public Integer getDiaId() {
         return diaId;
@@ -92,5 +86,13 @@ public class Diagnosis {
 
     public void setDiaState(String diaState) {
         this.diaState = diaState;
+    }
+
+    public List<Medicine> getMedicines() {
+        return medicines;
+    }
+
+    public void setMedicines(List<Medicine> medicines) {
+        this.medicines = medicines;
     }
 }
