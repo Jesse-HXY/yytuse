@@ -13,5 +13,5 @@ public interface DiagnosisMedicineMapper {
 
     List<Medicine> getBydiaId(Integer diaId);
 
-    void deleteByPrimaryKeyAndMId(@Param("diaId") Integer diaId, @Param("mId") Integer mId);
+    int deleteByPrimaryKeyAndMId(@Param("diaId") Integer diaId, @Param("mId") Integer mId);
 }

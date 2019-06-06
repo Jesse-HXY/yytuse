@@ -92,4 +92,9 @@ public class DiagnosisController {
     public Diagnosis selectMedicineDetail(JSONObject object){
         return diagnosisService.getDetail(object);
     }
+
+    @PostMapping("/deleteMedicineFromDiagnosis")
+    public boolean deleteMedicineFromDiagnosis(JSONObject object){
+        return diagnosisService.deleteMedicineFromDiagnosis(object);
+    }
 }
