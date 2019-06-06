@@ -78,6 +78,7 @@ public class DiagnosisService {
 //        List<DiagnosisType> diagnosisTypes = (List<DiagnosisType>) JSONArray.toArray(jsonArray, DiagnosisType.class);
         List<DiagnosisMedicine> diagnosisMedicines = (List) JSONArray.toCollection(jsonArray, DiagnosisMedicine.class);
         int result = 0;
+        System.out.println(diagnosisMedicines.toString());
         for(DiagnosisMedicine d:diagnosisMedicines){
             d.setDiaId(diaId);
             result+=diagnosisMedicineMapper.insert(d);
