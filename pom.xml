@@ -75,7 +75,6 @@
                 <includes>
                     <include>**/*.xml</include>
                     <include>**/*.java</include>
-                    <include>**/*.xlsx</include>
                 </includes>
             </resource>
             <resource>
