@@ -36,6 +36,18 @@ public class ExaminationApplication {
         this.eAResult = eAResult;
     }
 
+    @Override
+    public String toString() {
+        return "ExaminationApplication{" +
+                "eAId=" + eAId +
+                ", eAName='" + eAName + '\'' +
+                ", eIId=" + eIId +
+                ", dId='" + dId + '\'' +
+                ", eAStatus='" + eAStatus + '\'' +
+                ", rId=" + rId +
+                '}';
+    }
+
     public int getrId() {
         return rId;
     }

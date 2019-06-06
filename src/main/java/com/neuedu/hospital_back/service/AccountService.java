@@ -24,6 +24,7 @@ public class AccountService {
         List<Account> accounts = (List) JSONArray.toCollection(jsonArray, Account.class);
         int result = 0;
         for (Account account : accounts) {
+            System.out.println(account.toString());
             result += accountMapper.insert(account);
             accountExaminationApplicationMapper.insert(account.getAccId(), account.geteAId());
         }

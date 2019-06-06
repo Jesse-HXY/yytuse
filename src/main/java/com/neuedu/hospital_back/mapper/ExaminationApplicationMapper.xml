@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.hospital_back.mapper.ExaminationApplicationMapper">
 
-    <insert id="insert" useGeneratedKeys="true" keyColumn="eAId" keyProperty="eAId" >
+    <insert id="insert" useGeneratedKeys="true" keyColumn="eAId" keyProperty="eAId">
         insert into examinationapplication (eAName, eIId, dId, eAStatus, rId)
         values (#{eAName}, #{eIId}, #{dId}, #{eAStatus}, #{rId})
     </insert>
@@ -17,8 +17,8 @@
         select eAId, eAName, eIId, dId, eAStatus, rId, eAResult from examinationapplication where rId = #{rId}
     </select>
 
-    <select id=" selectByrIdAndDId" resultType="com.neuedu.hospital_back.po.ExaminationApplication">
-        select eAId, eAName, eIId, dId, eAStatus, rId, eAResult from examinationapplication where rId = #{rId} and dId = #{dId}
+    <select id="selectByrIdAndDId" resultType="com.neuedu.hospital_back.po.ExaminationApplication">
+        select eAId, eAName, eIId, dId, eAStatus, rId, eAResult from examinationapplication where rId = #{rId} and dId = #{dId} and eAStatus = #{eAStatus}
     </select>
 
     <select id="selectByrIdAndStatus" resultType="com.neuedu.hospital_back.po.ExaminationApplication">

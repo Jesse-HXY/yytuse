@@ -20,12 +20,14 @@ public class ExaminationApplicationService {
     private ExamnationitemMapper examnationitemMapper;
 
     public ExaminationApplication insertAndGet(ExaminationApplication examinationApplication) {
+        System.out.println(examinationApplication);
         examinationApplicationMapper.insert(examinationApplication);
         return examinationApplicationMapper.selectById(examinationApplication.geteAId());
     }
 
     public List<ExaminationApplication> getByrIdAndEIFeeType(JSONObject object) {
-        List<ExaminationApplication> examinationApplications = examinationApplicationMapper.selectByrIdAndDId(object.getInt("rId"), object.getString("dId"));
+        List<ExaminationApplication> examinationApplications
+                = examinationApplicationMapper.selectByrIdAndDId(object.getInt("rId"), object.getString("dId"), object.getString("eAStatus"));
         for (ExaminationApplication examinationApplication : examinationApplications) {
             //通过eIId属性拿到对象
             ExamnationItem examnationItem = examnationitemMapper.selectById(examinationApplication.geteIId());
