@@ -32,4 +32,9 @@
     </set>
     where diaId=#{diaId} and mId=#{mId}
   </update>
+  <select id="getPopularMedicine" resultType="com.neuedu.hospital_back.po.Medicine">
+    SELECT a.mId,mCode, mName, mSpell, mSpecification, mUnit, mProducer, mType, mFee  from (SELECT mid,count(*) as mIdAcount from diagnosis_medicine GROUP BY mId) a, medicine
+    where a.mId=medicine.mId
+    ORDER BY mIdAcount desc LIMIT 5
+  </select>
 </mapper>

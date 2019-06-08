@@ -1,9 +1,6 @@
 package com.neuedu.hospital_back.controller;
 
-import com.neuedu.hospital_back.po.Diagnosis;
-import com.neuedu.hospital_back.po.DiagnosisType;
-import com.neuedu.hospital_back.po.ExaminationApplication;
-import com.neuedu.hospital_back.po.MedicalRecord;
+import com.neuedu.hospital_back.po.*;
 import com.neuedu.hospital_back.service.DiagnosisService;
 import com.neuedu.hospital_back.service.ExaminationApplicationService;
 import net.sf.json.JSONObject;
@@ -118,6 +115,12 @@ public class DiagnosisController {
     public List<Diagnosis> selectHistoryDiagnosis(@RequestBody JSONObject object)
     {
         return diagnosisService.selectHistoryDiagnosis(object);
+    }
+
+    @GetMapping("/getPopularMedicine")
+    public List<Medicine> getPopularMedicine()
+    {
+        return diagnosisService.getPopularMedicine();
     }
 
 }

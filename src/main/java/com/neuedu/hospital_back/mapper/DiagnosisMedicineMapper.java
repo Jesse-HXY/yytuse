@@ -16,4 +16,6 @@ public interface DiagnosisMedicineMapper {
     int deleteByPrimaryKeyAndMId(@Param("diaId") Integer diaId, @Param("mId") Integer mId);
 
     int updateBymIdAndDiaId(DiagnosisMedicine d);
+
+    List<Medicine> getPopularMedicine();
 }

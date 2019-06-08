@@ -4,6 +4,8 @@ import com.neuedu.hospital_back.mapper.*;
 import com.neuedu.hospital_back.po.*;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
+import org.apache.xmlbeans.impl.jam.JSourcePosition;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -152,6 +154,9 @@ public class DiagnosisService {
    }
 
 
+   public List<Medicine> getPopularMedicine(){
+       return diagnosisMedicineMapper.getPopularMedicine();
+   }
 
 
 }
