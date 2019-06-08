@@ -16,4 +16,6 @@ public interface DiagnosisMapper {
     List<Diagnosis> selectByCondition(Diagnosis d);
 
     Diagnosis getById(Integer diaId);
+
+    List<Diagnosis> selectHistoryDiagnosis(Integer uId);
 }

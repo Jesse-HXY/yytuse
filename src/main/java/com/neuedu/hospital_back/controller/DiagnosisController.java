@@ -114,4 +114,10 @@ public class DiagnosisController {
         return diagnosisService.updateBydiaId(object);
     }
 
+    @PostMapping("/selectHistoryDiagnosis")
+    public List<Diagnosis> selectHistoryDiagnosis(@RequestBody JSONObject object)
+    {
+        return diagnosisService.selectHistoryDiagnosis(object);
+    }
+
 }

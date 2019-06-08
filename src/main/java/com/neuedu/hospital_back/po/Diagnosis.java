@@ -18,20 +18,29 @@ public class Diagnosis {
 
     private String diaState;
 
+    private Integer uId;
+
     private List<Medicine> medicines = new ArrayList<>();
 
     public Diagnosis() {
     }
 
-    public Diagnosis( String diaType, Integer rId, String diaName, Long createDate, String diaState) {
+    public Diagnosis( String diaType, Integer rId, String diaName, Long createDate, String diaState,Integer uId) {
         this.diaType = diaType;
         this.rId = rId;
         this.diaName = diaName;
         this.createDate = createDate;
         this.diaState = diaState;
+        this.uId=uId;
     }
 
+    public Integer getuId() {
+        return uId;
+    }
 
+    public void setuId(Integer uId) {
+        this.uId = uId;
+    }
 
     public Integer getDiaId() {
         return diaId;

@@ -67,13 +67,14 @@ public class DiagnosisService {
 
         String diaName = object.getString("diaName");
         if (diaName.equals("")) {
-            diaName = "新增" + (diagnosisMapper.getUnnameCount() + 1);
+            diaName = "新增" + String.valueOf(diagnosisMapper.getUnnameCount() + 1);
         }
         String diaType = object.getString("diaType");
         Integer rId = object.getInt("rId");
         Long createDate = System.currentTimeMillis() / 1000;
         String diaState = "暂存";
-        Diagnosis d = new Diagnosis(diaType, rId, diaName, createDate, diaState);
+        Integer uId=object.getInt("uId");
+        Diagnosis d = new Diagnosis(diaType, rId, diaName, createDate, diaState,uId);
         diagnosisMapper.insert(d);
         d.setDiaId(d.getDiaId());
         return d;
@@ -142,8 +143,15 @@ public class DiagnosisService {
         for (Integer mId : mIds) {
             r += diagnosisMedicineMapper.deleteByPrimaryKeyAndMId(diaId, mId);
         }
-        return r == mIds.size();
-    }
+        return r==mIds.size();
+   }
+
+   public List<Diagnosis> selectHistoryDiagnosis(JSONObject object){
+        Integer uId=object.getInt("uId");
+        return diagnosisMapper.selectHistoryDiagnosis(uId);
+   }
+
+
 
 
 }
