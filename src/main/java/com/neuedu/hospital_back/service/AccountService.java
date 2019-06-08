@@ -1,5 +1,6 @@
 package com.neuedu.hospital_back.service;
 
+import com.neuedu.hospital_back.mapper.AccountDiagnosisMapper;
 import com.neuedu.hospital_back.mapper.AccountExaminationApplicationMapper;
 import com.neuedu.hospital_back.mapper.AccountMapper;
 import com.neuedu.hospital_back.po.Account;
@@ -19,7 +20,22 @@ public class AccountService {
     @Resource
     private AccountExaminationApplicationMapper accountExaminationApplicationMapper;
 
-    public boolean insertAccount(JSONObject object) {
+    @Resource
+    private AccountDiagnosisMapper accountDiagnosisMapper;
+
+    public boolean insertDiagnosisAccount(JSONObject object) {
+        JSONArray jsonArray = object.getJSONArray("accounts");
+        List<Account> accounts = (List) JSONArray.toCollection(jsonArray, Account.class);
+        int result = 0;
+        for (Account account : accounts) {
+            System.out.println(account.toString());
+            result += accountMapper.insert(account);
+            accountDiagnosisMapper.insert(account.getAccId(), account.getDiaId());
+        }
+        return result == accounts.size();
+    }
+
+    public boolean insertAccount(JSONObject object){
         JSONArray jsonArray = object.getJSONArray("accounts");
         List<Account> accounts = (List) JSONArray.toCollection(jsonArray, Account.class);
         int result = 0;

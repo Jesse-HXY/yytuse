@@ -13,6 +13,10 @@ public class DiagnosisMedicine {
 
     private String times;
 
+    private Integer mAmount;
+
+    private String mState;
+
     public Integer getmAmount() {
         return mAmount;
     }
@@ -21,7 +25,13 @@ public class DiagnosisMedicine {
         this.mAmount = mAmount;
     }
 
-    private Integer mAmount;
+    public String getmState() {
+        return mState;
+    }
+
+    public void setmState(String mState) {
+        this.mState = mState;
+    }
 
     public Integer getDia_M_Id() {
         return dia_M_Id;

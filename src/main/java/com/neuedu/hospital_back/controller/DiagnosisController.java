@@ -133,4 +133,11 @@ public class DiagnosisController {
     public boolean updateDiaFee(@RequestBody JSONObject object){
         return diagnosisService.updateDiaFee(object);
     }
+
+    @PostMapping("/getDetailByrIdAndTime")
+    public List<Diagnosis> getDetailByrIdAndTime(@RequestBody JSONObject object){
+        return diagnosisService.getDetailByrIdAndTime(object);
+    }
+
+
 }

@@ -140,6 +140,14 @@ public class DiagnosisService {
       return result==1;
     }
 
+    public boolean updateMStateBydiaId(JSONObject object){
+        Integer diaId=object.getInt("diaId");
+        DiagnosisMedicine d=new DiagnosisMedicine();
+        d.setDiaId(diaId);
+        d.setmState(object.getString("mState"));
+        return diagnosisMedicineMapper.updateBymIdAndDiaId(d)>=1;
+    }
+
     public List<Diagnosis> selectByCondition(Diagnosis diagnosis) {
         return diagnosisMapper.selectByCondition(diagnosis);
     }
@@ -149,6 +157,14 @@ public class DiagnosisService {
         Diagnosis d = diagnosisMapper.getById(diaId);
         d.setMedicines(diagnosisMedicineMapper.getBydiaId(diaId));
         return d;
+    }
+
+    public List<Diagnosis> getDetailByrIdAndTime(JSONObject object){
+        Integer rId=object.getInt("rId");
+        long useTime=object.getInt("useTime")/1000;
+        List<Diagnosis> d=diagnosisMapper.getDetailByrIdAndTime(rId,useTime);
+        return d;
+
     }
 
     public boolean deleteMedicineFromDiagnosis(JSONObject object) {
