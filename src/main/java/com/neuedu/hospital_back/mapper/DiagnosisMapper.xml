@@ -25,8 +25,9 @@
       <if test="diaType != null and diaType != ''">diaType=#{diaType} ,</if>
       <if test="diaState != null and diaState != ''">diaState=#{diaState}, </if>
       <if test="useDate != null">useDate=#{useDate} </if>
-      where diaId=#{diaId}
+
     </set>
+    where diaId=#{diaId}
   </update>
   <select id="selectByCondition" resultType="com.neuedu.hospital_back.po.Diagnosis">
     select diaId,diaType, rId, diaName,
