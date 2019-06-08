@@ -33,8 +33,7 @@ public class RegistrationService {
     }
 
     public int insertRegistration(Registration registration) {
-        long rDate = registration.getrDate() / 1000;
-        registration.setrDate(rDate);
+        registration.setrDate(registration.getrDate() / 1000);
         return registrationMapper.insertRegistration(registration);
     }
 
@@ -45,8 +44,6 @@ public class RegistrationService {
 
     public List<RegistrationInfo> getRegistrationInfo(JSONObject object) {
         String rStatus = object.getString("rStatus");
-
-
         if (rStatus.equals("诊毕")) {
             return registrationMapper.getAlreadyDiagnosisByuId(object.getInt("uId"), object.getString("pName"));
         } else {

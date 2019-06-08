@@ -15,6 +15,15 @@ public class Registration {
     private String payType;
     private boolean hasMedicalHistory;
     private long rDate;
+    private String rResult;
+
+    public String getrResult() {
+        return rResult;
+    }
+
+    public void setrResult(String rResult) {
+        this.rResult = rResult;
+    }
 
     public long getrDate() {
         return rDate;

@@ -5,8 +5,8 @@
 <mapper namespace="com.neuedu.hospital_back.mapper.RegistrationMapper">
 
     <insert id="insertRegistration">
-        insert into registration (pId, payType, rLName, dId, uId, hasMedicalHistory, rFee, rDate, rStatus)
-        values (#{pId}, #{payType}, #{rLName}, #{dId}, #{uId}, #{hasMedicalHistory}, #{rFee}, #{rDate}, '未看诊')
+        insert into registration (pId, payType, rLName, dId, uId, hasMedicalHistory, rFee, rDate, rStatus, rResult)
+        values (#{pId}, #{payType}, #{rLName}, #{dId}, #{uId}, #{hasMedicalHistory}, #{rFee}, #{rDate}, '未看诊', rResult)
     </insert>
 
     <select id="getAlreadyDiagnosisByuId" resultType="com.neuedu.hospital_back.po.RegistrationInfo">
