@@ -5,11 +5,12 @@
     
     mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer, mType, mFee
   </sql>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    
     delete from medicine
     where mId = #{mId,jdbcType=INTEGER}
   </delete>
+
     <insert id="insert" keyColumn="mId" keyProperty="mId" parameterType="com.neuedu.hospital_back.po.Medicine"
             useGeneratedKeys="true">
     
@@ -20,6 +21,7 @@
       #{mSpecification,jdbcType=VARCHAR}, #{mUnit,jdbcType=VARCHAR}, #{mProducer,jdbcType=VARCHAR}, 
       #{mType,jdbcType=VARCHAR}, #{mFee,jdbcType=DOUBLE})
   </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.Medicine">
 
         update medicine
@@ -85,9 +87,12 @@
             </if>
         </where>
     </select>
+
     <select id="getMedicineCount" resultType="int"> select count(*) from medicine</select>
+
     <select id="getMedicineByPage" resultType="com.neuedu.hospital_back.po.Medicine">
-select  mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer, mType, mFee
-from medicine limit #{begin}, #{pageSize}
+    select  mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer, mType, mFee
+    from medicine limit #{begin}, #{pageSize}
 </select>
+
 </mapper>

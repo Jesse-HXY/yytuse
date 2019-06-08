@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.hospital_back.mapper.RegistrationMapper">
 
-    <insert id="insertRegistration">
+    <insert id="insertRegistration" keyColumn="rId" keyProperty="rId" useGeneratedKeys="true">
         insert into registration (pId, payType, rLName, dId, uId, hasMedicalHistory, rFee, rDate, rStatus, rResult)
         values (#{pId}, #{payType}, #{rLName}, #{dId}, #{uId}, #{hasMedicalHistory}, #{rFee}, #{rDate}, '未看诊', rResult)
     </insert>

@@ -34,7 +34,8 @@ public class RegistrationService {
 
     public int insertRegistration(Registration registration) {
         registration.setrDate(registration.getrDate() / 1000);
-        return registrationMapper.insertRegistration(registration);
+        registrationMapper.insertRegistration(registration);
+        return registration.getrId();
     }
 
 
