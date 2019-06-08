@@ -32,10 +32,10 @@ public class ExaminationApplicationService {
             //通过eIId属性拿到对象
             ExamnationItem examnationItem = examnationitemMapper.selectById(examinationApplication.geteIId());
             //如果eIFeeType符合条件就加入其属性
-            if(examnationItem.geteIFeeType().contains(object.getString("eIFeeType"))){
+            if (examnationItem.geteIFeeType().contains(object.getString("eIFeeType"))) {
                 examinationApplication.setExamnationItem(examnationItem);
                 //否则remove这个对象
-            }else {
+            } else {
                 examinationApplications.remove(examinationApplication);
             }
         }
@@ -63,6 +63,10 @@ public class ExaminationApplicationService {
             }
         }
         return result == eAIds.size();
+    }
+
+    public boolean updateResult(JSONObject object) {
+        return examinationApplicationMapper.updateResult(object.getInt("eAId"), object.getString("eAResult")) == 1;
     }
 
     public List<ExaminationApplication> selectByrId(JSONObject object) {

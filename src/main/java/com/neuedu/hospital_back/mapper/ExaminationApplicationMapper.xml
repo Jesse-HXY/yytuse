@@ -30,6 +30,10 @@
         delete from examinationapplication where eAId = #{eAId}
     </delete>
 
+    <update id="updateResult">
+        update examinationapplication set  eAResult = #{eAResult} where eAId = #{eAId}
+    </update>
+
     <update id="updateStatus">
         update examinationapplication set eAStatus = #{eAStatus} where eAId = #{eAId}
     </update>

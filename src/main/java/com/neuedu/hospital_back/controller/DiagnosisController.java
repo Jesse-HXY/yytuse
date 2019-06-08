@@ -53,6 +53,11 @@ public class DiagnosisController {
         return examinationApplicationService.updateStatus(object);
     }
 
+    @PostMapping("/updateResult")
+    public boolean updateResult(@RequestBody JSONObject object) {
+        return examinationApplicationService.updateResult(object);
+    }
+
     @PostMapping("/selectByrId")
     public List<ExaminationApplication> selectByrId(@RequestBody JSONObject object) {
         return examinationApplicationService.selectByrId(object);

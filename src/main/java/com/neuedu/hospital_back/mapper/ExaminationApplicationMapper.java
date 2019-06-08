@@ -21,5 +21,7 @@ public interface ExaminationApplicationMapper {
 
     int updateStatus(@Param("eAId") int eAId, @Param("eAStatus") String eAStatus);
 
+    int updateResult(@Param("eAId") int eAId, @Param("eAResult") String eAResult);
+
     int updateStatusAndTime(@Param("eAId") int eAId, @Param("eAStatus") String eAStatus, @Param("beginTime") long beginTime);
 }
