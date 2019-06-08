@@ -25,13 +25,11 @@ public class Medicine {
 
     private String times;
 
-    public String getinstruction() {
-        return instruction;
-    }
+    private int mAmount;
 
-    public void setinstruction(String instruction) {
-        this.instruction = instruction;
-    }
+
+
+
 
     public String getDosage() {
         return dosage;
@@ -120,4 +118,20 @@ public class Medicine {
     public void setmFee(Double mFee) {
         this.mFee = mFee;
     }
+    public String getInstruction() {
+        return instruction;
+    }
+
+    public void setInstruction(String instruction) {
+        this.instruction = instruction;
+    }
+
+    public int getmAmount() {
+        return mAmount;
+    }
+
+    public void setmAmount(int mAmount) {
+        this.mAmount = mAmount;
+    }
+
 }
