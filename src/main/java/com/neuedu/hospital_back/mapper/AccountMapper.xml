@@ -3,8 +3,8 @@
 <mapper namespace="com.neuedu.hospital_back.mapper.AccountMapper">
 
     <insert id="insert" keyColumn="accId" keyProperty="accId" useGeneratedKeys="true">
-        insert into account (dId, uId, payTime, fee, feeType, payType, rId, cId)
-        values (#{dId}, #{uId}, #{payTime}, #{fee}, #{feeType}, #{payType}, #{rId}, #{cId})
+        insert into account (dId, uId, payTime, fee, feeType, payType, rId, cId, postDId)
+        values (#{dId}, #{uId}, #{payTime}, #{fee}, #{feeType}, #{payType}, #{rId}, #{cId}, #{postDId})
     </insert>
 
     <update id="updateUId">

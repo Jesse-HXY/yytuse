@@ -9,6 +9,10 @@
         values (#{pId}, #{payType}, #{rLName}, #{dId}, #{uId}, #{hasMedicalHistory}, #{rFee}, #{rDate}, '未看诊', rResult)
     </insert>
 
+    <select id="getVisits" resultType="Integer">
+        select count(*) from registration where rDate between #{beginTime} and #{endTime} and dId = #{dId} and rStatus = "诊毕"
+    </select>
+    
     <select id="getAlreadyDiagnosisByuId" resultType="com.neuedu.hospital_back.po.RegistrationInfo">
         select registration.rId,registration.pId,pName,pBirth,pSex from patient,registration
         <where>

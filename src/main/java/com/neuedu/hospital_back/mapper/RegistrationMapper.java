@@ -2,14 +2,15 @@ package com.neuedu.hospital_back.mapper;
 
 import com.neuedu.hospital_back.po.Registration;
 import com.neuedu.hospital_back.po.RegistrationInfo;
-import net.sf.json.JSONObject;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface RegistrationMapper {
 
-    int insertRegistration(Registration registration);
+    void insertRegistration(Registration registration);
+
+    int getVisits(@Param("dId") String dId, @Param("beginTime") Long beginTime, @Param("endTime") Long endTime);
 
     List<RegistrationInfo> getAlreadyDiagnosisByuId(@Param("uId") int uId, @Param("pName")String pName);
 
