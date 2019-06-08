@@ -1,47 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.hospital_back.mapper.ArrangementMapper">
-  <sql id="Base_Column_List">
+    <sql id="Base_Column_List">
     aId, `uId`, `plan`, aBegin, aEnd
   </sql>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from arrangement
     where aId = #{aId,jdbcType=INTEGER}
   </delete>
 
-  <delete id="deleteBetweenBeginEnd" parameterType="com.neuedu.hospital_back.po.Arrangement">
+    <delete id="deleteBetweenBeginEnd" parameterType="com.neuedu.hospital_back.po.Arrangement">
     delete from arrangement
     where uId=#{uId} and dId=#{dId,jdbcType=VARCHAR} and aBegin>=#{aBegin} and aEnd <![CDATA[ <= ]]> #{aEnd}
   </delete>
-  <insert id="insert" keyColumn="aId" keyProperty="aId" parameterType="com.neuedu.hospital_back.po.Arrangement" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="aId" keyProperty="aId" parameterType="com.neuedu.hospital_back.po.Arrangement"
+            useGeneratedKeys="true">
     insert into arrangement (`uId`, `plan`, aBegin,
       aEnd,dId)
     values (#{uId,jdbcType=INTEGER}, #{plan,jdbcType=INTEGER}, #{aBegin,jdbcType=DATE},
       #{aEnd,jdbcType=DATE},#{dId,jdbcType=VARCHAR} )
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.Arrangement">
-    update arrangement
-    <set>
-      <if test="uId != null">
-        `uId` = #{uId,jdbcType=INTEGER},
-      </if>
-      <if test="plan != null">
-        `plan` = #{plan,jdbcType=INTEGER},
-      </if>
-      <if test="aBegin != null">
-        aBegin = #{aBegin,jdbcType=DATE},
-      </if>
-      <if test="aEnd != null">
-        aEnd = #{aEnd,jdbcType=DATE},
-      </if>
-        <if test="dId != null and dId != ''">
-            dId=#{dId,jdbcType=VARCHAR} ,
-        </if>
-    </set>
-    where aId = #{aId,jdbcType=INTEGER}
-  </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.Arrangement">
+        update arrangement
+        <set>
+            <if test="uId != null">
+                `uId` = #{uId,jdbcType=INTEGER},
+            </if>
+            <if test="plan != null">
+                `plan` = #{plan,jdbcType=INTEGER},
+            </if>
+            <if test="aBegin != null">
+                aBegin = #{aBegin,jdbcType=DATE},
+            </if>
+            <if test="aEnd != null">
+                aEnd = #{aEnd,jdbcType=DATE},
+            </if>
+            <if test="dId != null and dId != ''">
+                dId=#{dId,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where aId = #{aId,jdbcType=INTEGER}
+    </update>
 
-  <select id="getArrangementByUIdAndDId" resultType="com.neuedu.hospital_back.po.Arrangement">
+    <select id="getArrangementByUIdAndDId" resultType="com.neuedu.hospital_back.po.Arrangement">
     select aId, `uId`, `plan`, aBegin, aEnd,dId from arrangement
     where dId=#{dId} and uId=#{uId} and aEnd>=#{aBegin}
     order by aBegin limit 2

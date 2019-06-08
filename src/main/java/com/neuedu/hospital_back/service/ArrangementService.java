@@ -88,8 +88,7 @@ public class ArrangementService {
         cal.setTime(date);
         cal.add(Calendar.DAY_OF_MONTH, days);
         date1 = cal.getTime();
-        Date time = new Date(date1.getTime());
-        return time;
+        return new Date(date1.getTime());
     }
 
 

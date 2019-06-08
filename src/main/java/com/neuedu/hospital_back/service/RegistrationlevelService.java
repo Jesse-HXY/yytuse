@@ -17,14 +17,11 @@ public class RegistrationlevelService {
     private RegistrationLevelMapper registrationlevelMapper;
 
     public boolean deleteByPrimaryKey(JSONObject rLId) {
-        registrationlevelMapper.deleteByPrimaryKey(rLId.getInt("rLId"));
-        return true;
+        return registrationlevelMapper.deleteByPrimaryKey(rLId.getInt("rLId")) == 1;
     }
 
     public boolean insert(RegistrationLevel record) {
-        registrationlevelMapper.insert(record);
-
-        return true;
+        return registrationlevelMapper.insert(record) == 1;
     }
 
     public List<RegistrationLevel> selectByPrimaryKey(RegistrationLevel registrationLevel) {
@@ -37,8 +34,7 @@ public class RegistrationlevelService {
 
 
     public boolean updateByPrimaryKeySelective(RegistrationLevel record) {
-        registrationlevelMapper.updateByPrimaryKeySelective(record);
-        return true;
+        return registrationlevelMapper.updateByPrimaryKeySelective(record) == 1;
     }
 
 

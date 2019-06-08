@@ -6,15 +6,15 @@ import com.neuedu.hospital_back.po.RegistrationLevel;
 import java.util.List;
 
 public interface RegistrationLevelMapper {
-    void deleteByPrimaryKey(Integer rLId);
+    int deleteByPrimaryKey(Integer rLId);
 
-    void insert(RegistrationLevel record);
+    int insert(RegistrationLevel record);
 
     List<RegistrationLevel> getRegistrationLevel(RegistrationLevel registrationlevel);
 
     List<RegistrationLevel> getAllRegistrationLevel();
 
-    void updateByPrimaryKeySelective(RegistrationLevel record);
+    int updateByPrimaryKeySelective(RegistrationLevel record);
 
 
 }
