@@ -69,8 +69,8 @@ public class ExaminationApplicationService {
         return examinationApplicationMapper.updateResult(object.getInt("eAId"), object.getString("eAResult")) == 1;
     }
 
-    public List<ExaminationApplication> selectByrId(JSONObject object) {
-        List<ExaminationApplication> examinationApplications = examinationApplicationMapper.selectByrId(object.getInt("rId"));
+    public List<ExaminationApplication> selectByrIdAndEIFeeType(JSONObject object) {
+        List<ExaminationApplication> examinationApplications = examinationApplicationMapper.selectByrIdAndEIFeeType(object.getInt("rId"),object.getString("eIFeeType"));
         for (ExaminationApplication examinationApplication : examinationApplications) {
             examinationApplication.setExamnationItem(examnationitemMapper.selectById(examinationApplication.geteIId()));
         }

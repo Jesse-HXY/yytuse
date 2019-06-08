@@ -13,8 +13,8 @@
         select eAId, eAName, eIId, dId, eAStatus, rId from examinationapplication where eAId = #{eAId}
     </select>
 
-    <select id="selectByrId" resultType="com.neuedu.hospital_back.po.ExaminationApplication">
-        select eAId, eAName, eIId, dId, eAStatus, rId, eAResult from examinationapplication where rId = #{rId}
+    <select id="selectByrIdAndEIFeeType" resultType="com.neuedu.hospital_back.po.ExaminationApplication">
+        select eAId, eAName, examinationApplication.eIId, dId, eAStatus, rId, eAResult from examinationapplication, examnationitem where rId = #{rId} and examinationApplication.eIId = examnationitem.eIId and eIFeeType like "%" #{eIFeeType} "%"
     </select>
 
     <select id="selectByrIdAndDId" resultType="com.neuedu.hospital_back.po.ExaminationApplication">
@@ -24,7 +24,6 @@
     <select id="selectByrIdAndStatus" resultType="com.neuedu.hospital_back.po.ExaminationApplication">
         select eAId, eAName, eIId, dId, eAStatus, rId, eAResult, beginTime from examinationapplication where rId = #{rId} and eAStatus = #{eAStatus}
     </select>
-
 
     <delete id="delete">
         delete from examinationapplication where eAId = #{eAId}

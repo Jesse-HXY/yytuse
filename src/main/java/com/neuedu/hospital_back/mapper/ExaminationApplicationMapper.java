@@ -11,7 +11,7 @@ public interface ExaminationApplicationMapper {
 
     ExaminationApplication selectById(int eAId);
 
-    List<ExaminationApplication> selectByrId(int rId);
+    List<ExaminationApplication> selectByrIdAndEIFeeType(@Param("rId") Integer rId, @Param("eIFeeType") String eIFeeType);
 
     List<ExaminationApplication> selectByrIdAndDId(@Param("rId") Integer rId, @Param("dId") String dId, @Param("eAStatus") String eAStatus);
 
