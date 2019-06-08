@@ -22,10 +22,10 @@ public class WorkloadsCountService {
         String dId = object.getString("dId");
         Long beginTime = object.getLong("beginTime");
         Long endTime = object.getLong("endTime");
-        String[] names = {"中药费", "西药费", "挂号费", "诊察费", "检验费", "治疗费", "材料费", "手术费", "其他费用"};
+        String[] names = {"中药费", "西药费", "挂号费", "诊察费", "检查费","检验费", "治疗费", "材料费", "手术费", "其他费用"};
         Map<String, Double> fees = new HashMap<>();
         for (String name : names) {
-            fees.put(name, workloadsCountMapper.getWorkloadsCountBydId(dId, beginTime, endTime, name));
+            fees.put(name, workloadsCountMapper.getFeesBydId(dId, beginTime, endTime, name));
         }
         WorkloadsCount workloadsCount = new WorkloadsCount();
         workloadsCount.setVisits(registrationMapper.getVisits(dId, beginTime, endTime));
@@ -33,7 +33,8 @@ public class WorkloadsCountService {
         workloadsCount.setXyFee(fees.get("西药费"));
         workloadsCount.setRegistrationFee(fees.get("挂号费"));
         workloadsCount.setDiagnosticFee(fees.get("诊察费"));
-        workloadsCount.setExaminationFee(fees.get("检验费"));
+        workloadsCount.setExaminationFee(fees.get("检查费"));
+        workloadsCount.setTestFee(fees.get("检验费"));
         workloadsCount.setTreatmentFee(fees.get("治疗费"));
         workloadsCount.setMaterialFee(fees.get("材料费"));
         workloadsCount.setSurgeryFee(fees.get("手术费"));

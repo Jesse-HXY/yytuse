@@ -30,7 +30,7 @@ public class AccountService {
         for (Account account : accounts) {
             System.out.println(account.toString());
             result += accountMapper.insert(account);
-            accountDiagnosisMapper.insert(account.getAccId(), account.getDiaId());
+//            accountDiagnosisMapper.insert(account.getAccId(), account.getDiaId());
         }
         return result == accounts.size();
     }

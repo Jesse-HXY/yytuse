@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.hospital_back.mapper.WorkloadsCountMapper">
 
-    <select id="getWorkloadsCountBydId" resultType="Double">
-        select sum(fee) as totalFee from account where dId = #{dId} and payTime between #{beginTime} and #{endTime} and feeType like "%"#{feeType}"%"
+    <select id="getFeesBydId" resultType="double">
+        select COALESCE(sum(fee),0.0) as totalFee from account where dId = #{dId} and payTime between #{beginTime} and #{endTime} and feeType like "%"#{feeType}"%"
     </select>
 
 </mapper>

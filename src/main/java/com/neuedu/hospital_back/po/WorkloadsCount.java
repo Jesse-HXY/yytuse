@@ -7,11 +7,20 @@ public class WorkloadsCount {
     private double xyFee;//西药费
     private double registrationFee;//挂号费
     private double diagnosticFee;//诊察费
-    private double examinationFee;//检验费
+    private double examinationFee;//检查费
+    private double testFee;//检验费
     private double treatmentFee;//治疗费
     private double materialFee;//材料费
     private double surgeryFee;//手术费
     private double otherFee;//其他费用
+
+    public double getTestFee() {
+        return testFee;
+    }
+
+    public void setTestFee(double testFee) {
+        this.testFee = testFee;
+    }
 
     public int getVisits() {
         return visits;
