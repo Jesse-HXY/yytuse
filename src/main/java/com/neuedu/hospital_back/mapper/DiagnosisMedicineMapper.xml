@@ -21,4 +21,15 @@
      delete from diagnosis_medicine
     where diaId=#{diaId} and mId=#{mId}
   </delete>
+
+  <update id="updateBymIdAndDiaId">
+    update diagnosis_medicine
+    <set>
+      <if test="times != null and times != ''">times=#{times}, </if>
+     <if test="instruction != null and instruction != ''">instruction=#{instruction} ,</if>
+      <if test="dosage != null and dosage != ''">dosage=#{dosage} ,</if>
+      <if test="mAmount != null">mAmount=#{mAmount}, </if>
+    </set>
+    where diaId=#{diaId} and mId=#{mId}
+  </update>
 </mapper>

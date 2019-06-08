@@ -101,6 +101,19 @@ public class DiagnosisService {
         return result == diaIds.size();
     }
 
+    public boolean updateBydiaId(JSONObject object){
+        Integer diaId=object.getInt("diaId");
+        JSONArray jsonArray = object.getJSONArray("diagnosisMedicine");
+        List<DiagnosisMedicine> list=(List) JSONArray.toCollection(jsonArray, DiagnosisMedicine.class);
+        int result = 0;
+
+        for (DiagnosisMedicine d : list) {
+            d.setDiaId(diaId);
+            result += diagnosisMedicineMapper.updateBymIdAndDiaId(d);
+        }
+        return result==list.size();
+    }
+
     public List<Diagnosis> selectByCondition(Diagnosis diagnosis) {
         List<Diagnosis> list = diagnosisMapper.selectByCondition(diagnosis);
         return list;
@@ -122,6 +135,8 @@ public class DiagnosisService {
         }
         return r==mIds.size();
    }
+
+
 
 
 

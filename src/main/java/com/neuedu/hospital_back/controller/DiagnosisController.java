@@ -102,4 +102,10 @@ public class DiagnosisController {
     public boolean deleteMedicineFromDiagnosis(@RequestBody JSONObject object){
         return diagnosisService.deleteMedicineFromDiagnosis(object);
     }
+
+    @PostMapping("/updateDiagnosisMedicineBydiaIdAndMId")
+    public boolean updateBydiaId(@RequestBody JSONObject object){
+        return diagnosisService.updateBydiaId(object);
+    }
+
 }
