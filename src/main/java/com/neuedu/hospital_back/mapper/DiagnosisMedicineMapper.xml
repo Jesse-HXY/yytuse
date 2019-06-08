@@ -35,6 +35,18 @@
       <if test="mId != null"> and mId=#{mId}</if>
     </where>
   </update>
+  <update id="updateByKey">
+    update diagnosis_medicine
+    <set>
+      <if test="times != null and times != ''">times=#{times}, </if>
+      <if test="instruction != null and instruction != ''">instruction=#{instruction} ,</if>
+      <if test="dosage != null and dosage != ''">dosage=#{dosage} ,</if>
+      <if test="mAmount != null">mAmount=#{mAmount}, </if>
+      <if test="mState != null and mState != ''">mState=#{mState} </if>
+    </set>
+    where dia_M_Id=#{dia_M_Id}
+
+  </update>
   <select id="getPopularMedicine" resultType="com.neuedu.hospital_back.po.Medicine">
     SELECT a.mId,mCode, mName, mSpell, mSpecification, mUnit, mProducer, mType, mFee  from (SELECT mid,count(*) as mIdAcount from diagnosis_medicine GROUP BY mId) a, medicine
     where a.mId=medicine.mId

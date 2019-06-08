@@ -30,7 +30,7 @@ public class AccountService {
         for (Account account : accounts) {
             System.out.println(account.toString());
             result += accountMapper.insert(account);
-//            accountDiagnosisMapper.insert(account.getAccId(), account.getDiaId());
+            accountDiagnosisMapper.insert(account.getAccId(), account.getDia_M_Id());
         }
         return result == accounts.size();
     }
@@ -40,6 +40,7 @@ public class AccountService {
         List<Account> accounts = (List) JSONArray.toCollection(jsonArray, Account.class);
         int result = 0;
         for (Account account : accounts) {
+            System.out.println(account.toString());
             result += accountMapper.insert(account);
             accountExaminationApplicationMapper.insert(account.getAccId(), account.geteAId());
         }

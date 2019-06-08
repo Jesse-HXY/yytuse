@@ -27,6 +27,16 @@ public class Medicine {
 
     private int mAmount;
 
+    public int getDia_M_Id() {
+        return dia_M_Id;
+    }
+
+    public void setDia_M_Id(int dia_M_Id) {
+        this.dia_M_Id = dia_M_Id;
+    }
+
+    private int dia_M_Id;
+
 
 
 

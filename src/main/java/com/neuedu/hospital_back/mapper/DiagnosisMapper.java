@@ -1,6 +1,7 @@
 package com.neuedu.hospital_back.mapper;
 
 import com.neuedu.hospital_back.po.Diagnosis;
+import com.neuedu.hospital_back.po.Medicine;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -21,4 +22,6 @@ public interface DiagnosisMapper {
     List<Diagnosis> selectHistoryDiagnosis(Integer uId);
 
     List<Diagnosis>  getDetailByrIdAndTime(@Param("rId") Integer rId,@Param("useTime") long useTime);
+
+    List<Medicine> getDetailByrId(Integer rId);
 }

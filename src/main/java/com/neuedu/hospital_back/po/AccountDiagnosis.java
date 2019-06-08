@@ -3,7 +3,7 @@ package com.neuedu.hospital_back.po;
 public class AccountDiagnosis {
     private Integer accId;
 
-    private Integer diaId;
+    private Integer dia_M_Id;
 
 
     public Integer getAccId() {
@@ -14,13 +14,11 @@ public class AccountDiagnosis {
         this.accId = accId;
     }
 
-    public Integer getDiaId() {
-        return diaId;
+    public Integer getDia_M_Id() {
+        return dia_M_Id;
     }
 
-    public void setDiaId(Integer diaId) {
-        this.diaId = diaId;
+    public void setDia_M_Id(Integer dia_M_Id) {
+        this.dia_M_Id = dia_M_Id;
     }
-
-
 }

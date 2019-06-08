@@ -12,15 +12,7 @@ public class Account {
     private int rId;
     private int cId;//收费员Id
     private int eAId;
-    private String postDId;//开单科室
-
-    public String getPostDId() {
-        return postDId;
-    }
-
-    public void setPostDId(String postDId) {
-        this.postDId = postDId;
-    }
+    private Integer dia_M_Id;
 
     public int geteAId() {
         return eAId;
@@ -28,6 +20,14 @@ public class Account {
 
     public void seteAId(int eAId) {
         this.eAId = eAId;
+    }
+
+    public Integer getDia_M_Id() {
+        return dia_M_Id;
+    }
+
+    public void setDia_M_Id(Integer dia_M_Id) {
+        this.dia_M_Id = dia_M_Id;
     }
 
     public int getcId() {

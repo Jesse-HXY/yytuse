@@ -134,10 +134,14 @@ public class DiagnosisController {
         return diagnosisService.updateDiaFee(object);
     }
 
-    @PostMapping("/getDetailByrIdAndTime")
-    public List<Diagnosis> getDetailByrIdAndTime(@RequestBody JSONObject object){
-        return diagnosisService.getDetailByrIdAndTime(object);
+    @PostMapping("/getDetailByrId")
+    public List<Medicine> getDetailByrId(@RequestBody JSONObject object){
+        return diagnosisService.getDetailByrId(object);
     }
 
+    @PostMapping("/updateMStateBydia_M_Id")
+    public Boolean updateMStateBydia_M_Id(JSONObject object){
+        return diagnosisService.updateMStateBydia_M_Id(object);
+    }
 
 }

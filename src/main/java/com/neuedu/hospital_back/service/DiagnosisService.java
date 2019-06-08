@@ -140,12 +140,17 @@ public class DiagnosisService {
       return result==1;
     }
 
-    public boolean updateMStateBydiaId(JSONObject object){
-        Integer diaId=object.getInt("diaId");
-        DiagnosisMedicine d=new DiagnosisMedicine();
-        d.setDiaId(diaId);
-        d.setmState(object.getString("mState"));
-        return diagnosisMedicineMapper.updateBymIdAndDiaId(d)>=1;
+    public boolean updateMStateBydia_M_Id(JSONObject object){
+        List<Integer> dia_M_Id=object.getJSONArray("dia_M_Id");
+      int re=0;
+       for(Integer i:dia_M_Id){
+           DiagnosisMedicine d=new DiagnosisMedicine();
+           d.setmState(object.getString("mState"));
+           d.setDia_M_Id(i);
+         re+=  diagnosisMedicineMapper.updateByKey(d);
+       }
+
+        return re==dia_M_Id.size();
     }
 
     public List<Diagnosis> selectByCondition(Diagnosis diagnosis) {
@@ -159,10 +164,9 @@ public class DiagnosisService {
         return d;
     }
 
-    public List<Diagnosis> getDetailByrIdAndTime(JSONObject object){
+    public List<Medicine> getDetailByrId(JSONObject object){
         Integer rId=object.getInt("rId");
-        long useTime=object.getInt("useTime")/1000;
-        List<Diagnosis> d=diagnosisMapper.getDetailByrIdAndTime(rId,useTime);
+        List<Medicine> d=diagnosisMapper.getDetailByrId(rId);
         return d;
 
     }
