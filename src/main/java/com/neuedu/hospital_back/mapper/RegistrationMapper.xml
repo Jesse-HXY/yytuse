@@ -63,7 +63,8 @@
     <update id="updateRegistration">
         update registration
         <set>
-            <if test="rStatus != null and rStatus != ''">rStatus=#{rStatus}</if>
+            <if test="rStatus != null and rStatus != ''">rStatus = #{rStatus}</if>
+            <if test="rResult != null and rResult != ''">rResult = #{rResult}</if>
         </set>
         where rId=#{rId}
     </update>

@@ -1,79 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.hospital_back.mapper.ExamnationTemplateMapper">
-  <sql id="Base_Column_List">
+    <sql id="Base_Column_List">
     eTId, eTName, eTDate, eTScope, recordType
   </sql>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from examnationtemplate
     where eTId = #{eTId}
   </delete>
-  <insert id="insert" keyColumn="eTId" keyProperty="eTId" parameterType="com.neuedu.hospital_back.po.ExamnationTemplate" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="eTId" keyProperty="eTId"
+            parameterType="com.neuedu.hospital_back.po.ExamnationTemplate" useGeneratedKeys="true">
     insert into examnationtemplate (eTName, eTDate, eTScope, 
       recordType)
     values (#{eTName}, #{eTDate}, #{eTScope},
       #{recordType})
   </insert>
 
-  <select id="selectByCondition" resultType="com.neuedu.hospital_back.po.ExamnationTemplate">
-    select  eTId, eTName, eTDate, eTScope, recordType from examnationtemplate
-    <where>
-      <if test="eTName != null and eTName != ''">
-        and eTName like "%"#{eTName}"%"
-      </if>
-      <if test="eTScope != null and eTScope != ''">
-        and eTScope =#{eTScope}
-      </if>
-      <if test="recordType != null and recordType != ''">
-        and recordType=#{recordType}
-      </if>
-    </where>
-  </select>
+    <select id="selectByCondition" resultType="com.neuedu.hospital_back.po.ExamnationTemplate">
+        select eTId, eTName, eTDate, eTScope, recordType from examnationtemplate
+        <where>
+            <if test="eTName != null and eTName != ''">
+                and eTName like "%"#{eTName}"%"
+            </if>
+            <if test="eTScope != null and eTScope != ''">
+                and eTScope =#{eTScope}
+            </if>
+            <if test="recordType != null and recordType != ''">
+                and recordType=#{recordType}
+            </if>
+        </where>
+    </select>
 
-  <select id="selectExamnationItemBydId" resultType="com.neuedu.hospital_back.po.ExamnationTemplate">
-    select examinationtemplate_department.eTId, eTName, eTDate, eTScope, recordType from examnationtemplate,examinationtemplate_department
-    <where>
-      dId=#{dId} and examinationtemplate_department.eTId=examnationtemplate.eTId
-      <if test="eTName != null and eTName != ''">and eTName like "%"#{eTName,jdbcType=VARCHAR}"%"</if>
-      <if test="recordType != null and recordType != ''">and recordType =#{recordType}</if>
-    </where>
-  </select>
+    <select id="selectExamnationItemBydId" resultType="com.neuedu.hospital_back.po.ExamnationTemplate">
+        select examinationtemplate_department.eTId, eTName, eTDate, eTScope, recordType from
+        examnationtemplate,examinationtemplate_department
+        <where>
+            dId=#{dId} and examinationtemplate_department.eTId=examnationtemplate.eTId
+            <if test="eTName != null and eTName != ''">and eTName like "%"#{eTName,jdbcType=VARCHAR}"%"</if>
+            <if test="recordType != null and recordType != ''">and recordType =#{recordType}</if>
+        </where>
+    </select>
 
-  <select id="selectExamnationItemByuId" resultType="com.neuedu.hospital_back.po.ExamnationTemplate">
-    select examinationtemplate_user.eTId, eTName, eTDate, eTScope, recordType from examnationtemplate,examinationtemplate_user
-    <where>
-      uId=#{uId}  and examinationtemplate_user.eTId=examnationtemplate.eTId
-      <if test="eTName != null and eTName != ''">and eTName like "%"#{eTName,jdbcType=VARCHAR}"%"</if>
-      <if test="recordType != null and recordType != ''">and recordType =#{recordType}</if>
-    </where>
-  </select>
+    <select id="selectExamnationItemByuId" resultType="com.neuedu.hospital_back.po.ExamnationTemplate">
+        select examinationtemplate_user.eTId, eTName, eTDate, eTScope, recordType from
+        examnationtemplate,examinationtemplate_user
+        <where>
+            uId=#{uId} and examinationtemplate_user.eTId=examnationtemplate.eTId
+            <if test="eTName != null and eTName != ''">and eTName like "%"#{eTName,jdbcType=VARCHAR}"%"</if>
+            <if test="recordType != null and recordType != ''">and recordType =#{recordType}</if>
+        </where>
+    </select>
 
-  <select id="selectExamnationTemplateByeTId" resultType="com.neuedu.hospital_back.po.ExamnationTemplate">
+    <select id="selectExamnationTemplateByeTId" resultType="com.neuedu.hospital_back.po.ExamnationTemplate">
     select eTId, eTName, eTDate, eTScope, recordType from  examnationtemplate
     where eTId=#{eTId}
   </select>
 
-  <select id="selectExamnationItemByeTId" resultType="com.neuedu.hospital_back.po.ExamnationItem">
+    <select id="selectExamnationItemByeTId" resultType="com.neuedu.hospital_back.po.ExamnationItem">
     select examnationitem.eIId, eIName, eISpecification, eIFee, eIFeeType, eICode from examnationitem,examnationtemplate_examnationitem
     where eTId=#{eTId} and examnationitem.eIId=examnationtemplate_examnationitem.eIId
   </select>
 
-  <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.ExamnationTemplate">
-    update examnationtemplate
-    <set>
-      <if test="eTName != null">
-        eTName = #{eTName},
-      </if>
-      <if test="eTDate != null">
-        eTDate = #{eTDate},
-      </if>
-      <if test="eTScope != null">
-        eTScope = #{eTScope},
-      </if>
-      <if test="recordType != null">
-        recordType = #{recordType},
-      </if>
-    </set>
-    where eTId = #{eTId}
-  </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.ExamnationTemplate">
+        update examnationtemplate
+        <set>
+            <if test="eTName != null">
+                eTName = #{eTName},
+            </if>
+            <if test="eTDate != null">
+                eTDate = #{eTDate},
+            </if>
+            <if test="eTScope != null">
+                eTScope = #{eTScope},
+            </if>
+            <if test="recordType != null">
+                recordType = #{recordType},
+            </if>
+        </set>
+        where eTId = #{eTId}
+    </update>
 </mapper>

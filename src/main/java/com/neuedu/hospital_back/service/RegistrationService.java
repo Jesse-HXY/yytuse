@@ -94,7 +94,7 @@ public class RegistrationService {
     }
 
     public boolean updateRStatus(JSONObject object) {
-        return registrationMapper.updateRegistration(object.getInt("rId"), object.getString("rStatus")) == 1;
+        return registrationMapper.updateRegistration(object.getInt("rId"), object.getString("rStatus"), object.getString("rResult")) == 1;
     }
 }
 

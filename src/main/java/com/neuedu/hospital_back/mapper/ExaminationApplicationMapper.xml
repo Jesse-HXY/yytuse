@@ -10,7 +10,7 @@
     </insert>
 
     <select id="getEINameAndEAResult" resultType="java.util.HashMap">
-        select distinct eIName, eAResult from examinationapplication e1 join examnationitem e2 on e1.eIId = e2.eIId where rId = #{rId}
+        select distinct eIName, eAResult from examinationapplication e1 join examnationitem e2 on e1.eIId = e2.eIId where rId = #{rId} and eAStatus = "执行结束"
     </select>
 
     <select id="selectById" resultType="com.neuedu.hospital_back.po.ExaminationApplication">

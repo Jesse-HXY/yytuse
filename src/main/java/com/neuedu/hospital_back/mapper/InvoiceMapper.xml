@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.hospital_back.mapper.InvoiceMapper">
-  <sql id="Base_Column_List">
-    <!--@mbg.generated-->
-    iId, eAId, rId, diaId, payTime, offsetNum, iState, reprintTime
-  </sql>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        iId, eAId, rId, diaId, payTime, offsetNum, iState, reprintTime
+    </sql>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from invoice
     where iId = #{iId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.neuedu.hospital_back.po.Invoice">
+    <insert id="insert" parameterType="com.neuedu.hospital_back.po.Invoice">
     insert into invoice (iId, eAId, rId, 
       diaId, payTime, offsetNum, 
       iState, reprintTime)
@@ -17,34 +17,35 @@
       #{diaId,jdbcType=INTEGER}, #{payTime,jdbcType=DATE}, #{offsetNum,jdbcType=VARCHAR}, 
       #{iState,jdbcType=VARCHAR}, #{reprintTime,jdbcType=INTEGER})
   </insert>
-  <update id="update">
-    update invoice
-    <set>
-      <if test="rId != null">rId=#{rId}, </if>
-     <if test="diaId != null">diaId=#{diaId}, </if>
-      <if test="eAId != null">eAId=#{eAId}, </if>
-      <if test="iState != null and iState != ''">iState=#{iState} , </if>
-      <if test="offsetNum != null and offsetNum != ''">offsetNum=#{offsetNum} ,</if>
-      <if test="payTime != null">payTime=#{payTime} ,</if>
-      <if test="reprintTime != null">reprintTime=#{reprintTime}, </if>
-    </set>
-    where iId=#{iId}
-  </update>
-  <select id="getNowIId" resultType="java.lang.String">
+    <update id="update">
+        update invoice
+        <set>
+            <if test="rId != null">rId=#{rId},</if>
+            <if test="diaId != null">diaId=#{diaId},</if>
+            <if test="eAId != null">eAId=#{eAId},</if>
+            <if test="iState != null and iState != ''">iState=#{iState} ,</if>
+            <if test="offsetNum != null and offsetNum != ''">offsetNum=#{offsetNum} ,</if>
+            <if test="payTime != null">payTime=#{payTime} ,</if>
+            <if test="reprintTime != null">reprintTime=#{reprintTime},</if>
+        </set>
+        where iId=#{iId}
+    </update>
+    <select id="getNowIId" resultType="java.lang.String">
     select iId from invoice where iState is null or iState='' and rId is null and diaId is null
     and eAId is null
     order by iId limit 1
   </select>
 
-  <select id="selectByCondition" resultType="com.neuedu.hospital_back.po.Invoice">
-   select iId, eAId, rId,
-    diaId, payTime, offsetNum,
-    iState, reprintTime from invoice
-    <where>
-      <if test="iId != null and iId != ''">iId=#{iId} </if>
-      <if test="rId != null">and rId=#{rId}, </if>
-      <if test="diaId != null">and diaId=#{diaId}, </if>
-      <if test="eAId != null">and eAId=#{eAId}, </if>
-      <if test="iState != null and iState != ''">and iState=#{iState} , </if></where>
-  </select>
+    <select id="selectByCondition" resultType="com.neuedu.hospital_back.po.Invoice">
+        select iId, eAId, rId,
+        diaId, payTime, offsetNum,
+        iState, reprintTime from invoice
+        <where>
+            <if test="iId != null and iId != ''">iId=#{iId}</if>
+            <if test="rId != null">and rId=#{rId},</if>
+            <if test="diaId != null">and diaId=#{diaId},</if>
+            <if test="eAId != null">and eAId=#{eAId},</if>
+            <if test="iState != null and iState != ''">and iState=#{iState} ,</if>
+        </where>
+    </select>
 </mapper>

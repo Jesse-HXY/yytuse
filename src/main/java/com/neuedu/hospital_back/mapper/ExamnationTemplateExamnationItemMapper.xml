@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.hospital_back.mapper.ExamnationTemplateExamnationItemMapper">
-  <sql id="Base_Column_List">
+    <sql id="Base_Column_List">
     eT_EI_Id, eTId, eIId
   </sql>
 
-  <delete id="deleteByETId" parameterType="integer">
+    <delete id="deleteByETId" parameterType="integer">
     delete from examnationtemplate_examnationitem
     where eTId=#{eTId}
   </delete>
 
-  <insert id="insert" keyColumn="eT_EI_Id" keyProperty="eT_EI_Id" parameterType="com.neuedu.hospital_back.po.ExamnationTemplateExamnationItem" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="eT_EI_Id" keyProperty="eT_EI_Id"
+            parameterType="com.neuedu.hospital_back.po.ExamnationTemplateExamnationItem" useGeneratedKeys="true">
     insert into examnationtemplate_examnationitem (eTId, eIId)
     values (#{eTId,jdbcType=INTEGER}, #{eIId,jdbcType=INTEGER})
   </insert>

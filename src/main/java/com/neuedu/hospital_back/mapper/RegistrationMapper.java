@@ -21,7 +21,7 @@ public interface RegistrationMapper {
 
     List<RegistrationInfo> getRegistrationInfoByrId(@Param("rId")int rId);
 
-    int updateRegistration(@Param("rId")int rId, @Param("rStatus")String rStatus);
+    int updateRegistration(@Param("rId")int rId, @Param("rStatus")String rStatus, @Param("rResult")String rResult);
 
     List<RegistrationInfo> getRegistrationInfoByrIdOrPName(@Param("rId")int rId, @Param("pName")String pName);
 
