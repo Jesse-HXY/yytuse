@@ -135,7 +135,7 @@ public class DiagnosisController {
     }
 
     @PostMapping("/getDetailByrIdAndTime")
-    public List<Diagnosis> getDetailByrIdAndTime(JSONObject object){
+    public List<Diagnosis> getDetailByrIdAndTime(@RequestBody JSONObject object){
         return diagnosisService.getDetailByrIdAndTime(object);
     }
 
