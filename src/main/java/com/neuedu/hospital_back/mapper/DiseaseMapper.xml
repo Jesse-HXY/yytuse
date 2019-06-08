@@ -6,6 +6,7 @@
     delete from disease
     where disId = #{disId,jdbcType=INTEGER}
   </delete>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.Disease">
     update disease
     <set>
@@ -24,6 +25,7 @@
     </set>
     where disId = #{disId,jdbcType=INTEGER}
   </update>
+
   <insert id="insert" keyProperty="disId" parameterType="com.neuedu.hospital_back.po.Disease" useGeneratedKeys="true">
     insert into disease (disIcd, disName,
       disCode, disType)
@@ -37,11 +39,11 @@
 
     <select id="getDiseaseByType" resultType="com.neuedu.hospital_back.po.Disease">
         select disId, disIcd, disName, disCode, disType from disease
-        where disType=#{disType}
+        where disType = #{disType}
     </select>
+
     <select id="getDiseases" resultType="com.neuedu.hospital_back.po.Disease">
-        select disId, disIcd, disName,
-        disCode, disType from disease
+        select disId, disIcd, disName, disCode, disType from disease
         <where>
             <if test="disName != null and disName != ''">
                 and disName like '%' #{disName} '%'
@@ -55,11 +57,14 @@
         </where>
     </select>
 
+    <select id="getById" resultType="com.neuedu.hospital_back.po.Disease">
+        select disId, disIcd, disName, disCode, disType from disease
+        where disId = #{disId}
+    </select>
+
     <select id="getDiseaseByPage" resultType="com.neuedu.hospital_back.po.Disease">
-        select disId, disIcd, disName,
-        disCode, disType from disease
-        where disType=#{disType}
-         limit #{begin}, #{pageSize}
+        select disId, disIcd, disName, disCode, disType from disease
+        where disType = #{disType} limit #{begin}, #{pageSize}
     </select>
 
     <select id="getDiseaseCount" resultType="Integer">

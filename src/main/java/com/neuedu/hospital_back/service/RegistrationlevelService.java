@@ -16,19 +16,16 @@ public class RegistrationlevelService {
     @Resource
     private RegistrationLevelMapper registrationlevelMapper;
 
-
     public boolean deleteByPrimaryKey(JSONObject rLId) {
         registrationlevelMapper.deleteByPrimaryKey(rLId.getInt("rLId"));
         return true;
     }
-
 
     public boolean insert(RegistrationLevel record) {
         registrationlevelMapper.insert(record);
 
         return true;
     }
-
 
     public List<RegistrationLevel> selectByPrimaryKey(RegistrationLevel registrationLevel) {
         return registrationlevelMapper.getRegistrationLevel(registrationLevel);

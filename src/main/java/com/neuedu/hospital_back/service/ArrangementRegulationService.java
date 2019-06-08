@@ -63,7 +63,7 @@ public class ArrangementRegulationService {
     }
 
 
-    public int[] getPlanList(int n) {
+    private int[] getPlanList(int n) {
         int[] arPlanList = new int[14];
         int i = 13;
         while (n != 0) {

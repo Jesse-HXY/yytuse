@@ -7,4 +7,8 @@
     <insert id="insert">
         insert into diagnosistype (rId, disId, diaType, diaTime) values (#{rId}, #{disId}, #{diaType}, #{diaTime})
     </insert>
+
+    <select id="getByrId" resultType="com.neuedu.hospital_back.po.DiagnosisType">
+        select rId, disId, diaType, diaTime from diagnosistype where rId = #{rId}
+    </select>
 </mapper>

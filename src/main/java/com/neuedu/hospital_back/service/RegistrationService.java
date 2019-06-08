@@ -82,7 +82,7 @@ public class RegistrationService {
         return registrationMapper.getRegistrationInfoByrIdOrPName(object.getInt("rId"), object.getString("pName"));
     }
 
-    public String MorningOrEvening(long date) {
+    private String MorningOrEvening(long date) {
         SimpleDateFormat sdf = new SimpleDateFormat("HH");
         String time = sdf.format(new Date(date));
         int a = Integer.parseInt(time);

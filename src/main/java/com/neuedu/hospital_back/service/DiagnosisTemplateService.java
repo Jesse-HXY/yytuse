@@ -89,26 +89,27 @@ public class DiagnosisTemplateService {
         String diaType = object.getString("diaType");
         String datScope = object.getString("datScope");
         String datName = object.getString("datName");
-        Integer uId = object.getInt("uId");
+        int uId = object.getInt("uId");
 
 
-        if (datScope.equals("科室")) {
-            String dId = object.getString("dId");
-            return diagnosisTemplateMapper.selectDiagnosisTemplateBydId(datName, diaType, dId);
-        } else if (datScope.equals("个人")) {
-            return diagnosisTemplateMapper.selectDiagnosisTemplateByuId(datName, diaType, uId);
-        } else if (datScope.equals("全院")) {
-            return diagnosisTemplateMapper.selectByCondition(datName, "全院", diaType);
-        } else {
-            DiagnosisTemplate e = new DiagnosisTemplate();
-            List<DiagnosisTemplate> el = new ArrayList<>();
-            List<String> dIdList = departmentUserMapper.selectByuId(uId);
-            for (int i = 0; i < dIdList.size(); i++) {
-                el.addAll(diagnosisTemplateMapper.selectDiagnosisTemplateBydId(datName, diaType, dIdList.get(i)));
-            }
-            el.addAll(diagnosisTemplateMapper.selectDiagnosisTemplateByuId(datName, diaType, uId));
-            el.addAll(diagnosisTemplateMapper.selectByCondition(datName, "全院", diaType));
-            return el;
+        switch (datScope) {
+            case "科室":
+                String dId = object.getString("dId");
+                return diagnosisTemplateMapper.selectDiagnosisTemplateBydId(datName, diaType, dId);
+            case "个人":
+                return diagnosisTemplateMapper.selectDiagnosisTemplateByuId(datName, diaType, uId);
+            case "全院":
+                return diagnosisTemplateMapper.selectByCondition(datName, "全院", diaType);
+            default:
+                DiagnosisTemplate e = new DiagnosisTemplate();
+                List<DiagnosisTemplate> el = new ArrayList<>();
+                List<String> dIdList = departmentUserMapper.selectByuId(uId);
+                for (String s : dIdList) {
+                    el.addAll(diagnosisTemplateMapper.selectDiagnosisTemplateBydId(datName, diaType, s));
+                }
+                el.addAll(diagnosisTemplateMapper.selectDiagnosisTemplateByuId(datName, diaType, uId));
+                el.addAll(diagnosisTemplateMapper.selectByCondition(datName, "全院", diaType));
+                return el;
         }
     }
 

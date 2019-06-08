@@ -6,6 +6,15 @@ public class DiagnosisType {
     private int disId;
     private String diaType;
     private long diaTime;
+    private Disease disease;
+
+    public Disease getDisease() {
+        return disease;
+    }
+
+    public void setDisease(Disease disease) {
+        this.disease = disease;
+    }
 
     public int getDisId() {
         return disId;

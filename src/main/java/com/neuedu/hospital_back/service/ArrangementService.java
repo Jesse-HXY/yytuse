@@ -82,8 +82,7 @@ public class ArrangementService {
 
     }
 
-    public static Date getDate(Date date, int days) {
-
+    private static Date getDate(Date date, int days) {
         java.util.Date date1;
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);

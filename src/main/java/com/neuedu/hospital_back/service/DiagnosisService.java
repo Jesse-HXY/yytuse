@@ -1,13 +1,11 @@
 package com.neuedu.hospital_back.service;
 
-import com.neuedu.hospital_back.mapper.DiagnosisMapper;
-import com.neuedu.hospital_back.mapper.DiagnosisMedicineMapper;
-import com.neuedu.hospital_back.mapper.DiagnosisTypeMapper;
-import com.neuedu.hospital_back.mapper.MedicalRecordMapper;
+import com.neuedu.hospital_back.mapper.*;
 import com.neuedu.hospital_back.po.*;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -23,11 +21,24 @@ public class DiagnosisService {
 
     @Resource
     private DiagnosisMedicineMapper diagnosisMedicineMapper;
+
+    @Resource
+    private DiseaseMapper diseaseMapper;
+
     @Resource
     private MedicalRecordMapper medicalRecordMapper;
 
+
     public boolean insertMedicalRecord(MedicalRecord medicalRecord) {
         return medicalRecordMapper.insertMedicalRecord(medicalRecord) == 1;
+    }
+
+    public List<DiagnosisType> getDiagnosisTypeByrId(JSONObject object) {
+        List<DiagnosisType> diagnosisTypes = diagnosisTypeMapper.getByrId(object.getInt("rId"));
+        for (DiagnosisType diagnosisType : diagnosisTypes) {
+            diagnosisType.setDisease(diseaseMapper.getById(diagnosisType.getDisId()));
+        }
+        return diagnosisTypes;
     }
 
     public boolean insertDiagnosisTypes(JSONObject object) {
@@ -44,7 +55,6 @@ public class DiagnosisService {
 
     public boolean deleteByPrimaryKey(JSONObject object) {
         int result = 0;
-
         List<Integer> diaIds = object.getJSONArray("diaIdList");
         for (Integer diaId : diaIds) {
             result += diagnosisMapper.deleteByPrimaryKey(diaId);
@@ -56,8 +66,8 @@ public class DiagnosisService {
     public Diagnosis insertDiagnosis(JSONObject object) {
 
         String diaName = object.getString("diaName");
-        if (diaName.equals("") || diaName.equals(null)) {
-            diaName = "新增" + String.valueOf(diagnosisMapper.getUnnameCount() + 1);
+        if (diaName.equals("")) {
+            diaName = "新增" + (diagnosisMapper.getUnnameCount() + 1);
         }
         String diaType = object.getString("diaType");
         Integer rId = object.getInt("rId");
@@ -86,7 +96,7 @@ public class DiagnosisService {
     public boolean updateState(JSONObject object) {
         String diaState = object.getString("diaState");
         Long useDate = System.currentTimeMillis() / 1000;
-        Integer result = 0;
+        int result = 0;
         List<Integer> diaIds = object.getJSONArray("diaIdList");
         for (Integer diaId : diaIds) {
             Diagnosis d = new Diagnosis();
@@ -102,8 +112,7 @@ public class DiagnosisService {
     }
 
     public List<Diagnosis> selectByCondition(Diagnosis diagnosis) {
-        List<Diagnosis> list = diagnosisMapper.selectByCondition(diagnosis);
-        return list;
+        return diagnosisMapper.selectByCondition(diagnosis);
     }
 
     public Diagnosis getDetail(JSONObject object) {
@@ -113,15 +122,15 @@ public class DiagnosisService {
         return d;
     }
 
-    public boolean deleteMedicineFromDiagnosis(JSONObject object){
-      Integer diaId=object.getInt("diaId");
-      int r=0;
-       List<Integer>mIds =object.getJSONArray("mIds");
-        for(Integer mId:mIds){
-          r+=  diagnosisMedicineMapper.deleteByPrimaryKeyAndMId(diaId,mId);
+    public boolean deleteMedicineFromDiagnosis(JSONObject object) {
+        Integer diaId = object.getInt("diaId");
+        int r = 0;
+        List<Integer> mIds = object.getJSONArray("mIds");
+        for (Integer mId : mIds) {
+            r += diagnosisMedicineMapper.deleteByPrimaryKeyAndMId(diaId, mId);
         }
-        return r==mIds.size();
-   }
+        return r == mIds.size();
+    }
 
 
 }

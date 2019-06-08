@@ -47,7 +47,7 @@ public class UserService {
         return userListPutDepartment(userMapper.getAvailableDoctor(object.getString("dId"), object.getString("rLName"), index));
     }
 
-    public int getDayForWeek(String currentDate) throws ParseException {
+    private int getDayForWeek(String currentDate) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Calendar c = Calendar.getInstance();
         c.setTime(format.parse(currentDate));
@@ -85,7 +85,7 @@ public class UserService {
     }
 
     //给User赋值department
-    public List<User> userListPutDepartment(List<User> users) {
+    private List<User> userListPutDepartment(List<User> users) {
         //遍历每个user插入其所在的departments
         for (User user : users) {
             int uId = user.getuId();
