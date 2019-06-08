@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.hospital_back.mapper.DiagnosisMapper">
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 
     delete from diagnosis
     where diaId = #{diaId,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" keyColumn="diaId" keyProperty="diaId" parameterType="com.neuedu.hospital_back.po.Diagnosis"
-            useGeneratedKeys="true">
+  <insert id="insert" keyColumn="diaId" keyProperty="diaId" parameterType="com.neuedu.hospital_back.po.Diagnosis" useGeneratedKeys="true">
 
     insert into diagnosis (diaType, rId, diaName, 
       createDate, useDate, diaState,uId
@@ -18,38 +17,38 @@
   </insert>
 
     <select id="getUnnameCount" resultType="int">select count(*) from diagnosis </select>
-    <select id="selectHistoryDiagnosis" resultType="com.neuedu.hospital_back.po.Diagnosis">
+<select id="selectHistoryDiagnosis" resultType="com.neuedu.hospital_back.po.Diagnosis">
   select diaId,diaType, rId, diaName, createDate, useDate, diaState,uId from diagnosis
  where diaState="开立" and uId=#{uId}
   order by useDate desc
   limit 5
 </select>
-    <update id="update">
-        update diagnosis
-        <set>
-            <if test="diaName != null and diaName != ''">diaName=#{diaName},</if>
-            <if test="diaType != null and diaType != ''">diaType=#{diaType} ,</if>
-            <if test="diaState != null and diaState != ''">diaState=#{diaState},</if>
-            <if test="useDate != null">useDate=#{useDate}</if>
-
-        </set>
-        where diaId=#{diaId}
-    </update>
-    <select id="selectByCondition" resultType="com.neuedu.hospital_back.po.Diagnosis">
-        select diaId,diaType, rId, diaName,
-        createDate, useDate, diaState,uId from diagnosis
-        <where>
-            <if test="diaId != null">diaId=#{diaId}</if>
-            <if test="diaName != null and diaName != ''">and diaName=#{diaName}</if>
-            <if test="diaType != null and diaType != ''">and diaType=#{diaType}</if>
-            <if test="diaState != null and diaState != ''">and diaState=#{diaState}</if>
-            <if test="useDate != null">and useDate=#{useDate}</if>
-            <if test="rId != null">and rId=#{rId}</if>
-            <if test="createDate != null">and createDate=#{createDate}</if>
-            <if test="uId != null">and uId=#{uId}</if>
-        </where>
-    </select>
-    <select id="getById" resultType="com.neuedu.hospital_back.po.Diagnosis">
+  <update id="update">
+    update diagnosis
+    <set>
+      <if test="diaName != null and diaName != ''">diaName=#{diaName}, </if>
+      <if test="diaType != null and diaType != ''">diaType=#{diaType} ,</if>
+      <if test="diaState != null and diaState != ''">diaState=#{diaState}, </if>
+      <if test="useDate != null">useDate=#{useDate} ,</if>
+      <if test="diaFee != null">diaFee=#{diaFee}, </if>
+    </set>
+    where diaId=#{diaId}
+  </update>
+  <select id="selectByCondition" resultType="com.neuedu.hospital_back.po.Diagnosis">
+    select diaId,diaType, rId, diaName,
+      createDate, useDate, diaState,uId from diagnosis
+      <where>
+        <if test="diaId != null">diaId=#{diaId}</if>
+        <if test="diaName != null and diaName != ''">and diaName=#{diaName} </if>
+        <if test="diaType != null and diaType != ''">and diaType=#{diaType} </if>
+        <if test="diaState != null and diaState != ''">and diaState=#{diaState} </if>
+        <if test="useDate != null">and useDate=#{useDate} </if>
+        <if test="rId != null">and rId=#{rId} </if>
+        <if test="createDate != null">and createDate=#{createDate} </if>
+        <if test="uId != null">and uId=#{uId} </if>
+      </where>
+  </select>
+  <select id="getById" resultType="com.neuedu.hospital_back.po.Diagnosis">
     select diaId,diaType, rId, diaName,
       createDate, useDate, diaState,uId  from diagnosis
       where diaId=#{diaId}

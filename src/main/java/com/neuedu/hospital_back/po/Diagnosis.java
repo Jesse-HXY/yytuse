@@ -22,6 +22,8 @@ public class Diagnosis {
 
     private List<Medicine> medicines = new ArrayList<>();
 
+    private Double diaFee;
+
     public Diagnosis() {
     }
 
@@ -36,6 +38,14 @@ public class Diagnosis {
 
     public Integer getuId() {
         return uId;
+    }
+
+    public Double getDiaFee() {
+        return diaFee;
+    }
+
+    public void setDiaFee(Double diaFee) {
+        this.diaFee = diaFee;
     }
 
     public void setuId(Integer uId) {

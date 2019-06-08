@@ -123,4 +123,8 @@ public class DiagnosisController {
         return diagnosisService.getPopularMedicine();
     }
 
+    @PostMapping("/updateDiaFee")
+    public boolean updateDiaFee(@RequestBody JSONObject object){
+        return diagnosisService.updateDiaFee(object);
+    }
 }

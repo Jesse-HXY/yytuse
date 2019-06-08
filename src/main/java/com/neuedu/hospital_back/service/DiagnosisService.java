@@ -114,6 +114,14 @@ public class DiagnosisService {
         return result == diaIds.size();
     }
 
+    public boolean updateDiaFee(JSONObject object){
+        Integer diaId=object.getInt("diaId");
+        Diagnosis d=new Diagnosis();
+        d.setDiaId(diaId);
+        d.setDiaFee(object.getDouble("diaFee"));
+        return diagnosisMapper.update(d)==1;
+    }
+
     public boolean updateBydiaId(JSONObject object){
         Integer diaId=object.getInt("diaId");
        /* JSONArray jsonArray = object.getJSONArray("diagnosisMedicine");
