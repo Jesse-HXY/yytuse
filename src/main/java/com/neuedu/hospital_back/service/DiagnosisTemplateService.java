@@ -90,8 +90,6 @@ public class DiagnosisTemplateService {
         String datScope = object.getString("datScope");
         String datName = object.getString("datName");
         int uId = object.getInt("uId");
-
-
         switch (datScope) {
             case "科室":
                 String dId = object.getString("dId");
@@ -122,8 +120,6 @@ public class DiagnosisTemplateService {
         }
         return e;
     }
-
-
 
 
     public int updateByPrimaryKeySelective(DiagnosisTemplate record) {

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ExaminationApplicationService {
@@ -24,6 +25,11 @@ public class ExaminationApplicationService {
         examinationApplicationMapper.insert(examinationApplication);
         return examinationApplicationMapper.selectById(examinationApplication.geteAId());
     }
+
+    public List<Map<String, String>> getEINameAndEAResult(JSONObject object) {
+        return examinationApplicationMapper.getEINameAndEAResult(object.getInt("rId"));
+    }
+
 
     public List<ExaminationApplication> getByrIdAndEIFeeType(JSONObject object) {
         List<ExaminationApplication> examinationApplications
@@ -70,7 +76,7 @@ public class ExaminationApplicationService {
     }
 
     public List<ExaminationApplication> selectByrIdAndEIFeeType(JSONObject object) {
-        List<ExaminationApplication> examinationApplications = examinationApplicationMapper.selectByrIdAndEIFeeType(object.getInt("rId"),object.getString("eIFeeType"));
+        List<ExaminationApplication> examinationApplications = examinationApplicationMapper.selectByrIdAndEIFeeType(object.getInt("rId"), object.getString("eIFeeType"));
         for (ExaminationApplication examinationApplication : examinationApplications) {
             examinationApplication.setExamnationItem(examnationitemMapper.selectById(examinationApplication.geteIId()));
         }

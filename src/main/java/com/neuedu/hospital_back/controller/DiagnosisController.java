@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @RestController
@@ -29,6 +30,11 @@ public class DiagnosisController {
     @PostMapping("/getDiagnosisTypeByrId")
     public List<DiagnosisType> getDiagnosisTypeByrId(@RequestBody JSONObject object) {
         return diagnosisService.getDiagnosisTypeByrId(object);
+    }
+
+    @PostMapping("/getEINameAndEAResult")
+    public List<Map<String, String>> getEINameAndEAResult(@RequestBody JSONObject object) {
+        return examinationApplicationService.getEINameAndEAResult(object);
     }
 
     @PostMapping("/insertDiagnosisTypes")

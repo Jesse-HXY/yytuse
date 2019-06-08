@@ -4,6 +4,7 @@ import com.neuedu.hospital_back.po.ExaminationApplication;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ExaminationApplicationMapper {
 
@@ -24,4 +25,6 @@ public interface ExaminationApplicationMapper {
     int updateResult(@Param("eAId") int eAId, @Param("eAResult") String eAResult);
 
     int updateStatusAndTime(@Param("eAId") int eAId, @Param("eAStatus") String eAStatus, @Param("beginTime") long beginTime);
+
+    List<Map<String, String>> getEINameAndEAResult(int rId);
 }
