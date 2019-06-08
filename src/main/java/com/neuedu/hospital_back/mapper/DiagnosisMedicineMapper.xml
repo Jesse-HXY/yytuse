@@ -8,9 +8,9 @@
   </delete>
   <insert id="insert" keyColumn="dia_M_Id" keyProperty="dia_M_Id" parameterType="com.neuedu.hospital_back.po.DiagnosisMedicine" useGeneratedKeys="true">
     insert into diagnosis_medicine (mId, diaId, instruction, 
-      dosage, times,mAmount)
+      dosage, times,mAmount,mState)
     values (#{mId,jdbcType=INTEGER}, #{diaId,jdbcType=INTEGER}, #{instruction,jdbcType=VARCHAR}, 
-      #{dosage,jdbcType=VARCHAR}, #{times,jdbcType=VARCHAR},#{mAmount})
+      #{dosage,jdbcType=VARCHAR}, #{times,jdbcType=VARCHAR},#{mAmount},"未缴费")
   </insert>
   <select id="getBydiaId" resultType="com.neuedu.hospital_back.po.Medicine">
     select  medicine.mName,medicine.mSpecification,medicine.mFee, dia_M_Id, medicine.mId, diaId, instruction, dosage, times,mAmount
@@ -29,8 +29,11 @@
      <if test="instruction != null and instruction != ''">instruction=#{instruction} ,</if>
       <if test="dosage != null and dosage != ''">dosage=#{dosage} ,</if>
       <if test="mAmount != null">mAmount=#{mAmount}, </if>
+      <if test="mState != null and mState != ''">mState=#{mState} </if>
     </set>
-    where diaId=#{diaId} and mId=#{mId}
+    <where>diaId=#{diaId}
+      <if test="mId != null"> and mId=#{mId}</if>
+    </where>
   </update>
   <select id="getPopularMedicine" resultType="com.neuedu.hospital_back.po.Medicine">
     SELECT a.mId,mCode, mName, mSpell, mSpecification, mUnit, mProducer, mType, mFee  from (SELECT mid,count(*) as mIdAcount from diagnosis_medicine GROUP BY mId) a, medicine

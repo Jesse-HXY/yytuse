@@ -12,6 +12,7 @@ public class Account {
     private int rId;
     private int cId;//收费员Id
     private int eAId;
+    private Integer diaId;
 
     public int geteAId() {
         return eAId;
@@ -19,6 +20,14 @@ public class Account {
 
     public void seteAId(int eAId) {
         this.eAId = eAId;
+    }
+
+    public Integer getDiaId() {
+        return diaId;
+    }
+
+    public void setDiaId(Integer diaId) {
+        this.diaId = diaId;
     }
 
     public int getcId() {
