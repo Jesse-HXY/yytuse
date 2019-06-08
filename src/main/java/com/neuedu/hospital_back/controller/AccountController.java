@@ -18,4 +18,9 @@ public class AccountController {
     public boolean insertAccount(@RequestBody JSONObject object){
         return accountService.insertAccount(object);
     }
+
+    @PostMapping("/updateUId")
+    public boolean updateUId(@RequestBody JSONObject object){
+        return accountService.updateUId(object);
+    }
 }

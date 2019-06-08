@@ -1,7 +1,5 @@
 package com.neuedu.hospital_back.controller;
 
-
-
 import com.neuedu.hospital_back.service.ArrangementService;
 import net.sf.json.JSONObject;
 import org.springframework.web.bind.annotation.*;

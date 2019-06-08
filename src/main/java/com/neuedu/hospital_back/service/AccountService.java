@@ -30,4 +30,16 @@ public class AccountService {
         }
         return result == accounts.size();
     }
+
+    public boolean updateUId(JSONObject object){
+        Integer rId = object.getInt("rId");
+        String dId = object.getString("dId");
+        Integer uId = object.getInt("uId");
+        List<Integer> eAIdList = object.getJSONArray("eAIdList");
+        int result = 0;
+        for (Integer eAId : eAIdList){
+            result += accountMapper.updateUId(rId,dId,eAId, uId);
+        }
+        return result == eAIdList.size();
+    }
 }

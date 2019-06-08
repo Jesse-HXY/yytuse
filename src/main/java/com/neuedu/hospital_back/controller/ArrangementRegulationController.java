@@ -1,6 +1,5 @@
 package com.neuedu.hospital_back.controller;
 
-
 import com.neuedu.hospital_back.po.ArrangementList;
 import com.neuedu.hospital_back.po.ArrangementRegulation;
 import com.neuedu.hospital_back.service.ArrangementRegulationService;
