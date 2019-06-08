@@ -1,9 +1,6 @@
 package com.neuedu.hospital_back.service;
 
-import com.neuedu.hospital_back.mapper.DiagnosisMapper;
-import com.neuedu.hospital_back.mapper.DiagnosisMedicineMapper;
-import com.neuedu.hospital_back.mapper.DiagnosisTypeMapper;
-import com.neuedu.hospital_back.mapper.MedicalRecordMapper;
+import com.neuedu.hospital_back.mapper.*;
 import com.neuedu.hospital_back.po.*;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -23,6 +20,9 @@ public class DiagnosisService {
 
     @Resource
     private DiagnosisMedicineMapper diagnosisMedicineMapper;
+
+    @Resource
+    private DiagnosisTemplateMapper diagnosisTemplateMapper;
     @Resource
     private MedicalRecordMapper medicalRecordMapper;
 
@@ -122,6 +122,8 @@ public class DiagnosisService {
         }
         return r==mIds.size();
    }
+
+
 
 
 }

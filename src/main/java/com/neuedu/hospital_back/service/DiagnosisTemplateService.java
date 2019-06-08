@@ -123,6 +123,8 @@ public class DiagnosisTemplateService {
     }
 
 
+
+
     public int updateByPrimaryKeySelective(DiagnosisTemplate record) {
         return diagnosisTemplateMapper.updateByPrimaryKeySelective(record);
     }
