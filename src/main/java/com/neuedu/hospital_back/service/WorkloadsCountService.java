@@ -46,6 +46,19 @@ public class WorkloadsCountService {
         return setValues(workloadsCount, fees);
     }
 
+    public WorkloadsCount getWorkloadsCountByuId(JSONObject object) {
+        Integer uId = object.getInt("uId");
+        Long beginTime = object.getLong("beginTime");
+        Long endTime = object.getLong("endTime");
+        Map<String, Double> fees = new HashMap<>();
+        for (String name : names) {
+            fees.put(name, workloadsCountMapper.getFeesByuId(uId, beginTime, endTime, name));
+        }
+        WorkloadsCount workloadsCount = new WorkloadsCount();
+        workloadsCount.setVisits(registrationMapper.getUserVisits(uId, beginTime, endTime));
+        return setValues(workloadsCount, fees);
+    }
+
     private WorkloadsCount setValues(WorkloadsCount workloadsCount, Map<String, Double> fees){
         workloadsCount.setZyFee(fees.get("中药费"));
         workloadsCount.setXyFee(fees.get("西药费"));

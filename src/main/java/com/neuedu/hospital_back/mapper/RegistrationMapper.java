@@ -14,6 +14,8 @@ public interface RegistrationMapper {
 
     int getPostVisits(@Param("postDId") String postDId, @Param("beginTime") Long beginTime, @Param("endTime") Long endTime);
 
+    int getUserVisits(@Param("uId") Integer uId, @Param("beginTime") Long beginTime, @Param("endTime") Long endTime);
+
     List<RegistrationInfo> getAlreadyDiagnosisByuId(@Param("uId") int uId, @Param("pName") String pName);
 
     List<RegistrationInfo> getNotDiagnosisByuId(@Param("uId") int uId, @Param("pName") String pName);
