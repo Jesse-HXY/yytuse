@@ -12,18 +12,20 @@ public interface RegistrationMapper {
 
     int getVisits(@Param("dId") String dId, @Param("beginTime") Long beginTime, @Param("endTime") Long endTime);
 
-    List<RegistrationInfo> getAlreadyDiagnosisByuId(@Param("uId") int uId, @Param("pName")String pName);
+    int getPostVisits(@Param("postDId") String postDId, @Param("beginTime") Long beginTime, @Param("endTime") Long endTime);
 
-    List<RegistrationInfo> getNotDiagnosisByuId(@Param("uId") int uId, @Param("pName")String pName);
+    List<RegistrationInfo> getAlreadyDiagnosisByuId(@Param("uId") int uId, @Param("pName") String pName);
 
-    List<RegistrationInfo> getAlreadyDiagnosisByuIdAndDId(@Param("uId") int uId, @Param("pName")String pName,@Param("dId")String dId);
+    List<RegistrationInfo> getNotDiagnosisByuId(@Param("uId") int uId, @Param("pName") String pName);
 
-    List<RegistrationInfo> getNotDiagnosisByuIdAndDId(@Param("uId") int uId, @Param("pName")String pName,@Param("dId")String dId);
+    List<RegistrationInfo> getAlreadyDiagnosisByuIdAndDId(@Param("uId") int uId, @Param("pName") String pName, @Param("dId") String dId);
 
-    List<RegistrationInfo> getRegistrationInfoByrId(@Param("rId")int rId);
+    List<RegistrationInfo> getNotDiagnosisByuIdAndDId(@Param("uId") int uId, @Param("pName") String pName, @Param("dId") String dId);
 
-    int updateRegistration(@Param("rId")int rId, @Param("rStatus")String rStatus, @Param("rResult")String rResult);
+    List<RegistrationInfo> getRegistrationInfoByrId(@Param("rId") int rId);
 
-    List<RegistrationInfo> getRegistrationInfoByrIdOrPName(@Param("rId")int rId, @Param("pName")String pName);
+    int updateRegistration(@Param("rId") int rId, @Param("rStatus") String rStatus, @Param("rResult") String rResult);
+
+    List<RegistrationInfo> getRegistrationInfoByrIdOrPName(@Param("rId") int rId, @Param("pName") String pName);
 
 }

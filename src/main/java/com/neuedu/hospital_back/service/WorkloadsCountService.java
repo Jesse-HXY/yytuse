@@ -18,17 +18,35 @@ public class WorkloadsCountService {
     @Resource
     private RegistrationMapper registrationMapper;
 
+    private String[] names = {"中药费", "西药费", "挂号费", "诊察费", "检查费", "检验费", "治疗费", "材料费", "手术费", "其他费用"};
+
+    public WorkloadsCount getWorkloadsCountByPostId(JSONObject object) {
+        String postDId = object.getString("postDId");
+        Long beginTime = object.getLong("beginTime");
+        Long endTime = object.getLong("endTime");
+        Map<String, Double> fees = new HashMap<>();
+        for (String name : names) {
+            fees.put(name, workloadsCountMapper.getFeesByPostDId(postDId, beginTime, endTime, name));
+        }
+        WorkloadsCount workloadsCount = new WorkloadsCount();
+        workloadsCount.setVisits(registrationMapper.getPostVisits(postDId, beginTime, endTime));
+        return setValues(workloadsCount, fees);
+    }
+
     public WorkloadsCount getWorkloadsCountBydId(JSONObject object) {
         String dId = object.getString("dId");
         Long beginTime = object.getLong("beginTime");
         Long endTime = object.getLong("endTime");
-        String[] names = {"中药费", "西药费", "挂号费", "诊察费", "检查费","检验费", "治疗费", "材料费", "手术费", "其他费用"};
         Map<String, Double> fees = new HashMap<>();
         for (String name : names) {
             fees.put(name, workloadsCountMapper.getFeesBydId(dId, beginTime, endTime, name));
         }
         WorkloadsCount workloadsCount = new WorkloadsCount();
         workloadsCount.setVisits(registrationMapper.getVisits(dId, beginTime, endTime));
+        return setValues(workloadsCount, fees);
+    }
+
+    private WorkloadsCount setValues(WorkloadsCount workloadsCount, Map<String, Double> fees){
         workloadsCount.setZyFee(fees.get("中药费"));
         workloadsCount.setXyFee(fees.get("西药费"));
         workloadsCount.setRegistrationFee(fees.get("挂号费"));
@@ -41,5 +59,4 @@ public class WorkloadsCountService {
         workloadsCount.setOtherFee(fees.get("其他费用"));
         return workloadsCount;
     }
-
 }

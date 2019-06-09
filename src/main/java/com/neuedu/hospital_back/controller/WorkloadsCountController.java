@@ -17,6 +17,11 @@ public class WorkloadsCountController {
 
     @PostMapping("/getWorkloadsCountBydId")
     public WorkloadsCount getWorkloadsCountBydId(@RequestBody JSONObject object){
-       return workloadsCountService.getWorkloadsCountBydId(object);
+        return workloadsCountService.getWorkloadsCountBydId(object);
+    }
+
+    @PostMapping("/getWorkloadsCountByPostId")
+    public WorkloadsCount getWorkloadsCountByPostId(@RequestBody JSONObject object){
+        return workloadsCountService.getWorkloadsCountByPostId(object);
     }
 }

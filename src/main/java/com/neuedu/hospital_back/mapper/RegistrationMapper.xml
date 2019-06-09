@@ -13,6 +13,9 @@
         select count(*) from registration where rDate between #{beginTime} and #{endTime} and dId = #{dId} and rStatus = "诊毕"
     </select>
 
+    <select id="getPostVisits" resultType="int">
+        select count(*) from registration where rDate between #{beginTime} and #{endTime} and postDId = #{postDId} and rStatus = "诊毕"
+    </select>
     <select id="getAlreadyDiagnosisByuId" resultType="com.neuedu.hospital_back.po.RegistrationInfo">
         select registration.rId,registration.pId,pName,pBirth,pSex from patient,registration
         <where>

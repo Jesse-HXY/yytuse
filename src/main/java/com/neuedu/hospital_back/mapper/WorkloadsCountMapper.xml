@@ -6,4 +6,7 @@
         select COALESCE(sum(fee),0.0) as totalFee from account where dId = #{dId} and payTime between #{beginTime} and #{endTime} and feeType like "%"#{feeType}"%"
     </select>
 
+    <select id="getFeesByPostDId" resultType="double">
+        select COALESCE(sum(fee),0.0) as totalFee from account where postDId = #{postDId} and payTime between #{beginTime} and #{endTime} and feeType like "%"#{feeType}"%"
+    </select>
 </mapper>
