@@ -36,6 +36,12 @@ public class MedicineController {
     public List<Medicine> getMedicineByPage(@RequestBody JSONObject object){
         return medicineService.getMedicineByPage(object);
     }
+    @PostMapping("/getMedicineCount")
+    public int getMedicineCount(){
+        return medicineService.getMedicineCount();
+    }
+
+
     @RequestMapping("/deleteMedicine")
     public boolean deleteMedicine(@RequestBody JSONObject object) {
         return medicineService.deleteByPrimaryKey(object)==1;

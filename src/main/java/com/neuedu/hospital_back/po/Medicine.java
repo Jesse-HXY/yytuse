@@ -58,7 +58,15 @@ public class Medicine {
     private int dia_M_Id;
 
 
+    private String mFormulation;
 
+    public String getmFormulation() {
+        return mFormulation;
+    }
+
+    public void setmFormulation(String mFormulation) {
+        this.mFormulation = mFormulation;
+    }
 
 
     public String getDosage() {

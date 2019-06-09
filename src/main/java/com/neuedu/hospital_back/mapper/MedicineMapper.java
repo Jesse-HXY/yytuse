@@ -20,4 +20,7 @@ public interface MedicineMapper {
     List<Medicine> selectMedicineByMName(@Param("mName")String mName,@Param("mType")String mType);
 
     List<Medicine> selectMedicineByCondition(Medicine medicine);
+
+
+
 }

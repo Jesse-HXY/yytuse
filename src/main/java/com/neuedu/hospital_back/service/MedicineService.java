@@ -23,6 +23,9 @@ public class MedicineService{
     public int insert(Medicine record) {
         return medicineMapper.insert(record);
     }
+    public int getMedicineCount() {
+        return medicineMapper.getMedicineCount();
+    }
 
     public List<Medicine> selectMedicineByMName(JSONObject object){
         return medicineMapper.selectMedicineByMName(object.getString("mName"),object.getString("mType"));

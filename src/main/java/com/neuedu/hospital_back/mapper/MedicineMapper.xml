@@ -3,7 +3,7 @@
 <mapper namespace="com.neuedu.hospital_back.mapper.MedicineMapper">
     <sql id="Base_Column_List">
     
-    mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer, mType, mFee
+    mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer,mFormulation, mType, mFee
   </sql>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -15,10 +15,10 @@
             useGeneratedKeys="true">
     
     insert into medicine (mCode, mName, mSpell, 
-      mSpecification, mUnit, mProducer, 
+      mSpecification, mUnit, mProducer, mFormulation,
       mType, mFee)
     values (#{mCode,jdbcType=VARCHAR}, #{mName,jdbcType=VARCHAR}, #{mSpell,jdbcType=VARCHAR}, 
-      #{mSpecification,jdbcType=VARCHAR}, #{mUnit,jdbcType=VARCHAR}, #{mProducer,jdbcType=VARCHAR}, 
+      #{mSpecification,jdbcType=VARCHAR}, #{mUnit,jdbcType=VARCHAR}, #{mProducer,jdbcType=VARCHAR},#{mFormulation,jdbcType=VARCHAR},
       #{mType,jdbcType=VARCHAR}, #{mFee,jdbcType=DOUBLE})
   </insert>
 
@@ -50,12 +50,15 @@
             <if test="mFee != null">
                 mFee = #{mFee,jdbcType=DOUBLE},
             </if>
+            <if test="mFormulation != null">
+                mFormulation = #{mFormulation,jdbcType=DOUBLE},
+            </if>
         </set>
         where mId = #{mId,jdbcType=INTEGER}
     </update>
 
     <select id="selectMedicineByMName" resultType="com.neuedu.hospital_back.po.Medicine">
-        select mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer, mType, mFee from medicine
+        select mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer,mFormulation, mType, mFee from medicine
         <where>
             <if test="mName != null and mName != ''">mName like "%"#{mName}"%"</if>
             <if test="mType != null and mType != ''">and mType like "%"#{mType}"%"</if>
@@ -63,7 +66,7 @@
     </select>
 
     <select id="selectMedicineByCondition" resultType="com.neuedu.hospital_back.po.Medicine">
-        select mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer, mType, mFee from medicine
+        select mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer, mFormulation,mType, mFee from medicine
         <where>
             <if test="mName != null and mName != ''">mName like "%"#{mName}"%"</if>
             <if test="mType != null and mType != ''">and mType like "%"#{mType}"%"</if>
@@ -85,14 +88,18 @@
             <if test="mFee != null">
                 and mFee = #{mFee,jdbcType=DOUBLE}
             </if>
+            <if test="mFormulation != null">
+                and mFormulation = #{mFormulation,jdbcType=DOUBLE}
+            </if>
         </where>
     </select>
 
     <select id="getMedicineCount" resultType="int"> select count(*) from medicine</select>
 
     <select id="getMedicineByPage" resultType="com.neuedu.hospital_back.po.Medicine">
-    select  mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer, mType, mFee
+    select  mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer,mFormulation, mType, mFee
     from medicine limit #{begin}, #{pageSize}
 </select>
+
 
 </mapper>
