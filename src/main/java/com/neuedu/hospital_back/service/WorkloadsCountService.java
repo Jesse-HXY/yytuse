@@ -20,7 +20,7 @@ public class WorkloadsCountService {
 
     private String[] names = {"中药费", "西药费", "挂号费", "诊察费", "检查费", "检验费", "治疗费", "材料费", "手术费", "其他费用"};
 
-    public WorkloadsCount getWorkloadsCountByPostId(JSONObject object) {
+    public WorkloadsCount getWorkloadsCountByPostDId(JSONObject object) {
         String postDId = object.getString("postDId");
         Long beginTime = object.getLong("beginTime");
         Long endTime = object.getLong("endTime");

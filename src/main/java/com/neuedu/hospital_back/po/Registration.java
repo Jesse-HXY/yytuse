@@ -16,6 +16,15 @@ public class Registration {
     private boolean hasMedicalHistory;
     private long rDate;
     private String rResult;
+    private String postDId;//开单科室
+
+    public String getPostDId() {
+        return postDId;
+    }
+
+    public void setPostDId(String postDId) {
+        this.postDId = postDId;
+    }
 
     public String getrResult() {
         return rResult;
