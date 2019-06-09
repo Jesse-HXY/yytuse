@@ -30,7 +30,7 @@
         select `uId` from doctor where rLName = #{rLName} and isDue = true
         and `uId` in (select `uId` from department_user where dId = #{dId})
         and `uId` in (select `uId` from  arrangement where dId = #{dId}
-                and (plan / pow(2, 2 * (#{index} - 1))) % pow(2, 2 * #{index}) > 0)
+                and (plan / pow(2, 2 * #{index})) % pow(2, 2 * (#{index} + 1)) > 0)
         )
     </select>
 
