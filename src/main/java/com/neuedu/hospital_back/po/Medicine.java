@@ -27,12 +27,32 @@ public class Medicine {
 
     private int mAmount;
 
+    private long useDate;
+
+    private String diaState;
+
     public int getDia_M_Id() {
         return dia_M_Id;
     }
 
     public void setDia_M_Id(int dia_M_Id) {
         this.dia_M_Id = dia_M_Id;
+    }
+
+    public long getUseDate() {
+        return useDate;
+    }
+
+    public void setUseDate(long useDate) {
+        this.useDate = useDate;
+    }
+
+    public String getDiaState() {
+        return diaState;
+    }
+
+    public void setDiaState(String diaState) {
+        this.diaState = diaState;
     }
 
     private int dia_M_Id;
