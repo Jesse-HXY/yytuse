@@ -168,7 +168,8 @@ public class DiagnosisService {
 
     public List<Medicine> getDetailByrId(JSONObject object){
         Integer rId=object.getInt("rId");
-        List<Medicine> d=diagnosisMapper.getDetailByrId(rId);
+       String mState=object.getString("mState");
+        List<Medicine> d=diagnosisMapper.getDetailByrId(rId,mState);
         return d;
 
     }

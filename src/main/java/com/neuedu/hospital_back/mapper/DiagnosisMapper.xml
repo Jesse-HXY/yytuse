@@ -52,13 +52,13 @@
      select diagnosis.diaId,diaType, rId, diaName,
       createDate, useDate, diaState,uId,diaFee from diagnosis,diagnosis_medicine
      <where>
-       rId=#{rId} and diagnosis_medicine.diaId=diagnosis.diaId and mState="未缴费"
+       rId=#{rId} and diagnosis_medicine.diaId=diagnosis.diaId and mState="未收费"
        <if test="useTime != null">and useDate=#{useTime}</if>
      </where>
   </select>
   <select id="getDetailByrId" resultType="com.neuedu.hospital_back.po.Medicine">
     select diagnosis_medicine.mId,mAmount,mType, mName,mFee,useDate,diaState,dia_M_Id, did from medicine,diagnosis_medicine,diagnosis
-    where rId=#{rId} and diaState="开立"  and diagnosis_medicine.diaId=diagnosis.diaId and diagnosis_medicine.mId=medicine.mId and mState="未缴费"
+    where rId=#{rId} and diaState="开立"  and diagnosis_medicine.diaId=diagnosis.diaId and diagnosis_medicine.mId=medicine.mId
   </select>
   <select id="getById" resultType="com.neuedu.hospital_back.po.Diagnosis">
     select diaId,diaType, rId, diaName,

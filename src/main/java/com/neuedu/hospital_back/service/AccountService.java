@@ -3,7 +3,9 @@ package com.neuedu.hospital_back.service;
 import com.neuedu.hospital_back.mapper.AccountDiagnosisMapper;
 import com.neuedu.hospital_back.mapper.AccountExaminationApplicationMapper;
 import com.neuedu.hospital_back.mapper.AccountMapper;
+import com.neuedu.hospital_back.mapper.DiagnosisMedicineMapper;
 import com.neuedu.hospital_back.po.Account;
+import com.neuedu.hospital_back.po.DiagnosisMedicine;
 import com.neuedu.hospital_back.po.Medicine;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -24,6 +26,9 @@ public class AccountService {
 
     @Resource
     private AccountDiagnosisMapper accountDiagnosisMapper;
+
+    @Resource
+    private DiagnosisMedicineMapper diagnosisMedicineMapper;
 
     public boolean insertDiagnosisAccount(JSONObject object) {
         JSONArray jsonArray = object.getJSONArray("accounts");
@@ -76,14 +81,37 @@ public class AccountService {
         return accountMapper.getAlreadyDrawMedicineByRIdAndTime(rId,time);
     }
 
-    public Boolean withdrawMedicine(JSONObject object){
-        Integer rId = object.getInt("rId");
-        String time=object.getString("Date");
-        List<Integer> dia_M_Ids=object.getJSONArray("");
-        for(Integer Id:dia_M_Ids){
+   public Boolean returnExamApplication(JSONObject object){
+       List<Integer> eAIds=object.getJSONArray("eAIds");
+       List<Double> fees=object.getJSONArray("fee");
+       int re=0;
+       for(int i=0;i<eAIds.size();i++){
+           //获取accId
+           Integer accId=accountExaminationApplicationMapper.getAccId(eAIds.get(i));
+           //更新account中费用
+           re+=accountMapper.updateFeeById(accId,fees.get(i));
+           //删除中间表
+           accountExaminationApplicationMapper.deleteByeAId(eAIds.get(i));
+
+       }
+       return re==eAIds.size();
+   }
+
+
+    public Boolean returnMedicine(JSONObject object){
+        List<Integer> dia_M_Ids=object.getJSONArray("dia_M_Ids");
+        List<Double> fees=object.getJSONArray("fee");
+        int re=0;
+        for(int i=0;i<dia_M_Ids.size();i++){
+            //获取accId
+            Integer accId=accountDiagnosisMapper.getAccId(dia_M_Ids.get(i));
+            //更新account中费用
+            re+=accountMapper.updateFeeById(accId,fees.get(i));
+            //删除中间表
+            accountDiagnosisMapper.deleteBydia_M_Id(dia_M_Ids.get(i));
 
         }
-        return true;
+        return re==dia_M_Ids.size();
     }
 
 

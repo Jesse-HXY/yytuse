@@ -6,4 +6,13 @@
         insert into account_examinationApplication (accId, eAId) values (#{accId}, #{eAId})
     </insert>
 
+    <select id="getAccId" resultType="int">
+        select accId from account_examinationapplication
+        where eAId=#{eAId}
+    </select>
+
+    <delete id="deleteByeAId">
+        delete from account_examinationapplication
+        where eAId=#{integer}
+    </delete>
 </mapper>

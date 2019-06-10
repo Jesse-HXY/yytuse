@@ -8,4 +8,12 @@
     values (#{accId,jdbcType=INTEGER}, #{dia_M_Id,jdbcType=INTEGER}
       )
   </insert>
+  <select id="getAccId" resultType="int">
+    select accId from account_diagnosis
+    where dia_M_Id=#{dia_M_Id}
+  </select>
+  <delete id="deleteBydia_M_Id">
+    delete from account_diagnosis
+    where dia_M_Id=#{dia_M_Id}
+  </delete>
 </mapper>
