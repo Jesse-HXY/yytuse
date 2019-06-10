@@ -61,11 +61,13 @@ public class ExaminationApplicationService {
         List<Integer> eAIds = object.getJSONArray("eAIdList");
         String eAStatus = object.getString("eAStatus");
         int result = 0;
-        for (int eAId : eAIds) {
-            if (eAStatus.equals("开立")) {
-                result += examinationApplicationMapper.updateStatusAndTime(eAId, eAStatus, System.currentTimeMillis() / 1000);
-            } else {
-                result += examinationApplicationMapper.updateStatus(eAId, eAStatus);
+        if (eAIds.size() != 0) {
+            for (int eAId : eAIds) {
+                if (eAStatus.equals("开立")) {
+                    result += examinationApplicationMapper.updateStatusAndTime(eAId, eAStatus, System.currentTimeMillis() / 1000);
+                } else {
+                    result += examinationApplicationMapper.updateStatus(eAId, eAStatus);
+                }
             }
         }
         return result == eAIds.size();

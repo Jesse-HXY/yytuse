@@ -23,5 +23,5 @@ public interface DiagnosisMapper {
 
     List<Diagnosis>  getDetailByrIdAndTime(@Param("rId") Integer rId,@Param("useTime") long useTime);
 
-    List<Medicine> getDetailByrId(Integer rId);
+    List<Medicine> getDetailByrId(@Param("rId") Integer rId, @Param("mState") String mState);
 }

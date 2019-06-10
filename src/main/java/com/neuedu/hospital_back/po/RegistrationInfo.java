@@ -29,13 +29,6 @@ public class RegistrationInfo {
     private String rTime;
 
     private String dId;
-    public long getrDate() {
-        return rDate;
-    }
-
-    public void setrDate(long rDate) {
-        this.rDate = rDate;
-    }
 
     public String getdId() {
         return dId;
@@ -44,6 +37,15 @@ public class RegistrationInfo {
     public void setdId(String dId) {
         this.dId = dId;
     }
+
+    public long getrDate() {
+        return rDate;
+    }
+
+    public void setrDate(long rDate) {
+        this.rDate = rDate;
+    }
+
 
     public String getrTime() {
         return rTime;
