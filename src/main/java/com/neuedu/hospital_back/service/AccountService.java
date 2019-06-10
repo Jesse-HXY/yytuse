@@ -70,6 +70,12 @@ public class AccountService {
        return accountMapper.getMedicineByRIdAndTime(rId,time);
     }
 
+    public List<Medicine> getAlreadyDrawMedicineByRIdAndTime(JSONObject object){
+        Integer rId = object.getInt("rId");
+        String time=object.getString("Date");
+        return accountMapper.getAlreadyDrawMedicineByRIdAndTime(rId,time);
+    }
+
     public Boolean withdrawMedicine(JSONObject object){
         Integer rId = object.getInt("rId");
         String time=object.getString("Date");

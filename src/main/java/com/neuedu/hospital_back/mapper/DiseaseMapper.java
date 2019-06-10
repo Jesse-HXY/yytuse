@@ -12,7 +12,7 @@ public interface DiseaseMapper {
 
     int insert(Disease record);
 
-    int getDiseaseCount(String disType);
+    int getDiseaseCount(@Param("disType") String disType);
 
     List<String> getDiseaseType();
 

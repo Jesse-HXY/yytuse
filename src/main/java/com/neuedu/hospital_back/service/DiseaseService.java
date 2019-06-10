@@ -80,8 +80,8 @@ public class DiseaseService {
     }
 
     public int getDiseaseCount(JSONObject object) {
-
-        return diseaseMapper.getDiseaseCount(object.getString("disType"));
+String disType=object.getString("disType");
+        return diseaseMapper.getDiseaseCount(disType);
     }
 }
 

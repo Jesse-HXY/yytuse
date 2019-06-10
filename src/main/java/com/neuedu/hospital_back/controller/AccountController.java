@@ -35,4 +35,11 @@ public class AccountController {
     public List<Medicine> getMedicineByRIdAndTime(@RequestBody JSONObject object){
         return accountService.getMedicineByRIdAndTime(object);
     }
+
+    @PostMapping("/getAlreadyDrawMedicineByRIdAndTime")
+    public List<Medicine> getAlreadyDrawMedicineByRIdAndTime(@RequestBody JSONObject object){
+        return accountService.getAlreadyDrawMedicineByRIdAndTime(object);
+    }
+
+
 }

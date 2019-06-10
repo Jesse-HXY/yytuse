@@ -17,4 +17,6 @@ public interface AccountMapper {
     int updateFeeByrId(@Param("accId") Integer accId, @Param("fee") double fee);
 
     int getAccId(@Param("rId") Integer rId, @Param("time") String time,@Param("dia_M_Id")Integer dia_M_Id);
+
+    List<Medicine> getAlreadyDrawMedicineByRIdAndTime(@Param("rId") Integer rId, @Param("time") String time);
 }
