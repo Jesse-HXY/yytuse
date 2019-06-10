@@ -3,9 +3,9 @@
 <mapper namespace="com.neuedu.hospital_back.mapper.AccountDiagnosisMapper">
   <insert id="insert" parameterType="com.neuedu.hospital_back.po.AccountDiagnosis">
 
-    insert into account_diagnosis (accId, dia_M_Id
-      )
-    values (#{accId,jdbcType=INTEGER}, #{,jdbcType=INTEGER}
-      )
-  </insert>
+  insert into account_diagnosis (accId, dia_M_Id
+    )
+  values (#{accId,jdbcType=INTEGER}, #{dia_M_Id,jdbcType=INTEGER}
+    )
+</insert>
 </mapper>
