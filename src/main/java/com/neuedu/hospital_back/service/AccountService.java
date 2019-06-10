@@ -68,6 +68,7 @@ public class AccountService {
         Integer rId = object.getInt("rId");
         String time=object.getString("Date");
        return accountMapper.getMedicineByRIdAndTime(rId,time);
-
     }
+
+
 }
