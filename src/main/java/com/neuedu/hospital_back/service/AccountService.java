@@ -42,7 +42,10 @@ public class AccountService {
         for (Account account : accounts) {
             System.out.println(account.toString());
             result += accountMapper.insert(account);
-            accountExaminationApplicationMapper.insert(account.getAccId(), account.geteAId());
+            if(account.getFeeType().equals("中药")||account.getFeeType().equals("西药")){
+                accountDiagnosisMapper.insert(account.getAccId(), account.getDia_M_Id());
+            }
+            else accountExaminationApplicationMapper.insert(account.getAccId(), account.geteAId());
         }
         return result == accounts.size();
     }

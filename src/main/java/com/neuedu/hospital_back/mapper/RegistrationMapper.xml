@@ -41,7 +41,7 @@
 
 
     <select id="getRegistrationInfoByrIdOrPName" resultType="com.neuedu.hospital_back.po.RegistrationInfo">
-        select registration.rId, registration.pId, pName, pBirth, pSex, pAddress from patient,registration
+        select registration.rId, registration.pId, pName, pBirth, pSex, pAddress,dId from patient,registration
         <where>
             pName like "%"#{pName}"%" and registration.pId=patient.pId and rStatus != '诊毕' and rStatus != '退号'
             <if test="rId != null and rId != -1">and rId = #{rId}</if>
