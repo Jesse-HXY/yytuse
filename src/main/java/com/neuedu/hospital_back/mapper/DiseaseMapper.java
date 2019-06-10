@@ -18,7 +18,7 @@ public interface DiseaseMapper {
 
     List<Disease> getDiseases(Disease disease);
 
-    List<Disease> getDiseaseByType(String disType);
+    List<Disease> getDiseaseByType( String disType);
 
     Disease getById(Integer disId);
 

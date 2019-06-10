@@ -58,7 +58,7 @@
   </select>
   <select id="getDetailByrId" resultType="com.neuedu.hospital_back.po.Medicine">
     select diagnosis_medicine.mId,mAmount,mType, mName,mFee,useDate,diaState,dia_M_Id, did from medicine,diagnosis_medicine,diagnosis
-    where rId=#{rId} and mState=#{mState}  and diaState="开立"  and diagnosis_medicine.diaId=diagnosis.diaId and diagnosis_medicine.mId=medicine.mId
+    where rId=#{rId} and mState=#{mState} and diaState="开立"  and diagnosis_medicine.diaId=diagnosis.diaId and diagnosis_medicine.mId=medicine.mId
   </select>
   <select id="getById" resultType="com.neuedu.hospital_back.po.Diagnosis">
     select diaId,diaType, rId, diaName,
