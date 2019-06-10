@@ -68,7 +68,7 @@
     </select>
 
     <select id="getRegistrationInfoByrId" resultType="com.neuedu.hospital_back.po.RegistrationInfo">
-        select rId,rDate,rStatus,pName,pAddress,registration.pId,department.dName from registration,department,patient
+        select rId,registration.dId,rDate,rStatus,pName,pAddress,registration.pId,department.dName from registration,department,patient
         where rId=#{rId} and registration.pId=patient.pId and registration.dId=department.dId and FROM_UNIXTIME(registration.rDate,'%y-%m-%d')=CURDATE()
     </select>
 
