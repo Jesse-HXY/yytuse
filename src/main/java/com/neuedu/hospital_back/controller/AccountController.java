@@ -41,5 +41,11 @@ public class AccountController {
         return accountService.getAlreadyDrawMedicineByRIdAndTime(object);
     }
 
+    @PostMapping("/returnMoney")
+    public Boolean returnExamApplication(@RequestBody JSONObject object){
+        return accountService.returnExamApplication(object);
+    }
+
+
 
 }

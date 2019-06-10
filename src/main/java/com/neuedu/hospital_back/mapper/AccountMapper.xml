@@ -13,7 +13,7 @@
     </update>
 
     <select id="getMedicineByRIdAndTime" resultType="com.neuedu.hospital_back.po.Medicine">
-        select medicine.mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer,mFormulation, mType, mFee, dia_M_Id,instruction,
+        select medicine.mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer,mFormulation, mType, mFee, account_diagnosis.dia_M_Id,instruction,
       dosage, times,mAmount,mState from medicine,diagnosis_medicine,account,account_diagnosis
       where rId=#{rId} and FROM_UNIXTIME(payTime,'%Y-%m-%d')=#{time} and feeType in ("西药","中药")and account_diagnosis.dia_M_Id=diagnosis_medicine.dia_M_Id
       and medicine.mId=diagnosis_medicine.mId and account.accId=account_diagnosis.accId
@@ -21,24 +21,25 @@
     </select>
 
     <select id="getAlreadyDrawMedicineByRIdAndTime" resultType="com.neuedu.hospital_back.po.Medicine">
-        select medicine.mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer,mFormulation, mType, mFee, dia_M_Id,instruction,
+        select medicine.mId, mCode, mName, mSpell, mSpecification, mUnit, mProducer,mFormulation, mType, mFee, account_diagnosis.dia_M_Id,instruction,
       dosage, times,mAmount,mState from medicine,diagnosis_medicine,account,account_diagnosis
       where rId=#{rId} and FROM_UNIXTIME(payTime,'%Y-%m-%d')=#{time} and feeType in ("西药","中药")and account_diagnosis.dia_M_Id=diagnosis_medicine.dia_M_Id
       and medicine.mId=diagnosis_medicine.mId and account.accId=account_diagnosis.accId
       and mState="已发药"
     </select>
 
-    <update id="updateFeeByrId">
+    <update id="updateFeeById">
         update account
         <set>
             fee=fee-#{fee}
         </set>
         where accId=#{accId}
     </update>
-    <select id="getAccId" resultType="int">
-        select account_diagnosis.accId from account,account_diagnosis
-        where rId=#{rId} and and FROM_UNIXTIME(payTime,'%Y-%m-%d')=#{time} and feeType in ("西药","中药")and account_diagnosis.dia_M_Id=#{dia_M_Id}
-    </select>
 
+   <!-- <delete id="deleteAccount">
+        delete from account
+        where accId=#{accId}
+    </delete>
+-->
 
 </mapper>
