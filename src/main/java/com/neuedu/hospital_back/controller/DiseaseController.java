@@ -53,7 +53,7 @@ public class DiseaseController {
 
     @RequestMapping("/getPageCount")
     public int getPageCount(@RequestBody JSONObject object){
-        System.out.println("3213"+object.toString());
+
         return diseaseService.getDiseaseCount(object);
     }
 }
