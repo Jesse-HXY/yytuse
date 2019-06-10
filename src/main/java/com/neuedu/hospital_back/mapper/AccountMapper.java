@@ -18,7 +18,7 @@ public interface AccountMapper {
 
   //  int deleteAccount(Integer accId);
 
-
+//
 
     List<Medicine> getAlreadyDrawMedicineByRIdAndTime(@Param("rId") Integer rId, @Param("time") String time);
 }

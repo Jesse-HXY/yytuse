@@ -16,4 +16,5 @@
     delete from account_diagnosis
     where dia_M_Id=#{dia_M_Id}
   </delete>
+  <!---->
 </mapper>

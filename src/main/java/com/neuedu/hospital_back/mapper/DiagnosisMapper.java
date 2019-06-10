@@ -25,3 +25,4 @@ public interface DiagnosisMapper {
 
     List<Medicine> getDetailByrId(@Param("rId") Integer rId, @Param("mState") String mState);
 }
+//

@@ -23,5 +23,5 @@ public interface DiseaseMapper {
     Disease getById(Integer disId);
 
     List<Disease> getDiseaseByPage(@Param("disType")String disType,@Param("begin")int begin, @Param("pageSize")int pageSize);
-
+//
 }

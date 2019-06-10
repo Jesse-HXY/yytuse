@@ -9,4 +9,5 @@ public interface AccountDiagnosisMapper {
     int getAccId(@Param("dia_M_Id")Integer dia_M_Id);
 
     int deleteBydia_M_Id(@Param("dia_M_Id")Integer dia_M_Id);
+//
 }
