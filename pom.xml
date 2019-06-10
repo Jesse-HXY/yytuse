@@ -81,6 +81,7 @@
                 <directory>src/main/resources</directory>
                 <includes>
                     <include>**/*.properties</include>
+                    <include>static/*.xlsx</include>
                 </includes>
             </resource>
         </resources>

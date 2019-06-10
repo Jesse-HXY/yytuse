@@ -22,6 +22,11 @@ public class MedicineController {
     @Resource
     private MedicineService medicineService;
 
+    @RequestMapping("/importMedicine")
+    public boolean importMedicine() throws Exception {
+        return medicineService.importMedicine();
+    }
+
     @PostMapping("/getMedicineByMName")
     public List<Medicine> getMedicineByEIName(@RequestBody JSONObject object) {
         return  medicineService.selectMedicineByMName(object);

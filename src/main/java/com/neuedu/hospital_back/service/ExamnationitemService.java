@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 import com.neuedu.hospital_back.mapper.ExamnationitemMapper;
+import org.springframework.util.ClassUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,8 +28,9 @@ public class ExamnationitemService {
     @Resource
     private ReadExcelUtil readExcelUtil;
 
-    public boolean importExamnationItems(JSONObject object) throws Exception {
-        File excelFile = new File(object.getString("fileName"));//创建excel文件对象
+    public boolean importExamnationItems() throws Exception {
+        String path = ClassUtils.getDefaultClassLoader().getResource("static/examinationItem.xlsx").getPath();
+        File excelFile = new File(path);//创建excel文件对象
         InputStream is = new FileInputStream(excelFile);//创建输入流对象
         readExcelUtil.checkExcelVaild(excelFile);
         Workbook workbook = readExcelUtil.getWorkBook(is, excelFile);

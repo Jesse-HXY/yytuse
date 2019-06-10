@@ -16,6 +16,11 @@ public class DiseaseController {
     @Resource
     private DiseaseService diseaseService;
 
+    @RequestMapping("/importDiseases")
+    public boolean importDiseases() throws Exception {
+        return diseaseService.importDiseases();
+    }
+
     @RequestMapping("/getDiseases")
     public List<Disease> getDiseases(@RequestBody Disease disease) {
         return diseaseService.getDiseases(disease);

@@ -23,8 +23,8 @@ public class ExamnationItemController {
     private ExamnationTemplateService examnationTemplateService;
 
     @RequestMapping("/importExamnationItems")
-    public boolean importExamnationItems(@RequestBody JSONObject object) throws Exception {
-        return examnationitemService.importExamnationItems(object);
+    public boolean importExamnationItems() throws Exception {
+        return examnationitemService.importExamnationItems();
     }
 
     @RequestMapping("/getExamnationItems")

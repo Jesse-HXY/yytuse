@@ -2,34 +2,22 @@ package com.neuedu.hospital_back.po;
 
 public class Medicine {
     private Integer mId;
-
     private String mCode;
-
     private String mName;
-
     private String mSpell;
-
     private String mSpecification;
-
     private String mUnit;
-
     private String mProducer;
-
     private String mType;
-
     private Double mFee;
-
     private String instruction;
-
     private String dosage;
-
     private String times;
-
     private int mAmount;
-
     private long useDate;
-
     private String diaState;
+    private int dia_M_Id;
+    private String mFormulation;
 
     public int getDia_M_Id() {
         return dia_M_Id;
@@ -55,10 +43,6 @@ public class Medicine {
         this.diaState = diaState;
     }
 
-    private int dia_M_Id;
-
-
-    private String mFormulation;
 
     public String getdId() {
         return dId;
@@ -77,9 +61,6 @@ public class Medicine {
     public void setmFormulation(String mFormulation) {
         this.mFormulation = mFormulation;
     }
-
-
-
 
     public String getDosage() {
         return dosage;
