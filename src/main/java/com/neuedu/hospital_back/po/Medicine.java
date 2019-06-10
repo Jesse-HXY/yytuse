@@ -60,6 +60,16 @@ public class Medicine {
 
     private String mFormulation;
 
+    public String getdId() {
+        return dId;
+    }
+
+    public void setdId(String dId) {
+        this.dId = dId;
+    }
+
+    private String dId;
+
     public String getmFormulation() {
         return mFormulation;
     }
@@ -67,6 +77,8 @@ public class Medicine {
     public void setmFormulation(String mFormulation) {
         this.mFormulation = mFormulation;
     }
+
+
 
 
     public String getDosage() {

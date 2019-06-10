@@ -140,7 +140,7 @@ public class DiagnosisController {
     }
 
     @PostMapping("/updateMStateBydia_M_Id")
-    public Boolean updateMStateBydia_M_Id(JSONObject object){
+    public Boolean updateMStateBydia_M_Id(@RequestBody JSONObject object){
         return diagnosisService.updateMStateBydia_M_Id(object);
     }
 

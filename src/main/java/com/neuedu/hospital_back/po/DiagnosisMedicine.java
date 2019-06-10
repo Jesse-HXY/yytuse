@@ -17,6 +17,28 @@ public class DiagnosisMedicine {
 
     private String mState;
 
+    private String dId;
+
+    public String getmFormulation() {
+        return mFormulation;
+    }
+
+    public void setmFormulation(String mFormulation) {
+        this.mFormulation = mFormulation;
+    }
+
+    private String mFormulation;
+
+    public String getDiaState() {
+        return diaState;
+    }
+
+    public void setDiaState(String diaState) {
+        this.diaState = diaState;
+    }
+
+    private String diaState;
+
     public Integer getmAmount() {
         return mAmount;
     }
@@ -79,5 +101,13 @@ public class DiagnosisMedicine {
 
     public void setTimes(String times) {
         this.times = times;
+    }
+
+    public String getdId() {
+        return dId;
+    }
+
+    public void setdId(String dId) {
+        this.dId = dId;
     }
 }

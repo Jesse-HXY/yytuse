@@ -84,6 +84,7 @@ public class DiagnosisService {
 
     public boolean insertDiagnosisMedicine(JSONObject object) {
         Integer diaId = object.getInt("diaId");
+        String dId = object.getString("dId");
         JSONArray jsonArray = object.getJSONArray("diagnosisMedicine");
 //        List<DiagnosisType> diagnosisTypes = (List<DiagnosisType>) JSONArray.toArray(jsonArray, DiagnosisType.class);
         List<DiagnosisMedicine> diagnosisMedicines = (List) JSONArray.toCollection(jsonArray, DiagnosisMedicine.class);
@@ -91,6 +92,7 @@ public class DiagnosisService {
         System.out.println(diagnosisMedicines.toString());
         for (DiagnosisMedicine d : diagnosisMedicines) {
             d.setDiaId(diaId);
+            d.setdId(dId);
             result += diagnosisMedicineMapper.insert(d);
         }
         return result == diagnosisMedicines.size();

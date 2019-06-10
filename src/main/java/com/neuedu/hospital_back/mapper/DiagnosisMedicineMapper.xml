@@ -8,12 +8,12 @@
   </delete>
   <insert id="insert" keyColumn="dia_M_Id" keyProperty="dia_M_Id" parameterType="com.neuedu.hospital_back.po.DiagnosisMedicine" useGeneratedKeys="true">
     insert into diagnosis_medicine (mId, diaId, instruction, 
-      dosage, times,mAmount,mState)
+      dosage, times,mAmount,mState,dId)
     values (#{mId,jdbcType=INTEGER}, #{diaId,jdbcType=INTEGER}, #{instruction,jdbcType=VARCHAR}, 
-      #{dosage,jdbcType=VARCHAR}, #{times,jdbcType=VARCHAR},#{mAmount},"未缴费")
+      #{dosage,jdbcType=VARCHAR}, #{times,jdbcType=VARCHAR},#{mAmount},"未缴费",#{dId})
   </insert>
   <select id="getBydiaId" resultType="com.neuedu.hospital_back.po.Medicine">
-    select  medicine.mName,medicine.mSpecification,medicine.mFee, dia_M_Id, medicine.mId, diaId, instruction, dosage, times,mAmount
+    select  medicine.mName,medicine.mSpecification,medicine.mFee, dia_M_Id, medicine.mId, diaId, instruction, dosage, times,mAmount,diagnosis_medicine.dId
      from diagnosis_medicine,medicine
     where diaId=#{diaId} and medicine.mId=diagnosis_medicine.mId
   </select>

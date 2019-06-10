@@ -24,6 +24,8 @@ public class Diagnosis {
 
     private Double diaFee;
 
+
+
     public Diagnosis() {
     }
 
@@ -34,6 +36,7 @@ public class Diagnosis {
         this.createDate = createDate;
         this.diaState = diaState;
         this.uId=uId;
+
     }
 
     public Integer getuId() {
