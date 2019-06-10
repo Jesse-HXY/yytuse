@@ -70,5 +70,15 @@ public class AccountService {
        return accountMapper.getMedicineByRIdAndTime(rId,time);
     }
 
+    public Boolean withdrawMedicine(JSONObject object){
+        Integer rId = object.getInt("rId");
+        String time=object.getString("Date");
+        List<Integer> dia_M_Ids=object.getJSONArray("");
+        for(Integer Id:dia_M_Ids){
+
+        }
+        return true;
+    }
+
 
 }

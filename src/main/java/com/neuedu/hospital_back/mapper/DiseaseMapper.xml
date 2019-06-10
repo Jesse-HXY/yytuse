@@ -68,6 +68,9 @@
     </select>
 
     <select id="getDiseaseCount" resultType="Integer">
-        select count(*) from disease;
+        select count(*) from disease
+        <where>
+            <if test="disType != null and disType != ''">disType=#{disType} </if>
+        </where>;
     </select>
 </mapper>

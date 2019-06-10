@@ -13,4 +13,8 @@ public interface AccountMapper {
     int updateUId(@Param("rId") Integer rId, @Param("dId") String dId, @Param("eAId") Integer eAId, @Param("uId") Integer uId);
 
     List<Medicine> getMedicineByRIdAndTime(@Param("rId") Integer rId, @Param("time") String time);
+
+    int updateFeeByrId(@Param("accId") Integer accId, @Param("fee") double fee);
+
+    int getAccId(@Param("rId") Integer rId, @Param("time") String time,@Param("dia_M_Id")Integer dia_M_Id);
 }

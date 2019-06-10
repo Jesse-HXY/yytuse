@@ -5,6 +5,7 @@ import com.neuedu.hospital_back.po.Disease;
 import com.neuedu.hospital_back.po.ExamnationItem;
 import com.neuedu.hospital_back.util.ReadExcelUtil;
 import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -78,8 +79,9 @@ public class DiseaseService {
 
     }
 
-    public int getDiseaseCount() {
-        return diseaseMapper.getDiseaseCount();
+    public int getDiseaseCount(JSONObject object) {
+
+        return diseaseMapper.getDiseaseCount(object.getString("disType"));
     }
 }
 
