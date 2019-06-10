@@ -4,11 +4,13 @@ import com.neuedu.hospital_back.mapper.AccountDiagnosisMapper;
 import com.neuedu.hospital_back.mapper.AccountExaminationApplicationMapper;
 import com.neuedu.hospital_back.mapper.AccountMapper;
 import com.neuedu.hospital_back.po.Account;
+import com.neuedu.hospital_back.po.Medicine;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -60,5 +62,12 @@ public class AccountService {
             result += accountMapper.updateUId(rId,dId,eAId, uId);
         }
         return result == eAIdList.size();
+    }
+
+    public List<Medicine> getMedicineByRIdAndTime(JSONObject object){
+        Integer rId = object.getInt("rId");
+        String time=object.getString("Date");
+       return accountMapper.getMedicineByRIdAndTime(rId,time);
+
     }
 }

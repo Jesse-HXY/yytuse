@@ -51,7 +51,7 @@
                 mFee = #{mFee,jdbcType=DOUBLE},
             </if>
             <if test="mFormulation != null">
-                mFormulation = #{mFormulation,jdbcType=DOUBLE},
+                mFormulation = #{mFormulation,jdbcType=VARCHAR} ,
             </if>
         </set>
         where mId = #{mId,jdbcType=INTEGER}
@@ -89,7 +89,7 @@
                 and mFee = #{mFee,jdbcType=DOUBLE}
             </if>
             <if test="mFormulation != null">
-                and mFormulation = #{mFormulation,jdbcType=DOUBLE}
+                and mFormulation = #{mFormulation,jdbcType=VARCHAR}
             </if>
         </where>
     </select>
