@@ -1,9 +1,6 @@
 package com.neuedu.hospital_back.service;
 
-import com.neuedu.hospital_back.mapper.AccountDiagnosisMapper;
-import com.neuedu.hospital_back.mapper.AccountExaminationApplicationMapper;
-import com.neuedu.hospital_back.mapper.AccountMapper;
-import com.neuedu.hospital_back.mapper.DiagnosisMedicineMapper;
+import com.neuedu.hospital_back.mapper.*;
 import com.neuedu.hospital_back.po.Account;
 import com.neuedu.hospital_back.po.DiagnosisMedicine;
 import com.neuedu.hospital_back.po.Medicine;
@@ -30,6 +27,8 @@ public class AccountService {
     @Resource
     private DiagnosisMedicineMapper diagnosisMedicineMapper;
 
+    @Resource
+    private ExaminationApplicationMapper examinationApplicationMapper;
     public boolean insertDiagnosisAccount(JSONObject object) {
         JSONArray jsonArray = object.getJSONArray("accounts");
         List<Account> accounts = (List) JSONArray.toCollection(jsonArray, Account.class);
@@ -95,6 +94,8 @@ public class AccountService {
            re+=accountMapper.updateFeeById(accId,fees.get(i));
            //删除中间表
            accountExaminationApplicationMapper.deleteByeAId(eAIds.get(i));
+           //更新ea状态
+          examinationApplicationMapper.updateStatus(eAIds.get(i),"已退费");
 
        }
        for(int i=0;i<dia_M_Ids.size();i++){
@@ -104,6 +105,11 @@ public class AccountService {
            re+=accountMapper.updateFeeById(accId,fees2.get(i));
            //删除中间表
            accountDiagnosisMapper.deleteBydia_M_Id(dia_M_Ids.get(i));
+           //更新d_a状态
+           DiagnosisMedicine d=new DiagnosisMedicine();
+           d.setmState("已退费");
+           d.setDia_M_Id(dia_M_Ids.get(i));
+           diagnosisMedicineMapper.updateByKey(d);
 
        }
        return re==eAIds.size();
