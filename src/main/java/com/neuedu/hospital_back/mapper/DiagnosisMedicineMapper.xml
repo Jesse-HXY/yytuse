@@ -10,7 +10,7 @@
     insert into diagnosis_medicine (mId, diaId, instruction, 
       dosage, times,mAmount,mState,dId)
     values (#{mId,jdbcType=INTEGER}, #{diaId,jdbcType=INTEGER}, #{instruction,jdbcType=VARCHAR}, 
-      #{dosage,jdbcType=VARCHAR}, #{times,jdbcType=VARCHAR},#{mAmount},"未缴费",#{dId})
+      #{dosage,jdbcType=VARCHAR}, #{times,jdbcType=VARCHAR},#{mAmount},"未收费",#{dId})
   </insert>
   <select id="getBydiaId" resultType="com.neuedu.hospital_back.po.Medicine">
     select  medicine.mName,medicine.mSpecification,medicine.mFee, dia_M_Id, medicine.mId, diaId, instruction, dosage, times,mAmount,diagnosis_medicine.dId
