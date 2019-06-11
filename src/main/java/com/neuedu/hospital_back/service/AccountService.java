@@ -130,7 +130,7 @@ public class AccountService {
             }
             accIdList.add(accId);
             //更新account中费用
-            re += accountMapper.updateFeeById(accId, eAFees.get(i));
+            re += accountMapper.updateFeeById(accId, 0-eAFees.get(i));
             //删除中间表
 //            accountExaminationApplicationMapper.deleteByeAId(eAIds.get(i));
             //更新ea状态
@@ -147,7 +147,7 @@ public class AccountService {
             }
             accIdList.add(accId);
             //更新account中费用
-            re += accountMapper.updateFeeById(accId, medicineFees.get(i));
+            re += accountMapper.updateFeeById(accId, 0-medicineFees.get(i));
             //删除中间表
 //            accountDiagnosisMapper.deleteBydia_M_Id(dia_M_Ids.get(i));
             //更新d_a状态
