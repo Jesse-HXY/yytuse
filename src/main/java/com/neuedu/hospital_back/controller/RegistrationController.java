@@ -14,14 +14,14 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/registration")
-public class  RegistrationController {
+public class RegistrationController {
 
     @Resource
     private RegistrationService registrationService;
 
-   @PostMapping("/insertPatient")
+    @PostMapping("/insertPatient")
     public int insertPatient(@RequestBody JSONObject object) {
-       return registrationService.insertPatient(object);
+        return registrationService.insertPatient(object);
     }
 
     @PostMapping("/getPatientById")
@@ -29,35 +29,40 @@ public class  RegistrationController {
         return registrationService.getPatientById(object);
     }
 
+    @PostMapping("/getRemainNumber")
+    public int getRemainNumber(@RequestBody JSONObject object) {
+        return registrationService.getRemainNumber(object);
+    }
+
     @PostMapping("/insertRegistration")
-    public int insertRegistration(@RequestBody Registration registration){
-       return registrationService.insertRegistration(registration);
+    public int insertRegistration(@RequestBody Registration registration) {
+        return registrationService.insertRegistration(registration);
     }
 
     @PostMapping("/getRegistrationInfoByrIdOrPName")
-    public List<RegistrationInfo> getRegistrationInfoByrIdOrPName(@RequestBody JSONObject object){
+    public List<RegistrationInfo> getRegistrationInfoByrIdOrPName(@RequestBody JSONObject object) {
         return registrationService.getRegistrationInfoByrIdOrPName(object);
     }
 
 
     @PostMapping("/getRegistrationInfoByuId")
-    public List<RegistrationInfo> getRegistrationInfo(@RequestBody JSONObject object){
-       return registrationService.getRegistrationInfo(object);
+    public List<RegistrationInfo> getRegistrationInfo(@RequestBody JSONObject object) {
+        return registrationService.getRegistrationInfo(object);
     }
 
     @PostMapping("/getRegistrationInfoByuIdAndDId")
-    public List<RegistrationInfo> getRegistrationInfoByuIdAndDId(@RequestBody JSONObject object){
+    public List<RegistrationInfo> getRegistrationInfoByuIdAndDId(@RequestBody JSONObject object) {
         return registrationService.getRegistrationInfoByUIdAndDId(object);
     }
 
     @PostMapping("/getRegistrationInfoByrId")
-    public  List<RegistrationInfo> getRegistrationInfoByrId(@RequestBody JSONObject object){
-       return registrationService.getRegistrationInfoByrId(object);
+    public List<RegistrationInfo> getRegistrationInfoByrId(@RequestBody JSONObject object) {
+        return registrationService.getRegistrationInfoByrId(object);
     }
 
     @PostMapping("/updateRStatus")
-    public boolean updateRStatus(@RequestBody JSONObject object){
-       return registrationService.updateRStatus(object);
+    public boolean updateRStatus(@RequestBody JSONObject object) {
+        return registrationService.updateRStatus(object);
     }
 
 }

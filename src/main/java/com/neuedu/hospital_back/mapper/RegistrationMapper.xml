@@ -9,6 +9,10 @@
         values (#{pId}, #{payType}, #{rLName}, #{dId}, #{uId}, #{hasMedicalHistory}, #{rFee}, #{rDate}, '未看诊', #{rResult}, #{postDId})
     </insert>
 
+    <select id="getTodayCount" resultType="int">
+        select count(*) from registration where uId = #{uId} and to_days(from_unixtime(rDate)) = to_days(now());
+    </select>
+
     <select id="getVisits" resultType="int">
         select count(*) from registration where rDate between #{beginTime} and #{endTime} and dId = #{dId} and rStatus = "诊毕"
     </select>

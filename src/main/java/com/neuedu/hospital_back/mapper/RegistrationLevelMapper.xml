@@ -17,6 +17,10 @@
 
     </select>
 
+    <select id="getLimitationByName" resultType="int">
+        select rLLimitation from registrationlevel where rLName = #{rLName}
+    </select>
+    
     <select id="getAllRegistrationLevel" resultType="com.neuedu.hospital_back.po.RegistrationLevel">
      select  rLId, rLName, rLLimitation, rLFee from registrationlevel
   </select>
@@ -25,11 +29,10 @@
     delete from registrationlevel
     where rLId = #{rLId,jdbcType=INTEGER}
   </delete>
+    
     <insert id="insert" keyColumn="rLId" keyProperty="rLId" useGeneratedKeys="true">
-    insert into registrationlevel (rLName, rLLimitation, rLFee
-      )
-    values (#{rLName,jdbcType=VARCHAR}, #{rLLimitation,jdbcType=INTEGER}, #{rLFee,jdbcType=DOUBLE}
-      )
+    insert into registrationlevel (rLName, rLLimitation, rLFee)
+    values (#{rLName,jdbcType=VARCHAR}, #{rLLimitation,jdbcType=INTEGER}, #{rLFee,jdbcType=DOUBLE})
   </insert>
 
     <update id="updateByPrimaryKeySelective">

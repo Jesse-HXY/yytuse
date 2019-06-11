@@ -1,6 +1,7 @@
 package com.neuedu.hospital_back.service;
 
 import com.neuedu.hospital_back.mapper.PatientMapper;
+import com.neuedu.hospital_back.mapper.RegistrationLevelMapper;
 import com.neuedu.hospital_back.mapper.RegistrationMapper;
 import com.neuedu.hospital_back.po.Patient;
 import com.neuedu.hospital_back.po.Registration;
@@ -22,6 +23,9 @@ public class RegistrationService {
     @Resource
     private RegistrationMapper registrationMapper;
 
+    @Resource
+    private RegistrationLevelMapper registrationLevelMapper;
+
     public int insertPatient(JSONObject object) {
         Patient patient = new Patient();
         patient.setpId(object.getString("pId"));
@@ -30,6 +34,11 @@ public class RegistrationService {
         patient.setpSex(object.getBoolean("pSex"));
         patient.setpAddress(object.getString("pAddress"));
         return patientMapper.insert(patient);
+    }
+
+    public int getRemainNumber(JSONObject object) {
+        return registrationLevelMapper.getLimitationByName(object.getString("rLName"))
+                - registrationMapper.getTodayCount(object.getInt("uId"));
     }
 
     public int insertRegistration(Registration registration) {

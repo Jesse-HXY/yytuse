@@ -30,4 +30,5 @@ public interface RegistrationMapper {
 
     List<RegistrationInfo> getRegistrationInfoByrIdOrPName(@Param("rId") int rId, @Param("pName") String pName);
 
+    int getTodayCount(int uId);
 }

@@ -16,5 +16,5 @@ public interface RegistrationLevelMapper {
 
     int updateByPrimaryKeySelective(RegistrationLevel record);
 
-
+    int getLimitationByName(String rLName);
 }
