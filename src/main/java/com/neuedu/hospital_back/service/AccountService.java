@@ -35,6 +35,9 @@ public class AccountService {
     @Resource
     private InvoiceMapper invoiceMapper;
 
+    @Resource
+    private RegistrationMapper registrationMapper;
+
     public boolean insertDiagnosisAccount(JSONObject object) {
         JSONArray jsonArray = object.getJSONArray("accounts");
         List<Account> accounts = (List) JSONArray.toCollection(jsonArray, Account.class);
@@ -140,15 +143,24 @@ public class AccountService {
         for (int i = 0; i < dia_M_Ids.size(); i++) {
             //获取accId
             Integer accId = accountDiagnosisMapper.getAccId(dia_M_Ids.get(i));
+
+            Account account=new Account();
+            account.setAccId(accId);
+           Account account1=accountMapper.selectByCondition(account).get(0);
+           account1.setiId(null);
+           account1.setFee(-medicineFees.get(i));
+            accountMapper.insert(account1);
+            accIdList.add(account1.getAccId());
             //获取iId
             String iId = accountMapper.getIIdByAccId(accId);
             if(!iIdList.contains(iId)){
                 iIdList.add(iId);
             }
-            accIdList.add(accId);
+
             //更新account中费用
-            re += accountMapper.updateFeeById(accId, 0-medicineFees.get(i));
-            //删除中间表
+            re += accountMapper.updateFeeById(accId, medicineFees.get(i));
+            //更新中间表
+            accountDiagnosisMapper.updateByia_M_Id(account1.getAccId(),dia_M_Ids.get(i));
 //            accountDiagnosisMapper.deleteBydia_M_Id(dia_M_Ids.get(i));
             //更新d_a状态
             DiagnosisMedicine d = new DiagnosisMedicine();
@@ -156,6 +168,8 @@ public class AccountService {
             d.setDia_M_Id(dia_M_Ids.get(i));
             diagnosisMedicineMapper.updateByKey(d);
         }
+
+
         //更新account中退费部分的发票号
         String newRefundIId = generateIId();
         System.out.println(newRefundIId);
@@ -163,17 +177,37 @@ public class AccountService {
             accountMapper.updateIIdByAccId(accId, newRefundIId);
         }
         invoiceMapper.insertInvoice(newRefundIId,"冲红");
+
+        //更新中间表对应accId
         //更改account中未退费的发票号
         String newIId = generateIId();
         System.out.println(newIId);
         for(String iId: iIdList){
             accountMapper.updateIId(iId,newIId);
             invoiceMapper.updateInvoice(iId, "作废");
-            invoiceMapper.insertConnection(iId, newIId);
+            invoiceMapper.insertConnection(iId, newRefundIId);
         }
         invoiceMapper.insertInvoice(newIId,"生效");
         return re == eAIds.size();
     }
 
+    public boolean returnRegistration(JSONObject object){
+        registrationMapper.updateRegistration(object.getInt("rId"), object.getString("rStatus"), object.getString("rResult"));
+        Account a=new Account();
+        a.setrId(object.getInt("rId"));
+        a.setFeeType("挂号费");
+        List<Account> accounts= accountMapper.selectByCondition(a);
+        if(accounts.size()>=1){
+            a=accounts.get(0);
+            String iId=a.getiId();
+            String newRefundIId = generateIId();
+            System.out.println(newRefundIId);
+            accountMapper.updateIIdByAccId(a.getAccId(), newRefundIId);
+            invoiceMapper.insertInvoice(newRefundIId,"冲红");
+            invoiceMapper.insertConnection(iId, newRefundIId);
+        }
+
+        return accounts.size()==1;
+    }
 
 }

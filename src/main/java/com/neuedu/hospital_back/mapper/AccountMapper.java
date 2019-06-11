@@ -22,9 +22,12 @@ public interface AccountMapper {
 
     int updateIIdByAccId(@Param("accId") int accId, @Param("iId") String iId);
 
+
   //  int deleteAccount(Integer accId);
 
 //
 
     List<Medicine> getAlreadyDrawMedicineByRIdAndTime(@Param("rId") Integer rId, @Param("time") String time);
+
+    List<Account> selectByCondition(Account a);
 }

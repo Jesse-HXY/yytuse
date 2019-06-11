@@ -16,5 +16,12 @@
     delete from account_diagnosis
     where dia_M_Id=#{dia_M_Id}
   </delete>
+  <update id="updateByia_M_Id">
+    update account_diagnosis
+    <set>
+      accId=#{accId}
+    </set>
+    where dia_M_Id=#{dia_M_Id}
+  </update>
   <!---->
 </mapper>

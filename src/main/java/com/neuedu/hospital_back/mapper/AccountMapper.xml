@@ -28,6 +28,16 @@
       and mState="已发药"
     </select>
 
+    <select id="selectByCondition" resultType="com.neuedu.hospital_back.po.Account">
+        select accId, dId, uId, payTime, fee, feeType, payType, rId, cId, postDId, iId from account
+        <where>
+            <if test="accId != null">accId=#{accId}  </if>
+         <if test="rId != null">and rId=#{rId} </if>
+          <if test="iId != null and iId != ''">and iId=#{iId} </if>
+           <if test="feeType != null and feeType != ''">and feeType=#{feeType} </if>
+        </where>
+    </select>
+
     <update id="updateFeeById">
         update account
         <set>

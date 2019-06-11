@@ -46,6 +46,11 @@ public class AccountController {
         return accountService.returnExamApplication(object);
     }
 
+    @PostMapping("/returnRegistration")
+    public Boolean returnRegistration(@RequestBody JSONObject object){
+        return accountService.returnRegistration(object);
+    }
+
 
 
 }
