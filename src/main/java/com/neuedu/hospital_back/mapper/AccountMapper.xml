@@ -48,6 +48,14 @@
         select iId from account where accId = #{accId}
     </select>
 
+    <update id="updateIIdByAccId" parameterType="Integer">
+        update account
+        <set>
+            iId = #{iId}
+        </set>
+        where accId = #{accId}
+    </update>
+
    <!-- <delete id="deleteAccount">
         delete from account
         where accId=#{accId}

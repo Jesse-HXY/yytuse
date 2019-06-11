@@ -18,7 +18,9 @@ public interface AccountMapper {
 
     int updateIId(@Param("originalIId") String originalIId, @Param("iId") String iId);
 
-    String getIIdByAccId(int accId);
+    String getIIdByAccId(Integer accId);
+
+    int updateIIdByAccId(@Param("accId") int accId, @Param("iId") String iId);
 
   //  int deleteAccount(Integer accId);
 

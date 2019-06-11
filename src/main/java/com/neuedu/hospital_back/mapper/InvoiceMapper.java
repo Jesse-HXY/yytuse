@@ -19,4 +19,6 @@ public interface InvoiceMapper {
     int insertInvoice(@Param("iId") String iId, @Param("iStatus") String iStatus);
 
     int updateInvoice(@Param("iId") String iId, @Param("iStatus") String iStatus);
+
+    int insertConnection(@Param("originaliId") String originaliId, @Param("newIId") String newIId);
 }

@@ -117,18 +117,22 @@ public class AccountService {
 
         int re = 0;
         List<String> iIdList = new ArrayList<>();
+        List<Integer> accIdList = new ArrayList<>();
         for (int i = 0; i < eAIds.size(); i++) {
             //获取accId
             Integer accId = accountExaminationApplicationMapper.getAccId(eAIds.get(i));
+            System.out.println("+++++++++++++++++++++++++++++");
+            System.out.println(accId);
             //获取iId
             String iId = accountMapper.getIIdByAccId(accId);
             if(!iIdList.contains(iId)){
                 iIdList.add(iId);
             }
+            accIdList.add(accId);
             //更新account中费用
             re += accountMapper.updateFeeById(accId, eAFees.get(i));
             //删除中间表
-            accountExaminationApplicationMapper.deleteByeAId(eAIds.get(i));
+//            accountExaminationApplicationMapper.deleteByeAId(eAIds.get(i));
             //更新ea状态
             examinationApplicationMapper.updateStatus(eAIds.get(i), "已退费");
 
@@ -141,23 +145,33 @@ public class AccountService {
             if(!iIdList.contains(iId)){
                 iIdList.add(iId);
             }
+            accIdList.add(accId);
             //更新account中费用
             re += accountMapper.updateFeeById(accId, medicineFees.get(i));
             //删除中间表
-            accountDiagnosisMapper.deleteBydia_M_Id(dia_M_Ids.get(i));
+//            accountDiagnosisMapper.deleteBydia_M_Id(dia_M_Ids.get(i));
             //更新d_a状态
             DiagnosisMedicine d = new DiagnosisMedicine();
             d.setmState("已退费");
             d.setDia_M_Id(dia_M_Ids.get(i));
             diagnosisMedicineMapper.updateByKey(d);
         }
+        //更新account中退费部分的发票号
+        String newRefundIId = generateIId();
+        System.out.println(newRefundIId);
+        for(Integer accId: accIdList){
+            accountMapper.updateIIdByAccId(accId, newRefundIId);
+        }
+        invoiceMapper.insertInvoice(newRefundIId,"冲红");
         //更改account中未退费的发票号
+        String newIId = generateIId();
+        System.out.println(newIId);
         for(String iId: iIdList){
-            String newIId = generateIId();
             accountMapper.updateIId(iId,newIId);
             invoiceMapper.updateInvoice(iId, "作废");
-            invoiceMapper.insertInvoice(newIId,"生效");
+            invoiceMapper.insertConnection(iId, newIId);
         }
+        invoiceMapper.insertInvoice(newIId,"生效");
         return re == eAIds.size();
     }
 

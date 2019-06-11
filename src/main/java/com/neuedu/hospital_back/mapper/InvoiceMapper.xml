@@ -58,4 +58,8 @@
         </set>
         where iId = #{iId}
     </update>
+
+    <insert id="insertConnection" parameterType="java.lang.String">
+        insert into invoiceConnection (originaliId, newIId) values (#{originaliId}, #{newIId})
+    </insert>
 </mapper>
