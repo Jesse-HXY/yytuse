@@ -17,7 +17,7 @@ public class AccountController {
     private AccountService accountService;
 
     @PostMapping("/insertAccount")
-    public boolean insertAccount(@RequestBody JSONObject object){
+    public String insertAccount(@RequestBody JSONObject object){
         return accountService.insertAccount(object);
     }
 

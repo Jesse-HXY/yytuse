@@ -30,10 +30,8 @@
         </set>
         where iId=#{iId}
     </update>
-    <select id="getNowIId" resultType="java.lang.String">
-    select iId from invoice where iState is null or iState='' and rId is null and diaId is null
-    and eAId is null
-    order by iId limit 1
+    <select id="getNowIId" resultType="Integer">
+    select count(*) from invoice where iId like '' #{profix} '%'
   </select>
 
     <select id="selectByCondition" resultType="com.neuedu.hospital_back.po.Invoice">
@@ -48,4 +46,16 @@
             <if test="iState != null and iState != ''">and iState=#{iState} ,</if>
         </where>
     </select>
+
+    <insert id="insertInvoice" parameterType="java.lang.String">
+        insert into invoice (iId, iStatus) values (#{iId}, #{iStatus})
+    </insert>
+
+    <update id="updateInvoice" parameterType="java.lang.String">
+        update invoice
+        <set>
+            iStatus = #{iStatus}
+        </set>
+        where iId = #{iId}
+    </update>
 </mapper>

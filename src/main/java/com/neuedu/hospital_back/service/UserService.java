@@ -183,5 +183,7 @@ public class UserService {
         return userMapper.getAllUser();
     }
 
+    public User getUserById(JSONObject object){ return userMapper.getUserById(object.getInt("uId"));}
+
 }
 

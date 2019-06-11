@@ -71,4 +71,9 @@ public class UserController {
     public User login(@RequestBody JSONObject object){
         return userService.login(object);
     }
+
+    @PostMapping("/getUserById")
+    public User getUserById(@RequestBody JSONObject object){
+        return userService.getUserById(object);
+    }
 }

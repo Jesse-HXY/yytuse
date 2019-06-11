@@ -6,7 +6,7 @@ public class Account {
     private String dId;
     private int uId;
     private long payTime;
-    private double fee;
+    private Double fee;
     private String feeType;
     private String payType;
     private int rId;
@@ -14,6 +14,16 @@ public class Account {
     private int eAId;
     private String postDId;//开单科室Id
     private Integer dia_M_Id;
+
+    public String getiId() {
+        return iId;
+    }
+
+    public void setiId(String iId) {
+        this.iId = iId;
+    }
+
+    private String iId;
 
     public String getPostDId() {
         return postDId;
@@ -79,11 +89,11 @@ public class Account {
         this.payTime = payTime;
     }
 
-    public double getFee() {
+    public Double getFee() {
         return fee;
     }
 
-    public void setFee(double fee) {
+    public void setFee(Double fee) {
         this.fee = fee;
     }
 

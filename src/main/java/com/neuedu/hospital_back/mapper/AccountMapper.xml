@@ -3,8 +3,8 @@
 <mapper namespace="com.neuedu.hospital_back.mapper.AccountMapper">
 
     <insert id="insert" keyColumn="accId" keyProperty="accId" useGeneratedKeys="true">
-        insert into account (dId, uId, payTime, fee, feeType, payType, rId, cId, postDId)
-        values (#{dId}, #{uId}, #{payTime}, #{fee}, #{feeType}, #{payType}, #{rId}, #{cId}, #{postDId})
+        insert into account (dId, uId, payTime, fee, feeType, payType, rId, cId, postDId, iId)
+        values (#{dId}, #{uId}, #{payTime}, #{fee, jdbcType=DOUBLE} , #{feeType}, #{payType}, #{rId}, #{cId}, #{postDId}, #{iId})
     </insert>
 
     <update id="updateUId">
@@ -35,6 +35,18 @@
         </set>
         where accId=#{accId}
     </update>
+
+    <update id="updateIId">
+        update account
+        <set>
+            iId = #{originalIId}
+        </set>
+        where iId = #{iId}
+    </update>
+
+    <select id="getIIdByAccId" resultType="java.lang.String">
+        select iId from account where accId = #{accId}
+    </select>
 
    <!-- <delete id="deleteAccount">
         delete from account

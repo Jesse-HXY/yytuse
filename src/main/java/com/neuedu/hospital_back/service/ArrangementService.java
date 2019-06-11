@@ -39,8 +39,6 @@ public class ArrangementService {
             a.setuId(object1.getInt("uId"));
             a.setaBegin(begin);
             a.setaEnd(end);
-            System.out.println(begin);
-            System.out.println(end);
             a.setPlan(object1.getInt("plan"));
             a.setdId(dId);
             //删除所有开始结束都在新时间段中间的排班
