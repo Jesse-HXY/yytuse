@@ -33,7 +33,7 @@
     </delete>
 
     <insert id="insertDepartment">
-        insert into department values(#{dId}, #{dName}, #{dType}, #{dCategory})
+        insert into department (dId, dName, dType, dCategory) values (#{dId}, #{dName}, #{dType}, #{dCategory})
     </insert>
 
     <update id="updateDepartment">

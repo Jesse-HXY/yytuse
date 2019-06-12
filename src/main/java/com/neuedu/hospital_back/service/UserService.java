@@ -168,7 +168,6 @@ public class UserService {
             Doctor doctor = new Doctor();
             doctor.setuId(uId);
             doctor.setdVacation(object.getString("dVacation"));
-            doctor.setrLName(object.getString("rLName"));
             result = doctorMapper.updateDoctor(doctor);
         }
         return result == 1;

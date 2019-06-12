@@ -6,15 +6,15 @@
     </sql>
 
     <select id="getInvoiceCountByPostDId" resultType="int">
-        select count(distinct *) from account where postDId = #{postDId} and payTime between #{beginTime} and #{endTime}
+        select count(distinct iId) from account where postDId = #{postDId} and payTime between #{beginTime} and #{endTime}
     </select>
 
     <select id="getInvoiceCountBydId" resultType="int">
-        select count(distinct *) from account where dId = #{dId} and payTime between #{beginTime} and #{endTime}
+        select count(distinct iId) from account where dId = #{dId} and payTime between #{beginTime} and #{endTime}
     </select>
 
     <select id="getInvoiceCountByuId" resultType="int">
-        select count(distinct *) from account where uId = #{uId} and payTime between #{beginTime} and #{endTime}
+        select count(distinct iId) from account where uId = #{uId} and payTime between #{beginTime} and #{endTime}
     </select>
 
     <select id="selectIId" resultType="String">
