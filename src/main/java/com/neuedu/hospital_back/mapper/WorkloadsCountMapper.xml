@@ -16,4 +16,16 @@
         select COALESCE(sum(fee),0.0) as totalFee from account where uId = #{uId}
         and payTime between #{beginTime} and #{endTime} and feeType like "%"#{feeType}"%"
     </select>
+
+    <select id="getFeesBycIdOnFeeType" resultType="double">
+        select COALESCE(sum(fee),0.0) as totalFee from account where cId = #{cId}
+        and payTime between #{beginTime} and #{endTime} and feeType like "%"#{feeType}"%"
+    </select>
+
+    <select id="getFeesBycIdOnPayType" resultType="double">
+        select COALESCE(sum(fee),0.0) as totalFee from account where cId = #{cId}
+        and payTime between #{beginTime} and #{endTime} and payType = #{payType}
+    </select>
+
+
 </mapper>

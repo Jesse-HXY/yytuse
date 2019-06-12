@@ -13,6 +13,33 @@ public class WorkloadsCount {
     private double materialFee;//材料费
     private double surgeryFee;//手术费
     private double otherFee;//其他费用
+    private double ownExpenses;//自费
+    private double medicalInsurance;//医保
+    private double nCMS;//新农合
+
+    public double getOwnExpenses() {
+        return ownExpenses;
+    }
+
+    public void setOwnExpenses(double ownExpenses) {
+        this.ownExpenses = ownExpenses;
+    }
+
+    public double getMedicalInsurance() {
+        return medicalInsurance;
+    }
+
+    public void setMedicalInsurance(double medicalInsurance) {
+        this.medicalInsurance = medicalInsurance;
+    }
+
+    public double getnCMS() {
+        return nCMS;
+    }
+
+    public void setnCMS(double nCMS) {
+        this.nCMS = nCMS;
+    }
 
     public double getTestFee() {
         return testFee;

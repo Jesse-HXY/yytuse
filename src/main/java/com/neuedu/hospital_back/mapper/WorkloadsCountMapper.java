@@ -9,4 +9,9 @@ public interface WorkloadsCountMapper {
     double getFeesBydId(@Param("dId") String dId, @Param("beginTime") Long beginTime, @Param("endTime") Long endTime, @Param("feeType") String feeType);
 
     double getFeesByuId(@Param("uId") Integer uId, @Param("beginTime") Long beginTime, @Param("endTime") Long endTime, @Param("feeType") String feeType);
+
+    double getFeesBycIdOnFeeType(@Param("cId") Integer cId, @Param("beginTime") Long beginTime, @Param("endTime") Long endTime, @Param("feeType") String feeType);
+
+    double getFeesBycIdOnPayType(@Param("cId") Integer cId, @Param("beginTime") Long beginTime, @Param("endTime") Long endTime, @Param("payType") String payType);
+
 }
