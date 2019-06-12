@@ -14,6 +14,35 @@ public class DiagnosisTemplateMedicine {
 
     private String times;
 
+    private String diaState;
+
+    private String mFormulation;
+
+    public String getdId() {
+        return dId;
+    }
+
+    public void setdId(String dId) {
+        this.dId = dId;
+    }
+
+    private String dId;
+
+    public String getmFormulation() {
+        return mFormulation;
+    }
+
+    public void setmFormulation(String mFormulation) {
+        this.mFormulation = mFormulation;
+    }
+
+    public String getDiaState() {
+        return diaState;
+    }
+
+    public void setDiaState(String diaState) {
+        this.diaState = diaState;
+    }
 
     public String getDosage() {
         return dosage;

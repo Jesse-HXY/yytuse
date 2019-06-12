@@ -9,7 +9,7 @@
 
     <update id="updateUId">
         update account a JOIN account_examinationapplication ae on a.accId = ae.accId
-        set uId = #{uId} where  rId = #{rId} and ae.eAId = #{eAId}
+        set uId = #{uId} where  a.rId = #{rId} and ae.eAId = #{eAId}
     </update>
 
     <select id="getMedicineByRIdAndTime" resultType="com.neuedu.hospital_back.po.Medicine">
