@@ -82,7 +82,6 @@ public class WorkloadsCountService {
     }
 
     private WorkloadsCount setValues(WorkloadsCount workloadsCount, Map<String, Double> fees) {
-
         if (fees.get("中药费") != null) workloadsCount.setZyFee(fees.get("中药费"));
         if (fees.get("西药费") != null) workloadsCount.setXyFee(fees.get("西药费"));
         if (fees.get("挂号费") != null) workloadsCount.setRegistrationFee(fees.get("挂号费"));

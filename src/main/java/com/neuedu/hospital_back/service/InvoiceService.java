@@ -1,5 +1,6 @@
 package com.neuedu.hospital_back.service;
 
+import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
@@ -14,19 +15,16 @@ public class InvoiceService {
     @Resource
     private InvoiceMapper invoiceMapper;
 
+    public List<String> selectIId(JSONObject object){
+        return invoiceMapper.selectIId(object.getInt("cId"), object.getLong("beginTime"), object.getLong("endTime"),object.getString("iStatus"));
+    }
 
     public int deleteByPrimaryKey(String iId) {
         return invoiceMapper.deleteByPrimaryKey(iId);
     }
 
-
     public int insert(Invoice record) {
         return invoiceMapper.insert(record);
-    }
-
-
-    public int getNowIId(String profix){
-        return invoiceMapper.getNowIId(profix);
     }
 
     public boolean update(Invoice object){

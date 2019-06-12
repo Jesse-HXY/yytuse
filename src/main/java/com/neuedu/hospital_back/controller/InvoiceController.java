@@ -15,21 +15,18 @@ public class InvoiceController {
     @Resource
     private InvoiceService invoiceService;
 
-//    @PostMapping("/insertInvoice")
-//    public boolean insertInvoice(@RequestBody JSONObject object){ return invoiceService.insertInvoice(object);}
-
-//    @PostMapping("getNowIId")
-//    public String getNowIId(){
-//        return invoiceService.getNowIId();
-//    }
-    @PostMapping("update")
-    public boolean update(@RequestBody Invoice object){
+    @PostMapping("/update")
+    public boolean update(@RequestBody Invoice object) {
         return invoiceService.update(object);
     }
-    @PostMapping("selectByCondition")
-    public List<Invoice> selectByCondition(@RequestBody Invoice invoice){
+
+    @PostMapping("/selectByCondition")
+    public List<Invoice> selectByCondition(@RequestBody Invoice invoice) {
         return invoiceService.selectByCondition(invoice);
     }
-//    @PostMapping("/selectInvoiceByinvoiceId")
-//    public
+
+    @PostMapping("/selectIId")
+    public List<String> selectIId(@RequestBody JSONObject object){
+        return invoiceService.selectIId(object);
+    }
 }

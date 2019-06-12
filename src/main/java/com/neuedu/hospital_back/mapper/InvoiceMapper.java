@@ -15,6 +15,8 @@ public interface InvoiceMapper {
 
     int deleteByPrimaryKey(String iId);
 
+    List<String> selectIId(@Param("cId") Integer cId, @Param("beginTime") Long beginTime, @Param("endTime") Long endTime, @Param("iStatus") String iStatus);
+
     int insert(Invoice record);
 
     int update(Invoice record);
