@@ -2,12 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.hospital_back.mapper.DiagnosisMapper">
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-
     delete from diagnosis
     where diaId = #{diaId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="diaId" keyProperty="diaId" parameterType="com.neuedu.hospital_back.po.Diagnosis" useGeneratedKeys="true">
-
     insert into diagnosis (diaType, rId, diaName, 
       createDate, useDate, diaState,uId
       )

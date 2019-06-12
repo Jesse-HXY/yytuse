@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.hospital_back.mapper.InvoiceMapper">
     <sql id="Base_Column_List">
-        <!--@mbg.generated-->
         iId, eAId, rId, diaId, payTime, offsetNum, iState, reprintTime
     </sql>
 

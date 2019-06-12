@@ -1,31 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.hospital_back.mapper.DoctorArrangementRegulationMapper">
-  <resultMap id="BaseResultMap" type="com.neuedu.hospital_back.po.DoctorArrangementRegulation">
-    <!--@mbg.generated-->
-    <id column="do_Ar_Id" jdbcType="INTEGER" property="do_Ar_Id" />
-    <result column="uId" jdbcType="INTEGER" property="uId" />
-    <result column="arId" jdbcType="INTEGER" property="arId" />
-    <result column="arPlan" jdbcType="INTEGER" property="arPlan" />
-  </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated-->
     do_Ar_Id, `uId`, arId, arPlan
   </sql>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    <!--@mbg.generated-->
     delete from doctor_arrangementregulation
     where do_Ar_Id = #{do_Ar_Id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="do_Ar_Id" keyProperty="do_Ar_Id" parameterType="com.neuedu.hospital_back.po.DoctorArrangementRegulation" useGeneratedKeys="true">
-    <!--@mbg.generated-->
     insert into doctor_arrangementregulation (`uId`, arId, arPlan
       )
     values (#{uId,jdbcType=INTEGER}, #{arId,jdbcType=INTEGER}, #{arPlan,jdbcType=INTEGER}
       )
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.hospital_back.po.DoctorArrangementRegulation">
-    <!--@mbg.generated-->
     update doctor_arrangementregulation
     <set>
       <if test="uId != null">
