@@ -6,6 +6,7 @@ import net.sf.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin
@@ -42,7 +43,7 @@ public class AccountController {
     }
 
     @PostMapping("/returnMoney")
-    public Boolean returnExamApplication(@RequestBody JSONObject object){
+    public ArrayList<String> returnExamApplication(@RequestBody JSONObject object){
         return accountService.returnExamApplication(object);
     }
 

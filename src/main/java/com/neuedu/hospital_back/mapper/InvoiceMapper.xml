@@ -79,4 +79,13 @@
     <insert id="insertConnection" parameterType="java.lang.String">
         insert into invoiceConnection (originaliId, newIId) values (#{originaliId}, #{newIId})
     </insert>
+
+    <select id="selectMedicineByiId" resultType="com.neuedu.hospital_back.po.Medicine">
+        select mAmount,mType, mName,mFee from medicine,diagnosis_medicine,diagnosis,account,account_diagnosis
+        where account.accId = account_diagnosis.accId and account_diagnosis.dia_M_id = diagnosis_medicine.dia_M_id and diagnosis_medicine.diaId=diagnosis.diaId and diagnosis_medicine.mId=medicine.mId and iId = #{iId}
+    </select>
+
+    <select id="selectExaminationApplicationByiId" resultType="com.neuedu.hospital_back.po.ExaminationApplication">
+        select eIId from examinationapplication, account, account_examinationapplication where account.accId = account_examinationapplication.accId and account_examinationapplication.eAId = examinationapplication.eAId and iId = #{iId}
+    </select>
 </mapper>

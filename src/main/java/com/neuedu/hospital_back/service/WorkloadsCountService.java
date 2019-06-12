@@ -92,9 +92,9 @@ public class WorkloadsCountService {
         if (fees.get("材料费") != null) workloadsCount.setMaterialFee(fees.get("材料费"));
         if (fees.get("手术费") != null) workloadsCount.setSurgeryFee(fees.get("手术费"));
         if (fees.get("其他费用") != null) workloadsCount.setOtherFee(fees.get("其他费用"));
-        if (fees.get("自费") != null) workloadsCount.setOtherFee(fees.get("自费"));
-        if (fees.get("医保") != null) workloadsCount.setOtherFee(fees.get("医保"));
-        if (fees.get("新农合") != null) workloadsCount.setOtherFee(fees.get("新农合"));
+        if (fees.get("自费") != null) workloadsCount.setOwnExpenses(fees.get("自费"));
+        if (fees.get("医保") != null) workloadsCount.setMedicalInsurance(fees.get("医保"));
+        if (fees.get("新农合") != null) workloadsCount.setnCMS(fees.get("新农合"));
         return workloadsCount;
     }
 }

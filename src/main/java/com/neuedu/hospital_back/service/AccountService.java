@@ -9,6 +9,7 @@ import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -69,7 +70,16 @@ public class AccountService {
         return iId;
     }
 
-    public String generateIId(){
+    public String updateIId(JSONObject object){
+        String iId = object.getString("iId");
+        String newIId = generateIId();
+        accountMapper.updateIId(newIId, iId);
+        invoiceMapper.insertInvoice(newIId,"生效");
+        invoiceMapper.updateInvoice(iId, "作废");
+        return newIId;
+    }
+
+    private String generateIId(){
         Calendar cal=Calendar.getInstance();
         int year=cal.get(Calendar.YEAR);
         int month=cal.get(Calendar.MONTH);
@@ -114,7 +124,7 @@ public class AccountService {
         return accountMapper.getAlreadyDrawMedicineByRIdAndTime(rId, time);
     }
 
-    public Boolean returnExamApplication(JSONObject object) {
+    public ArrayList<String> returnExamApplication(JSONObject object) {
         List<Double> eAFees = (List) JSONArray.toCollection(object.getJSONArray("eAFee"), Double.class);
         List<Integer> eAIds =(List) JSONArray.toCollection(object.getJSONArray("eAIds"), Integer.class);
         List<Integer> dia_M_Ids = (List) JSONArray.toCollection(object.getJSONArray("dia_M_Ids"), Integer.class);
@@ -126,8 +136,6 @@ public class AccountService {
         for (int i = 0; i < eAIds.size(); i++) {
             //获取accId
             Integer accId = accountExaminationApplicationMapper.getAccId(eAIds.get(i));
-            System.out.println("+++++++++++++++++++++++++++++");
-            System.out.println(accId);
             //获取iId
             String iId = accountMapper.getIIdByAccId(accId);
             if(!iIdList.contains(iId)){
@@ -190,7 +198,10 @@ public class AccountService {
             invoiceMapper.insertConnection(iId, newRefundIId);
         }
         invoiceMapper.insertInvoice(newIId,"生效");
-        return re == eAIds.size();
+        ArrayList<String> returnList = new ArrayList<>();
+        returnList.add(newRefundIId);
+        returnList.add(newIId);
+        return returnList;
     }
 
     public boolean returnRegistration(JSONObject object){
@@ -203,7 +214,6 @@ public class AccountService {
             a=accounts.get(0);
             String iId=a.getiId();
             String newRefundIId = generateIId();
-            System.out.println(newRefundIId);
             accountMapper.updateIIdByAccId(a.getAccId(), newRefundIId);
             invoiceMapper.insertInvoice(newRefundIId,"冲红");
             invoiceMapper.insertConnection(iId, newRefundIId);

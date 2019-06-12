@@ -4,17 +4,17 @@
 
     <select id="getFeesBydId" resultType="double">
         select COALESCE(sum(fee),0.0) as totalFee from account where dId = #{dId}
-        and payTime between #{beginTime} and #{endTime} and feeType like "%"#{feeType}"%"
+        and payTime between #{beginTime} and #{endTime} and feeType like "%"#{feeType}"%" and fee > 0
     </select>
 
     <select id="getFeesByPostDId" resultType="double">
         select COALESCE(sum(fee),0.0) as totalFee from account where postDId = #{postDId}
-        and payTime between #{beginTime} and #{endTime} and feeType like "%"#{feeType}"%"
+        and payTime between #{beginTime} and #{endTime} and feeType like "%"#{feeType}"%" and fee > 0
     </select>
 
     <select id="getFeesByuId" resultType="double">
         select COALESCE(sum(fee),0.0) as totalFee from account where uId = #{uId}
-        and payTime between #{beginTime} and #{endTime} and feeType like "%"#{feeType}"%"
+        and payTime between #{beginTime} and #{endTime} and feeType like "%"#{feeType}"%" and fee > 0
     </select>
 
     <select id="getFeesBycIdOnFeeType" resultType="double">

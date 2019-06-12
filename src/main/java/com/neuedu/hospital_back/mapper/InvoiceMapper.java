@@ -1,6 +1,8 @@
 package com.neuedu.hospital_back.mapper;
 
+import com.neuedu.hospital_back.po.ExaminationApplication;
 import com.neuedu.hospital_back.po.Invoice;
+import com.neuedu.hospital_back.po.Medicine;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -30,4 +32,8 @@ public interface InvoiceMapper {
     void updateInvoice(@Param("iId") String iId, @Param("iStatus") String iStatus);
 
     void insertConnection(@Param("originaliId") String originaliId, @Param("newIId") String newIId);
+
+    List<ExaminationApplication> selectExaminationApplicationByiId(String iId);
+
+    List<Medicine> selectMedicineByiId(String iId);
 }
