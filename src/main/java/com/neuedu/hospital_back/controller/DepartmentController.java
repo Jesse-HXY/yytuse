@@ -15,6 +15,11 @@ public class DepartmentController {
     @Resource
     private DepartmentService departmentService;
 
+    @RequestMapping("/importDepartment")
+    public boolean importDepartment() throws Exception {
+        return departmentService.importDepartment();
+    }
+
     @PostMapping("/selectByuId")
     public List<Department> selectByuId(@RequestBody JSONObject object) {
         return departmentService.selectByuId(object);
