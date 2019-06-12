@@ -29,11 +29,13 @@ public interface InvoiceMapper {
 
     void insertInvoice(@Param("iId") String iId, @Param("iStatus") String iStatus);
 
-    void updateInvoice(@Param("iId") String iId, @Param("iStatus") String iStatus);
+    int updateInvoice(@Param("iId") String iId, @Param("iStatus") String iStatus);
 
     void insertConnection(@Param("originaliId") String originaliId, @Param("newIId") String newIId);
 
     List<ExaminationApplication> selectExaminationApplicationByiId(String iId);
 
     List<Medicine> selectMedicineByiId(String iId);
+
+    List<String> getCancelledInvoice(@Param("cId") Integer cId, @Param("beginTime") Long beginTime, @Param("endTime") Long endTime);
 }

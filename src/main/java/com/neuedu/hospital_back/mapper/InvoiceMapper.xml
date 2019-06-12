@@ -18,7 +18,12 @@
     </select>
 
     <select id="selectIId" resultType="String">
-        select distinct iId from account a join invoice i on a.iId = i.iId and iStatus = #{iStatus} and payTime between #{beginTime} and #{endTime}
+        select distinct i.iId from account a join invoice i on a.iId = i.iId and iStatus = #{iStatus} and payTime between #{beginTime} and #{endTime} and cId=#{cId}
+    </select>
+
+    <select id="getCancelledInvoice" resultType="String">
+        select distinct invoiceConnection.originaliId from invoice, account, invoiceConnection
+where account.iId = invoiceConnection.newIId and invoice.iId = invoiceConnection.originaliId and payTime between #{beginTime} and #{endTime} and cId=#{cId}
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">

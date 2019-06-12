@@ -184,7 +184,7 @@ public class AccountService {
         String newRefundIId = generateIId();
         System.out.println(newRefundIId);
         for(Integer accId: accIdList){
-            accountMapper.updateIIdByAccId(accId, newRefundIId);
+            accountMapper.updateIIdByAccId(accId, accountMapper.getIIdByAccId(accId), newRefundIId);
         }
         invoiceMapper.insertInvoice(newRefundIId,"冲红");
 
@@ -214,7 +214,7 @@ public class AccountService {
             a=accounts.get(0);
             String iId=a.getiId();
             String newRefundIId = generateIId();
-            accountMapper.updateIIdByAccId(a.getAccId(), newRefundIId);
+            accountMapper.updateIIdByAccId(a.getAccId(), accountMapper.getIIdByAccId(a.getAccId()),newRefundIId);
             invoiceMapper.insertInvoice(newRefundIId,"冲红");
             invoiceMapper.insertConnection(iId, newRefundIId);
         }

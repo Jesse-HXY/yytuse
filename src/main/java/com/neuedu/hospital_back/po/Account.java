@@ -2,14 +2,14 @@ package com.neuedu.hospital_back.po;
 
 public class Account {
 
-    private int accId;
+    private Integer accId;
     private String dId;
     private int uId;
     private long payTime;
     private Double fee;
     private String feeType;
     private String payType;
-    private int rId;
+    private Integer rId;
     private int cId;//收费员Id
     private int eAId;
     private String postDId;//开单科室Id
@@ -57,11 +57,11 @@ public class Account {
         this.cId = cId;
     }
 
-    public int getAccId() {
+    public Integer getAccId() {
         return accId;
     }
 
-    public void setAccId(int accId) {
+    public void setAccId(Integer accId) {
         this.accId = accId;
     }
 
@@ -113,11 +113,11 @@ public class Account {
         this.payType = payType;
     }
 
-    public int getrId() {
+    public Integer getrId() {
         return rId;
     }
 
-    public void setrId(int rId) {
+    public void setrId(Integer rId) {
         this.rId = rId;
     }
 }

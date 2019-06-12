@@ -54,5 +54,13 @@ public class InvoiceService {
         return examinationApplications;
     }
 
+    public List<String> getCancelledInvoice(JSONObject object){
+        return invoiceMapper.getCancelledInvoice(object.getInt("cId"), object.getLong("beginTime"), object.getLong("endTime"));
+    }
+
+    public int updateInvoice(JSONObject object){
+        return invoiceMapper.updateInvoice(object.getString("iId"), object.getString("iStatus"));
+    }
+
 }
 

@@ -56,4 +56,14 @@ public class InvoiceController {
     public List<String> selectIId(@RequestBody JSONObject object){
         return invoiceService.selectIId(object);
     }
+
+    @PostMapping("/getCancelledInvoice")
+    public List<String> getCancelledInvoice(@RequestBody JSONObject object){
+        return invoiceService.getCancelledInvoice(object);
+    }
+
+    @PostMapping("/updateInvoice")
+    public int updateInvoice(@RequestBody JSONObject object){
+        return invoiceService.updateInvoice(object);
+    }
 }
