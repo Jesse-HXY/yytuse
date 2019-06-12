@@ -1,5 +1,6 @@
 package com.neuedu.hospital_back.service;
 
+import com.neuedu.hospital_back.mapper.InvoiceMapper;
 import com.neuedu.hospital_back.mapper.RegistrationMapper;
 import com.neuedu.hospital_back.mapper.WorkloadsCountMapper;
 import com.neuedu.hospital_back.po.WorkloadsCount;
@@ -17,6 +18,8 @@ public class WorkloadsCountService {
     private WorkloadsCountMapper workloadsCountMapper;
     @Resource
     private RegistrationMapper registrationMapper;
+    @Resource
+    private InvoiceMapper invoiceMapper;
 
     private String[] names = {"中药费", "西药费", "挂号费", "诊察费", "检查费", "检验费", "治疗费", "材料费", "手术费", "其他费用"};
 
@@ -30,6 +33,7 @@ public class WorkloadsCountService {
         }
         WorkloadsCount workloadsCount = new WorkloadsCount();
         workloadsCount.setVisits(registrationMapper.getPostVisits(postDId, beginTime, endTime));
+        workloadsCount.setInvoiceNum(invoiceMapper.getInvoiceCountByPostDId(postDId, beginTime, endTime));
         return setValues(workloadsCount, fees);
     }
 
@@ -43,6 +47,7 @@ public class WorkloadsCountService {
         }
         WorkloadsCount workloadsCount = new WorkloadsCount();
         workloadsCount.setVisits(registrationMapper.getVisits(dId, beginTime, endTime));
+        workloadsCount.setInvoiceNum(invoiceMapper.getInvoiceCountBydId(dId, beginTime, endTime));
         return setValues(workloadsCount, fees);
     }
 
@@ -56,10 +61,11 @@ public class WorkloadsCountService {
         }
         WorkloadsCount workloadsCount = new WorkloadsCount();
         workloadsCount.setVisits(registrationMapper.getUserVisits(uId, beginTime, endTime));
+        workloadsCount.setInvoiceNum(invoiceMapper.getInvoiceCountByuId(uId, beginTime, endTime));
         return setValues(workloadsCount, fees);
     }
 
-    private WorkloadsCount setValues(WorkloadsCount workloadsCount, Map<String, Double> fees){
+    private WorkloadsCount setValues(WorkloadsCount workloadsCount, Map<String, Double> fees) {
         workloadsCount.setZyFee(fees.get("中药费"));
         workloadsCount.setXyFee(fees.get("西药费"));
         workloadsCount.setRegistrationFee(fees.get("挂号费"));

@@ -5,10 +5,24 @@
         <!--@mbg.generated-->
         iId, eAId, rId, diaId, payTime, offsetNum, iState, reprintTime
     </sql>
+
+    <select id="getInvoiceCountByPostDId" resultType="int">
+        select count(distinct *) from account where postDId = #{postDId}
+    </select>
+
+    <select id="getInvoiceCountBydId" resultType="int">
+        select count(distinct *) from account where dId = #{dId}
+    </select>
+
+    <select id="getInvoiceCountByuId" resultType="int">
+        select count(distinct *) from account where uId = #{uId}
+    </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from invoice
     where iId = #{iId,jdbcType=VARCHAR}
   </delete>
+
     <insert id="insert" parameterType="com.neuedu.hospital_back.po.Invoice">
     insert into invoice (iId, eAId, rId, 
       diaId, payTime, offsetNum, 

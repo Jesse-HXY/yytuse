@@ -6,6 +6,13 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface InvoiceMapper {
+
+    int getInvoiceCountByPostDId(@Param("postDId") String postDId, @Param("beginTime") Long beginTime, @Param("endTime") Long endTime);
+
+    int getInvoiceCountBydId(@Param("dId") String dId, @Param("beginTime") Long beginTime, @Param("endTime") Long endTime);
+
+    int getInvoiceCountByuId(@Param("uId") Integer uId, @Param("beginTime") Long beginTime, @Param("endTime") Long endTime);
+
     int deleteByPrimaryKey(String iId);
 
     int insert(Invoice record);
@@ -16,9 +23,9 @@ public interface InvoiceMapper {
 
     List<Invoice> selectByCondition(Invoice invoice);
 
-    int insertInvoice(@Param("iId") String iId, @Param("iStatus") String iStatus);
+    void insertInvoice(@Param("iId") String iId, @Param("iStatus") String iStatus);
 
-    int updateInvoice(@Param("iId") String iId, @Param("iStatus") String iStatus);
+    void updateInvoice(@Param("iId") String iId, @Param("iStatus") String iStatus);
 
-    int insertConnection(@Param("originaliId") String originaliId, @Param("newIId") String newIId);
+    void insertConnection(@Param("originaliId") String originaliId, @Param("newIId") String newIId);
 }
