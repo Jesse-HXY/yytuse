@@ -58,7 +58,6 @@ public class AccountService {
         String iId = generateIId();
         invoiceMapper.insertInvoice(iId, iStatus);
         for (Account account : accounts) {
-            System.out.println(account.getFee());
             account.setiId(iId);
             accountMapper.insert(account);
             if (account.getFeeType().equals("中药") || account.getFeeType().equals("西药")) {
