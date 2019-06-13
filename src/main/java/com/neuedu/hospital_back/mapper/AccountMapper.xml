@@ -46,6 +46,14 @@
         where accId=#{accId}
     </update>
 
+    <update id="updateFee">
+        update account
+        <set>
+            fee=#{fee}
+        </set>
+        where accId=#{accId}
+    </update>
+
     <update id="updateIId">
         update account
         <set>

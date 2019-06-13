@@ -16,6 +16,8 @@ public interface AccountMapper {
 
     int updateFeeById(@Param("accId") Integer accId, @Param("fee") double fee);
 
+    int updateFee(@Param("accId") Integer accId, @Param("fee") double fee);
+
     int updateIId(@Param("originalIId") String originalIId, @Param("iId") String iId);
 
     String getIIdByAccId(Integer accId);

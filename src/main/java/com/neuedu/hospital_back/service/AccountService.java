@@ -215,6 +215,7 @@ public class AccountService {
             String iId=a.getiId();
             String newRefundIId = generateIId();
             accountMapper.updateIIdByAccId(a.getAccId(), accountMapper.getIIdByAccId(a.getAccId()),newRefundIId);
+            accountMapper.updateFee(a.getAccId(),0);
             invoiceMapper.insertInvoice(newRefundIId,"冲红");
             invoiceMapper.insertConnection(iId, newRefundIId);
         }
