@@ -174,6 +174,14 @@ public class DiagnosisService {
 
     }
 
+    public List<Medicine> getCanReturnDetailByrId(JSONObject object){
+        Integer rId=object.getInt("rId");
+        List<Medicine> d=diagnosisMapper.getDetailByrId(rId, "已收费");
+        d.addAll(diagnosisMapper.getDetailByrId(rId,"已退药"));
+        return d;
+
+    }
+
     public boolean deleteMedicineFromDiagnosis(JSONObject object) {
         Integer diaId = object.getInt("diaId");
         int r = 0;

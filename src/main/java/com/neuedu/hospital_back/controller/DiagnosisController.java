@@ -139,6 +139,11 @@ public class DiagnosisController {
         return diagnosisService.getDetailByrId(object);
     }
 
+    @PostMapping("/getCanReturnDetailByrId")
+    public List<Medicine> getCanReturnDetailByrId(@RequestBody JSONObject object){
+        return diagnosisService.getCanReturnDetailByrId(object);
+    }
+
     @PostMapping("/updateMStateBydia_M_Id")
     public Boolean updateMStateBydia_M_Id(@RequestBody JSONObject object){
         return diagnosisService.updateMStateBydia_M_Id(object);
