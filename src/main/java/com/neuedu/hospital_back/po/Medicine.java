@@ -17,7 +17,9 @@ public class Medicine {
     private long useDate;
     private String diaState;
     private int dia_M_Id;
+    private String dId;
     private String mFormulation;
+    private String mState;
 
     public int getDia_M_Id() {
         return dia_M_Id;
@@ -25,6 +27,14 @@ public class Medicine {
 
     public void setDia_M_Id(int dia_M_Id) {
         this.dia_M_Id = dia_M_Id;
+    }
+
+    public String getmState() {
+        return mState;
+    }
+
+    public void setmState(String mState) {
+        this.mState = mState;
     }
 
     public long getUseDate() {
@@ -52,7 +62,7 @@ public class Medicine {
         this.dId = dId;
     }
 
-    private String dId;
+
 
     public String getmFormulation() {
         return mFormulation;
