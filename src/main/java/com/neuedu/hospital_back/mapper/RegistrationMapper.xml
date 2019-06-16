@@ -37,7 +37,7 @@
     <select id="getNotDiagnosisByuId" resultType="com.neuedu.hospital_back.po.RegistrationInfo">
         select registration.rId,registration.pId,pName,pBirth,pSex from patient,registration
         <where>
-            uId=#{uId} and registration.pId=patient.pId and rStatus !='诊毕'
+            uId=#{uId} and registration.pId=patient.pId and rStatus ='未看诊'
             and FROM_UNIXTIME(registration.rDate,'%y-%m-%d')=CURDATE()
             <if test="pName != null and pName != ''">and pName like "%"#{pName}"%"</if>
         </where>
